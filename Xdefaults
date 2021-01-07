@@ -1,0 +1,154 @@
+xft.antialias: true
+xft.hinting: true
+xft.hintstyle: hintslight
+xft.lcdfilter: lcddefault
+xft.rgba: rgb
+
+
+URxvt.title:URxvt-Unicode
+URxvt.termName:rxvt-unicode
+URxvt.scrollBar:false
+URxvt.saveLines:500
+
+URxvt.foreground:lightgray
+URxvt.background:black
+URxvt.colorBD:yellow
+URxvt.colorUL:Green
+! bg transparent set
+URxvt.inheritPixmap: true
+URxvt.tintCddolor: lightgray
+URxvt.shading:7
+!URxvt.depth: 32
+URxvt.scrollTtyOutput: False
+URxvt.scrollTtyKeypress: True
+URxvt.scrollWithBuffer: True
+URxvt.urgentOnBell: True
+mouseWheelScrollPage:True
+
+URxvt.letterSpace:-2
+! URxvt.font:-wenquanyi-wenquanyi bitmap song-medium-r-normal--0-0-100-100-p-0-gbk-0
+URxvt.font:xft:Courier New:pixelsize=18:antialias=false,xft:WenQuanYi Bitmap Song:pixelsize=16
+URxvt.inputMethod:fcitx
+URxvt.preeditType:Root
+!URxvt.keysym.C-Up: command:\033]50;xft:Bitstream Vera Mono:pixelsize=20:antialias=true xft:WenQuanYi Zen Hei Mono:Regular:pixelsize=20:antialias=true xft:AR PL KaitiM GB:Regular:pixelsize=20:antialias=false\007
+!URxvt.keysym.C-Down:command:\033]50;xft:Bitstream Vera Mono:pixelsize=18:antialias=true xft:WenQuanYi Zen Hei Mono:Regular:pixelsize=18:antialias=true xft:AR PL KaitiM GB:Regular:pixelsize=18:antialias=true\007 
+
+URxvt.perl-lib: /home/jixiuf/.config/URxvt/
+URxvt*perl-ext-common:default,matcher,clipboard,url-select,keyboard-select
+!URxvt.matcher.button:  1
+!Control+Shift+c 剪切 
+!Control+Shift+v paste
+URxvt.keysym.M-w: perl:clipboard:copy
+URxvt.keysym.Control-V: perl:clipboard:paste
+URxvt.keysym.Control-y: perl:clipboard:paste
+
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-C-y: perl:clipboard:paste_escaped
+
+
+!!!!!!!!!!!!!!!!!!url-select
+!Alt+u 选中光标下的url,回车打开
+! # Use keyboard shortcuts to select URLs.
+! # This should be used as a replacement for the default matcher extension,
+! # it also makes URLs clickable with the middle mouse button.
+! # Usage: put the following lines in your .Xdefaults:
+! # URxvt.perl-ext-common: ...,url-select
+! # URxvt.keysym.M-u: perl:url-select:select_next
+
+! # Use Meta-u to activate URL selection mode, then use the following keys:
+! # k: Select next upward URL (also with Meta-u)
+! # j: Select next downward URL
+! # o/Return: Open selected URL in browser, Return: deactivate afterwards
+! # y: Copy (yank) selected URL and deactivate selection mode
+! # q/Escape: Deactivate URL selection mode
+
+! # Options:
+! # URxvt.urlLauncher: Browser/command to open selected URL with
+! # URxvt.underlineURLs: If set to true, all URLs get underlined
+! # URvxt.urlButton: Mouse button to click-open URLs (default: 2)
+URvxt.urlButton:1
+URxvt.urlLauncher: firefox
+Rxvt.underlineURLs:true
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt*matcher.pattern.1: \\bwww\|ftp\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+!!!!!!!!!!!!!!!!!!!!!!!!!!end of url-select
+
+
+!!!!!!!!!!!!!!!!!!!!!!keyboard-select 
+! Usage: put the following lines in your .Xdefaults:
+! # URxvt.perl-ext-common: ...,keyboard-select
+! # URxvt.keysym.M-Escape: perl:keyboard-select:activate
+! # The following line overwrites the default Meta-s binding and allows to
+! # activate keyboard-select directly in backward search mode:
+! # URxvt.keysym:M-s: perl:keyboard-select:search
+URxvt.keysym.Control-3: perl:keyboard-select:activate
+URxvt.keysym.Control-2: perl:keyboard-select:activate-and-select
+
+! # Use Meta-Escape to activate selection mode, then use the following keys:
+! # h/j/k/l: Move cursor left/down/up/right (also with arrow keys)
+! # g/G/0/^/$/H/M/L/f/F/;/,/w/W/b/B/e/E: More vi-like cursor movement keys
+! # '/'/?: Start forward/backward search
+! # n/N: Repeat last search, N: in reverse direction
+! # Ctrl-f/b: Scroll down/up one screen
+! # Ctrl-d/u: Scroll down/up half a screen
+! # v/V/Ctrl-v: Toggle normal/linewise/blockwise selection
+! # y/Return: Copy selection to primary buffer, Return: deactivate afterwards
+! # q/Escape: Deactivate keyboard selection mode
+!!!!!!!!!!!!!!!!!!!!!!1end of keyboard-select
+
+
+
+! URxvt.keysym.Control-q: 
+! URxvt*keysym.C-s: 
+!! 设置Alt为Meta键，在emacs里面的习惯设置。
+URxvt.meta:ignore
+URxvt.meta8:false
+URxvt.secondaryScroll: true
+
+!Emacs.FontBackend: xft
+!Emacs.Font: SimSun-13
+! Emacs.Font: WenQuanYi Zen Hei Mono-13
+!Emacs.Font:WenQuanYi Bitmap Song
+!Emacs.Geometry: 80x25
+!Emacs*Foreground: white
+!Emacs*Background: #2e2d28
+
+!Emacs.FontsetList: chinese
+! Emacs.Fontset-0:  -*-*-*-*-*-*-*-*-*-*-*-*-fontset-chinese,\
+!  ascii:-misc-dejavu sans mono-medium-r-normal--0-0-0-0-m-0-iso8859-1,\
+!             	      chinese-gb2313:-WenQuanYi-WenQuanYi Bitmap Song-normal-normal-normal-*-16-*-*-*-*-*-iso10646-1 ,\
+!                       mule-unicode-0100-24ff:-WenQuanYi-WenQuanYi Bitmap Song-normal-normal-normal-*-16-*-*-*-*-*-iso10646-1
+!Emacs.Fontset-0:-WenQuanYi-WenQuanYi Bitmap Song-normal-normal-normal-*-16-*-*-*-*-*-fontset-chinese
+
+!Emacs.Font:fontset-chinese
+
+! tangoesque scheme
+! *background: #0C1021
+! *foreground: #babdb6
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+!*color10: #c8e7a8
+!*color2:  #93d44f
+*color10: OliveDrab
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMangenta + Mangenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff
+
+ 

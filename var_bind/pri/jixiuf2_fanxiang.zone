@@ -1,0 +1,16 @@
+$ORIGIN  0.168.192.in-addr.arpa.
+$TTL 1W
+@                       1D IN SOA       jixiuf.org. root.jixiuf.org. (
+                                        2010092205      ; serial
+                                        3H              ; refresh
+                                        15M             ; retry
+                                        1W              ; expiry
+                                        1D )            ; minimum
+; @ 在这里相当于 jixiuf
+@                         1D IN NS           jixiuf.org.
+;192.168.1.2 解析为jixiuf.org.  及mail.jixiuf.org. .... 
+2                         1D IN PTR          jixiuf.org.
+
+
+
+

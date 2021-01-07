@@ -1,0 +1,17 @@
+$TTL 1W
+@       IN      SOA  jixiuf.org.    root.jixiuf.org.  (
+                                      2010092204 ; Serial
+                                      28800      ; Refresh
+                                      14400      ; Retry
+                                      604800     ; Expire - 1 week
+                                      86400 )    ; Minimum
+@		IN      NS      jixiuf.org.
+@ 		IN	A	192.168.1.2
+;三个别名mail.jixiuf.org.    smtp.jixiuf.org. pop3.jixiuf.org.  实际上都是jixiuf.org.的别名,它们具有相同的ip 192.168.1.2
+mail		IN      CNAME   jixiuf.org.
+smtp		IN      CNAME   jixiuf.org.
+pop3		IN      CNAME   jixiuf.org.
+@		IN      MX 5       mail.jixiuf.org.
+
+
+client          IN      A       192.168.1.3

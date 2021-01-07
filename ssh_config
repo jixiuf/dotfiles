@@ -1,0 +1,8 @@
+Host bench1
+        Hostname bench1
+        User root
+        Port 30000
+Host k8sdev
+        Hostname k8sdev
+        User root
+        Port 443

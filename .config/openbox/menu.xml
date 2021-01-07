@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+<menu id="apps-office-menu" label="Office">
+  <item label="OpenOffice Base">
+    <action name="Execute">
+      <command>ooffice -base</command>
+    </action>
+  </item>
+  <item label="OpenOffice Calc">
+    <action name="Execute">
+      <command>ooffice -calc</command>
+    </action>
+  </item>
+  <item label="OpenOffice Draw">
+    <action name="Execute">
+      <command>ooffice -draw</command>
+    </action>
+  </item>
+  <item label="OpenOffice Impress">
+    <action name="Execute">
+      <command>ooffice -impress</command>
+    </action>
+  </item>
+  <item label="OpenOffice Math">
+    <action name="Execute">
+      <command>ooffice -math</command>
+    </action>
+  </item>
+  <item label="OpenOffice Printer Administration">
+    <action name="Execute">
+      <command>ooffice-printeradmin</command>
+    </action>
+  </item>
+  <item label="OpenOffice Writer">
+    <action name="Execute">
+      <command>ooffice -writer</command>
+    </action>
+  </item>
+</menu>
+
+
+<menu id="system-menu" label="System">
+  <item label="Openbox Configuration Manager">
+    <action name="Execute">
+      <command>obconf</command>
+      <startupnotify><enabled>yes</enabled></startupnotify>
+    </action>
+  </item>
+  <separator />
+  <item label="Reconfigure Openbox">
+    <action name="Reconfigure" />
+  </item>
+</menu>
+
+<menu id="root-menu" label="Openbox 3">
+  <item label=".     新 建 文 件">
+    <action name="Execute">
+      <command>leafpad</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="lxterminal    终 端">
+    <action name="Execute">
+      <command>lxterminal</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Firefox        浏览器">
+    <action name="Execute">
+      <command>firefox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Firefox</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="starDict       词典">
+    <action name="Execute">
+      <command>stardict</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="QuodLibet 音乐播放器">
+    <action name="Execute">
+      <command>quodlibet</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="PCManfm File Manager">
+    <action name="Execute">
+      <command>pcmanfm</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+        <!--  
+            <separator label="Applications" />
+      -->
+  <separator />
+  <menu id="apps-office-menu"/>
+  <separator />
+  <menu id="system-menu"/>
+  <item label="Log Out">
+    <action name="Exit">
+      <prompt>yes</prompt>
+    </action>
+  </item>
+</menu>
+</openbox_menu>

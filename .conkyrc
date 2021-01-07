@@ -1,0 +1,90 @@
+#alignment top_left
+alignment middle_middle
+background no
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+gap_x 0
+gap_y 0
+minimum_size 1270 0
+maximum_width 1270
+# minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type desktop
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+default_color FFDEAD #NavajoWhite
+color0 7FFFD4 #Aquamarine
+color1 CD5C5C #IndianRed #00CED1 DarkTurquoise #FFA07A LightSalmon #00FFFF Cyan
+color2 FF8C00 #Darkorange #D2691E #Chocolate
+color3 7FFF00 #Chartreuse
+color4 white  #gold
+color5 FFDEAD #NavajoWhite
+color6 00BFFF #DeepSkyBlue
+#	colours below used by colorize script
+color7 48D1CC #MediumTurquoise
+color8 FFFF00 #Yellow
+color9 FF0000 #Red
+
+TEXT
+$nodename - $sysname $kernel on $machine
+$hr
+${color grey}Mem:$color $mem/$memmax - $memperc% ${membar 4}
+${color grey}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
+${color grey}CPU Usage:$color $cpu% ${cpubar 4}
+${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${color grey}Uptime:$color $uptime
+${color grey}Frequency (in MHz):$color $freq
+# ${color grey}Frequency (in GHz):$color $freq_g
+$hr
+${color blue}File systems:$color
+/         $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
+/home     $color${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+/mnt/d    $color${fs_used /mnt/d}/${fs_size /mnt/d} ${fs_bar 6 /mnt/d}
+/java     $color${fs_used /java}/${fs_size /java} ${fs_bar 6 /java}
+/video    $color${fs_used /video}/${fs_size /video} ${fs_bar 6 /video}
+/resource $color${fs_used /resource}/${fs_size /resource} ${fs_bar 6 /resource}
+tmpfs     $color${fs_used /var/tmp/portage}/${fs_size /var/tmp/portage}      ${fs_bar 6 /var/tmp/portage}
+$hr
+${color blue}Networking:$color
+Local  IP: ${color cyan}${addr eth0}${color } Up:$color ${color green}${upspeed eth0} ${color grey} - Down:${color green} ${downspeed eth0}$color
+# Public IP: ${color cyan}${execi 10800  wget http://checkip.dyndns.org/ -q -O - |grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'}${color}
+# ${voffset -65}${color6}${cpubar cpu4 1,258}${color}
+# ${voffset -20}${color white}${font VariShapes Solid:size=30}q${font}${color}${goto 45}${voffset -23}${color2}${font Zekton :bold:size=9}Up:      ${color3}${upspeed eth0}${color}${font}${voffset -15}${goto 130}${color white}${font VariShapes Solid:size=30}Q${font}${color}${voffset -24}${goto 175}${color2}${font Zekton :bold:size=9}Down: ${color3}${downspeed eth0}${color}${font}
+# ${voffset 5}${goto 45}${font Zekton :bold:size=9}Total: ${color6}${totalup eth0}${color}${goto 175}Total: ${color6}${totaldown eth0}${color}
+# ${voffset 4}${color white}${font Poky:size=30}w${font}${color}${goto 32}${voffset -30}${goto 50}${font Zekton :bold:size=9}Local IP: ${alignr}${color2}${addr eth0}${color}
+# ${voffset 5}${goto 50}Public IP: ${alignr}${color2}${execi 10800 ~/.myconky/bin/conkyIp}${color}
+$hr
+     ${color blue}Name             PID   CPU%    MEM%$color
+1  ${color lightgrey} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+2  ${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+3  ${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+4  ${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+5  ${color lightgrey} ${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
+6  ${color lightgrey} ${top name 6} ${top pid 6} ${top cpu 6} ${top mem 6}
+7  ${color lightgrey} ${top name 7} ${top pid 7} ${top cpu 7} ${top mem 7}
+8  ${color lightgrey} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
+9  ${color lightgrey} ${top name 9} ${top pid 9} ${top cpu 9} ${top mem 9}
+10 ${color lightgrey} ${top name 10} ${top pid 10} ${top cpu 10} ${top mem 10}
+${color8}${font Zekton:size=30}${time %b}${font Zekton:size=20}${time %d}${color}
+${color3}${font LCDMono:size=20}${time %R}${font LCDMono:size=10}:${time %S}${font}
+
