@@ -332,3 +332,16 @@ set enc=utf-8
 set fenc=utf-8
 " 设置文件编码检测类型及支持格式
 set fencs=utf-8,gb18030,gbk,gb2312,cp936
+ 
+
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+" Cursor settings:
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+let &t_SI="\e[5 q"
+let &t_SR="\e[3 q"
+let &t_EI="\e[1 q"

@@ -216,23 +216,17 @@ alias dush="du -sh"
 
 alias v='sudo vim'
 function vterm_printf(){
-    if [ -n "$TMUX" ]; then
-        # tell tmux to pass the escape sequences through
-        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
         printf "\ePtmux;\e\e]%s\007\e\\" "$1"
     elif [ "${TERM%%-*}" = "screen" ]; then
         # GNU screen (screen, screen-256color, screen-256color-bce)
         printf "\eP\e]%s\007\e\\" "$1"
     else
         printf "\e]%s\e\\" "$1"
-        # printf "\e]"
-        # while [ $# -gt 0 ]; do
-        #     printf '"%s"' "$(printf "%s" "$1")"
-        #     shift
-        # done
-        # printf "\e\\"
     fi
 }
+
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
 # With vterm_cmd you can execute Emacs commands directly from the shell.
 # For example, vterm_cmd message "HI" will print "HI".
