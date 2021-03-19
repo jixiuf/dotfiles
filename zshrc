@@ -2,7 +2,7 @@
 #解决这个问题用Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
 export INSTANCE_ID=4
-alias bench1='ssh root@192.168.73.56 -p 30000'
+alias bench1='ssh root@bench -p 9090'
 alias k8s='ssh root@10.17.7.230 -p 443'
 alias gc='git clone '
 alias gitclean='git clean -fdx'

@@ -1,6 +1,7 @@
 #!/bin/zsh
 # appendPath(newPath)
 # 如果newPath 已经在PATH下了， 则不添加
+export APM_OUTPUT_PATH=/tmp/trace/
 export LC_ALL=zh_CN.UTF-8
 export GO111MODULE=on
 appendPath(){
