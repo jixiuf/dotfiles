@@ -137,3 +137,5 @@
 
 # [url "file:///Users/jixiuf/repos/libvterm-nvim/.git"]
 # 	insteadof = https://github.com/neovim/libvterm.git
+[pull]
+	rebase = true
