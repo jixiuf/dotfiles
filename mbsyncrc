@@ -16,7 +16,7 @@ Account luojilab
 
 # This section describes the local storage
 MaildirStore luojilab-local
-Path ~/maildir/luojilab
+Path ~/maildir/luojilab/
 Inbox ~/maildir/luojilab/inbox
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
@@ -50,8 +50,8 @@ Account 139
 
 # This section describes the local storage
 MaildirStore 139-local
-Path ~/maildir/139
-Inbox ~/maildir/139/INBOX
+Path ~/maildir/139/
+Inbox ~/maildir/139/inbox
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
@@ -60,7 +60,7 @@ SubFolders Verbatim
 Channel 139
 Master :139-remote:
 Slave :139-local:
-Patterns *
+Patterns 139
 Expunge None
 CopyArrivalDate yes
 Sync All
@@ -83,8 +83,8 @@ Account qq
 
 # This section describes the local storage
 MaildirStore qq-local
-Path ~/maildir/qq
-Inbox ~/maildir/qq/INBOX
+Path ~/maildir/qq/
+Inbox ~/maildir/qq/inbox
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
@@ -93,7 +93,7 @@ SubFolders Verbatim
 Channel qq
 Master :qq-remote:
 Slave :qq-local:
-Patterns *
+Patterns qq
 Expunge None
 CopyArrivalDate yes
 Sync All
