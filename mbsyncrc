@@ -60,7 +60,7 @@ SubFolders Verbatim
 Channel 139
 Master :139-remote:
 Slave :139-local:
-Patterns 139
+Patterns *
 Expunge None
 CopyArrivalDate yes
 Sync All
@@ -93,7 +93,7 @@ SubFolders Verbatim
 Channel qq
 Master :qq-remote:
 Slave :qq-local:
-Patterns qq
+Patterns *
 Expunge None
 CopyArrivalDate yes
 Sync All
