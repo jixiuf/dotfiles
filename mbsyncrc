@@ -28,7 +28,7 @@ Channel luojilab
 Master :luojilab-remote:
 Slave :luojilab-local:
 Patterns *
-Expunge None
+Expunge Both
 CopyArrivalDate yes
 Sync All
 Create Slave
@@ -63,7 +63,7 @@ Channel 139
 Master :139-remote:
 Slave :139-local:
 Patterns *
-Expunge None
+Expunge Both
 CopyArrivalDate yes
 Sync All
 Create Slave
@@ -97,7 +97,7 @@ Channel qq
 Master :qq-remote:
 Slave :qq-local:
 Patterns *
-Expunge None
+Expunge Both
 CopyArrivalDate yes
 Sync All
 Create Slave
