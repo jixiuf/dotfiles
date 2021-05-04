@@ -5,9 +5,10 @@ IMAPAccount luojilab
 Host imap.exmail.qq.com
 Port 993
 User jixiufeng@luojilab.com
-# For simplicity, this is how to read the password from another file.
-# For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.authinfo|grep jixiufeng@luojilab.com|grep smtp|cut -d ' ' -f 6"
+# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
+# security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.exmail.qq.com" -w "mypass"
+PassCmd "security find-internet-password -g -a jixiufeng@luojilab.com -s smtp.exmail.qq.com -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -39,9 +40,10 @@ IMAPAccount 139
 Host imap.139.com
 Port 993
 User jixiuf@139.com
-# For simplicity, this is how to read the password from another file.
-# For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.authinfo|grep jixiuf@139.com|grep smtp|cut -d ' ' -f 6"
+# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
+# security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.exmail.qq.com" -w "mypass"
+PassCmd "security find-internet-password -g -a jixiuf@139.com -s smtp.139.com -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -72,9 +74,10 @@ IMAPAccount qq
 Host imap.qq.com
 Port 993
 User jixiuf@qq.com
-# For simplicity, this is how to read the password from another file.
-# For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.authinfo|grep jixiuf@qq.com|grep smtp|cut -d ' ' -f 6"
+# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
+# security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.exmail.qq.com" -w "mypass"
+PassCmd "security find-internet-password -g -a jixiuf@qq.com -s smtp.qq.com -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
