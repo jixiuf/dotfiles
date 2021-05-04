@@ -3,7 +3,7 @@
 PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
-NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  shadowsocks.json zshenv zshrc  tmux.conf  axelrc bashrc ctags fzf.zsh bash-preexec.sh yank.sh mbsyncrc`
+NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  shadowsocks.json zshenv zshrc  tmux.conf  axelrc bashrc ctags fzf.zsh bash-preexec.sh yank.sh mbsyncrc mailrc msmtprc`
 NORMAL_FILES_LINUX := `echo pentadactylrc  gtkrc-2.0   Xdefaults  xinitrc  Xmodmaprc`
 echo:
 	@echo "run:"
