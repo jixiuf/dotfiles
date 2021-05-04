@@ -7,7 +7,7 @@ Port 993
 User jixiufeng@luojilab.com
 # For simplicity, this is how to read the password from another file.
 # For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.mbsync-luojilab"
+PassCmd "cat ~/.authinfo|grep jixiufeng@luojilab.com|grep smtp|cut -d ' ' -f 6"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -41,7 +41,7 @@ Port 993
 User jixiuf@139.com
 # For simplicity, this is how to read the password from another file.
 # For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.mbsync-139"
+PassCmd "cat ~/.authinfo|grep jixiuf@139.com|grep smtp|cut -d ' ' -f 6"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -74,7 +74,7 @@ Port 993
 User jixiuf@qq.com
 # For simplicity, this is how to read the password from another file.
 # For better security you should use GPG https://gnupg.org/
-PassCmd "cat ~/.mbsync-qq"
+PassCmd "cat ~/.authinfo|grep jixiuf@qq.com|grep smtp|cut -d ' ' -f 6"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
