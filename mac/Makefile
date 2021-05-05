@@ -25,6 +25,7 @@ deploy:
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/midnight.sh ~/Library/LaunchAgents/midnight.sh
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/midnight.plist ~/Library/LaunchAgents/
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/autosshD_ssh_port.plist ~/Library/LaunchAgents/autosshD_ssh_port.plist
+	@-$(LINK_CMD) $(PWD)/LaunchAgents/mbsync.plist ~/Library/LaunchAgents/mbsync.plist
 # @-$(LINK_CMD) $(PWD)/LaunchAgents/emacs-daemon.plist ~/Library/LaunchAgents/emacs-daemon.plist
 # @-$(LINK_CMD) $(PWD)/LaunchAgents/autosshD.plist ~/Library/LaunchAgents/autosshD.plist
 # @-$(LINK_CMD) $(PWD)/LaunchAgents/brew-update.plist ~/Library/LaunchAgents/brew-update.plist
@@ -34,7 +35,7 @@ deploy:
 #@-$(LINK_CMD) $(PWD)/Karabiner/private.xml $$HOME/Library/Application\ Support/Karabiner/private.xml
 # @-$(LINK_CMD) $(PWD)/LaunchAgents/autoproxy.plist ~/Library/LaunchAgents/
 # if [ -f ~/jenkins.war ]; then \
-# 	$(LINK_CMD) $(PWD)/LaunchAgents/jenkins.plist ~/Library/LaunchAgents/;\
+#	$(LINK_CMD) $(PWD)/LaunchAgents/jenkins.plist ~/Library/LaunchAgents/;\
 # fi
 	defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 	defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
