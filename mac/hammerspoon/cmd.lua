@@ -135,9 +135,7 @@ tell application "Finder"
         repeat with itemRef in theItems
         --set myitem to POSIX path of (itemRef as string)
         set myitem to quoted form of  POSIX path of (itemRef as string)
-        tell application "iTerm"
         do shell script "~/.emacs.d/bin/ec --no-wait "  & myitem
-        end tell
 
         end repeat -- it will store the last filename in selection
     on error error_message
@@ -208,9 +206,7 @@ tell application "Finder"
         repeat with itemRef in theItems
         --set myitem to POSIX path of (itemRef as string)
         set myitem to quoted form of  POSIX path of (itemRef as string)
-        tell application "iTerm"
         do shell script "open -a Emacs "  & myitem
-        end tell
 
         end repeat -- it will store the last filename in selection
     on error error_message
