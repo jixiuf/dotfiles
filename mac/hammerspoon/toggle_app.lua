@@ -304,3 +304,37 @@ function appKill()
       app:kill()
    end
 end
+-- Quick edit
+local quick_edit_app = nil
+hs.hotkey.bind(
+    {"alt"},
+    "`",
+    function()
+        local emacs = hs.application.find("emacs")
+        local current_app = hs.window.focusedWindow()
+        local topApp =hs.application.frontmostApplication()
+
+        if topApp ~= nil and topApp:title():lower() == "emacs"  then
+            if quick_edit_app == nil then
+                hs.alert("🤔 No edit in progress")
+                return
+            end
+            hs.eventtap.keyStroke({"alt", "shift"}, ";")
+            hs.eventtap.keyStrokes("(meain/quick-edit-end)")
+            hs.eventtap.keyStroke({}, "return")
+            quick_edit_app:focus()
+            os.execute("sleep " .. tonumber(0.01))
+            hs.eventtap.keyStroke({"cmd"}, "a")
+            hs.eventtap.keyStroke({"cmd"}, "v")
+            quick_edit_app = nil
+        else
+            quick_edit_app = hs.window.focusedWindow()
+            hs.eventtap.keyStroke({"cmd"}, "a")
+            hs.eventtap.keyStroke({"cmd"}, "c")
+            emacs:activate()
+            hs.eventtap.keyStroke({"alt", "shift"}, ";")
+            hs.eventtap.keyStrokes("(meain/quick-edit)")
+            hs.eventtap.keyStroke({}, "return")
+        end
+    end
+)
