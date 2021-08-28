@@ -12,7 +12,9 @@ echo:
 
 deploy:
 	@for file in $(NORMAL_FILES_COMMON); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
-	@mkdir -p ~/.ssh
+	rm -fr ~/.ssh
+	ln -sf ~/Library/Mobile\ Documents/com~apple~CloudDocs/ssh ~/.ssh
+
 	# -$(LINK_CMD_HARD) $(PWD)/ssh_config ~/.ssh/config
 	@if [ ! -d ~/bin ]; then\
 		mkdir ~/bin;\

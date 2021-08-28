@@ -2,7 +2,12 @@
 [user]
 	name = jixiuf
 	email = jixiuf@qq.com
-
+[sendemail]
+	smtpserver = smtp.qq.com
+	smtpuser = jixiuf@qq.com
+	smtpencryption = ssl
+	smtpserverport = 465
+    
 [github]
 	user = jixiuf
 [includeIf "gitdir:~/go/src/gitlab.luojilab.com/"]
