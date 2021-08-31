@@ -36,7 +36,7 @@ mod.config = {
    -- Auto-type on click
    paste_on_select = true,
    -- Show item count in the menu item
-   show_menu_counter = true,
+   show_menu_counter = false,
    -- Show menu in the menubar
    show_in_menubar = true,
    -- Title to show on the menubar, if enabled above
