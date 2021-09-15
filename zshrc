@@ -62,7 +62,7 @@ if which pyenv-virtualenv-init > /dev/null; then
     }
     function python() {
         unset -f python
-        pyenv activate env-3.6.8  2>/dev/null;
+        pyenv activate env-3.9.7  2>/dev/null;
         python $@
     }
 fi

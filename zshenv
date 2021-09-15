@@ -37,8 +37,8 @@ fi
 # ;; brew install pyenv-virtualenv
 # ;; pyenv install 2.7.13
 
-if [ -f ~/.pyenv/versions/python/bin/activate ]; then
-    source ~/.pyenv/versions/python/bin/activate
+if [ -d ~/.pyenv/versions/3.9.7/bin/ ]; then
+    export PATH="$HOME/.pyenv/versions/3.9.7/bin:$PATH"
 fi
 
 # appendPath "$HOME/go_appengine"

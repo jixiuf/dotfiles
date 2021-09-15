@@ -144,3 +144,5 @@
 # 	insteadof = https://github.com/neovim/libvterm.git
 [pull]
 	rebase = true
+[init]
+	defaultBranch = master
