@@ -76,6 +76,38 @@ hs.urlevent.bind("toggleIterm2", function(eventName, params)  toggleApp("com.goo
 hs.urlevent.bind("toggleEmacsTermMode", function(eventName, params)  toggleEmacsTermMode() end)
 
 ---------------------------------------------------------------
+function hideEAF()
+   local script=[[
+    try
+      tell application "System Events"
+       --  if application process "python3" exists then
+         if (exists of application process "python3") is true then
+            click menu item "Hide eaf.py" of menu 1 of menu bar item "python3" of menu bar 1
+         end if
+      end tell
+    on error error_message
+        beep
+    end try
+
+]]
+   hs.osascript.applescript(script)
+end
+function showEAF()
+   local script=[[
+try
+      tell application "System Events"
+         -- if application process "python3" exists then
+         if (exists of application process "python3") is true then
+         click menu item "Show all" of menu 1 of menu bar item "python3" of menu bar 1
+         end if
+      end tell
+on error error_message
+   beep
+end try
+]]
+   hs.osascript.applescript(script)
+end
+
 function toggleEmacs()        --    toggle emacsclient if emacs daemon not started start it
    -- local win = hs.window.focusedWindow()
    -- local topApp = win:application()
@@ -84,6 +116,21 @@ function toggleEmacs()        --    toggle emacsclient if emacs daemon not start
 
    if topApp ~= nil and topApp:title():lower() == "emacs"  and #topApp:visibleWindows()>0 and not topApp:isHidden() then
       topApp:hide()
+      hideEAF()
+      -- local apps=hs.application.runningApplications()
+      -- for k,app in pairs(apps) do
+      --    -- hs.alert.show(app:name())
+      --    if string.match(app:path() , "python3") then
+      --    end
+      -- end
+      -- local wins=hs.window.allWindows()
+      -- for k,win in pairs(wins) do
+      --    hs.alert.show(win:application():path())
+      --    if string.match(win:application():path() , "python3") then
+      --       win:application():hide()
+      --       win:sendToBack()
+      --    end
+      -- end
    else
       local emacsApp=hs.application.get("Emacs")
       if emacsApp==nil then
@@ -112,6 +159,7 @@ function toggleEmacs()        --    toggle emacsclient if emacs daemon not start
 
             win:application():activate(true)
             win:application():unhide()
+            showEAF()
             -- win:focus() -- 不主动聚焦，有可能有miniframe
             -- hs.alert.show(win:title())
          end
