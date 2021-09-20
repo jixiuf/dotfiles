@@ -107,6 +107,13 @@ end try
 ]]
    hs.osascript.applescript(script)
 end
+hs.urlevent.bind("eaf", function(eventName, params)
+                    if params["show"] then
+                       showEAF()
+                    else
+                       hideEAF()
+                    end
+end)
 
 function toggleEmacs()        --    toggle emacsclient if emacs daemon not started start it
    -- local win = hs.window.focusedWindow()
@@ -116,7 +123,7 @@ function toggleEmacs()        --    toggle emacsclient if emacs daemon not start
 
    if topApp ~= nil and topApp:title():lower() == "emacs"  and #topApp:visibleWindows()>0 and not topApp:isHidden() then
       topApp:hide()
-      hideEAF()
+      -- hideEAF()
       -- local apps=hs.application.runningApplications()
       -- for k,app in pairs(apps) do
       --    -- hs.alert.show(app:name())
@@ -159,7 +166,7 @@ function toggleEmacs()        --    toggle emacsclient if emacs daemon not start
 
             win:application():activate(true)
             win:application():unhide()
-            showEAF()
+            -- showEAF()
             -- win:focus() -- 不主动聚焦，有可能有miniframe
             -- hs.alert.show(win:title())
          end
