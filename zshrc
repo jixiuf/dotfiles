@@ -399,7 +399,7 @@ function copy-line-as-kill () {
  print -rn $CUTBUFFER | clipcopy 2>/dev/null
 }
 zle -N copy-line-as-kill
-bindkey '^k' copy-line-as-kill
+# bindkey '^k' copy-line-as-kill
 
 # https://github.com/zsh-users/zsh-history-substring-search
 # bindkey -M emacs '^P' history-substring-search-up
