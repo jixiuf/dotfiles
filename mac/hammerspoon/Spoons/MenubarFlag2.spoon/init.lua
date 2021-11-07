@@ -1,45 +1,45 @@
---- === MenubarFlag ===
+--- === MenubarFlag2 ===
 ---
 --- Color the menubar according to the current keyboard layout
 ---
---- Download: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MenubarFlag.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MenubarFlag.spoon.zip)
+--- Download: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MenubarFlag2.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/MenubarFlag2.spoon.zip)
 ---
 --- Functionality inspired by [ShowyEdge](https://pqrs.org/osx/ShowyEdge/index.html.en)
 
-local obj={}
-obj.__index = obj
+local obj2={}
+obj2.__index = obj2
 
 local draw = require "hs.drawing"
-local col = draw.color.x11
+local col2 = draw.color.x11
 
 -- Metadata
-obj.name = "MenubarFlag"
-obj.version = "0.1"
-obj.author = "Diego Zamboni <diego@zzamboni.org>"
-obj.homepage = "https://github.com/Hammerspoon/Spoons"
-obj.license = "MIT - https://opensource.org/licenses/MIT"
+obj2.name = "MenubarFlag2"
+obj2.version = "0.1"
+obj2.author = "Diego Zamboni <diego@zzamboni.org>"
+obj2.homepage = "https://github.com/Hammerspoon/Spoons"
+obj2.license = "MIT - https://opensource.org/licenses/MIT"
 
---- MenubarFlag.allScreens
+--- MenubarFlag2.allScreens
 --- Variable
 --- Boolean to specify whether the indicators should be shown on all monitors or just the current one. Defaults to `true`
-obj.allScreens = true
+obj2.allScreens = true
 
---- MenubarFlag.indicatorHeight
+--- MenubarFlag2.indicatorHeight
 --- Variable
 --- Number to specify the height of the indicator. Specify 0.0-1.0 to specify a percentage of the height of the menu bar, larger values indicate a fixed height in pixels. Defaults to 1.0
-obj.indicatorHeight = 1.0
+obj2.indicatorHeight = 1.0
 
---- MenubarFlag.indicatorAlpha
+--- MenubarFlag2.indicatorAlpha
 --- Variable
 --- Number to specify the indicator transparency (0.0 - invisible; 1.0 - fully opaque). Defaults to 0.3
-obj.indicatorAlpha = 0.3
+obj2.indicatorAlpha = 0.3
 
---- MenubarFlag.indicatorInAllSpaces
+--- MenubarFlag2.indicatorInAllSpaces
 --- Variable
 --- Boolean to specify whether the indicator should be shown in all spaces (this includes full-screen mode). Defaults to `true`
-obj.indicatorInAllSpaces = true
+obj2.indicatorInAllSpaces = true
 
---- MenubarFlag.colors
+--- MenubarFlag2.colors
 --- Variable
 --- Table that contains the configuration of indicator colors
 ---
@@ -54,34 +54,34 @@ obj.indicatorInAllSpaces = true
 ---
 --- Indicator specs can be static flag-like:
 --- ```
----   Spanish = {col.green, col.white, col.red},
----   German = {col.black, col.red, col.yellow},
+---   Spanish = {col2.green, col2.white, col2.red},
+---   German = {col2.black, col2.red, col2.yellow},
 --- ```
 --- or complex, programmatically-generated:
 --- ```
 --- ["U.S."] = (
 ---    function() res={}
 ---       for i = 0,10,1 do
----          table.insert(res, col.blue)
----          table.insert(res, col.white)
----          table.insert(res, col.red)
+---          table.insert(res, col2.blue)
+---          table.insert(res, col2.white)
+---          table.insert(res, col2.red)
 ---       end
 ---       return res
 ---    end)()
 --- ```
 --- or solid colors:
 --- ```
----   Spanish = {col.red},
----   German = {col.yellow},
+---   Spanish = {col2.red},
+---   German = {col2.yellow},
 --- ```
 --- Contributions of indicator specs are welcome!
-obj.colors = {
+obj2.colors = {
    ["U.S."] = { }, -- empty list or no table entry means "no indicator"
-   Spanish = {col.red, col.yellow, col.red},
-   German = {col.black, col.red, col.yellow},
+   Spanish = {col2.red, col2.yellow, col2.red},
+   German = {col2.black, col2.red, col2.yellow},
 }
 
---- MenubarFlag.timerFreq
+--- MenubarFlag2.timerFreq
 --- Variable
 --- Number to indicate how frequently (in seconds) should the menubar indicator be updated. Defaults to 1.0.
 ---
@@ -89,50 +89,50 @@ obj.colors = {
 --- changes. As a workaround, MenuBarFlag can automatically update the
 --- indicator at a fixed frequency. The timer can be disabled by
 --- setting this parameter to 0.
-obj.timerFreq = 1.0
+obj2.timerFreq = 1.0
 
-obj.logger = hs.logger.new('MenubarFlag')
-obj.timer = nil
+obj2.logger = hs.logger.new('MenubarFlag2')
+obj2.timer = nil
 ----------------------------------------------------------------------
 
 -- Internal variables
-local prevlayout = nil
-local ind = nil
+local prevlayout2 = nil
+local ind2 = nil
 
 -- Initialize the empty indicator table
-function initIndicators()
-   if ind ~= nil then
-      delIndicators()
+function initIndicators2()
+   if ind2 ~= nil then
+      delIndicators2()
    end
-   ind = {}
+   ind2 = {}
 end
 
 -- Delete existing indicator objects
-function delIndicators()
-   if ind ~= nil then
-      for i,v in ipairs(ind) do
+function delIndicators2()
+   if ind2 ~= nil then
+      for i,v in ipairs(ind2) do
          if v ~= nil then
             v:delete()
          end
       end
-      ind = nil
+      ind2 = nil
    end
 end
 
---- MenubarFlag:drawIndicators(src)
+--- MenubarFlag2:drawIndicators(src)
 --- Method
 --- Draw the indicators corresponding to the given layout name
 ---
 --- Parameters:
----  * src - name of the layout to draw. If the given element exists in `MenubarFlag.colors`, it will be drawn. If it does not exist, then the indicators will be removed from the screen.
+---  * src - name of the layout to draw. If the given element exists in `MenubarFlag2.colors`, it will be drawn. If it does not exist, then the indicators will be removed from the screen.
 ---
 --- Returns:
----  * The MenubarFlag object
-function obj:drawIndicators(src)
-   --   hs.alert.show("in drawindicators src=" .. src .. "  prevlayout=" .. (prevlayout or "nil"))
+---  * The MenubarFlag2 object
+function obj2:drawIndicators(src)
+   --   hs.alert.show("in drawindicators src=" .. src .. "  prevlayout2=" .. (prevlayout2 or "nil"))
 
-   if src ~= prevlayout then
-      initIndicators()
+   if src ~= prevlayout2 then
+      initIndicators2()
 
       def = self.colors[src]
       self.logger.df("Indicator definition for %s: %s", src, hs.inspect(def))
@@ -144,7 +144,7 @@ function obj:drawIndicators(src)
          end
          for i,screen in ipairs(screens) do
             local screeng = screen:fullFrame()
-            local width = 10
+            local width = screeng.w / #def
             for i,v in ipairs(def) do
                if self.indicatorHeight >= 0.0 and self.indicatorHeight <= 1.0 then
                   height = self.indicatorHeight*(screen:frame().y - screeng.y)
@@ -162,21 +162,21 @@ function obj:drawIndicators(src)
                   c:setBehavior(draw.windowBehaviors.canJoinAllSpaces)
                end
                c:show()
-               table.insert(ind, c)
+               table.insert(ind2, c)
             end
          end
       else
          self.logger.df("Removing indicators for %s because there is no color definitions for it.", src)
-         delIndicators()
+         delIndicators2()
       end
    end
 
-   prevlayout = src
+   prevlayout2 = src
 
    return self
 end
 
---- MenubarFlag:getLayoutAndDrawindicators
+--- MenubarFlag2:getLayoutAndDrawindicators
 --- Method
 --- Draw indicators for the current keyboard method or layout
 ---
@@ -184,16 +184,16 @@ end
 ---  * None
 ---
 --- Returns:
----  * The MenubarFlag object
-function obj:getLayoutAndDrawIndicators()
+---  * The MenubarFlag2 object
+function obj2:getLayoutAndDrawIndicators()
    return self:drawIndicators(hs.keycodes.currentMethod() or hs.keycodes.currentLayout())
 end
 
---- MenubarFlag:start()
+--- MenubarFlag2:start()
 --- Method
 --- Start the keyboard layout watcher to draw the menubar indicators.
-function obj:start()
-   initIndicators()
+function obj2:start()
+   initIndicators2()
    self:getLayoutAndDrawIndicators()
    hs.keycodes.inputSourceChanged(function()
          self:getLayoutAndDrawIndicators()
@@ -206,11 +206,11 @@ function obj:start()
    return self
 end
 
---- MenubarFlag:stop()
+--- MenubarFlag2:stop()
 --- Method
 --- Remove indicators and stop the keyboard layout watcher
-function obj:stop()
-  delIndicators()
+function obj2:stop()
+  delIndicators2()
   if self.timer ~= nil then
     self.timer:stop()
     self.timer = nil
@@ -219,4 +219,4 @@ function obj:stop()
   return self
 end
 
-return obj
+return obj2

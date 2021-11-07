@@ -121,6 +121,26 @@ end)
 
 menubarFlag:start()
 
+local emacsOrgClockFlag=hs.loadSpoon("MenubarFlag2")
+emacsOrgClockFlag.indicatorHeight=3
+emacsOrgClockFlag.indicatorAlpha = 0.6
+emacsOrgClockFlag.timerFreq=0
+emacsOrgClockFlag.colors = {
+   ["org-clock-out"] = { }, -- empty list or no table entry means "no indicator"
+   ["org-clock-in"] = {hs.drawing.color.x11.cyan},
+}
+-- 在命令行下调用open -g "hammerspoon://org-clock?id=org-clock-in"
+hs.urlevent.bind("org-clock", function(eventName, params)
+                    if params["id"] == "org-clock-in" then
+                       emacsOrgClockFlag:drawIndicators("org-clock-in")
+                    else
+                       emacsOrgClockFlag:drawIndicators("org-clock-out")
+                    end
+end)
+
+-- emacsOrgClockFlag:start()
+
+
 -- 当此文件变化时自动reload debug用
 hs.alert.show("HammerSpoon Config loaded")
 --- end........当此文件变化时自动reload
@@ -303,4 +323,3 @@ end)
 --    end
 --    app:kill()
 -- end
-
