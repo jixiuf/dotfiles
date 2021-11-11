@@ -2,7 +2,7 @@
 # mbsync -a
 
 IMAPAccount luojilab
-Host imap.exmail.qq.com
+Host imap.feishu.cn 
 Port 993
 User jixiufeng@luojilab.com
 # 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
