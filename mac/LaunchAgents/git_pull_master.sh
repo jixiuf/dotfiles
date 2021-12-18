@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # cd $@ && git checkout master && git pull
 cd ~/.emacs.d/&& git pull --commit origin master:master && git push origin master:master
 # cd ~/.emacs.d/&& make dump
