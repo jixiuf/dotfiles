@@ -1,5 +1,6 @@
 #!/bin/zsh
 # cd $@ && git checkout master && git pull
+export PATH=$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin:$HOME/go/bin
 cd ~/.emacs.d/&& git pull --commit origin master:master && git push origin master:master
 # cd ~/.emacs.d/&& make dump
 # cd ~/.emacs.d/&& make pull
