@@ -3001,7 +3001,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-o focus addressbar cmd-l",
+                                "description": "Chrome H-o focus addressbar cmd-l",
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
@@ -3040,7 +3040,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari C-h backward",
+                                "description": "Chrome C-h backward",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
@@ -3077,7 +3077,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari C-l backward",
+                                "description": "Chrome C-l backward",
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
@@ -3114,7 +3114,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-h backward",
+                                "description": "Chrome H-h backward",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
@@ -3130,10 +3130,16 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "right_command"
-                                        ]
+                                        "software_function": {
+                                            "set_mouse_cursor_position": {
+                                                "screen": 0,
+                                                "x": 10,
+                                                "y": 90
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "pointing_button": "button1"
                                     },
                                     {
                                         "select_input_source": {
@@ -3169,10 +3175,16 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "right_command"
-                                        ]
+                                        "software_function": {
+                                            "set_mouse_cursor_position": {
+                                                "screen": 0,
+                                                "x": 50,
+                                                "y": 90
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "pointing_button": "button1"
                                     },
                                     {
                                         "select_input_source": {
