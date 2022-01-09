@@ -2886,6 +2886,31 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "Chrome Ctrl-g =escape",
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "description": "Chrome hyper-k prev tab",
                                 "from": {
                                     "key_code": "j",
@@ -2976,9 +3001,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-l focus addressbar cmd-l",
+                                "description": "Safari H-o focus addressbar cmd-l",
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_command",
@@ -3080,8 +3105,6 @@
                                 ],
                                 "type": "basic"
                             },
-
-
                             {
                                 "conditions": [
                                     {
@@ -3108,6 +3131,45 @@
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    },
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^com\\.apple\\.keylayout\\.US$",
+                                            "language": "en"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Safari H-l backward",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
                                         "modifiers": [
                                             "right_command"
                                         ]
@@ -3200,6 +3262,39 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.Safari$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Safari hyper-h backward cmd-[",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -3391,9 +3486,9 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-l focus addressbar cmd-l",
+                                "description": "Safari H-o focus addressbar cmd-l",
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_command",
