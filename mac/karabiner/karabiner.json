@@ -3054,6 +3054,21 @@
                                 },
                                 "to": [
                                     {
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "tab"
+                                    },
+                                    {
                                         "key_code": "left_arrow",
                                         "modifiers": [
                                             "right_command"
@@ -3090,6 +3105,21 @@
                                     }
                                 },
                                 "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "tab"
+                                    },
                                     {
                                         "key_code": "right_arrow",
                                         "modifiers": [
@@ -3145,7 +3175,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "conditions": [
                                     {
@@ -3171,16 +3200,25 @@
                                 },
                                 "to": [
                                     {
-                                        "software_function": {
-                                            "set_mouse_cursor_position": {
-                                                "screen": 0,
-                                                "x": 10,
-                                                "y": 90
-                                            }
-                                        }
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
                                     },
                                     {
-                                        "pointing_button": "button1"
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "tab"
+                                    },
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
                                     },
                                     {
                                         "select_input_source": {
@@ -3216,16 +3254,25 @@
                                 },
                                 "to": [
                                     {
-                                        "software_function": {
-                                            "set_mouse_cursor_position": {
-                                                "screen": 0,
-                                                "x": 50,
-                                                "y": 90
-                                            }
-                                        }
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
                                     },
                                     {
-                                        "pointing_button": "button1"
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "spacebar"
+                                    },
+                                    {
+                                        "key_code": "tab"
+                                    },
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
                                     },
                                     {
                                         "select_input_source": {
