@@ -2886,6 +2886,36 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "Chrome M-t =无痕模式",
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "n",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "description": "Chrome Ctrl-g =escape",
                                 "from": {
                                     "key_code": "g",
