@@ -124,6 +124,7 @@ alias tn='TERM=screen-256color tmux new -A -s'
 alias tmux='TERM=screen-256color tmux'
 bindkey -s '^T' 'ta\n'
 
+alias dnsclean='sudo killall -HUP mDNSResponder'
 alias httpserver="python -m SimpleHTTPServer 8888"
 alias "brewi"="brew install --build-from-source"
 alias "tbrewi"="tsocks brew install --build-from-source"
