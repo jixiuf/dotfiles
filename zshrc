@@ -46,8 +46,8 @@ function crc32(){
 json_escape () {
      php -r 'echo json_encode(file_get_contents("php://stdin"));'
 }
-alias urldecode='python -c "import sys, urllib as ul ;print \"\n\" ;print ul.unquote(sys.argv[1]);"'
-alias urlencode='python -c "import sys, urllib as ul ;print ul.quote(sys.argv[1]);"'
+alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
+alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
 # python -c "import sys, urllib as ul;  ;print ul.quote(sys.stdin.read());"
 # brew install pyenv-virtualenv
 if which pyenv-virtualenv-init > /dev/null; then
