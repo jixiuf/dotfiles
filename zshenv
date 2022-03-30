@@ -108,9 +108,9 @@ fi
 if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
 fi
-if [ -d ~/go1.17/ ]; then
-    export GOROOT=~/go1.17/
-fi
+# if [ -d ~/go1.17/ ]; then
+#     export GOROOT=~/go1.17/
+# fi
 
 prependPath "$GOROOT/bin"
 if [ -d $HOME/go ]; then
