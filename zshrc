@@ -1150,7 +1150,7 @@ __go_tool_complete() {
 compdef __go_tool_complete go
 
 # aliases: go<~>
-alias gob='go build'
+alias gob='go mod tidy ;go build'
 alias goc='go clean'
 alias god='go doc'
 alias gof='go fmt'
