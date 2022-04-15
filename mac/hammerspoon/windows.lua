@@ -17,9 +17,9 @@ require('hyper')
 --   n => send window to the next monitor
 --------------------------------------------------------------------------------
 
-windowLayoutMode = hs.hotkey.modal.new({}, 'F15')
+windowLayoutMode = hs.hotkey.modal.new(hyper, 'm')
 local message = require('status-message')
-windowLayoutMode.statusMessage = message.new('Window Layout Mode (control-`) (hjkl) (m full)(io,.) (hyper2-u,hyper2-m + or -)')
+windowLayoutMode.statusMessage = message.new('窗口管理(主键H-m Return退出)(H-hjkl 上下左右) (hjkl移动容器) (H-m 全屏)(H-89io 4角) (调大小-+)')
 windowLayoutMode.entered = function()
   windowLayoutMode.statusMessage:show()
 end
@@ -34,92 +34,93 @@ function windowLayoutMode.bindWithAutomaticExit(mode,mod, key, fn)
     fn()
   end)
 end
+windowLayoutMode:bind({},'return', function()
+      windowLayoutMode:exit()
+end)
+windowLayoutMode:bind({},'=', function() winIncrease() end)
+windowLayoutMode:bind({},'-', function() winReduce() end)
 
-windowLayoutMode:bindWithAutomaticExit({},'return', function()
-  hs.window.focusedWindow():maximize()
+
+windowLayoutMode:bind({},'h', function()
+                         moveLeft(hs.window.focusedWindow())
 end)
-windowLayoutMode:bindWithAutomaticExit({},'f', function()
-  hs.window.focusedWindow():maximize()
+windowLayoutMode:bind({},'l', function()
+                         moveRight(hs.window.focusedWindow())
 end)
+
+windowLayoutMode:bind({},'j', function()
+                         moveDown(hs.window.focusedWindow())
+end)
+windowLayoutMode:bind({},'k', function()
+                         moveUp(hs.window.focusedWindow())
+end)
+
+
 windowLayoutMode:bindWithAutomaticExit({},'m', function()
-  hs.window.focusedWindow():maximize()
+      toggleMaximized()
+end)
+windowLayoutMode:bindWithAutomaticExit(hyper,'m', function()
+      toggleMaximized()
 end)
 
 windowLayoutMode:bindWithAutomaticExit({},'space', function()
-  hs.window.focusedWindow():centerWithFullHeight()
+      centerWithFullHeight(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'h', function()
-  hs.window.focusedWindow():left()
+windowLayoutMode:bindWithAutomaticExit(hyper,'h', function()
+      winleft(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'j', function()
-  hs.window.focusedWindow():down()
+windowLayoutMode:bindWithAutomaticExit(hyper,'j', function()
+      windown(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'k', function()
-  hs.window.focusedWindow():up()
+windowLayoutMode:bindWithAutomaticExit(hyper,'k', function()
+      winup(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'l', function()
-  hs.window.focusedWindow():right()
-end)
-windowLayoutMode:bindWithAutomaticExit(hyper2,'h', function()
-  hs.window.focusedWindow():moveLeft()
-end)
-windowLayoutMode:bindWithAutomaticExit(hyper2,'l', function()
-  hs.window.focusedWindow():moveRight()
+windowLayoutMode:bindWithAutomaticExit(hyper,'l', function()
+      winright(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit(hyper2,'j', function()
-  hs.window.focusedWindow():moveDown()
-end)
-windowLayoutMode:bindWithAutomaticExit(hyper2,'k', function()
-  hs.window.focusedWindow():moveUp()
+windowLayoutMode:bindWithAutomaticExit(hyper,'8', function()
+      upLeft(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'i', function()
-  hs.window.focusedWindow():upLeft()
+windowLayoutMode:bindWithAutomaticExit(hyper,'9', function()
+      upRight(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},'o', function()
-  hs.window.focusedWindow():upRight()
+windowLayoutMode:bindWithAutomaticExit(hyper,'i', function()
+      downLeft(hs.window.focusedWindow())
+end)
+windowLayoutMode:bindWithAutomaticExit(hyper,'o', function()
+      downRight(hs.window.focusedWindow())
 end)
 
-windowLayoutMode:bindWithAutomaticExit({},',', function()
-  hs.window.focusedWindow():downLeft()
-end)
-
-windowLayoutMode:bindWithAutomaticExit({},'.', function()
-  hs.window.focusedWindow():downRight()
-end)
-windowLayoutMode:bindWithAutomaticExit(hyper2,'u', function() winIncrease() end)
-
-windowLayoutMode:bindWithAutomaticExit(hyper2,'m', function() winReduce() end)
-
-windowLayoutMode:bindWithAutomaticExit({},'n', function()
-  hs.window.focusedWindow():nextScreen()
-end)
+-- windowLayoutMode:bindWithAutomaticExit({},'n', function()
+--       nextScreen(hs.window.focusedWindow())
+-- end)
 
 -- Use Control+s to toggle WindowLayout Mode
-hs.hotkey.bind(hyper2, 's', function()
-  windowLayoutMode:enter()
-end)
-windowLayoutMode:bind(hyper2, 's', function()
-  windowLayoutMode:exit()
-end)
+-- hs.hotkey.bind(hyper, 't', function()
+--   windowLayoutMode:enter()
+-- end)
+-- windowLayoutMode:bind(hyper, 't', function()
+--   windowLayoutMode:exit()
+-- end)
 
 -- hs.hotkey.bind({"cmd"}, "LEFT", function()
 --    hs.window.focusedWindow():left()
 -- end)
 -- open -g hammerspoon://moveWinLeft
 -- karabiner 绑定Fn+Left 键，因 hammerspoon 不支持Fn的绑定
-hs.urlevent.bind("moveWinLeft", function(eventName, params) hs.window.focusedWindow():left() end)
-hs.urlevent.bind("moveWinRight", function(eventName, params) hs.window.focusedWindow():right() end)
-hs.urlevent.bind("moveWinUp", function(eventName, params) hs.window.focusedWindow():up() end)
-hs.urlevent.bind("moveWinDown", function(eventName, params) hs.window.focusedWindow():down() end)
-hs.urlevent.bind("winIncrease", function(eventName, params) winIncrease() end)
-hs.urlevent.bind("winReduce", function(eventName, params) winReduce() end)
+-- hs.urlevent.bind("moveWinLeft", function(eventName, params) hs.window.focusedWindow():left() end)
+-- hs.urlevent.bind("moveWinRight", function(eventName, params) hs.window.focusedWindow():right() end)
+-- hs.urlevent.bind("moveWinUp", function(eventName, params) hs.window.focusedWindow():up() end)
+-- hs.urlevent.bind("moveWinDown", function(eventName, params) hs.window.focusedWindow():down() end)
+-- hs.urlevent.bind("winIncrease", function(eventName, params) winIncrease() end)
+-- hs.urlevent.bind("winReduce", function(eventName, params) winReduce() end)
 -- hs.hotkey.bind({"cmd","shift"}, "R", function() winReduce() end)
 
 
@@ -131,7 +132,7 @@ hs.window.animationDuration = 0
 -- |        |        |
 -- +-----------------+
 -- hs.window.focusedWindow():left()
-function hs.window.left(win)
+function winleft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -148,7 +149,7 @@ end
 -- |        |  HERE  |
 -- |        |        |
 -- +-----------------+
-function hs.window.right(win)
+function winright(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -165,7 +166,7 @@ end
 -- +-----------------+
 -- |                 |
 -- +-----------------+
-function hs.window.up(win)
+function winup(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -182,7 +183,7 @@ end
 -- +-----------------+
 -- |      HERE       |
 -- +-----------------+
-function hs.window.down(win)
+function windown(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -199,7 +200,7 @@ end
 -- +--------+        |
 -- |                 |
 -- +-----------------+
-function hs.window.upLeft(win)
+function upLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -216,7 +217,7 @@ end
 -- +--------+        |
 -- |  HERE  |        |
 -- +-----------------+
-function hs.window.downLeft(win)
+function downLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -233,7 +234,7 @@ end
 -- |        +--------|
 -- |        |  HERE  |
 -- +-----------------+
-function hs.window.downRight(win)
+function downRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -251,7 +252,7 @@ end
 -- |        +--------|
 -- |                 |
 -- +-----------------+
-function hs.window.upRight(win)
+function upRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -268,7 +269,7 @@ end
 -- |  |  HERE  |  |
 -- |  |        |  |
 -- +---------------+
-function hs.window.centerWithFullHeight(win)
+function centerWithFullHeight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -280,31 +281,31 @@ function hs.window.centerWithFullHeight(win)
   win:setFrame(f)
 end
 
-function hs.window.moveLeft(win)
+function moveLeft(win)
   local f = win:frame()
 
   f.x = f.x-80
   win:setFrame(f)
 end
-function hs.window.moveRight(win)
+function moveRight(win)
   local f = win:frame()
 
   f.x = f.x+80
   win:setFrame(f)
 end
-function hs.window.moveUp(win)
+function moveUp(win)
   local f = win:frame()
 
   f.y = f.y-60
   win:setFrame(f)
 end
-function hs.window.moveDown(win)
+function moveDown(win)
   local f = win:frame()
 
   f.y = f.y+60
   win:setFrame(f)
 end
-function hs.window.nextScreen(win)
+function nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
   currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)

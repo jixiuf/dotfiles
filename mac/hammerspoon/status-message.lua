@@ -16,23 +16,24 @@ statusmessage.new = function(messageText)
 
     local styledTextSize = drawing.getTextDrawingSize(styledText)
     local textRect = {
-      x = frame.w - styledTextSize.w - 40,
-      y = frame.h - styledTextSize.h,
+      x = 200,
+      y = 50,
       w = styledTextSize.w + 40,
       h = styledTextSize.h + 40,
     }
-    local text = drawing.text(textRect, styledText):setAlpha(0.7)
+    local text = drawing.text(textRect, styledText):setAlpha(1)
+    text:setTextColor({ red = 1, green = 0, blue = 0, alpha=1 })
 
     local background = drawing.rectangle(
       {
-        x = frame.w - styledTextSize.w - 45,
-        y = frame.h - styledTextSize.h - 3,
+        x = 200,
+        y = 50,
         w = styledTextSize.w + 15,
         h = styledTextSize.h + 6
       }
     )
     background:setRoundedRectRadii(10, 10)
-    background:setFillColor({ red = 0, green = 0, blue = 0, alpha=0.6 })
+    background:setFillColor({ red = 0, green = 1, blue = 0, alpha=1 })
 
     return background, text
   end
