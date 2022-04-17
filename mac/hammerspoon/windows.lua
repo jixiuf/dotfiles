@@ -9,17 +9,17 @@ require('hyper')
 -- Control+s, and then press h.
 --
 --   h/j/k/l => send window to the left/bottom/top/right half of the screen
---   i => send window to the upper left quarter of the screen
---   o => send window to the upper right quarter of the screen
---   , => send window to the lower left quarter of the screen
---   . => send window to the lower right quarter of the screen
---   return => make window full screen
+--   8 => send window to the upper left quarter of the screen
+--   9 => send window to the upper right quarter of the screen
+--   i => send window to the lower left quarter of the screen
+--   o => send window to the lower right quarter of the screen
+--   return => quit
 --   n => send window to the next monitor
 --------------------------------------------------------------------------------
 
 windowLayoutMode = hs.hotkey.modal.new(hyper, 'm')
 local message = require('status-message')
-windowLayoutMode.statusMessage = message.new('窗口管理(主键H-m Return退出)(H-hjkl 上下左右) (hjkl移动容器) (H-m 全屏)(H-89io 4角) (调大小-+)')
+windowLayoutMode.statusMessage = message.new('(主键H-m Return退出)(H-hjkl 上下左右) (hjkl) (H-89io 4角) (调大小-+)')
 windowLayoutMode.entered = function()
   windowLayoutMode.statusMessage:show()
 end
