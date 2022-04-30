@@ -466,14 +466,6 @@ done
 # add-zsh-hook precmd vcs_info_wrapper
 # if [ -z "$INSIDE_EMACS" ]; then
 # fi
-if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-    # https://github.com/zsh-users/zsh-autosuggestions
-    mkdir -p ~/.zsh
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions  >/dev/null 2>&1 &
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh >/dev/null 2>&1 &
-fi
 
 
 PROMPT='%(!.%B$RED%n.%B$GREEN%n)@%m$CYAN %2~$(vcs_info_wrapper)%(?..$RED%?)$GREEN%(!.#.$)%(1j.(%j jobs%).) %b'
