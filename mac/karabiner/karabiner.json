@@ -2875,7 +2875,7 @@
                         ]
                     },
                     {
-                        "description": "Chrome ctrl-s=cmd-f,hyper-j/k =next/prev tab C-h/l=forward/backward",
+                        "description": "Chrome H-p reopen tab H-n=private ctrl-s=cmd-f,hyper-j/k =next/prev tab H-h/l=f/b",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -2886,12 +2886,46 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome M-t =无痕模式",
+                                "description": "Chrome H-p =reopen tab",
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
-                                            "option"
+                                            "control",
+                                            "option",
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "t",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Chrome H-n =无痕模式",
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "option",
+                                            "command"
                                         ]
                                     }
                                 },
@@ -3230,22 +3264,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "l",
-                                        "modifiers": [
-                                            "right_command"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "spacebar"
-                                    },
-                                    {
-                                        "key_code": "spacebar"
-                                    },
-                                    {
-                                        "key_code": "tab"
-                                    },
-                                    {
-                                        "key_code": "left_arrow",
+                                        "key_code": "open_bracket",
                                         "modifiers": [
                                             "right_command"
                                         ]
@@ -3284,22 +3303,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "l",
-                                        "modifiers": [
-                                            "right_command"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "spacebar"
-                                    },
-                                    {
-                                        "key_code": "spacebar"
-                                    },
-                                    {
-                                        "key_code": "tab"
-                                    },
-                                    {
-                                        "key_code": "right_arrow",
+                                        "key_code": "close_bracket",
                                         "modifiers": [
                                             "right_command"
                                         ]
