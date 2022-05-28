@@ -1,6 +1,7 @@
 #!/bin/zsh
 #解决这个问题用Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
+export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
 alias bench1='ssh root@bench -p 9090'
 alias k8s='ssh root@10.17.7.230 -p 443'
@@ -10,7 +11,7 @@ alias gg='go get '
 # go env -w GOPROXY=http://goproxy.test.svc.luojilab.dc,https://goproxy.io,direct
 export GOPRIVATE="*.luojilab.com"
 go env -w GOSUMDB=off
-go env -w GOPROXY=https://goproxy.io,direct
+# go env -w GOPROXY=https://goproxy.io,direct
 # go env -w GOPROXY=
 # go env -w GOPROXY=http://goproxy.test.svc.luojilab.dc,https://goproxy.io,direct
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
@@ -1142,7 +1143,10 @@ __go_tool_complete() {
 compdef __go_tool_complete go
 
 # aliases: go<~>
-alias gob='go mod tidy ;go build'
+function gob(){
+    if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
+    go build
+}
 alias goc='go clean'
 alias god='go doc'
 alias gof='go fmt'
