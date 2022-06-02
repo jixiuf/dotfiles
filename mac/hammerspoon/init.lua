@@ -154,7 +154,7 @@ end)
 -- hs.timer.doAfter(10, function() hs.reload() end) --
 local superGenPass=hs.loadSpoon("SuperGenPass")
 superGenPass.showMenubar=false
-superGenPass.saveGeneratedPasswordToPasteboard=false --auto save generated password to pasteboard
+superGenPass.saveGeneratedPasswordToPasteboard=true --auto save generated password to pasteboard
 superGenPass.autoHideWindowAfterPasswordGenerated=false
 superGenPass.autoComplete=true
 superGenPass.remberMasterPassword=true
@@ -170,6 +170,8 @@ superGenPass.defaultAppDomainMap = {
 } --
 
 superGenPass:start()
+-- open -g "hammerspoon://sgp"
+hs.urlevent.bind("sgp", function() superGenPass:clicked() end)
 
 ---------------------------------------------------------------
 -- wifi 连接或断开时的处理

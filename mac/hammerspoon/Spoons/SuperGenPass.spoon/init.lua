@@ -14,6 +14,7 @@
 
 local obj = { __gc = true }
 
+local pasteboard = require("hs.pasteboard") -- http://www.hammerspoon.org/docs/hs.pasteboard.html
 --obj.__index = obj
 
 -- Metadata
@@ -161,6 +162,8 @@ function obj.getAddressDefault()
       return obj.getAddressOfSafari()
    elseif  app:bundleID() =="com.google.Chrome" then
       return obj.getAddressOfChrome()
+   elseif  app:bundleID() =="org.mozilla.firefox" then
+      return obj.getAddressOfFirefox()
    else
       defaultAppDomain=obj.defaultAppDomainMap[app:bundleID() ]
       if defaultAppDomain then
@@ -170,6 +173,9 @@ function obj.getAddressDefault()
       end
    end
    return ""
+end
+function obj.getAddressOfFirefox()
+   return hs.pasteboard.getContents()
 end
 
 function obj.getAddressOfSafari()
