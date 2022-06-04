@@ -3236,12 +3236,13 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox"
+                                            "^org\\.mozilla\\.firefox",
+                                            "^com\\.google\\.Chrome"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-7 SPG",
+                                "description": "Chrome/Firefox H-7 auto fill passwd with bitwarden support",
                                 "from": {
                                     "key_code": "7",
                                     "modifiers": {
@@ -3259,20 +3260,9 @@
                                     {
                                         "key_code": "l",
                                         "modifiers": [
-                                            "right_command"
+                                            "right_command",
+                                            "right_shift"
                                         ]
-                                    },
-                                    {
-                                        "key_code": "c",
-                                        "modifiers": [
-                                            "right_command"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "escape"
-                                    },
-                                    {
-                                        "shell_command": "open -g hammerspoon://sgp"
                                     }
                                 ],
                                 "type": "basic"
