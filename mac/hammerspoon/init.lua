@@ -150,28 +150,28 @@ hs.alert.show("HammerSpoon Config loaded")
 hs.hotkey.bind(hyper2, "r", function()
       hs.reload()
 end)
--- 每3秒reload 一次
--- hs.timer.doAfter(10, function() hs.reload() end) --
-local superGenPass=hs.loadSpoon("SuperGenPass")
-superGenPass.showMenubar=false
-superGenPass.saveGeneratedPasswordToPasteboard=true --auto save generated password to pasteboard
-superGenPass.autoHideWindowAfterPasswordGenerated=false
-superGenPass.autoComplete=true
-superGenPass.remberMasterPassword=true
-superGenPass:bindHotkeys({toggle={hyper,"7"}})
-superGenPass.defaultAppDomainMap = {
-   ["com.cisco.Cisco-AnyConnect-Secure-Mobility-Client"] = "luojilab.com",
-   ["net.nutstore.NutstoreJavaBE"] = "jianguoyun.com",
-   ["com.apple.iBooksX"] = "apple.com",
-   ["com.apple.iTunes"] = "apple.com",
-   ["com.emmac.mac"] = "www.eastmoney.com",
+-- -- 每3秒reload 一次
+-- -- hs.timer.doAfter(10, function() hs.reload() end) --
+-- local superGenPass=hs.loadSpoon("SuperGenPass")
+-- superGenPass.showMenubar=false
+-- superGenPass.saveGeneratedPasswordToPasteboard=true --auto save generated password to pasteboard
+-- superGenPass.autoHideWindowAfterPasswordGenerated=false
+-- superGenPass.autoComplete=true
+-- superGenPass.remberMasterPassword=true
+-- superGenPass:bindHotkeys({toggle={hyper,"7"}})
+-- superGenPass.defaultAppDomainMap = {
+--    ["com.cisco.Cisco-AnyConnect-Secure-Mobility-Client"] = "luojilab.com",
+--    ["net.nutstore.NutstoreJavaBE"] = "jianguoyun.com",
+--    ["com.apple.iBooksX"] = "apple.com",
+--    ["com.apple.iTunes"] = "apple.com",
+--    ["com.emmac.mac"] = "www.eastmoney.com",
 
 
-} --
+-- } --
 
-superGenPass:start()
--- open -g "hammerspoon://sgp"
-hs.urlevent.bind("sgp", function() superGenPass:clicked() end)
+-- superGenPass:start()
+-- -- open -g "hammerspoon://sgp"
+-- hs.urlevent.bind("sgp", function() superGenPass:clicked() end)
 
 ---------------------------------------------------------------
 -- wifi 连接或断开时的处理

@@ -14,7 +14,6 @@
 
 local obj = { __gc = true }
 
-local pasteboard = require("hs.pasteboard") -- http://www.hammerspoon.org/docs/hs.pasteboard.html
 --obj.__index = obj
 
 -- Metadata
@@ -709,6 +708,8 @@ function obj.clicked()
                   obj.safariCompletePassword(result)
                elseif  app:bundleID() =="com.google.Chrome" then
                   obj.chromeCompletePassword(result)
+               elseif  app:bundleID() =="org.mozilla.firefox" then
+                  obj.autoHideWindowAfterPasswordGenerated =true
                else
                   obj.prevFocusedWindow:focus()
                   hs.eventtap.keyStrokes(result)
