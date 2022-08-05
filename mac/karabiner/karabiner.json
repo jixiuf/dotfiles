@@ -29,7 +29,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -66,7 +66,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_if"
                                     },
@@ -119,7 +119,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -166,7 +166,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -213,7 +213,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -264,7 +264,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -315,7 +315,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1554,7 +1554,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1624,7 +1624,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1695,7 +1695,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1766,7 +1766,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4453,7 +4453,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4517,7 +4517,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4581,7 +4581,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4664,7 +4664,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4729,7 +4729,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4794,7 +4794,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4859,7 +4859,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4924,7 +4924,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -4989,7 +4989,7 @@
                                         ],
                                         "file_paths": [
                                             "/usr/local/emacs/bin/emacs",
-                                            "/Users/jixiuf/gccemacs/bin/emacs"
+                                            "/usr/local/bin/emacs"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
