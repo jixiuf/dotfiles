@@ -8,12 +8,13 @@ alias k8s='ssh root@10.17.7.230 -p 443'
 alias gc='git clone '
 alias gitclean='git clean -fdx'
 alias gg='go get '
-# go env -w GOPROXY=http://goproxy.test.svc.luojilab.dc,https://goproxy.io,direct
 export GOPRIVATE="*.luojilab.com"
-go env -w GOSUMDB=off
+# go env -w GOSUMDB=off
+go env -w GOSUMDB="sum.golang.google.cn"
+# go env -w GOPROXY="https://goproxy.cn,direct"
 # go env -w GOPROXY=https://goproxy.io,direct
 # go env -w GOPROXY=
-# go env -w GOPROXY=http://goproxy.test.svc.luojilab.dc,https://goproxy.io,direct
+go env -w GOPROXY="https://mirrors.luojilab.com/goproxy,https://goproxy.cn,direct"
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 # brew pin gcc 禁止gcc upgrade
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -1147,12 +1148,15 @@ function gob(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
     go build
 }
+function goi(){
+    if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
+    go install
+}
 alias goc='go clean'
 alias god='go doc'
 alias gof='go fmt'
 alias gofa='go fmt ./...'
 alias gog='go get'
-alias goi='go install'
 alias gol='go list'
 alias gom='go mod'
 alias gop='cd $GOPATH'
