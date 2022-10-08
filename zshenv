@@ -88,7 +88,12 @@ export PYTHONPATH="$HOME/.local/lib/python3.9/site-packages"
 # fi
 
 if [ $(uname -s ) = "Darwin" ] ; then
-    export JAVA_HOME=`/usr/libexec/java_home`
+    if [ -d /usr/local/opt/openjdk/ ]; then
+        export JAVA_HOME=/usr/local/opt/openjdk/
+    else
+        export JAVA_HOME=`/usr/libexec/java_home`
+    fi
+    prependPath "$JAVA_HOME/bin"
     #launchctl setenv PATH $PATH
 fi
 
