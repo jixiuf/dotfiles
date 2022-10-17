@@ -3,6 +3,8 @@
 # compaudit | xargs chmod g-w
 export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
+alias apmdev='ssh root@10.2.0.171'
+alias apmali='ssh root@192.168.69.155'
 alias bench1='ssh root@bench -p 9090'
 alias k8s='ssh root@10.17.7.230 -p 443'
 alias gc='git clone '
