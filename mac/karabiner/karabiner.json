@@ -1260,7 +1260,6 @@
                                 ],
                                 "type": "basic"
                             }
-
                         ]
                     },
                     {
@@ -3267,8 +3266,6 @@
                                 ],
                                 "type": "basic"
                             },
-
-
                             {
                                 "conditions": [
                                     {
@@ -3310,7 +3307,6 @@
                             }
                         ]
                     },
-
                     {
                         "description": "Chrome H-p reopen tab H-n=private ctrl-s=cmd-f,hyper-j/k =next/prev tab H-h/l=f/b",
                         "manipulators": [
@@ -6016,6 +6012,45 @@
                         "vendor_id": 1452
                     },
                     "ignore": true,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 636,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 636,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 }
