@@ -1570,6 +1570,29 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "description": " caps_lock+l :sleep",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "software_function": {
+                                            "iokit_power_management_sleep_system": {}
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },
