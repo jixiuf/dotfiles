@@ -1572,9 +1572,9 @@
                                 "type": "basic"
                             },
                             {
-                                "description": " caps_lock+h = ~",
+                                "description": " caps_lock+u = ~",
                                 "from": {
-                                    "key_code": "h",
+                                    "key_code": "u",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_command",
@@ -1596,9 +1596,9 @@
                                 "type": "basic"
                             },
                             {
-                                "description": " caps_lock+l :sleep",
+                                "description": " caps_lock+i :sleep",
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "i",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_command",
