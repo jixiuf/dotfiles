@@ -2520,6 +2520,38 @@
                         ]
                     },
                     {
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.finder$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Finder Fn-v paste password",
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -g hammerspoon://fnv_paste"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Eclipse hyper-r=Run,ctrl-r =Debug,hyper-i = command-shift-r quick open file",
                         "manipulators": [
                             {
@@ -4571,8 +4603,9 @@
                             }
                         ]
                     },
+
                     {
-                        "description": "Xnip C-g =escape",
+                        "description": "Xnip C-g =escape, Return 截图",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -4627,24 +4660,19 @@
                                 "type": "basic"
                             }
                         ]
-                    },
+                    } ,
                     {
+                        "description": "hyper-4 使用飞书截图=cmd+shift+a",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.finder$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Fn-v paste password",
+                                "description": "hyper-4 使用飞书截图=cmd+shift+a",
                                 "from": {
-                                    "key_code": "v",
+                                    "key_code": "4",
                                     "modifiers": {
                                         "mandatory": [
-                                            "fn"
+                                            "left_control",
+                                            "left_option",
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -4653,13 +4681,17 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -g hammerspoon://fnv_paste"
+                                        "key_code": "a",
+                                        "modifiers": [
+                                            "command",
+                                            "shift"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
                             }
                         ]
-                    },
+                    } ,
                     {
                         "description": "Emacs key bindings [control+keys] (rev 6)",
                         "manipulators": [
