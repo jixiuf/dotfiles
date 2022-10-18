@@ -4572,8 +4572,36 @@
                         ]
                     },
                     {
-                        "description": "Xnip Enter 截图",
+                        "description": "Xnip C-g =escape",
                         "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.zzd\\.XnipHelper$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Xnip C-g= escape",
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "conditions": [
                                     {
