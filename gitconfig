@@ -22,25 +22,25 @@
 [push]
 	default = current
 
-[mergetool "ediff"]
-	cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
-	trustExitCode = false
-[mergetool]
-	prompt = false
-[merge]
-	tool = ediff
+# [mergetool "ediff"]
+# 	cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
+# 	trustExitCode = false
+# [mergetool]
+# 	prompt = false
+# [merge]
+# 	tool = ediff
 
 	# run : git difftool
-[diff]
-	tool = ediff
+# [diff]
+# 	tool = ediff
 [diff "lisp"]
 	# http://wandrian.net/2012-03-11-1727-custom-git-hunk-headers-for-lisp.html
 	xfuncname="^(\\((def|test).*)$"
 	# xfuncname = "^\\(.*$"
-[difftool]
-	prompt = false
-[difftool "ediff"]
-	cmd = emacsclient --eval \"(ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" )\"
+# [difftool]
+# 	prompt = false
+# [difftool "ediff"]
+# 	cmd = emacsclient --eval \"(ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" )\"
 
 [alias]
 	sub=submodule
