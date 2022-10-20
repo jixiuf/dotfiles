@@ -463,7 +463,7 @@
                         ]
                     },
                     {
-                        "description": "让hyper键具有cmd键常用的功能，如剪切复制等 hyper-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,} = cmd-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,}",
+                        "description": "让 hyper 键具有cmd键常用的功能，如剪切复制等 hyper-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,} = cmd-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,}",
                         "manipulators": [
                             {
                                 "description": "hyper-v = command-v",
@@ -725,6 +725,15 @@
                             },
                             {
                                 "description": "hyper-, = command-,",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.electron\\.lark$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
@@ -2846,6 +2855,86 @@
                     {
                         "description": "飞书  ctrl-n/p ctrl-jk next/prev session hyper-j next active session",
                         "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.electron\\.lark$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "option",
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "software_function": {
+                                            "set_mouse_cursor_position": {
+                                                "screen": 0,
+                                                "x": "50%",
+                                                "y": "50%"
+                                            }
+                                        }
+                                    } ,
+                                    {
+                                        "mouse_key": {
+                                            "vertical_wheel": -32
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.electron\\.lark$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "option",
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "software_function": {
+                                            "set_mouse_cursor_position": {
+                                                "screen": 0,
+                                                "x": "50%",
+                                                "y": "50%"
+                                            }
+                                        }
+                                    } ,
+                                    {
+                                        "mouse_key": {
+                                            "vertical_wheel":32
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "conditions": [
                                     {
