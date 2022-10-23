@@ -78,7 +78,9 @@ engine:
   #   - uniquifier
   filters:
     - simplifier
-    - reverse_lookup_filter@double_pinyin_comment # 展示双拼编码
+    - reverse_lookup_filter@wubi_comment # 展示wubi编码
+    # - reverse_lookup_filter@double_pinyin_comment # 展示双拼编码
+
     - uniquifier                # 去重，比如多个繁体字对应一个简体字，此时可能需要去重
     - cjk_minifier  #過濾拼音輸入法中的罕用字  过滤掉一些不常见白字， 若想显示，Ctrl-`切换,比如输入te ,会月生僻字
     - charset_filter@gbk            # (※3) 默认 GBK
@@ -206,7 +208,7 @@ translator:                     # script_translator默认使用此translator,针
 abc_segmentor:
   extra_tags:
     - reverse_lookup
-    # -wubi_comment
+    # - wubi_comment
 
 reverse_lookup:
   dictionary: wubi_pinyin_jixiuf.extend
@@ -283,6 +285,13 @@ double_pinyin_comment:                   # 显示五笔编码， 这个配置好
     - xform/ui$/V/
     - xform/in$/B/
     - xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/
+wubi_comment:                   # 显示五笔编码， 这个配置好像不管哪种输入法打的字都显示五笔，我只想当用拼音输入时显示五笔编码 ，目前还不知怎么配
+  tags: [ abc ]
+  dictionary: wubi_pinyin_jixiuf.extend
+  overwrite_comment: true  # 覆蓋其他提示
+  comment_format:
+    # 同時顯示羅馬字拼寫
+    - "xform/ .*$//"            # 当一个字有多个五笔编码时，只显示第一个，即把空格后的所有内容变成空
 
 punctuator:
   import_preset: default
