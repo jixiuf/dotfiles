@@ -62,8 +62,9 @@ engine:
     # 把script_translator@pinyin放在reverse_lookup_translatorp之上,这样输入拼音的时候才能自动调词频
     # 因为reverse_lookup_translator也能通过反查进行拼音的输入，但是它不支持调频
     - script_translator         # 双拼
-    # - table_translator
-    - script_translator@wubi  # 放到reverse_lookup_translator 之前才可以调频五笔的输入
+    # script_translator@wubi 改成table_translator@wubi 后 才可以五笔自动造词，但不知有什么影响
+    - table_translator@wubi
+    # - script_translator@wubi  # 放到reverse_lookup_translator 之前才可以调频五笔的输入
     - script_translator@pinyin #
     - reverse_lookup_translator # 用五笔打出的字，会提示双批编码
     # 如果没有别名，则 {table|script}_translator 默认用 translator: 节点， reverse_lookup_translator 默认用 reverse_lookup: 节点。
