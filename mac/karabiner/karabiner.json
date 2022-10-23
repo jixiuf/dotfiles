@@ -860,7 +860,7 @@
                         ]
                     },
                     {
-                        "description": "Toggle App(capslock=Hyper2=cmd+ctrl) H2-n:Notes",
+                        "description": "Toggle App(capslock=Hyper2=cmd+ctrl) H2-n:Notes H2-d:股，H2-s:SequelPro H2-c:mongo H2-m:mail",
                         "manipulators": [
                             {
                                 "description": "capslock-d  toggle com.emmac.mac",
