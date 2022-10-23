@@ -860,8 +860,71 @@
                         ]
                     },
                     {
-                        "description": "Toggle App H-d:iterm2",
+                        "description": "Toggle App H-d:iterm2 H-f:Chrome",
                         "manipulators": [
+                            {
+                                "description": "hyper-f  toggle Chrome",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                    "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "hyper-f  toggle chrome",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open /Applications/Google\\ Chrome.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "description": "hyper-d  toggle iterm",
                                 "conditions": [
