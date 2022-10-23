@@ -929,6 +929,70 @@
                         "description": "Toggle App H-d:iterm2 H-f:Chrome",
                         "manipulators": [
                             {
+                                "description": "hyper-5  toggle apifox",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "cn.apifox.app-pdv"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b cn.apifox.app-pdv"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "hyper-5  toggle apifox",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^cn.apifox.app-pdv"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                    "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
                                 "description": "hyper-b  toggle 微信",
                                 "conditions": [
                                     {
