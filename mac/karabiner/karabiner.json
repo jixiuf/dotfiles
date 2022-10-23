@@ -863,6 +863,68 @@
                         "description": "Toggle App(capslock=Hyper2=cmd+ctrl) H2-n:Notes",
                         "manipulators": [
                             {
+                                "description": "capslock-d  toggle com.emmac.mac",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.emmac.mac"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.emmac.mac"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "capslock-d com.emmac.mac",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.emmac.mac"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                    "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
                                 "description": "capslock-c  toggle com.mongodb.compass",
                                 "conditions": [
                                     {
