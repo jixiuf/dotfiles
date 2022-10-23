@@ -863,6 +863,68 @@
                         "description": "Toggle App(capslock=Hyper2=cmd+ctrl) H2-n:Notes",
                         "manipulators": [
                             {
+                                "description": "capslock-m  toggle Mail",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.mail"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.apple.mail"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "capslock-m  toggle Mail",
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.mail"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                    "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
                                 "description": "capslock-n  toggle notes",
                                 "conditions": [
                                     {
