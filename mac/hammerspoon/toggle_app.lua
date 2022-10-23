@@ -23,7 +23,7 @@ hs.hotkey.bind(hyper, "g", function() toggleFinder() end )
 -- hs.hotkey.bind(hyper3, "e", function() toggleEclpse() end)
 -- hs.hotkey.bind(hyper3, "x", function() toggleApp("com.apple.dt.Xcode") end)
 -- hs.hotkey.bind(hyper3, "m", function() toggleApp("com.apple.mail") end)
-hs.hotkey.bind(hyper3, "s", function() toggleApp("com.sequelpro.SequelPro") end)
+-- hs.hotkey.bind(hyper3, "s", function() toggleApp("com.sequelpro.SequelPro") end)
 hs.hotkey.bind(hyper3, "c", function() toggleApp("com.mongodb.compass") end)
 -- toggle App
 function toggleApp(appBundleID)
