@@ -860,324 +860,9 @@
                         ]
                     },
                     {
-                        "description": "Toggle App(capslock=Hyper2=cmd+ctrl) H2-n:Notes H2-d:股，H2-s:SequelPro H2-c:mongo H2-m:mail",
-                        "manipulators": [
-                            {
-                                "description": "capslock-d  toggle com.emmac.mac",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.emmac.mac"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -b com.emmac.mac"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "capslock-d com.emmac.mac",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.emmac.mac"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                    "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-
-                            {
-                                "description": "capslock-c  toggle com.mongodb.compass",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.mongodb.compass"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -b com.mongodb.compass"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "capslock-c  com.mongodb.compass",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.sequelpro.SequelPro"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                    "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-
-                            {
-                                "description": "capslock-s  toggle com.sequelpro.SequelPro",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.sequelpro.SequelPro"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -b com.sequelpro.SequelPro"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "capslock-s  com.sequelpro.SequelPro",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.sequelpro.SequelPro"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                    "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-
-                            {
-                                "description": "capslock-m  toggle Mail",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.apple.mail"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -b com.apple.mail"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "capslock-m  toggle Mail",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com.apple.mail"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                    "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-
-                            {
-                                "description": "capslock-n  toggle notes",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Notes"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -b com.apple.Notes"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "capslock-n  toggle Notes",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Notes"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                    "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Toggle App H-d:iterm2 H-f:Chrome H-e:Emacs H-5:apifox H-b:微信 H-3:飞书",
                         "manipulators": [
                             {
-                                "description": "hyper-e  toggle Emacs",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1186,6 +871,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-e  toggle Emacs",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
@@ -1207,7 +893,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-e  toggle Emacs",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1216,6 +901,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-e  toggle Emacs",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
@@ -1231,7 +917,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1240,7 +926,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-5  toggle apifox",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1249,6 +934,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-5  toggle apifox",
                                 "from": {
                                     "key_code": "5",
                                     "modifiers": {
@@ -1270,7 +956,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-5  toggle apifox",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1279,6 +964,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-5  toggle apifox",
                                 "from": {
                                     "key_code": "5",
                                     "modifiers": {
@@ -1294,7 +980,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1303,7 +989,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-b  toggle 微信",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1312,6 +997,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-b  toggle 微信",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -1333,7 +1019,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-b  toggle 微信",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1342,6 +1027,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-b  toggle 微信",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -1357,7 +1043,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1366,7 +1052,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-3  toggle 飞书",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1375,6 +1060,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-3  toggle 飞书",
                                 "from": {
                                     "key_code": "3",
                                     "modifiers": {
@@ -1396,7 +1082,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-3  toggle 飞书",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1405,6 +1090,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-3  toggle 飞书",
                                 "from": {
                                     "key_code": "3",
                                     "modifiers": {
@@ -1420,7 +1106,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1429,7 +1115,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-f  toggle Chrome",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1438,6 +1123,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-f  toggle Chrome",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -1453,7 +1139,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1462,7 +1148,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-f  toggle chrome",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1471,6 +1156,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-f  toggle chrome",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -1492,7 +1178,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-d  toggle iterm",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1501,6 +1186,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "hyper-d  toggle iterm",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -1516,7 +1202,7 @@
                                 },
                                 "to": [
                                     {
-                                    "key_code": "h",
+                                        "key_code": "h",
                                         "modifiers": [
                                             "command"
                                         ]
@@ -1525,7 +1211,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-d  toggle iterm",
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -1534,6 +1219,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "hyper-d  toggle iterm",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -1550,6 +1236,316 @@
                                 "to": [
                                     {
                                         "shell_command": "open /Applications/iTerm.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Toggle App(capslock=Hyper3=cmd+ctrl) H3-n:Notes H3-d:股，H3-s:SequelPro H3-c:mongo H3-m:mail",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.emmac.mac"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "capslock-d  toggle com.emmac.mac",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.emmac.mac"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.emmac.mac"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "capslock-d com.emmac.mac",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.mongodb.compass"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "capslock-c  toggle com.mongodb.compass",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.mongodb.compass"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.sequelpro.SequelPro"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "capslock-c  com.mongodb.compass",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.sequelpro.SequelPro"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "capslock-s  toggle com.sequelpro.SequelPro",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.sequelpro.SequelPro"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.sequelpro.SequelPro"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "capslock-s  com.sequelpro.SequelPro",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.mail"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "capslock-m  toggle Mail",
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.apple.mail"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.mail"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "capslock-m  toggle Mail",
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.Notes"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "capslock-n  toggle notes",
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.apple.Notes"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.Notes"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "capslock-n  toggle Notes",
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "command"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
