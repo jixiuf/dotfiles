@@ -1,6 +1,8 @@
 #!/bin/zsh
 #解决这个问题用Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
+alias curl2='curl --http2-prior-knowledge'
+export RUN_ENV=development
 export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
 alias apmdev='ssh root@10.2.0.171'
