@@ -4726,7 +4726,11 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -g hammerspoon://toggleHiddenFile"
+                                        "key_code": "period",
+                                        "modifiers": [
+                                            "command",
+                                            "shift"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"

@@ -104,24 +104,24 @@ end
 --    hs.osascript.applescript(scpt)
 -- end
 
-hs.urlevent.bind("toggleHiddenFile", function() toggleHiddenFile() end)
+-- hs.urlevent.bind("toggleHiddenFile", function() toggleHiddenFile() end)
 
-function toggleHiddenFile()
-   local finderStatus,_,_,_=hs.execute("defaults read com.apple.finder AppleShowAllFiles")
-   if finderStatus=="TRUE" then
-      hs.execute("defaults write com.apple.finder AppleShowAllFiles FALSE")
-   else
-      hs.execute("defaults write com.apple.finder AppleShowAllFiles TRUE")
-   end
-   local script=[[tell application "Finder"
-                 quit
-                 delay 0.1 -- without this there was a \"connection is invalid\" error
-                 launch -- without this Finder was not made frontmost
-                 activate -- make Finder frontmost
-                 reopen -- open a default window
-                 end tell]]
-   hs.osascript.applescript(script)
-end
+-- function toggleHiddenFile()
+--    local finderStatus,_,_,_=hs.execute("defaults read com.apple.finder AppleShowAllFiles")
+--    if finderStatus=="TRUE" then
+--       hs.execute("defaults write com.apple.finder AppleShowAllFiles FALSE")
+--    else
+--       hs.execute("defaults write com.apple.finder AppleShowAllFiles TRUE")
+--    end
+--    local script=[[tell application "Finder"
+--                  quit
+--                  delay 0.1 -- without this there was a \"connection is invalid\" error
+--                  launch -- without this Finder was not made frontmost
+--                  activate -- make Finder frontmost
+--                  reopen -- open a default window
+--                  end tell]]
+--    hs.osascript.applescript(script)
+-- end
 
 hs.urlevent.bind("openWithEmacsclientInFinder", function() openWithEmacsclientInFinder() end)
 
