@@ -117,7 +117,7 @@ fi
 # if [ -d ~/go1.17/ ]; then
 #     export GOROOT=~/go1.17/
 # fi
-alias go17='GOROOT=~/go1.17/ ~/go1.17/bin/go'
+alias go18='GOROOT=~/go1.18.9/ ~/go1.18.9/bin/go'
 
 prependPath "$GOROOT/bin"
 if [ -d $HOME/go ]; then
