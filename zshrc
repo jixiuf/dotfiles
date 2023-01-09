@@ -1,6 +1,7 @@
 #!/bin/zsh
 #解决这个问题用Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
+export ARTEMIS_SHUTDOWN_SLEEP_SECONDS=1
 alias curl2='curl --http2-prior-knowledge'
 export RUN_ENV=development
 export UPGRADE_ARTEMIS_CMD=false
