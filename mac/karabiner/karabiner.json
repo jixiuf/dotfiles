@@ -888,7 +888,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open  /usr/local/opt/emacs-plus@29/Emacs.app"
+                                        "shell_command": "open  /usr/local/opt/emacs-plus@30/Emacs.app"
                                     }
                                 ],
                                 "type": "basic"
