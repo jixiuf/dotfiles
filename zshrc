@@ -6,6 +6,7 @@ alias curl2='curl --http2-prior-knowledge'
 export RUN_ENV=development
 export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
+alias top4='ssh admin@192.168.52.114 -p 9090'
 alias apmdev='ssh root@10.2.0.171'
 alias apmali='ssh root@192.168.69.155'
 alias apmali2='ssh root@192.168.56.24'
