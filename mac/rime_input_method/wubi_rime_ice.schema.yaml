@@ -4,17 +4,17 @@
 
 # 方案说明
 schema:
-  schema_id: rime_ice
-  name: 雾凇拼音
+  schema_id: wubi_rime_ice
+  name: 五笔+雾凇拼音
   version: "1.4.4"
   author:
-    - Dvel
+    - jixiuf/Dvel
   description: |
-    雾凇拼音
+    五笔+雾凇拼音
     https://github.com/iDvel/rime-ice
   dependencies:
     - melt_eng  # 英文输入，作为次翻译器挂载到拼音方案
-    - liangfen  # 两分拼字，作为反查挂载到拼音方案
+    # - liangfen  # 两分拼字，作为反查挂载到拼音方案
 
 
 # 开关
@@ -42,8 +42,8 @@ switches:
 # 输入引擎
 engine:
   processors:
-    - lua_processor@select_character  # 以词定字
-    - ascii_composer
+    - lua_processor@select_character  # "[" 或 "]" 以词定字
+    # - ascii_composer
     - recognizer
     - key_binder
     - speller
@@ -59,19 +59,23 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - script_translator
+    - table_translator@wubi
     - lua_translator@date_translator      # 时间、日期、星期
+    - script_translator@pinyin
     - table_translator@custom_phrase      # 自定义短语 custom_phrase.txt
     - table_translator@melt_eng           # 英文输入
-    - reverse_lookup_translator@liangfen  # 反查，两分拼字
+    # - reverse_lookup_translator@liangfen  # 反查，两分拼字
+    - reverse_lookup_translator@reverse_lookup_pinyin  # 拼音 反查五笔
     - lua_translator@unicode              # Unicode
   filters:
     - lua_filter@long_word_filter       # 长词优先
     - simplifier@emoji                  # Emoji
+    - reverse_lookup_filter@wubi_comment # 展示五笔的编码
     - simplifier@traditionalize         # 简繁切换
     # - lua_filter@v_filter               # v 模式 symbols 优先（否则是英文优先）
     - lua_filter@reduce_english_filter  # 降低部分英语单词在候选项的位置
     - uniquifier                        # 去重
+    # - cjk_minifier  #過濾拼音輸入法中的罕用字  过滤掉一些不常见白字， 若想显示，Ctrl-`切换,比如输入 te ,会月生僻字
 
 
 # Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
@@ -84,7 +88,7 @@ date_translator:
 
 
 # Lua 配置: 长词优先，提升 count 个词语，插入到第 idx 个位置。
-# 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2解 3姐 4饥饿 5极恶」
+# 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2 解 3 姐 4 饥饿 5 极恶」
 long_word_filter:
   count: 2
   idx: 4
@@ -128,7 +132,7 @@ custom_phrase:
   db_class: stabledb
   enable_completion: false # 补全提示
   enable_sentence: false   # 禁止造句
-  initial_quality: 99      # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
+  initial_quality: 19      # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
 
 
 # 引入八股文
@@ -137,7 +141,8 @@ grammar:
 
 
 # 主翻译器，拼音
-translator:
+# translator:
+pinyin:
   dictionary: rime_ice          # 挂载词库 rime_ice.dict.yaml
   contextual_suggestions: true  # 开启八股文
   preedit_format:               # preedit_format 影响到输入框的显示和“Shift+回车”上屏的字符
@@ -147,6 +152,25 @@ translator:
     - xform/([nl])v/$1v/        # 显示为 nv lv
     - xform/([nl])ue/$1ve/      # 显示为 nve lve
   initial_quality: 1.2          # 拼音的权重应该比英文大
+
+wubi:                     # 五笔模式白 translator
+# translator:                     # 五笔模式白 translator
+  # dictionary: wubi86
+  dictionary: wubi_pinyin_jixiuf.extend
+  # prism: wubi_pinyin_jixiuf     # 不必指定，用默认的即可 生成的 prism.bin 文件的名字，默认 wubi_pinyin_jixiuf.prism.bin
+  enable_charset_filter: true
+  enable_user_dict: true        # 调词频用的到 是否開啓用戶詞典〔用戶詞典記錄動態字詞頻、用戶詞〕
+  enable_sentence: true         # 是否開啓自動造句
+  sentence_over_completion: false # 在無全碼對應字而僅有逐鍵提示時也開啓智能組句〔僅 table_translator 有效〕
+  enable_completion: true #: 提前顯示尚未輸入完整碼的字〔僅 table_translator 有效〕
+  enable_encoder: true          #  是否開啓自動造詞
+  encode_commit_history: true   # 是否對已上屛詞自動成詞
+  max_phrase_length: 4
+  initial_quality: 80          # 优先级
+  disable_user_dict_for_patterns:
+    - "^z.*$"                   # 对 z 开头的词不记录到用户词典中(不进行调频)
+    - "^[a-y]$"                   # 对单字母打出的字不进行调频
+    - "^[a-y]{1,2}$"                   # 对两个字母打出白字不进行调频
 
 
 # 次翻译器，英文
@@ -165,8 +189,8 @@ melt_eng:
 # symbols 的功能是支持以「/」前缀开头输出一系列字符，自定义的 symbols_custom.yaml 修改成了「v」开头。
 punctuator:
   # __include: punctuation:/     # 从共享目录引入预设的 punctuation.yaml
-  # import_preset: symbols       # 从共享目录引入预设的 symbols.yaml
-  import_preset: symbols_custom  # 从 symbols_custom.yaml 引入自己自定义的
+  import_preset: symbols       # 从共享目录引入预设的 symbols.yaml
+  # import_preset: symbols_custom  # 从 symbols_custom.yaml 引入自己自定义的
   # 也可以直接在这里配置：
   # full_shape:
     # ...
@@ -178,6 +202,7 @@ punctuator:
 
 # 处理符合特定规则的输入码，如网址、反查
 recognizer:
+  import_preset: default
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"                            # 自带的，e-mail 正则
     # uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"                           # 自带的，大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符
@@ -186,24 +211,52 @@ recognizer:
     win_path: "^[A-Za-z]:.*"          # 支持 c:\file\path 之类的路径输入
     colon: "^[A-Za-z]+:.*"            # 上面的超集，可以输入冒号，不会导致句子直接上屏
     underscore: "^[A-Za-z]+_.*"       # 可以输入下划线 _ ，不会导致句子直接上屏
-    punct: "^v([0-9]|10|[A-Za-z]+)$"  # 响应 symbols_custom.yaml 下的 punctuator/symbols，用「v」替换「/」并支持大写
-    reverse_lookup: "^u[a-z]+$"       # 响应两分的反查
+    # reverse_lookup: "^u[a-z]+$"       # 响应两分的反查
+    reverse_lookup: "`[a-z]*'?$"
     unicode: "^U[a-f0-9]+"            # 响应 Unicode
+    # 加了这句之后与 import_preset: symbols 结合使用，当输入/开头时，输入特殊符号，如/xl 输出αβ等，詳細见 symbals.ymal
+    # 比如 /2 输入二貳等
+    # punct: "^v([0-9]|10|[A-Za-z]+)$"  # 响应 symbols_custom.yaml 下的 punctuator/symbols，用「v」替换「/」并支持大写
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+abc_segmentor:
+  extra_tags:
+    - reverse_lookup_pinyin
+    # -wubi_comment
+
+reverse_lookup_pinyin:
+  dictionary: rime_ice
+  prefix: "`"
+  suffix: "'"
+  tips: 〔拼音〕
+  overwrite_comment: true # 覆盖其他提示
+  preedit_format: # 上屏码显示格式，
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+wubi_comment:                   # 显示五笔编码， 这个配置好像不管哪种输入法打的字都显示五笔，我只想当用拼音输入时显示五笔编码 ，目前还不知怎么配
+  tags: [ abc ]
+  dictionary: wubi_pinyin_jixiuf.extend
+  overwrite_comment: true  # 覆蓋其他提示
+  comment_format:
+    # 同時顯示羅馬字拼寫
+    - "xform/ .*$//"            # 当一个字有多个五笔编码时，只显示第一个，即把空格后的所有内容变成空
+
 
 
 # 反查：两分（拼字）
-liangfen:
-  dictionary: liangfen     # 两分词典 liangfen.dict.yaml
-  prefix: "u"              # 以 u 开头来反查
-  enable_completion: true  # 补全提示
-  # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 u 开头的英文单词也会显示这个
+# liangfen:
+#   dictionary: liangfen     # 两分词典 liangfen.dict.yaml
+#   prefix: "u"              # 以 u 开头来反查
+#   enable_completion: true  # 补全提示
+#   # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 u 开头的英文单词也会显示这个
 
 
 # 拼写设定
 speller:
   # 如果不想让什么标点直接上屏，可以加在 alphabet，或者编辑标点符号为两个及以上的映射
   alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
-  delimiter: " '"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
+  delimiter: " ;'"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
   algebra:
     ### 模糊音
     # 声母

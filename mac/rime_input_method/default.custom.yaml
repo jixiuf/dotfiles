@@ -29,7 +29,7 @@ patch:
       - zh_hant_tw
 
   schema_list:
-    # - schema: xinshijiwubi
+    - schema: wubi_rime_ice
     - schema: rime_ice
     - schema: double_pinyin_flypy_jixiuf
     - schema: wubi_pinyin_jixiuf          # 五笔拼音混合輸入
@@ -94,7 +94,13 @@ patch:
     Shift_L: noop
     Shift_R: noop
     # Shift_L: commit_code
+  key_binder:
+    # [ ] 以词定字（上屏当前词句的第一个或最后一个字）
+    select_first_character: "bracketleft"
+    select_last_character: "bracketright"
+
     # Shift_R: commit_code
+
   key_binder/bindings:
     - { when: always, accept: Control+Shift+2, toggle: ascii_mode }
     # Ctrl-g
@@ -103,8 +109,8 @@ patch:
     - { when: always, accept: F17,  send: Escape}
     - { when: composing, accept: F19, send: Escape }
     # [ ]  翻页
-    - { when: paging, accept: bracketleft, send: Page_Up }
-    - { when: has_menu, accept: bracketright, send: Page_Down }
+    # - { when: paging, accept: bracketleft, send: Page_Up }
+    # - { when: has_menu, accept: bracketright, send: Page_Down }
     # ,.翻页
     - { when: paging, accept: comma, send: Page_Up }
     - { when: has_menu, accept: period, send: Page_Down }
