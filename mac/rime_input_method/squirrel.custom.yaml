@@ -3,6 +3,15 @@
 # Mac
 #
 patch:
+  # options: always | never | appropriate
+  show_notifications_when: appropriate
+
+   # options: last | default | _custom_
+   # last: the last used latin keyboard layout
+   # default: US (ABC) keyboard layout
+   # _custom_: keyboard layout of your choice, e.g. 'com.apple.keylayout.USExtended' or simply 'USExtended'
+  keyboard_layout: default
+
   us_keyboard_layout: true
   # 修改默认输入法的状态
   # wubi_pinyin.schema.yaml. 里有个reset: 奖0 改成1 就变成默认英文输入状态
