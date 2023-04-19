@@ -1,5 +1,5 @@
 #!/bin/zsh
-#解决这个问题用Ignore insecure directories and continue [y]
+#解决这个问题用 Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
 export ARTEMIS_SHUTDOWN_SLEEP_SECONDS=0
 alias curl2='curl --http2-prior-knowledge'
@@ -23,8 +23,9 @@ go env -w GOSUMDB="sum.golang.google.cn"
 # go env -w GOPROXY=
 go env -w GOPROXY="https://mirrors.luojilab.com/goproxy,https://goproxy.cn,direct"
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
-# brew pin gcc 禁止gcc upgrade
+# brew pin gcc 禁止 gcc upgrade
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_FROM_API=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
 function gomod(){
@@ -85,7 +86,7 @@ fi
 
 alias enw="en -nw"              # emacs -nw
 alias e="en"
-# 把当前内容重定向到emacs的一个buffer
+# 把当前内容重定向到 emacs 的一个 buffer
 # demo: curl baidu.com|e
 # demo: e filename
 # open files  with emacs or redirect stdio to an emacs buffer
@@ -100,7 +101,7 @@ alias e="en"
 # }
 
 # alias s="cat >/tmp/scratch; e --no-wait --eval '(with-current-buffer (switch-to-buffer (generate-new-buffer \"*scratch*\")) (insert-file-contents \"/tmp/scratch\")(set-auto-mode) (goto-char (point-min)))'"
-# 把当前内容重定向到emacs的一个buffer并json格式化
+# 把当前内容重定向到 emacs 的一个 buffer 并 json 格式化
 # alias js="cat >/tmp/scratch&& e --no-wait --eval '(with-current-buffer (switch-to-buffer (generate-new-buffer \"*scratch-*\")) (insert-file-contents \"/tmp/scratch\") (json-mode )(json-mode-beautify) (goto-char (point-min)))'>/dev/null "
 # perl 版
 # brew install jsonpp
@@ -155,7 +156,7 @@ alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool false &
 # alias tcpinfo='netstat -n | awk "/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}"'
 # alias dev12="cd $GOPATH/src/zerogame.info/thserver/thserver&& ./dev.sh 1 2"
 alias download="pushd ~/Downloads/"
-# ssh通过代理
+# ssh 通过代理
 #alias erl='rlwrap -a  erl'
 # alias arp='sudo arp'
 # alias mysqld='sudo /etc/init.d/mysql restart'
@@ -169,17 +170,17 @@ alias download="pushd ~/Downloads/"
 # alias emacsq="emacs -q -debug-init"
 # alias sftp="sudo /etc/init.d/proftpd restart"
 if [ $(uname -s ) = "Linux" ] ; then
-    alias ls='ls --color=auto  --time-style=+"%m月%d日 %H:%M"'
+    alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls -a --color=auto  '
-    alias ll='ls -lth --color=auto --time-style=+"%m月%d日 %H:%M"'
+    alias ll='ls -lth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
     # sort by time 倒序
-    alias llr='ls -lrth --color=auto --time-style=+"%m月%d日 %H:%M"'
+    alias llr='ls -lrth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
     # sort by time
-    alias lla='ls -alth --color=auto --time-style=+"%m月%d日 %H:%M"'
+    alias lla='ls -alth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
     # sort by size
-    alias lls='ls -lSh --color=auto --time-style=+"%m月%d日 %H:%M"'
+    alias lls='ls -lSh --color=auto --time-style=+"%m 月%d 日 %H:%M"'
     # sort by name
-    alias lln='ls -lh --color=auto --time-style=+"%m月%d日 %H:%M"'
+    alias lln='ls -lh --color=auto --time-style=+"%m 月%d 日 %H:%M"'
     alias ip="ifconfig eth0;ifconfig eth1"
 else
     #-v  http:/lujun.info/2012/10/osx-%E7%9A%84-iterm2%E4%B8%AD%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/
@@ -325,7 +326,7 @@ alias svnreset='svn revert -R .;for file in `svn status|grep "^ *?"|sed -e "s/^ 
 alias ftpserver='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
 alias ftpserver_stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 
-#这样可以使你上面定义的那些alias 在sudo 时管用
+#这样可以使你上面定义的那些 alias 在 sudo 时管用
 #http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo #
 alias sudo='sudo '
 # AUTOPUSHD made cd act like pushd
@@ -395,12 +396,12 @@ alias hist='history -nr 1'
 alias hgrep='history -nr 1|grep '
 
 # bindkey "^[r" history-incremental-search-backward
-# 用当前命令行下的内容搜索history,
+# 用当前命令行下的内容搜索 history,
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end # up
 bindkey "^[r" history-incremental-search-backward  # M-r
-# 用当前命令行下的内容搜索history,prefix匹配
+# 用当前命令行下的内容搜索 history,prefix 匹配
 # bindkey \^R history-beginning-search-backward-end  # C-r
 
 bindkey "^[n" down-line-or-history
@@ -426,11 +427,11 @@ if [ -f ~/.zaw/zaw.zsh  ] ; then
 
     # autoload -U filter-select; filter-select -i
     # to initialize `filterselect` keymap and then do like::
-   bindkey -M filterselect '^E' accept-search       # # anythins.el 的ctrl-z
-   bindkey -M filterselect "^[[1m" accept-line # itermbind后的c-m
-   bindkey -M filterselect "^[h" backward-kill-word # itermbind后的M-h
-   bindkey -M filterselect "^[[1a" backward-kill-word # itermbind后的C-del
-   bindkey -M filterselect "^[^?" backward-kill-word # itermbind后的M-del
+   bindkey -M filterselect '^E' accept-search       # # anythins.el 的 ctrl-z
+   bindkey -M filterselect "^[[1m" accept-line # itermbind 后的 c-m
+   bindkey -M filterselect "^[h" backward-kill-word # itermbind 后的 M-h
+   bindkey -M filterselect "^[[1a" backward-kill-word # itermbind 后的 C-del
+   bindkey -M filterselect "^[^?" backward-kill-word # itermbind 后的 M-del
    bindkey -M filterselect "^[[109;5u" accept-line # itermbind
 
    zstyle ':filter-select:highlight' matched fg=yellow,standout
@@ -498,7 +499,7 @@ HOSTNAME=$(uname -n)
 USER=$(whoami)
 case $TERM in
     dumb)
-        #在 Emacs终端 中使用 Zsh 的一些设置 及Eamcs tramp sudo 远程连接的设置
+        #在 Emacs 终端 中使用 Zsh 的一些设置 及 Eamcs tramp sudo 远程连接的设置
         prompt='%1/ %(!.#.$) '
         unsetopt zle
         unsetopt prompt_cr
@@ -509,7 +510,7 @@ case $TERM in
         PS1='$ '
         ;;
     (*xterm*|*rxvt*|(dt|k)term*|*screen*))
-        PROMPT_EOL_MARK="" # 默认是%g来表示无换行符，改成用空，即隐藏%
+        PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
         add-zsh-hook -Uz chpwd (){
             print -Pn "\e]2;%2~\a" #s
@@ -537,7 +538,7 @@ setopt complete_in_word
 #禁用 core dumps
 limit coredumpsize 0
 
-#Emacs风格 键绑定
+#Emacs 风格 键绑定
 bindkey -e
 #设置 [DEL]键 为向后删除
 bindkey "\e[3~" delete-char
@@ -547,21 +548,21 @@ bindkey \^H backward-kill-word
 bindkey \^Z set-mark-command
 bindkey \^U backward-kill-line
 bindkey \^M accept-line
-bindkey "^[[1h" user-complete   # itermbind后的ctrl-i
-bindkey "^[[1m" accept-line     #  itermbind后的c-m
+bindkey "^[[1h" user-complete   # itermbind 后的 ctrl-i
+bindkey "^[[1m" accept-line     #  itermbind 后的 c-m
 
 
 function ignore(){}
 zle -N ignore
-bindkey "7;2~" ignore           # f18  切换输入法emacs进入insert-state的按键，在zsh里忽略此按键
+bindkey "7;2~" ignore           # f18  切换输入法 emacs 进入 insert-state 的按键，在 zsh 里忽略此按键
 
 # Alt-r
 bindkey "^[x" ignore            # M-x 忽略
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
 
-zle -N copybuffer               # 让普通的copybuffer函数变成可绑定
-bindkey "^[w" copybuffer # copy当前命令行下的内容
+zle -N copybuffer               # 让普通的 copybuffer 函数变成可绑定
+bindkey "^[w" copybuffer # copy 当前命令行下的内容
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -640,13 +641,13 @@ compinit
 
 #自动补全选项
 zstyle ':completion:*' verbose yes
-#指定使用菜单,select表示会高亮选中当前在哪个选项上,no=5表示当候选项大于5时就不自动补全
+#指定使用菜单,select 表示会高亮选中当前在哪个选项上,no=5 表示当候选项大于 5 时就不自动补全
 #而仅仅是列出可用的候选项,这样可以手动输入内容后过滤掉一部分
-#也就是说只有少于5个选项的时候而循环选中每一个
-#yes=long表示当无法完整显示所有内容时,可以循环之
+#也就是说只有少于 5 个选项的时候而循环选中每一个
+#yes=long 表示当无法完整显示所有内容时,可以循环之
 # zstyle ':completion:*' menu select no=8 yes=long
 zstyle ':completion:*' menu select no=5
-#force-list表示尽管只有一个候选项,也更出菜单,没必要
+#force-list 表示尽管只有一个候选项,也更出菜单,没必要
 #zstyle ':completion:*:*:default' force-list always
 zstyle ':completion:*' select-prompt '%SSelect:  lines: %L  matches: %M  [%p]'
 
@@ -751,7 +752,7 @@ zle -N user-complete
 bindkey "\t" user-complete
 bindkey "^[[1h" user-complete   # my ctrl-i
 
-# zsh 显示git 分支信息 begin
+# zsh 显示 git 分支信息 begin
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
         '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
