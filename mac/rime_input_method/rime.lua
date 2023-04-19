@@ -4,11 +4,11 @@
 -- 提高权重的原因：因为在方案中设置了大于 1 的 initial_quality，导致 rq sj xq dt ts 产出的候选项在所有词语的最后。
 function date_translator(input, seg, env)
     local config = env.engine.schema.config
-    local date = config:get_string(env.name_space .. "/date") or "rq"
-    local time = config:get_string(env.name_space .. "/time") or "sj"
-    local week = config:get_string(env.name_space .. "/week") or "xq"
-    local datetime = config:get_string(env.name_space .. "/datetime") or "dt"
-    local timestamp = config:get_string(env.name_space .. "/timestamp") or "ts"
+    local date = config:get_string(env.name_space .. "/date") or "/rq"  or "/date"
+    local time = config:get_string(env.name_space .. "/time") or "/sj" or "/time"
+    local week = config:get_string(env.name_space .. "/week") or "/xq" or "/week"
+    local datetime = config:get_string(env.name_space .. "/datetime") or "/dt" or "/datetime"
+    local timestamp = config:get_string(env.name_space .. "/timestamp") or "/ts" or "/datetime"
     -- 日期
     if (input == date) then
         local cand = Candidate("date", seg.start, seg._end, os.date("%Y-%m-%d"), "")
@@ -156,7 +156,7 @@ function long_word_filter(input, env)
 
     local l = {}
     local firstWordLength = 0 -- 记录第一个候选词的长度，提前的候选词至少要比第一个候选词长
-    -- local s1 = 0 -- 记录筛选了多少个英语词条(只提升 count 个词的权重，并且对comment长度过长的候选进行过滤)
+    -- local s1 = 0 -- 记录筛选了多少个英语词条(只提升 count 个词的权重，并且对 comment 长度过长的候选进行过滤)
     local s2 = 0 -- 记录筛选了多少个汉语词条(只提升 count 个词的权重)
 
     local i = 1
