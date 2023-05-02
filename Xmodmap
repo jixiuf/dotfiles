@@ -1,0 +1,39 @@
+! https://www.cnblogs.com/yinheyi/p/10146900.html   
+! 直接执行 xmodmap 可查看当前修饰键的状态
+
+! 交换 control/super
+!!remove 原来的绑定
+! remove control      =  Control_L
+! remove mod4      =  Super_L
+! !!交换 2 个键位
+! keysym Control_L     =  Super_L
+! keysym   Super_L   =  Control_L
+! !! 重新绑定 2 个键
+! add  control        =  Control_L
+! add  mod4        =  Super_L
+
+! !!!将 Capslk 变成 Ctrl  Ctrl 变成 Alt alt 变成 capslk        
+! !!remove 原来的绑定
+! remove Lock      =  Caps_Lock
+! remove Mod1      =  Alt_L
+! remove Control   =  Control_L
+! !!交换三个键位
+! keysym Alt_L     =  Caps_Lock
+! keysym Caps_Lock =  Control_L
+! keysym Control_L =  Alt_L
+! !!!重新绑定三个键
+! add   Lock       =  Caps_Lock
+! add   Mod1       =  Alt_L
+! add   Control    =  Control_L
+
+!!交换 Cap Control
+!remove Lock = Caps_Lock
+!remove Control = Control_L
+!remove mod1 = Alt_L
+!keysym Control_L = Caps_Lock
+!keysym Caps_Lock =Alt_L
+!keysym Alt_L =Control_L
+!add Lock = Caps_Lock
+!add Control = Control_L
+!add mod1 = Alt_L
+

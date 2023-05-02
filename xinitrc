@@ -7,12 +7,13 @@
 
 #exec startlxde
 #fictx &
-xrdb ~/.Xdefaults
+#xrdb ~/.Xdefaults
 #xcompmgr -Ss -n -Cc -fF -I-10 -O-10 -D1 -t-3 -l-4 -r4 &
-if [ `pgrep -u ${USER} urxvtd |wc -l` = 0  ] ; then      urxvtd -q -f -o & fi
-if [ `pgrep -u root urxvtd |wc -l` = 0  ] ;    then sudo urxvtd  -q -f -o & fi
+#if [ `pgrep -u ${USER} urxvtd |wc -l` = 0  ] ; then      urxvtd -q -f -o & fi
+# if [ `pgrep -u root urxvtd |wc -l` = 0  ] ;    then sudo urxvtd  -q -f -o & fi
 #/usr/bin/emacs &
 #echo "hide_emacs()" |awesome-client
-xmodmap ~/.Xmodmaprc &
-ck-launch-session awesome 
+if [ -f ~/.Xmodmaprc ]; then xmodmap ~/.Xmodmaprc; fi
+#xmodmap ~/.Xmodmaprc &
+#ck-launch-session awesome 
 #exec awesome

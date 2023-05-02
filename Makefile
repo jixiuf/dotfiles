@@ -4,7 +4,7 @@ PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
 NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  shadowsocks.json zshenv zshrc  tmux.conf  axelrc bashrc ctags fzf.zsh bash-preexec.sh yank.sh mbsyncrc mailrc msmtprc`
-NORMAL_FILES_LINUX := `echo pentadactylrc  gtkrc-2.0   Xdefaults  xinitrc  Xmodmaprc`
+NORMAL_FILES_LINUX := `echo  xinitrc  Xmodmap`
 echo:
 	@echo "run:"
 	@echo "    make deploy"
@@ -12,8 +12,6 @@ echo:
 
 deploy:
 	@for file in $(NORMAL_FILES_COMMON); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
-	rm -fr ~/.ssh
-	ln -sf ~/Library/Mobile\ Documents/com~apple~CloudDocs/ssh ~/.ssh
 
 	# -$(LINK_CMD_HARD) $(PWD)/ssh_config ~/.ssh/config
 	@if [ ! -d ~/bin ]; then\
@@ -37,6 +35,8 @@ deploy:
 	fi
 
 	@if [ `uname -s` = "Darwin" ] ; then \
+		rm -fr ~/.ssh; \
+		ln -sf ~/Library/Mobile\ Documents/com~apple~CloudDocs/ssh ~/.ssh ; \
 	  cd mac && $(MAKE) ; \
 	fi
 sudo:
