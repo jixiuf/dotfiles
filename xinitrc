@@ -13,7 +13,7 @@
 # if [ `pgrep -u root urxvtd |wc -l` = 0  ] ;    then sudo urxvtd  -q -f -o & fi
 #/usr/bin/emacs &
 #echo "hide_emacs()" |awesome-client
-if [ -f ~/.Xmodmaprc ]; then xmodmap ~/.Xmodmaprc; fi
+# if [ -f ~/.Xmodmap ]; then xmodmap ~/.Xmodmap; fi
 #xmodmap ~/.Xmodmaprc &
 #ck-launch-session awesome 
 #exec awesome

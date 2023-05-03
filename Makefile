@@ -4,7 +4,7 @@ PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
 NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  shadowsocks.json zshenv zshrc  tmux.conf  axelrc bashrc ctags fzf.zsh bash-preexec.sh yank.sh mbsyncrc mailrc msmtprc`
-NORMAL_FILES_LINUX := `echo  xinitrc  Xmodmap`
+NORMAL_FILES_LINUX := `echo  dual-function-keys.yaml`
 echo:
 	@echo "run:"
 	@echo "    make deploy"
@@ -46,6 +46,8 @@ sudo:
 
 	@if [ `uname -s` = "Linux" ] ; then \
 	  $(LINK_CMD) $(PWD)/crontab /etc/crontab; \
+	  $(LINK_CMD) $(PWD)/udevmon.yaml /etc/udevmon.yaml; \
+	  $(LINK_CMD) $(PWD)/udevmon.service /etc/systemd/system/udevmon.service; \
 	fi
 	@if [ `uname -s` = "Darwin" ] ; then \
 	  cd mac && $(MAKE)  sudo; \

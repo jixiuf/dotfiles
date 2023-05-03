@@ -1,0 +1,10 @@
+- JOB: "intercept -g $DEVNODE |  dual-function-keys -c /home/jixiuf/.dual-function-keys.yaml | uinput -d $DEVNODE"
+  DEVICE:
+    # sudo apt install libinput-tools
+    # libinput list-devices | grep "^Device"
+    #  找出 keyboard 的名字 如我的是 Apple SPI Keyboard
+
+    NAME: Apple SPI Keyboard
+    EVENTS:
+     # 估计这里的 key 列表 与 .dual-function-keys.yaml MAPPINGS  下的 key 需要一致
+      EV_KEY: [ KEY_SPACE,KEY_LEFTMETA,KEY_LEFTCTRL,KEY_RIGHTMETA,KEY_LEFTSHIFT]

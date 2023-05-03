@@ -1,0 +1,15 @@
+# /etc/systemd/system/udevmon.service
+# sudo systemctl enable --now udevmon
+# sudo systemctl restart udevmon
+# journalctl -u udevmon
+
+[Unit]
+Description=udevmon
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+
+[Service]
+ExecStart=/usr/bin/nice -n -20 /usr/local/bin/udevmon -c /etc/udevmon.yaml
+
+[Install]
+WantedBy=multi-user.target
