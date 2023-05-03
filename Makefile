@@ -30,8 +30,9 @@ deploy:
 # @$(LINK_CMD) $(PWD)/ipy_user_conf.py ~/.ipython/ipy_user_conf.py
 
 	@if [ `uname -s` = "Linux" ] ; then \
-		mkdir -p ~/.config/; \
+		mkdir -p ~/.config/ibus; \
 		for file in $(NORMAL_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done; \
+		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.config/ibus/rime ;\
 	fi
 
 	@if [ `uname -s` = "Darwin" ] ; then \

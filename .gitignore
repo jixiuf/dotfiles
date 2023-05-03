@@ -18,3 +18,8 @@
 /go.mod
 /go.sum
 /mac/fish/fish
+/mac/rime_input_method/build/
+/mac/rime_input_method/rime_ice.userdb/
+/mac/rime_input_method/user.yaml
+/mac/rime_input_method/wubi_pinyin_jixiuf.userdb/
+/mac/rime_input_method/installation.yaml
