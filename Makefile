@@ -33,6 +33,7 @@ deploy:
 		mkdir -p ~/.config/ibus; \
 		for file in $(NORMAL_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done; \
 		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.config/ibus/rime ;\
+		cd linux && $(MAKE) ; \
 	fi
 
 	@if [ `uname -s` = "Darwin" ] ; then \
@@ -48,6 +49,7 @@ sudo:
 	  $(LINK_CMD) $(PWD)/crontab /etc/crontab; \
 	  $(LINK_CMD) $(PWD)/udevmon.yaml /etc/udevmon.yaml; \
 	  $(LINK_CMD) $(PWD)/udevmon.service /etc/systemd/system/udevmon.service; \
+	  cd linux && $(MAKE)  sudo; \
 	fi
 	@if [ `uname -s` = "Darwin" ] ; then \
 	  cd mac && $(MAKE)  sudo; \

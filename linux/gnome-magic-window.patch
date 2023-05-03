@@ -1,0 +1,33 @@
+From a089a506d4713a50a6ebf2ba95329582947f7527 Mon Sep 17 00:00:00 2001
+From: jixiuf <jixiuf@qq.com>
+Date: Thu, 4 May 2023 00:17:56 +0800
+Subject: [PATCH] p
+
+---
+ extension.js | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/extension.js b/extension.js
+index 256e95f..713e4a7 100644
+--- a/extension.js
++++ b/extension.js
+@@ -14,11 +14,12 @@
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ const BINDINGS = [
+-  {
+-    shortcut: 'F12',
+-    title: 'Terminator',
+-    command: 'terminator'
+-  },
++    // cd ~/.local/share/gnome-shell/extensions
++    // git clone https://github.com/adrienverge/gnome-magic-window gnome-magic-window@adrienverge
++    // gnome-extensions enable gnome-magic-window@adrienverge
++  {shortcut: '<Super><Alt><Control>d', title: 'gnome-terminal-server', command: '/usr/bin/gnome-terminal'},
++  {shortcut: '<Super><Alt><Control>f', title: 'Google-chrome', command: '/opt/google/chrome/chrome'},
++  {shortcut: '<Super><Alt><Control>e', title: 'emacs', command: '/usr/bin/emacs'},
+   // More bindings can be added, for example:
+   // {
+   //   shortcut: 'F11',
+-- 
+2.34.1
