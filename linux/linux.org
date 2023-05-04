@@ -1,11 +1,20 @@
 * xorg or wayland
 /etc/gdm3/custom.conf
 WaylandEnable=true
-* gnome-tweaks
+*  gnome-shell-extensions gnome-tweaks
+很多插件是以 gnome-shell-extensions 或依赖 gnome-shell-extensions 如 https://github.com/k0kubun/xremap
+故先要安装 gnome-shell-extensions
+#+begin_src sh
+sudo apt install gnome-shell-extensions  chrome-gnome-shell
+#+end_src
+** gnome-tweaks
 1. 禁用左右 cmd（win）键 单按时的行为
    https://linux.how2shout.com/how-to-disable-super-or-win-key-in-ubuntu-20-04-or-18-04/
     sudo apt install gnome-tweaks
     gnome-tweaks
+* xremap
+https://github.com/k0kubun/xremap
+https://github.com/k0kubun/xremap/blob/master/example/config.yml
 
 * toggle App
 将以下脚本绑定到某快捷键上即可
