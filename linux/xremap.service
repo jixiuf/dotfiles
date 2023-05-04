@@ -1,3 +1,8 @@
+# /etc/systemd/system/udevmon.service
+# sudo systemctl enable --now xremap
+# sudo systemctl restart xremap
+# journalctl -u xremap
+  
 [Unit]
 Description=Run xremap 
 # DefaultDependencies=no
@@ -8,7 +13,7 @@ Description=Run xremap
 Restart=always
 User=jixiuf
 Group=jixiuf
-ExecStart=%h/.cargo/bin/xremap  %h/.config/xremap.yaml
+ExecStart=/home/jixiuf/.cargo/bin/xremap  /home/jixiuf/.config/xremap.yaml --watch
 # TimeoutStartSec=0
 # RemainAfterExit=yes
 

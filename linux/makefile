@@ -9,9 +9,9 @@ SYSTEMD_SERVICE := `echo  udevmon.service xremap.service`
 
 deploy:
 	mkdir -p ~/.share
-	for file in $(DOT_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file ~/.config/$$file; done; \
+	for file in $(DOT_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file ~/.config/$$file; done;
 	mkdir -p ~/.local/share/gnome-shell/extensions
-	-mv ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge.bak-$(DATE) ;\
+	mv ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge.bak-$(DATE) ;\
 	git clone https://github.com/adrienverge/gnome-magic-window  ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ; \
 	cp gnome-magic-window.patch  ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge; \
 	cd ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ; \
