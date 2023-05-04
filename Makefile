@@ -4,7 +4,6 @@ PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
 NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  shadowsocks.json zshenv zshrc  tmux.conf  axelrc bashrc ctags fzf.zsh bash-preexec.sh yank.sh mbsyncrc mailrc msmtprc`
-NORMAL_FILES_LINUX := `echo  dual-function-keys.yaml`
 echo:
 	@echo "run:"
 	@echo "    make deploy"
@@ -27,11 +26,9 @@ deploy:
 		mkdir ~/.vimbackup;\
 	fi
 	-$(LINK_CMD) $(PWD)/git-remote-hg ~/bin
-# @$(LINK_CMD) $(PWD)/ipy_user_conf.py ~/.ipython/ipy_user_conf.py
 
 	@if [ `uname -s` = "Linux" ] ; then \
 		mkdir -p ~/.config/ibus; \
-		for file in $(NORMAL_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done; \
 		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.config/ibus/rime ;\
 		cd linux && $(MAKE) ; \
 	fi
@@ -46,9 +43,6 @@ sudo:
 	-$(LINK_CMD_HARD) $(PWD)/hosts /etc/hosts
 
 	@if [ `uname -s` = "Linux" ] ; then \
-	  $(LINK_CMD) $(PWD)/crontab /etc/crontab; \
-	  $(LINK_CMD) $(PWD)/udevmon.yaml /etc/udevmon.yaml; \
-	  $(LINK_CMD) $(PWD)/udevmon.service /etc/systemd/system/udevmon.service; \
 	  cd linux && $(MAKE)  sudo; \
 	fi
 	@if [ `uname -s` = "Darwin" ] ; then \

@@ -1,6 +1,6 @@
 #!/bin/zsh
 # appendPath(newPath)
-# 如果newPath 已经在PATH下了， 则不添加
+# 如果 newPath 已经在 PATH 下了， 则不添加
 export APM_OUTPUT_PATH=/tmp/trace/
 export LC_ALL=zh_CN.UTF-8
 export GO111MODULE=on
@@ -31,7 +31,7 @@ prependPath "/usr/local/opt/emacs-plus@29/bin"
 appendPath "/Library/TeX/texbin"
 appendPath "/usr/local/share/dotnet"
 appendPath "/Library/Input Methods/Squirrel.app/Contents/MacOS"
-
+appendPath "$HOME/.cargo/bin"
 if [ -d $HOME/python/bin/ ]; then
     source $HOME/python/bin/activate
 fi
@@ -164,5 +164,5 @@ fi
 # appendPath "$ANDROID_SDK_ROOT/build-tools/android-4.4.2"
 # appendPath "$ANDROID_SDK_ROOT/tools"
 # appendPath "$ANDROID_SDK_ROOT/platform-tools"
-# 不知道为什么GIT_CONFIG_PARAMETERS有值时git 命令使用不了
+# 不知道为什么 GIT_CONFIG_PARAMETERS 有值时 git 命令使用不了
 unset GIT_CONFIG_PARAMETERS

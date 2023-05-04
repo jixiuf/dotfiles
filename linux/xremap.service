@@ -1,0 +1,16 @@
+[Unit]
+Description=Run xremap 
+# DefaultDependencies=no
+# After=network.target
+
+[Service]
+# Type=simple
+Restart=always
+User=jixiuf
+Group=jixiuf
+ExecStart=%h/.cargo/bin/xremap  %h/.config/xremap.yaml
+# TimeoutStartSec=0
+# RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
