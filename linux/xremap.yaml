@@ -73,6 +73,8 @@ keymap:
       Super-C-M-c: C-c
       Super-C-M-v: C-v
       Super-C-M-z: C-z
+      Super-C-M-s: C-s
+      Super-C-M-r: C-r
 
       # Alt -> Ctrl
       # Super-a: C-a

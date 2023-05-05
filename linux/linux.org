@@ -14,6 +14,9 @@ sudo apt install gnome-shell-extensions  chrome-gnome-shell
     gnome-tweaks
 * Ctrl-; ctrl-. 被占用的问题
  ibus-setup 后选 emojj 把相应的快捷键删掉即可
+* 输入法
+sudo apt-get install ibus-rime
+
 * xremap
 https://github.com/k0kubun/xremap
 https://github.com/k0kubun/xremap/blob/master/example/config.yml
