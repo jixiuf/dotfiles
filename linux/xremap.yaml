@@ -3,6 +3,7 @@
 # https://github.com/emberian/evdev/blob/1d020f11b283b0648427a2844b6b980f1a268221/src/scancodes.rs#L26-L572
 # sudo systemctl restart xremap
 # super = cmd on macos and win on windows
+# journalctl -u xremap
 # key 不区分大小写，如 Super=super
 # modmap:                         # 单 key 到单 key 的映射,用处不大
 #   - name: Global
@@ -61,11 +62,15 @@ keymap:
       C-f: right
       C-b: left
 
-  - name: Emacs
+# 非 emacs 程序中按下 right shift  dual-function-keys 将 shift 其转成 ctrl-space
+# 此处将 ctrl-space 转成 spuer-space 触发输入法切换
+# 而 emacs 中直接处理 ctrl-space 的绑定
+  - name: Toggle Input Method for App but not Emacs
     application:
-      only: emacs
+      not: emacs
     remap:
-      Super-Backslash: f15
+      # C-Space:  [Esc , Super-Space]
+      C-Space:  Super-Space
   - name: Default -- some of these are overridden by the above definitions
     application:
       not: [ Gnome-terminal, emacs]

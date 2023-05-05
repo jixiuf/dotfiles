@@ -13,6 +13,7 @@ MAPPINGS:
   # https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
   # KEY_LEFTMETA=cmd on macos
   # space as ctrl+cmd+alt
+  #这里每加一个 key 就要在 udevmon.yaml 里加一个
   - KEY: KEY_SPACE
     TAP: KEY_SPACE
     #https://gitlab.com/interception/linux/plugins/dual-function-keys#combo-keys
@@ -27,11 +28,12 @@ MAPPINGS:
     TAP: KEY_LEFTMETA
     HOLD: KEY_LEFTMETA
 
-  - KEY: KEY_RIGHTMETA # right cmd-> ctrl +\
-    TAP: [KEY_LEFTMETA,KEY_BACKSLASH]
+  - KEY: KEY_RIGHTMETA # right cmd-> ctrl+space
+    TAP: [KEY_LEFTCTRL,KEY_SPACE]
     HOLD: KEY_RIGHTMETA
+
   - KEY: KEY_LEFTSHIFT
-    TAP: [KEY_LEFTMETA,KEY_BACKSLASH]
+    TAP: [KEY_LEFTCTRL,KEY_SPACE]
     HOLD: KEY_LEFTSHIFT
 
   # - KEY: KEY_RIGHTALT
