@@ -1,4 +1,6 @@
 # https://github.com/k0kubun/xremap
+# key 的名字参见
+# https://github.com/emberian/evdev/blob/1d020f11b283b0648427a2844b6b980f1a268221/src/scancodes.rs#L26-L572
 # sudo systemctl restart xremap
 # super = cmd on macos and win on windows
 # key 不区分大小写，如 Super=super
@@ -59,11 +61,11 @@ keymap:
       C-f: right
       C-b: left
 
-  # - name: Terminal
-  #   application:
-  #     only: Gnome-terminal
-  #   remap:
-  #     Super-o: M-o
+  - name: Emacs
+    application:
+      only: emacs
+    remap:
+      Super-Backslash: f15
   - name: Default -- some of these are overridden by the above definitions
     application:
       not: [ Gnome-terminal, emacs]
