@@ -12,11 +12,13 @@ sudo apt install gnome-shell-extensions  chrome-gnome-shell
    https://linux.how2shout.com/how-to-disable-super-or-win-key-in-ubuntu-20-04-or-18-04/
     sudo apt install gnome-tweaks
     gnome-tweaks
+* Ctrl-; ctrl-. 被占用的问题
+ ibus-setup 后选 emojj 把相应的快捷键删掉即可
 * xremap
 https://github.com/k0kubun/xremap
 https://github.com/k0kubun/xremap/blob/master/example/config.yml
 
-* toggle App
+* toggle App(废弃)
 将以下脚本绑定到某快捷键上即可
 #+begin_src sh
 #!/bin/bash
@@ -38,32 +40,12 @@ else
 fi
 
 #+end_src
-
-#+begin_src sh
-#!/bin/bash
-# Check if terminal is running
-if [[ $(xdotool search --onlyvisible --name "终端") ]]; then
-    # Check if the current window is Emacs
-    active_window=$(xdotool getactivewindow)
-    emacs_window=$(xdotool search --onlyvisible --name "终端")
-    if [[ $active_window == $emacs_window ]]; then
-        # Hide Emacs if it is the active window
-        xdotool windowminimize $active_window
-    else
-        # Bring Emacs to front if it is not the active window
-        xdotool windowactivate $emacs_window
-    fi
-else
-    # Launch Emacs if it is not running
-     gnome-terminal&
-fi
-#+end_src
 * spacebar 作为 mac 的 cmd 或者 windows 的 win 来用
 https://github.com/alols/xcape/issues/122
 https://emacsredux.com/blog/2020/07/05/remap-enter-to-control-in-gnu-linux-2020-edition/
 
 #+begin_src sh
-sudo apt install libudev-dev libyaml-cpp-dev libevdev-dev cmake gcc g++ libboost-all-dev libinput-tools
+sudo apt install libudev-dev libyaml-cpp-dev libevdev-dev cmake gcc g++ libboost-dev libinput-tools
 mkdir src && cd src
 git clone https://gitlab.com/interception/linux/tools
 # build and install the interception framework
@@ -75,29 +57,4 @@ cd dual-function-keys; make && sudo make install
 
 #+begin_src sh
 ln -s dual-function-keys.yaml ~/dual-function-keys.yaml
-#+end_src
-
-* 交换 lctrl 与 lwin (不再推荐使用 xorg 有效 wayland 无效,推荐使用 dual-function-keys.yaml)
-# https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
-# setxkbmap 的配置 要在 xmodmap 之后，且不再推荐使用 xmodmap
-# 交换 lctrl lwin
-#
-setxkbmap -option "ctrl:swap_lwin_lctl"
-
-
-* spacebar 作为 mac 的 cmd 或者 windows 的 win 来用(不再推荐使用 xorg 有效 wayland 无效,推荐使用 dual-function-keys.yaml)
-#+begin_src sh
-#  xev 可查看每个按键的 keycode
-# https://github.com/alols/xcape
-# https://www.cnblogs.com/yinheyi/p/10146900.html
-xmodmap -e "keycode 65 = Super_L NoSymbol Super_L"
-# Map space to an unused keycode (to keep it around for xcape to use).
-xmodmap -e "keycode any = space"
-# Finally use xcape to cause the space bar to generate a space when tapped.
-# 按 xcape 的 readme xcape 最好放在所有 xmodmap 之后
-xcape -e "Super_L=space"
-#+end_src
-* ctrl 单独按下作为 escape(不再推荐使用 xorg 有效 wayland 无效 ，推荐使用 dual-function-keys.yaml)
-#+begin_src sh
-xcape -e 'Control_L=Escape'
 #+end_src
