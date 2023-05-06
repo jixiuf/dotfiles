@@ -63,8 +63,8 @@ patch:
   style/horizontal: true # 候選窗横向顯示
   style/inline_preedit: true   # 关闭内嵌编码，为 true 的时候是单行，为 false 的时候就是两行
   # 字体 大字库: 花园明朝 HanaMinA
-  style/font_face: ".PingFang SC,HanaMinA" # 我喜歡的字體名稱
-  style/font_point: 20 # 字號
+  style/font_face: "DejaVu Sans" # 我喜歡的字體名稱
+  style/font_point: 24 # 字號
   # style/corner_radius: 10 # 窗口圓角半徑
   # style/border_height: 11 # 窗口邊界高度，大於圓角半徑才有效果
   # style/border_width: 11 # 窗口邊界寬度，大於圓角半徑才有效果
