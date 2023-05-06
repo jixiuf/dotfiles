@@ -25,7 +25,7 @@ index 256e95f..713e4a7 100644
 +    // gnome-extensions enable gnome-magic-window@adrienverge
 +  {shortcut: '<Super><Alt><Control>d', title: 'gnome-terminal-server', command: '/usr/bin/gnome-terminal'},
 +  {shortcut: '<Super><Alt><Control>f', title: 'Google-chrome', command: '/opt/google/chrome/chrome'},
-+  {shortcut: '<Super><Alt><Control>e', title: 'emacs', command: '/usr/bin/emacs'},
++  {shortcut: '<Super><Alt><Control>e', title: 'emacs', command: '/snap/bin/emacs'},
    // More bindings can be added, for example:
    // {
    //   shortcut: 'F11',

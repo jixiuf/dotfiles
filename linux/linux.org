@@ -1,6 +1,9 @@
 * xorg or wayland
 /etc/gdm3/custom.conf
 WaylandEnable=true
+* emacs
+snap install emacs --classic --channel edge
+
 *  gnome-shell-extensions gnome-tweaks
 很多插件是以 gnome-shell-extensions 或依赖 gnome-shell-extensions 如 https://github.com/k0kubun/xremap
 故先要安装 gnome-shell-extensions
