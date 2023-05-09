@@ -199,3 +199,30 @@ HOOKS=(base udev ... block lvm2 filesystems)
  mkinitcpio -P #-P  为所有内核都重新生成，archlinux 可配置多个核，以便某个失败后仍可进入arch
  mkinitcpio -p linux # 为某一个内核重新生成
 #+end_src
+* grub 字体调整
+#+begin_src sh
+# 选择支持中文的字体，如 WenQuanYi Micro Hei 或者 Source Code Pro
+pacman -S ttf-dejavu
+fc-cache -fv
+grub-mkfont -s 36 -o /boot/grub/fonts/DejaVuSansMono.pf2 /usr/share/fonts/TTF/DejaVuSansMono.ttf
+#+end_src
+** 编辑/etc/defaults/grub
+#+begin_example
+GRUB_FONT=/boot/grub/fonts/DejaVuSansMono.pf2
+#+end_example
+
+#+begin_src sh
+grub-mkconfig -o /boot/grub/grub.cfg
+#+end_src
+
+* tty 终端下的字体
+#+begin_src sh
+ls /usr/share/kbd/consolefonts
+setfont Agafari-12 # 临时更改为Agafari-12
+sudo pacman -S wqy-microhei
+#+end_src
+或者在 /etc/vconsole.conf
+#+begin_src sh
+# FONT=ter-v24b
+FONT=wqy-microhei
+#+end_src
