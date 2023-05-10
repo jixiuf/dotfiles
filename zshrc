@@ -23,7 +23,8 @@ go env -w GOSUMDB="sum.golang.google.cn"
 # go env -w GOPROXY="https://goproxy.cn,direct"
 # go env -w GOPROXY=https://goproxy.io,direct
 # go env -w GOPROXY=
-go env -w GOPROXY="https://mirrors.luojilab.com/goproxy,https://goproxy.cn,direct"
+#go env -w GOPROXY="https://mirrors.luojilab.com/goproxy,https://goproxy.cn,direct"
+go env -w GOPROXY="https://goproxy.cn,direct"
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 # brew pin gcc 禁止 gcc upgrade
 export HOMEBREW_NO_AUTO_UPDATE=1

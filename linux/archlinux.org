@@ -93,6 +93,8 @@ systemctl start iwd
  #+begin_src sh
 systemctl enable  systemd-resolved
 systemctl start  systemd-resolved
+systemctl enable  systemd-networkd
+systemctl start  systemd-networkd
  #+end_src
  官网上说 机器刚启动 有人遇到过 iwd 服务不生效，可以手动重启一下 iwd ,还不行 systemd-resolved 也重启下
 #+begin_src sh
