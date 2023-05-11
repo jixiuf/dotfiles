@@ -8,13 +8,14 @@
 Description=Run xremap 
 # DefaultDependencies=no
 # After=network.target
+After=udevmon.service
 
 [Service]
 # Type=simple
 Restart=always
 User=jixiuf
 Group=users
-ExecStartPre=sleep 2
+ExecStartPre=sleep 5
 ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml --watch
 # TimeoutStartSec=0
 # RemainAfterExit=yes

@@ -73,7 +73,7 @@ keymap:
       C-Space:  Super-Space
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [ Gnome-terminal, emacs]
+      not: [Gnome-terminal, emacs]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       Super-C-a: C-a
@@ -84,16 +84,5 @@ keymap:
       Super-C-r: C-r
 
       # Alt -> Ctrl
-      # Super-a: C-a
-      # Super-z: C-z
-      # Super-x: C-x
-      # Super-c: C-c
-      # Super-v: C-v
-      # Super-w: C-w
-      # Super-t: C-t
-      # Super-l: C-l
-
       # Super-Enter: M-Enter
-
-      # actually these are vim insert mode bindings, but compatible with shell
       # C-w: [C-Shift-left, delete]

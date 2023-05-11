@@ -81,101 +81,101 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    bindsym mod4+control+d exec $term
+    bindsym spacekey+d exec $term
     # Kill focused window
-    bindsym mod4+control+q kill
+    bindsym spacekey+q kill
 
     # Start your launcher
-    bindsym mod4+mod1+d exec $menu
+    bindsym caplocks+d exec $menu
 
-    # Drag floating windows by holding down mod4+mod1 and left mouse button.
-    # Resize them with right mouse button + mod4+mod1.
+    # Drag floating windows by holding down caplocks and left mouse button.
+    # Resize them with right mouse button + caplocks.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier control normal
 
     # Reload the configuration file
-    bindsym mod4+mod1+c reload
+    bindsym caplocks+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym mod4+mod1+control+Shift+l exec swaymsg exit
+    bindsym caplocks+control+Shift+l exec swaymsg exit
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym mod4+mod1+$left focus left
-    bindsym mod4+mod1+$down focus down
-    bindsym mod4+mod1+$up focus up
-    bindsym mod4+mod1+$right focus right
-    # Or use mod4+mod1+[up|down|left|right]
-    bindsym mod4+mod1+Left focus left
-    bindsym mod4+mod1+Down focus down
-    bindsym mod4+mod1+Up focus up
-    bindsym mod4+mod1+Right focus right
+    bindsym caplocks+$left focus left
+    bindsym caplocks+$down focus down
+    bindsym caplocks+$up focus up
+    bindsym caplocks+$right focus right
+    # Or use caplocks+[up|down|left|right]
+    bindsym caplocks+Left focus left
+    bindsym caplocks+Down focus down
+    bindsym caplocks+Up focus up
+    bindsym caplocks+Right focus right
 
     # Move the focused window with the same, but add control
-    bindsym mod4+mod1+control+$left move left
-    bindsym mod4+mod1+control+$down move down
-    bindsym mod4+mod1+control+$up move up
-    bindsym mod4+mod1+control+$right move right
+    bindsym caplocks+control+$left move left
+    bindsym caplocks+control+$down move down
+    bindsym caplocks+control+$up move up
+    bindsym caplocks+control+$right move right
     # Ditto, with arrow keys
-    bindsym mod4+mod1+control+Left move left
-    bindsym mod4+mod1+control+Down move down
-    bindsym mod4+mod1+control+Up move up
-    bindsym mod4+mod1+control+Right move right
+    bindsym caplocks+control+Left move left
+    bindsym caplocks+control+Down move down
+    bindsym caplocks+control+Up move up
+    bindsym caplocks+control+Right move right
 #
 # Workspaces:
 #
     # Switch to workspace
-    bindsym mod4+mod1+1 workspace number 1
-    bindsym mod4+mod1+2 workspace number 2
-    bindsym mod4+mod1+3 workspace number 3
-    bindsym mod4+mod1+4 workspace number 4
-    bindsym mod4+mod1+5 workspace number 5
-    bindsym mod4+mod1+6 workspace number 6
-    bindsym mod4+mod1+7 workspace number 7
-    bindsym mod4+mod1+8 workspace number 8
-    bindsym mod4+mod1+9 workspace number 9
-    bindsym mod4+mod1+0 workspace number 10
+    bindsym caplocks+1 workspace number 1
+    bindsym caplocks+2 workspace number 2
+    bindsym caplocks+3 workspace number 3
+    bindsym caplocks+4 workspace number 4
+    bindsym caplocks+5 workspace number 5
+    bindsym caplocks+6 workspace number 6
+    bindsym caplocks+7 workspace number 7
+    bindsym caplocks+8 workspace number 8
+    bindsym caplocks+9 workspace number 9
+    bindsym caplocks+0 workspace number 10
     # Move focused container to workspace
-    bindsym mod4+mod1+control+1 move container to workspace number 1
-    bindsym mod4+mod1+control+2 move container to workspace number 2
-    bindsym mod4+mod1+control+3 move container to workspace number 3
-    bindsym mod4+mod1+control+4 move container to workspace number 4
-    bindsym mod4+mod1+control+5 move container to workspace number 5
-    bindsym mod4+mod1+control+6 move container to workspace number 6
-    bindsym mod4+mod1+control+7 move container to workspace number 7
-    bindsym mod4+mod1+control+8 move container to workspace number 8
-    bindsym mod4+mod1+control+9 move container to workspace number 9
-    bindsym mod4+mod1+control+0 move container to workspace number 10
+    bindsym caplocks+control+1 move container to workspace number 1
+    bindsym caplocks+control+2 move container to workspace number 2
+    bindsym caplocks+control+3 move container to workspace number 3
+    bindsym caplocks+control+4 move container to workspace number 4
+    bindsym caplocks+control+5 move container to workspace number 5
+    bindsym caplocks+control+6 move container to workspace number 6
+    bindsym caplocks+control+7 move container to workspace number 7
+    bindsym caplocks+control+8 move container to workspace number 8
+    bindsym caplocks+control+9 move container to workspace number 9
+    bindsym caplocks+control+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
-    # mod4+mod1+b or mod4+mod1+v, for horizontal and vertical splits
+    # caplocks+b or caplocks+v, for horizontal and vertical splits
     # respectively.
-    bindsym mod4+mod1+i splith
-    bindsym mod4+mod1+v splitv
+    bindsym caplocks+i splith
+    bindsym caplocks+v splitv
 
     # Switch the current container between different layout styles
-    bindsym mod4+mod1+slash layout stacking
-    bindsym mod4+mod1+t layout tabbed
-    bindsym mod4+mod1+e layout toggle split
+    bindsym caplocks+slash layout stacking
+    bindsym caplocks+t layout tabbed
+    bindsym caplocks+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym mod4+control+m fullscreen
+    bindsym spacekey+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym mod4+mod1+f floating toggle
+    bindsym caplocks+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym mod4+mod1+space focus mode_toggle
+    bindsym caplocks+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym mod4+mod1+u focus parent
+    bindsym caplocks+u focus parent
 #
 # Scratchpad:
 #
@@ -183,11 +183,11 @@ exec swayidle -w \
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym mod4+mod1+Shift+minus move scratchpad
+    bindsym caplocks+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym mod4+mod1+minus scratchpad show
+    bindsym caplocks+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -211,7 +211,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym mod4+mod1+r mode "resize"
+bindsym caplocks+r mode "resize"
 
 #
 # Status Bar:
