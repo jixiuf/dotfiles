@@ -54,9 +54,10 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-# man 5 sway-input
+### Input configuration (man 5 sway-input / swaymsg -t get_inputs)
+# input "1133:45081:MX_Master_2S_Mouse" {
+#         natural_scroll enabled
+# }
    input "type:touchpad" {
        dwt enabled              #disable-while-typing
        tap enabled
@@ -64,7 +65,7 @@ exec swayidle -w \
        middle_emulation enabled
        pointer_accel 0.5  
        scroll_factor 0.5
-       drag_lock enabled
+       # drag_lock enabled
        drag enabled
    }
    # or input <identifier>
@@ -73,14 +74,12 @@ exec swayidle -w \
     #big->fast
     repeat_rate 36
    }
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
+    bindsym mod4+d exec $term
     bindsym mod4+control+d exec $term
     # Kill focused window
     bindsym mod4+control+q kill
@@ -151,6 +150,11 @@ exec swayidle -w \
     bindsym mod4+mod1+control+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    assign [class="Firefox"] → number 1
+    assign [class="firefox"] → number 1
+    assign [app_id="firefox"] → number 1
+    assign [app_id="chromium"] → number 1
+    
 #
 # Layout stuff:
 #
@@ -232,4 +236,5 @@ bar {
 }
 
 include /etc/sway/config.d/*
+include $HOME/.config/sway/sway.d/*.conf
 
