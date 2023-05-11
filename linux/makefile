@@ -23,7 +23,7 @@ deploy:
 # git apply gnome-magic-window.patch
 
 sudo:
-	mkdir /etc/interception
+	mkdir -p /etc/interception
 	$(LINK_CMD) $(PWD)/udevmon.yaml /etc/interception/udevmon.yaml; \
 	$(LINK_CMD) $(PWD)/dual-function-keys.yaml /etc/interception/dual-function-keys.yaml; \
 	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;

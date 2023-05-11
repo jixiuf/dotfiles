@@ -64,7 +64,7 @@ exec swayidle -w \
        middle_emulation enabled
        pointer_accel 0.5  
        scroll_factor 0.5
-       # drag_lock enabled
+       drag_lock enabled
        drag enabled
    }
    # or input <identifier>
