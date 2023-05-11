@@ -47,16 +47,16 @@ keymap:
     application:
       only: Google-chrome
     remap:
-      Super-C-M-p: C-Shift-t
-      Super-C-M-n: C-tab
-      Super-C-M-k: C-Shift-tab
-      Super-C-M-j: C-tab
-      Super-C-M-h: M-left
-      Super-C-M-l: M-right
-      Super-C-M-o: C-l
-      Super-C-M-w: C-w
-      Super-C-M-t: C-t
-      Super-C-M-r: C-r
+      Super-C-p: C-Shift-t
+      Super-C-n: C-tab
+      Super-C-k: C-Shift-tab
+      Super-C-j: C-tab
+      Super-C-h: M-left
+      Super-C-l: M-right
+      Super-C-o: C-l
+      Super-C-w: C-w
+      Super-C-t: C-t
+      Super-C-r: C-r
       C-n: down
       C-p: up
       C-f: right
@@ -76,12 +76,12 @@ keymap:
       not: [ Gnome-terminal, emacs]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
-      Super-C-M-a: C-a
-      Super-C-M-c: C-c
-      Super-C-M-v: C-v
-      Super-C-M-z: C-z
-      Super-C-M-s: C-s
-      Super-C-M-r: C-r
+      Super-C-a: C-a
+      Super-C-c: C-c
+      Super-C-v: C-v
+      Super-C-z: C-z
+      Super-C-s: C-s
+      Super-C-r: C-r
 
       # Alt -> Ctrl
       # Super-a: C-a
