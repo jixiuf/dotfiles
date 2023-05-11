@@ -1216,6 +1216,54 @@
                         ]
                     },
                     {
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to cmd+shift+alt(hyper3).(Post caps_lock if pressed alone)",
+                                "from": {
+                                    "key_code": "caps_lock"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "modifiers": [
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "hold_down_milliseconds": 100,
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": " caps_lock+8 :sleep",
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "software_function": {
+                                            "iokit_power_management_sleep_system": {}
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Toggle App(capslock=Hyper3=cmd+alt) H3-n:Notes H3-d:股，H3-s:SequelPro H3-c:mongo H3-m:mail",
                         "manipulators": [
                             {
@@ -1232,8 +1280,8 @@
                                     "key_code": "d",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1261,8 +1309,8 @@
                                     "key_code": "d",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1293,8 +1341,8 @@
                                     "key_code": "c",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_control"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1322,8 +1370,8 @@
                                     "key_code": "c",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_control"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1354,8 +1402,8 @@
                                     "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1383,8 +1431,8 @@
                                     "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1415,8 +1463,8 @@
                                     "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1444,8 +1492,8 @@
                                     "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1476,8 +1524,8 @@
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1505,8 +1553,8 @@
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1526,54 +1574,6 @@
                         ]
                     },
                     {
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to cmd+shift+alt(hyper3).(Post caps_lock if pressed alone)",
-                                "from": {
-                                    "key_code": "caps_lock"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "hold_down_milliseconds": 100,
-                                        "key_code": "caps_lock"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": " caps_lock+8 :sleep",
-                                "from": {
-                                    "key_code": "8",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "software_function": {
-                                            "iokit_power_management_sleep_system": {}
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "capslock(hyper3)+hjkl ,. mouse scroll to arrow keys",
                         "manipulators": [
                             {
@@ -1581,8 +1581,8 @@
                                     "key_code": "comma",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1603,8 +1603,8 @@
                                     "key_code": "period",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1625,8 +1625,8 @@
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_control"
+                                            "right_command",
+                                            "right_control"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1645,8 +1645,8 @@
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1665,8 +1665,8 @@
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -1685,8 +1685,8 @@
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_option"
+                                            "right_command",
+                                            "right_option"
                                         ],
                                         "optional": [
                                             "caps_lock"
