@@ -6,15 +6,23 @@
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
+# control/shift/lock/mod1/mod4
+# mod1=alt/meta
+# mod4=cmd/win
 set $mod Mod4
+set $mod1 Mod4+Mod1+control                   #space=cmd+alt+control
+set $mod2 mod4+mod1       #caplock=cmd+alt
+set $mod3 mod4+mod1+control   #caplock+ctrl=cmd+alt +con
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
-set $term gnome-terminal
+# wget https://github.com/alacritty/alacritty/blob/master/extra/alacritty.info
+# sudo tic -xe alacritty,alacritty-direct ./alacritty.info
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -64,6 +72,7 @@ exec swayidle -w \
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod1+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -215,3 +224,4 @@ bar {
 }
 
 include /etc/sway/config.d/*
+

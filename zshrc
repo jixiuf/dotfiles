@@ -173,6 +173,12 @@ alias download="pushd ~/Downloads/"
 # alias emacsq="emacs -q -debug-init"
 # alias sftp="sudo /etc/init.d/proftpd restart"
 if [ $(uname -s ) = "Linux" ] ; then
+    alias pa='sudo pacman'
+    alias pi='sudo pacman -S'
+    alias pr='sudo pacman -R'
+    alias pu='sudo pacman -Syyu'
+    alias pacman='sudo pacman'
+
     alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls -a --color=auto  '
     alias ll='ls -lth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
