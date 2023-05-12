@@ -229,6 +229,9 @@ sudo pacman -S wqy-microhei
 FONT=wqy-microhei
 #+end_src
 * fcitx5
+如文档中配置完 env 后需要重启
 https://wiki.archlinuxcn.org/wiki/Fcitx5
-
-fcitx5-diagnose
+#+begin_src sh
+pacman -S fictx5 fictx5-rime fcitx5-diagnose fcitx5-qt fcitx5-gtk fcitx5-configtool
+fcitx5-diagnose #诊断fictx问题
+#+end_src

@@ -4,8 +4,9 @@ PWD := `pwd`
 DIR := `pwd`
 DATE := `date +%Y-%m-%d_%H-%M-%S`
 LINK_CMD := ln -s -f
-SYS_CONFIG_FILES_LINUX := `echo xremap.yaml`
-SYSTEMD_SERVICE := `echo  xremap.service`
+# SYS_CONFIG_FILES_LINUX := `echo xremap.yaml`
+SYS_CONFIG_FILES_LINUX := `echo `
+SYSTEMD_SERVICE := `echo  `
 
 deploy:
 	mkdir -p ~/.config/
@@ -25,9 +26,12 @@ deploy:
 # git apply gnome-magic-window.patch
 
 sudo:
-	mkdir -p /etc/interception
-	$(LINK_CMD) $(PWD)/udevmon.yaml /etc/interception/udevmon.yaml; \
-	$(LINK_CMD) $(PWD)/dual-function-keys.yaml /etc/interception/dual-function-keys.yaml; \
 	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;
+	@-for file in etc/*; do \
+		if [ -h /$$file ]; then \
+		unlink /$$file ;\
+        fi;\
+		$(LINK_CMD) $(PWD)/$$file /$$file ;\
+	done
 
-	for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file file$$/etc/systemd/system/; systemctl restart $$file; done; \
+	for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \

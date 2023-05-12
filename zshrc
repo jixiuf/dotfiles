@@ -177,6 +177,7 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias pi='sudo pacman -S'
     alias pr='sudo pacman -R'
     alias pu='sudo pacman -Syyu'
+    alias pss='sudo pacman -Ss'
     alias pacman='sudo pacman'
 
     alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
