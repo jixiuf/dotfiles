@@ -67,13 +67,22 @@ keymap:
 # 而 emacs 中直接处理 ctrl-space 的绑定
   - name: Toggle Input Method for App but not Emacs
     application:
-      not: emacs
+      not: [emacs,Emacs]
     remap:
       # C-Space:  [Esc , Super-Space]
       C-Space:  Super-Space
+  - name: Emacs
+    application:
+      only: [emacs,Emacs]
+    remap:
+      # C-Space:  [Esc , Super-Space]
+      # fcitx5 配置 Alt-space 切换到英文态，然后再向 emacs 发送 C-g
+      C-g:   [Alt-Space, C-g]
+      Esc:   [Alt-Space, Esc]
+
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, emacs]
+      not: [Gnome-terminal, Emacs,emacs]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       Super-C-a: C-a
@@ -82,8 +91,8 @@ keymap:
       Super-C-z: C-z
       Super-C-s: C-s
       Super-C-r: C-r
-      C-a: Home
-      C-e: End
+      # C-a: Home
+      # C-e: End
 
       # Alt -> Ctrl
       # Super-Enter: M-Enter

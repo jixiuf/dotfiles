@@ -228,3 +228,7 @@ sudo pacman -S wqy-microhei
 # FONT=ter-v24b
 FONT=wqy-microhei
 #+end_src
+* fcitx5
+https://wiki.archlinuxcn.org/wiki/Fcitx5
+
+fcitx5-diagnose

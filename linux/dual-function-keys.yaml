@@ -24,18 +24,18 @@ MAPPINGS:
   - KEY: KEY_CAPSLOCK           #caplocks->cmd+alt
     TAP: KEY_CAPSLOCK
     HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
-  - KEY: KEY_TAB           #tab->cmd+alt
-    TAP: KEY_TAB
-    HOLD_START: BEFORE_CONSUME_OR_RELEASE
-    HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
-  - KEY: KEY_E           #e->cmd+alt
-    TAP: KEY_E
-    HOLD_START: BEFORE_CONSUME_OR_RELEASE
-    HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
-  - KEY: KEY_F           #f->cmd+alt
-    TAP: KEY_F
-    HOLD_START: BEFORE_CONSUME_OR_RELEASE
-    HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
+  # - KEY: KEY_TAB           #tab->cmd+alt
+  #   TAP: KEY_TAB
+  #   HOLD_START: BEFORE_CONSUME_OR_RELEASE
+  #   HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
+  # - KEY: KEY_E           #e->cmd+alt
+  #   TAP: KEY_E
+  #   HOLD_START: BEFORE_CONSUME_OR_RELEASE
+  #   HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
+  # - KEY: KEY_F           #f->cmd+alt
+  #   TAP: KEY_F
+  #   HOLD_START: BEFORE_CONSUME_OR_RELEASE
+  #   HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
 
   - KEY: KEY_COMMA              # ,-> cmd+alt
     TAP: KEY_COMMA
