@@ -16,9 +16,9 @@
 # [user]
 #     email = jixiufeng@luojilab.com
 
-[branch "master"]
-	remote = origin
-	merge = master
+# [branch "master"]
+# 	remote = origin
+# 	# merge = master
 [push]
 	default = current
 
@@ -119,7 +119,7 @@
 	# 644 or 755
 	filemode = false
 	attributesfile = ~/.gitattributes
-	ignorecase = true           #用于解决 git svn rebase 时的错The following untracked working tree files would be overwritten by checkout:
+	ignorecase = true           #用于解决 git svn rebase 时的错 The following untracked working tree files would be overwritten by checkout:
 [log]
 	date=iso
 [i18n]
