@@ -82,6 +82,8 @@ keymap:
       Super-C-z: C-z
       Super-C-s: C-s
       Super-C-r: C-r
+      C-a: Home
+      C-e: End
 
       # Alt -> Ctrl
       # Super-Enter: M-Enter
