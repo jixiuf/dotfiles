@@ -56,9 +56,11 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    # 
-    bindsym mod4+d exec WAYLAND_DISPLAY=alacritty alacritty
-    bindsym mod4+control+d exec WAYLAND_DISPLAY=alacritty alacritty
+    #
+    bindsym mod4+control+e exec $HOME/.config/sway/bin/run-or-raise.sh Emacs emacs 
+    bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise.sh Google-chrome google-chrome-stable 
+    bindsym mod4+control+d exec $HOME/.config/sway/bin/run-or-raise.sh Alacritty $HOME/.config/sway/bin/run-term.sh
+    # bindsym mod4+d exec WAYLAND_DISPLAY=alacritty alacritty
     # Kill focused window
     bindsym mod4+control+q kill
 
