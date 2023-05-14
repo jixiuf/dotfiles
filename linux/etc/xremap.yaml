@@ -43,10 +43,34 @@ keymap:
   #       remap:
   #         '3': C-M-3
   #         '0': C-M-0
+  - name: firefox
+    application:
+      only: firefox
+    remap:
+      # Super-C-p: C-Shift-t
+      Super-C-u: C-Shift-t
+      Super-C-p: C-Shift-t
+      Super-C-k: C-Shift-tab
+      Super-C-j: C-tab
+      Super-C-h: M-left
+      Super-C-l: M-right
+      Super-C-o: C-l
+      Super-C-w: C-w
+      Super-C-t: C-t
+      Super-C-r: C-r
+      C-n: down
+      C-p: up
+      C-f: right
+      C-b: left
+      Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
+      Super-C-b: Super-C-b
+      Super-C-p: Super-C-p
+      Super-C-n: Super-C-n
   - name: Google Search
     application:
       only: Google-chrome
     remap:
+      Super-C-u: C-Shift-t
       Super-C-p: C-Shift-t
       Super-C-n: C-tab
       Super-C-k: C-Shift-tab
@@ -61,6 +85,10 @@ keymap:
       C-p: up
       C-f: right
       C-b: left
+      Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
+      Super-C-b: Super-C-b
+      Super-C-p: Super-C-p
+      Super-C-n: Super-C-n
 
 # 非 emacs 程序中按下 right shift  dual-function-keys 将 shift 其转成 ctrl-space
 # 此处将 ctrl-space 转成 spuer-space 触发输入法切换
@@ -76,10 +104,10 @@ keymap:
       only: [emacs,Emacs]
     remap:
       # C-Space:  [Esc , Super-Space]
-      C-g:   [Esc, C-g]
+      # C-g:   [Esc, C-g]
       # fcitx5 配置 Alt-space 切换到英文态，然后再向 emacs 发送 C-g
       # C-g:   [Alt-Space, C-g]
-      Esc:   [Alt-Space, Esc]
+      # Esc:   [Alt-Space, Esc]
 
   - name: Default -- some of these are overridden by the above definitions
     application:
@@ -92,7 +120,8 @@ keymap:
       Super-C-z: C-z
       Super-C-s: C-s
       Super-C-r: C-r
-      Super-M-r: M-F2
+      Super-C-x: C-x
+      # Super-M-r: M-F2
       # C-a: Home
       # C-e: End
 
