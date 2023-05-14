@@ -76,8 +76,9 @@ keymap:
       only: [emacs,Emacs]
     remap:
       # C-Space:  [Esc , Super-Space]
+      C-g:   [Esc, C-g]
       # fcitx5 配置 Alt-space 切换到英文态，然后再向 emacs 发送 C-g
-      C-g:   [Alt-Space, C-g]
+      # C-g:   [Alt-Space, C-g]
       Esc:   [Alt-Space, Esc]
 
   - name: Default -- some of these are overridden by the above definitions
@@ -91,6 +92,7 @@ keymap:
       Super-C-z: C-z
       Super-C-s: C-s
       Super-C-r: C-r
+      Super-M-r: M-F2
       # C-a: Home
       # C-e: End
 
