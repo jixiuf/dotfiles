@@ -19,6 +19,11 @@ sudo apt install gnome-shell-extensions  chrome-gnome-shell
  ibus-setup 后选 emojj 把相应的快捷键删掉即可
 * 输入法
 sudo apt-get install ibus-rime
+ibus 有漏字的情况，
+sudo apt-get install fcitx5  fcitx5-rime fcitx5-config-qt
+im-config 更换输入法
+配置环境变量 见 /etc/environment
+
 
 * xremap
 https://github.com/k0kubun/xremap

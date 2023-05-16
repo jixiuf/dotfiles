@@ -5,11 +5,17 @@ EnumerateWithTriggerKeys=True
 EnumerateSkipFirst=False
 # 向前切换输入分组
 EnumerateGroupForwardKeys=
+# 向后切换输入法分组
+EnumerateGroupBackwardKeys=
+# 激活输入法
+ActivateKeys=
+# 取消激活输入法
+DeactivateKeys=
+# 切换是否使用嵌入预编辑
+TogglePreedit=
 
 [Hotkey/TriggerKeys]
-0=Super+space
-1=Zenkaku_Hankaku
-2=Hangul
+0=Control+space
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
@@ -19,15 +25,6 @@ EnumerateGroupForwardKeys=
 
 [Hotkey/EnumerateBackwardKeys]
 0=Control+Shift_R
-
-[Hotkey/EnumerateGroupBackwardKeys]
-0=Control+Super+Control_L
-
-[Hotkey/ActivateKeys]
-0=Hangul_Hanja
-
-[Hotkey/DeactivateKeys]
-0=Hangul_Romaja
 
 [Hotkey/PrevPage]
 0=Up
@@ -40,9 +37,6 @@ EnumerateGroupForwardKeys=
 
 [Hotkey/NextCandidate]
 0=Tab
-
-[Hotkey/TogglePreedit]
-0=Control+Alt+P
 
 [Behavior]
 # 默认状态为激活

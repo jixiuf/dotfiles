@@ -97,17 +97,16 @@ keymap:
     application:
       not: [emacs,Emacs]
     remap:
-      # C-Space:  [Esc , Super-Space]
-      C-Space:  Super-Space
+      Super-C-Space: C-Space
   - name: Emacs
     application:
       only: [emacs,Emacs]
     remap:
-      # C-Space:  [Esc , Super-Space]
+      # Super-Space:  [Esc , C-Space]
       # C-g:   [Esc, C-g]
       # fcitx5 配置 Alt-space 切换到英文态，然后再向 emacs 发送 C-g
-      # C-g:   [Alt-Space, C-g]
-      # Esc:   [Alt-Space, Esc]
+      C-g:   [Alt-Space, C-g]
+      Esc:   [Alt-Space, Esc]
 
   - name: Default -- some of these are overridden by the above definitions
     application:

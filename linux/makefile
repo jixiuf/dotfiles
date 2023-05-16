@@ -9,7 +9,7 @@ SYS_CONFIG_FILES_LINUX := `echo `
 SYSTEMD_SERVICE := `echo  xremap.service`
 
 deploy:
-	mkdir -p ~/.config/
+	@-mkdir -p ~/.config/
 	@-for file in config/*; do \
 		if [ -h ~/.$$file ]; then \
 		unlink ~/.$$file ;\
@@ -29,6 +29,9 @@ sudo:
 		unlink /$$file ;\
         fi;\
 		$(LINK_CMD) $(PWD)/$$file /$$file ;\
+	done
+	@-for file in bin/*; do \
+		$(LINK_CMD) $(PWD)/$$file /usr/local/$$file ;\
 	done
 
 	for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \
