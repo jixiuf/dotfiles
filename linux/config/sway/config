@@ -26,7 +26,7 @@ set $right l
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu  bemenu-run -p "run:"|xargs swagmsg exec --
 
 ### Output configuration
 #
@@ -57,12 +57,10 @@ exec swayidle -w \
 #
     # Start a terminal
     #
-    bindsym mod4+control+e exec $HOME/.config/sway/bin/run-or-raise.sh Emacs emacs 
-    bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise.sh Google-chrome google-chrome-stable 
-    bindsym mod4+control+d exec $HOME/.config/sway/bin/run-or-raise.sh Alacritty $HOME/.config/sway/bin/run-term.sh
-    # bindsym mod4+d exec WAYLAND_DISPLAY=alacritty alacritty
-    # Kill focused window
-    bindsym mod4+control+q kill
+    bindsym mod4+control+e exec $HOME/.config/sway/bin/run-or-raise-by-appid.sh emacs emacs 
+    bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise-by-appid.sh google-chrome google-chrome-stable 
+    # bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise.sh Google-chrome google-chrome-stable 
+    bindsym mod4+control+d exec $HOME/.config/sway/bin/run-or-raise.sh foot foot --term=xterm-256color 
 
     # Start your launcher
     bindsym mod4+mod1+d exec $menu
@@ -84,9 +82,10 @@ exec swayidle -w \
 #
     # Move your focus around
     bindsym mod4+mod1+$left focus left
+    bindsym mod4+mod1+$right focus right
     bindsym mod4+mod1+$down focus down
     bindsym mod4+mod1+$up focus up
-    bindsym mod4+mod1+$right focus right
+
     # Or use mod4+mod1+[up|down|left|right]
     bindsym mod4+mod1+Left focus left
     bindsym mod4+mod1+Down focus down
@@ -106,6 +105,8 @@ exec swayidle -w \
 #
 # Workspaces:
 #
+    bindsym mod4+mod1+control+n workspace next
+    bindsym mod4+mod1++control+p workspace prev
     # Switch to workspace
     bindsym mod4+mod1+1 workspace number 1
     bindsym mod4+mod1+2 workspace number 2
@@ -130,10 +131,11 @@ exec swayidle -w \
     bindsym mod4+mod1+control+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    assign [class="Firefox"] → number 1
-    assign [class="firefox"] → number 1
-    assign [app_id="firefox"] → number 1
-    assign [app_id="chromium"] → number 1
+    assign [class="Firefox"] → number 2
+    assign [app_id="firefox"] → number 2
+    assign [app_id="chromium"] → number 2
+    assign [app_id="google-chrome"] → number 2
+    assign [class="Google-chrome"] → number 2
     
 #
 # Layout stuff:
@@ -172,6 +174,12 @@ exec swayidle -w \
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym mod4+mod1+minus scratchpad show
+
+	bindsym XF86MonBrightnessDown exec light -U 2
+	bindsym XF86MonBrightnessUp exec light -A 4
+
+	bindsym XF86AudioRaiseVolume exec amixer -Mq set Speaker 5%+
+	bindsym XF86AudioLowerVolume exec amixer -Mq set Speaker 5%-
 #
 # Resizing containers:
 #

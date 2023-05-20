@@ -16,11 +16,11 @@ deploy:
         fi;\
 		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
 	done
-	@-mkdir -p ~/.local/share/gnome-shell/extensions
-	if [ ! -d ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ]; then \
-		git clone git@github.com:jixiuf/gnome-magic-window.git  ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ;\
-	fi
-	gnome-extensions enable gnome-magic-window@adrienverge
+#	@-mkdir -p ~/.local/share/gnome-shell/extensions
+#	if [ ! -d ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ]; then \
+#		git clone git@github.com:jixiuf/gnome-magic-window.git  ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ;\
+#	fi
+#	gnome-extensions enable gnome-magic-window@adrienverge
 
 sudo:
 	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;

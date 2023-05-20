@@ -1,0 +1,9 @@
+app-editors/emacs  30-vcs 29-vcs ~amd64 testing
+gui-apps/waybar ~amd64  **~amd64
+gui-wm/hyprland ~amd64
+media-libs/libdisplay-info ~amd64
+dev-libs/hyprland-protocols ~amd64
+dev-libs/libliftoff ~amd64
+dev-libs/date ~amd64
+app-i18n/* ~amd64 
+x11-libs/xcb-imdkit ~amd64 

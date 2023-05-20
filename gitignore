@@ -13,3 +13,4 @@ GTAGS
 .ccls-cache/*
 /.go-imports-packages.el
 /.go-imports-packages.el-errors
+/linux/config/fcitx5/conf/cached_layouts

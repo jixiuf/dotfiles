@@ -97,9 +97,9 @@ if !exists(":DiffOrig")
 endif
 "设定搜索是的高亮显示  
 set hlsearch  
-" 不要使用vi的键盘模式，而是vim自己的  
+" 不要使用 vi 的键盘模式，而是 vim 自己的  
 set nocompatible  
-" history文件中需要记录的行数  
+" history 文件中需要记录的行数  
 set history=100  
 " 在处理未保存或只读文件的时候，弹出确认  
 set confirm  
@@ -126,20 +126,20 @@ set matchtime=5
 set noignorecase  
 " 不要高亮被搜索的句子（phrases）  
 "set nohlsearch  
-" 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）  
+" 在搜索时，输入的词句的逐字符高亮（类似 firefox 的搜索）  
 set incsearch  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  
 " 自动格式化  
 set formatoptions=tcrqn  
 " 继承前一行的缩进方式，特别适用于多行注释  
  set autoindent  
- " 为C程序提供自动缩进  
+ " 为 C 程序提供自动缩进  
  set smartindent  
- " 使用C样式的缩进  
+ " 使用 C 样式的缩进  
  set cindent  
- " 制表符为4  
+ " 制表符为 4  
  set tabstop=4  
- " 统一缩进为4  
+ " 统一缩进为 4  
  set softtabstop=4  
  set shiftwidth=4  
  " 不要用空格代替制表符  
@@ -193,8 +193,8 @@ function! My_appendSemicolon() "在句末添加分号后 ，光标仍回原位�
 	endif
 endfunction 
 "============================end of 括号自动关闭========================
-"与omni结合使用的时候 当提示方法名的时个一般是这种情形 System.out.print( 
-"而不是System.out.println() 注意最后的括号，此函数要做的就是当使用提示的时候
+"与 omni 结合使用的时候 当提示方法名的时个一般是这种情形 System.out.print( 
+"而不是 System.out.println() 注意最后的括号，此函数要做的就是当使用提示的时候
 "补上右括号
 function! My_BracketComplete4omni()
 	let line=getline('.')  "|  example: line=  System.ouout
@@ -209,10 +209,10 @@ function! My_BracketComplete4omni()
 	let ok=strpart(afdot,(e-b)/2)       " out    ,all the char after the first 'u' of ouout  
 	"debug
 	"return repeat("\<BS>",len-1).ok."\nline:".line."\ndotPos:".dotPos."\ncursePos:".cursePos."\nlen:".len."\nlastCharIndex:".lastCharIndex."\nbedot:".bedot."\nafdot:".afdot."\nb:".b."\ne:".e."\nok:".ok."\nrep:".rep
-	let rep=repeat("\<Left>",strlen(ok)-1) "向前移动strlen(ok) 个长度的位置，以便删除ouout 最前面出现的重复的ou
+	let rep=repeat("\<Left>",strlen(ok)-1) "向前移动 strlen(ok) 个长度的位置，以便删除 ouout 最前面出现的重复的 ou
 	let lenOfOk=strlen(ok)
 	let lenOfBetweenDotAndOk=len-lenOfOk
-	let rep=rep.repeat("\<BS>", lenOfBetweenDotAndOk-1) "删除ouout 最前面出现的重复的ou
+	let rep=rep.repeat("\<BS>", lenOfBetweenDotAndOk-1) "删除 ouout 最前面出现的重复的 ou
 	let rep=rep.repeat("\<Right>",lenOfOk) "光标向后移动到最初的位置
 	if  lastCharIndex == -1
 		if dotPos== -1
@@ -226,7 +226,7 @@ function! My_BracketComplete4omni()
 endfunction
 
 let g:closetag_html_style=1 
-" 下一行不用改了，因为 在closetag.vim 里设置了
+" 下一行不用改了，因为 在 closetag.vim 里设置了
 "autocmd FileType xml,html,jsp imap  > ><C-_>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -318,7 +318,7 @@ set number
 
 set backup
 set backupcopy=yes
-set backupdir=~/.vimbackup
+set backupdir=~/.cache/ .vimbackup
 
 "set guioptions-=m
 "set guioptions-=T

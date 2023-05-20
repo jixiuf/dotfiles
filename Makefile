@@ -22,8 +22,8 @@ deploy:
 	-$(LINK_CMD)   $(PWD)/ts2date ~/bin/
 	-$(LINK_CMD)   $(PWD)/color256 ~/bin/
 
-	@if [ ! -d ~/.vimbackup ]; then\
-		mkdir ~/.vimbackup;\
+	@if [ ! -d ~/.cache/.vimbackup ]; then\
+		mkdir -p ~/.cache/.vimbackup;\
 	fi
 	-$(LINK_CMD) $(PWD)/git-remote-hg ~/bin
 
@@ -31,7 +31,7 @@ deploy:
 		mkdir -p ~/.config/ibus; \
 		mkdir -p ~/.local/share/fcitx5; \
 		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.config/ibus/rime ;\
-		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.local/share//fcitx5/rime ;\
+		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.local/share/fcitx5/rime ;\
 		cd linux && $(MAKE) ; \
 	fi
 
