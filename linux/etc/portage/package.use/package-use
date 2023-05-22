@@ -1,6 +1,14 @@
+# -*- mode:conf -*-
 */* CPU_FLAGS_X86: aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3
-*/* gnome-keyring
+#*/* gnome-keyring
+app-editors/vim -X
 app-editors/emacs gui gtk json  jit  gzip-el cairo dynamic-loading xft harfbuzz
+x11-libs/pango X
+x11-libs/cairo X
+x11-libs/gtk+ X
+dev-cpp/gtkmm X
+dev-cpp/cairomm X
+x11-libs/libxkbcommon X
 # required by gui-wm/sway-1.8.1::gentoo[wallpapers]
 # required by @selected
 # required by @world (argument)
@@ -18,7 +26,6 @@ app-editors/emacs gui gtk json  jit  gzip-el cairo dynamic-loading xft harfbuzz
 # required by www-client/google-chrome-113.0.5672.126::gentoo
 # required by google-chrome (argument)
 >=app-text/ghostscript-gpl-10.01.1 cups
-gui-apps/waybar wifi  network
 # required by sys-auth/polkit-122-r1::gentoo[systemd]
 >=sys-apps/systemd-253.3-r1 policykit
 # required by gnome-base/gnome-keyring-42.1-r2::gentoo
@@ -26,14 +33,34 @@ gui-apps/waybar wifi  network
 # required by app-crypt/libsecret-0.20.5-r3::gentoo
 >=app-crypt/gcr-3.41.1-r2:0 gtk
 # required by gui-wm/hyprland-0.25.0::gentoo[X]
+gui-wm/hyprland X
 # required by hyprland (argument)
 >=gui-libs/wlroots-0.16.2 x11-backend
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram  -stroke -terra-pinyin  -wubi 
 >=app-i18n/fcitx-qt-5.0.17-r1 qt5
 >=dev-qt/qtgui-5.15.9 egl
-gui-wm/sway wallpapers
+gui-wm/sway wallpapers X
 media-libs/mesa -llvm vulkan
 sys-devel/gcc jit gcc
 sys-fs/lvm2 lvm 
 sys-kernel/gentoo-kernel savedconfig
-            
+media-libs/freetype X
+# required by media-libs/mesa-23.0.3-r1::gentoo
+# required by x11-libs/gtk+-3.24.37::gentoo[wayland]
+# required by x11-themes/adwaita-icon-theme-44.0::gentoo
+>=media-libs/libglvnd-1.6.0 X
+# required by gui-wm/hyprland-0.25.0::gentoo
+# required by hyprland (argument)
+>=gui-libs/wlroots-0.16.2 X
+# required by x11-libs/gtk+-3.24.37::gentoo
+# required by x11-themes/adwaita-icon-theme-44.0::gentoo
+>=x11-libs/cairo-1.17.8 X
+>=media-libs/libpulse-16.1-r2 X
+# required by media-sound/pulseaudio-daemon-16.1-r7::gentoo[alsa,alsa-plugin]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by gui-apps/waybar-0.9.17-r3::gentoo[pulseaudio]
+# required by waybar (argument)
+# >=media-plugins/alsa-plugins-1.2.7.1-r1 pipewire 
+gui-apps/waybar wifi  network pipewire
+>=media-video/pipewire-0.3.65-r1 ffmpeg  extra bluetooth dbus
+media-video/ffmpeg mp3

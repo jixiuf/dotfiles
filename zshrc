@@ -169,16 +169,14 @@ alias download="pushd ~/Downloads/"
 # alias eupdate='sudo emerge -uvDN --keep-going world>>/tmp/emerge.log 2>&1'
 # alias esync="sudo emerge --sync>>/tmp/emerge.log 2>&1&& sudo layman -S ;sudo eix-update>>/tmp/emerge.log 2>&1"
 # alias logout="echo 'awesome.quit()'|awesome-client"
-# alias emacsd="sudo /etc/init.d/emacs.$USER restart"
+# alias emacsd="sudo /etc/init.d/emacs.$USE R restart"
 # alias emacsq="emacs -q -debug-init"
 # alias sftp="sudo /etc/init.d/proftpd restart"
 if [ $(uname -s ) = "Linux" ] ; then
-    alias pa='sudo pacman'
-    alias pi='sudo pacman -S'
-    alias pr='sudo pacman -R'
-    alias pu='sudo pacman -Syyu'
-    alias pss='sudo pacman -Ss'
-    alias pacman='sudo pacman'
+    alias eme='sudo emerge -av'
+    alias emerge='sudo emerge'
+    alias emeu='sudo emerge -avuDN @world'
+    alias esync='sudo emerge --sync'
 
     alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls -a --color=auto  '
@@ -1184,8 +1182,3 @@ alias gov='go vet'
 ##########################################################################################################
 # end of golang
 ##########################################################################################################
-
-
-
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/usr/local/opt/openjdk/bin:$PATH"

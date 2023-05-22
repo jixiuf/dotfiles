@@ -318,7 +318,7 @@ set number
 
 set backup
 set backupcopy=yes
-set backupdir=~/.cache/ .vimbackup
+set backupdir=~/.cache/.vimbackup
 
 "set guioptions-=m
 "set guioptions-=T

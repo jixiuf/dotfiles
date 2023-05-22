@@ -3,12 +3,3 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
-
-# https://wiki.archlinuxcn.org/wiki/Fcitx5
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-SDL_IM_MODULE=fcitx
-GLFW_IM_MODULE=ibus
-firefox use  WAYLAND
-MOZ_ENABLE_WAYLAND=1 
