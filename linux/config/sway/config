@@ -1,8 +1,6 @@
 # Default config for sway
 #
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Copy this to ~/.config/sway/config and edit it to your li sway` for a complete reference.
 
 ### Variables
 #pacman -S xorg-xmodmap
@@ -13,13 +11,6 @@
 
 # Spacekey   = Mod4+control = cmd+control
 # Caplocks   =mod4+mod1     =cmd+alt
-
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-
 # Your preferred terminal emulator
 # wget https://github.com/alacritty/alacritty/blob/master/extra/alacritty.info
 # sudo tic -xe alacritty,alacritty-direct ./alacritty.info
@@ -54,13 +45,12 @@ exec swayidle -w \
 ### Key bindings
 #
 # Basics:
-#
     # Start a terminal
     #
-    bindsym mod4+control+e exec $HOME/.config/sway/bin/run-or-raise-by-appid.sh emacs emacs 
-    bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise-by-appid.sh google-chrome google-chrome-stable 
-    # bindsym mod4+control+f exec $HOME/.config/sway/bin/run-or-raise.sh Google-chrome google-chrome-stable 
-    bindsym mod4+control+d exec $HOME/.config/sway/bin/run-or-raise.sh foot foot --term=xterm-256color 
+    bindsym mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
+    bindsym mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
+    bindsym mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+	bindsym mod4+control+Return fullscreen disable, exec foot
 
     # Start your launcher
     bindsym mod4+mod1+d exec $menu
@@ -76,32 +66,21 @@ exec swayidle -w \
     bindsym mod4+mod1+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym mod4+mod1+control+Shift+l exec swaymsg exit
+    bindsym mod4+mod1+q exec swaymsg exit
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym mod4+mod1+$left focus left
-    bindsym mod4+mod1+$right focus right
-    bindsym mod4+mod1+$down focus down
-    bindsym mod4+mod1+$up focus up
-
-    # Or use mod4+mod1+[up|down|left|right]
-    bindsym mod4+mod1+Left focus left
-    bindsym mod4+mod1+Down focus down
-    bindsym mod4+mod1+Up focus up
-    bindsym mod4+mod1+Right focus right
+    bindsym mod4+mod1+h focus left
+    bindsym mod4+mod1+l focus right
+    bindsym mod4+mod1+j focus down
+    bindsym mod4+mod1+k focus up
 
     # Move the focused window with the same, but add control
-    bindsym mod4+mod1+control+$left move left
-    bindsym mod4+mod1+control+$down move down
-    bindsym mod4+mod1+control+$up move up
-    bindsym mod4+mod1+control+$right move right
-    # Ditto, with arrow keys
-    bindsym mod4+mod1+control+Left move left
-    bindsym mod4+mod1+control+Down move down
-    bindsym mod4+mod1+control+Up move up
-    bindsym mod4+mod1+control+Right move right
+    bindsym mod4+mod1+control+h move left
+    bindsym mod4+mod1+control+j move down
+    bindsym mod4+mod1+control+k move up
+    bindsym mod4+mod1+control+l move right
 #
 # Workspaces:
 #
@@ -158,7 +137,7 @@ exec swayidle -w \
     bindsym mod4+mod1+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym mod4+mod1+space focus mode_toggle
+    # bindsym mod4+mod1+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym mod4+mod1+u focus parent
@@ -188,23 +167,101 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym s resize set 150 100
+    bindsym m resize set 600 400
+
+    bindsym 2 resize set 960 1080, exec sway-move-to top
+    bindsym 3 resize set 640 1080, exec sway-move-to top
+    bindsym 4 resize set 960 540
+    bindsym 6 resize set 960 360
+    bindsym 8 resize set 480 540
+    bindsym 9 resize set 640 360
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym mod4+mod1+r mode "resize"
+# Swap Mode:
+#
+# Swaps focused window with window in direction in order to move it
+# around a layout without altering the layout.
 
+mode "swap" {
+    bindsym h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
+    bindsym j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
+    bindsym k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
+    bindsym l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym mod4+mod1+s mode "swap"
+
+# 暂不理解何种场景有用
+mode "move" {
+    bindsym h exec sway-move-to left
+    bindsym l exec sway-move-to right
+    bindsym j exec sway-move-to bottom
+    bindsym k exec sway-move-to top
+
+    # these reflect the position on the keyboard:
+    # w e r
+    # s d f
+    # x c v
+    bindsym w     exec sway-move-to top-left
+    bindsym e     exec sway-move-to mid-top
+    bindsym r     exec sway-move-to top-right
+    bindsym s     exec sway-move-to mid-left
+    bindsym d     exec sway-move-to centre
+    bindsym f     exec sway-move-to mid-right
+    bindsym x     exec sway-move-to bottom-left
+    bindsym c     exec sway-move-to mid-bottom
+    bindsym v     exec sway-move-to bottom-right 
+
+    bindsym greater exec sway-next-empty-workspace --take-focused
+    bindsym n       exec sway-next-empty-workspace --take-focused
+    bindsym less    exec sway-next-empty-workspace --reverse --take-focused
+    bindsym p       exec sway-next-empty-workspace --reverse --take-focused
+
+    # Return to default mode
+    bindsym q mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym mod4+mod1+m mode "move"
+
+# 多显示器窗格移动
+mode "move-to-output" {
+    bindsym l  focus output left
+    bindsym h focus output right
+    bindsym k    focus output up
+    bindsym j  focus output down
+
+    bindsym mod4+mod1+h  move container to output left;  focus output left
+    bindsym mod4+mod1+l move container to output right; focus output right
+    bindsym mod4+mod1+k    move container to output up;    focus output up
+    bindsym mod4+mod1+j  move container to output down;  focus output down
+
+    bindsym control+mod4+mod1+Left  move workspace to output left;  focus output left
+    bindsym control+mod4+mod1+Right move workspace to output right; focus output right
+    bindsym control+mod4+mod1+Up    move workspace to output up;    focus output up
+    bindsym control+mod4+mod1+Down  move workspace to output down;  focus output down
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym mod4+mod1+o mode "move-to-output"
+
+        
 include /etc/sway/config.d/*
 include $HOME/.config/sway/sway.d/*.conf
-
+#  Local Variables:
+#  mode: conf
+#  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "make")) t)
+#  End:

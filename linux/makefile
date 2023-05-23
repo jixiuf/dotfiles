@@ -9,6 +9,16 @@ SYS_CONFIG_FILES_LINUX := `echo `
 SYSTEMD_SERVICE := `echo  xremap.service`
 
 deploy:
+	@-mkdir -p ~/bin
+	@-for file in bin/*; do \
+		if [ -h /$$file ]; then \
+		unlink /$$file ;\
+        fi;\
+		if	[ -f $$file ]; then \
+			$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
+		fi;\
+	done
+
 	@-mkdir -p ~/.config/
 	@-for file in config/*; do \
 		if [ -h ~/.$$file ]; then \

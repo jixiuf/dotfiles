@@ -12,21 +12,22 @@ echo:
 deploy:
 	@for file in $(NORMAL_FILES_COMMON); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
 
-	# -$(LINK_CMD_HARD) $(PWD)/ssh_config ~/.ssh/config
 	@if [ ! -d ~/bin ]; then\
 		mkdir ~/bin;\
 	fi
 	-$(LINK_CMD) $(PWD)/proxy/httpgo ~/bin/httpgo;
-	-$(LINK_CMD)   $(PWD)/get ~/bin/get
-	-$(LINK_CMD)   $(PWD)/date2ts ~/bin/
-	-$(LINK_CMD)   $(PWD)/ts2date ~/bin/
-	-$(LINK_CMD)   $(PWD)/color256 ~/bin/
+	@-for file in bin/*; do \
+		if [ -h /$$file ]; then \
+		unlink /$$file ;\
+        fi;\
+		if	[ -f $$file ]; then \
+			$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
+        fi;\
+	done
 
 	@if [ ! -d ~/.cache/.vimbackup ]; then\
 		mkdir -p ~/.cache/.vimbackup;\
 	fi
-	-$(LINK_CMD) $(PWD)/git-remote-hg ~/bin
-
 	@if [ `uname -s` = "Linux" ] ; then \
 		mkdir -p ~/.config/ibus; \
 		mkdir -p ~/.local/share/fcitx5; \
