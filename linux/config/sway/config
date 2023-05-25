@@ -64,18 +64,13 @@ exec swayidle -w \
 
     # Reload the configuration file
     bindsym mod4+mod1+c reload
+    bindsym mod4+mod1+control+c reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym mod4+mod1+q exec swaymsg exit
 #
 # Moving around:
 #
-    # Move your focus around
-    bindsym mod4+mod1+h focus left
-    bindsym mod4+mod1+l focus right
-    bindsym mod4+mod1+j focus down
-    bindsym mod4+mod1+k focus up
-
     # Move the focused window with the same, but add control
     bindsym mod4+mod1+control+h move left
     bindsym mod4+mod1+control+j move down
@@ -94,30 +89,7 @@ exec swayidle -w \
     bindgesture pinch:inward+left move left
     bindgesture pinch:inward+right move right
     
-    bindsym mod4+mod1+control+n workspace next
-    bindsym mod4+mod1++control+p workspace prev
-    # Switch to workspace
-    bindsym mod4+mod1+1 workspace number 1
-    bindsym mod4+mod1+2 workspace number 2
-    bindsym mod4+mod1+3 workspace number 3
-    bindsym mod4+mod1+4 workspace number 4
-    bindsym mod4+mod1+5 workspace number 5
-    bindsym mod4+mod1+6 workspace number 6
-    bindsym mod4+mod1+7 workspace number 7
-    bindsym mod4+mod1+8 workspace number 8
-    bindsym mod4+mod1+9 workspace number 9
-    bindsym mod4+mod1+0 workspace number 10
     # Move focused container to workspace
-    bindsym mod4+mod1+control+1 move container to workspace number 1
-    bindsym mod4+mod1+control+2 move container to workspace number 2
-    bindsym mod4+mod1+control+3 move container to workspace number 3
-    bindsym mod4+mod1+control+4 move container to workspace number 4
-    bindsym mod4+mod1+control+5 move container to workspace number 5
-    bindsym mod4+mod1+control+6 move container to workspace number 6
-    bindsym mod4+mod1+control+7 move container to workspace number 7
-    bindsym mod4+mod1+control+8 move container to workspace number 8
-    bindsym mod4+mod1+control+9 move container to workspace number 9
-    bindsym mod4+mod1+control+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
     
@@ -136,16 +108,10 @@ exec swayidle -w \
     bindsym mod4+mod1+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym mod4+control+m fullscreen
+    # bindsym mod4+control+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym mod4+mod1+f floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    # bindsym mod4+mod1+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym mod4+mod1+u focus parent
 #
 # Scratchpad:
 #
@@ -164,104 +130,73 @@ exec swayidle -w \
 
 	bindsym XF86AudioRaiseVolume exec amixer -Mq set Speaker 5%+
 	bindsym XF86AudioLowerVolume exec amixer -Mq set Speaker 5%-
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym h resize shrink width 10px
-    bindsym j resize grow height 10px
-    bindsym k resize shrink height 10px
-    bindsym l resize grow width 10px
 
-    bindsym s resize set 150 100
-    bindsym m resize set 600 400
 
-    bindsym 2 resize set 960 1080, exec sway-move-to top
-    bindsym 3 resize set 640 1080, exec sway-move-to top
-    bindsym 4 resize set 960 540
-    bindsym 6 resize set 960 360
-    bindsym 8 resize set 480 540
-    bindsym 9 resize set 640 360
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym mod4+mod1+r mode "resize"
-# Swap Mode:
-#
-# Swaps focused window with window in direction in order to move it
-# around a layout without altering the layout.
-
-mode "swap" {
-    bindsym h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
-    bindsym j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
-    bindsym k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
-    bindsym l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym mod4+mod1+s mode "swap"
-
-# 暂不理解何种场景有用
-mode "move" {
-    bindsym h exec sway-move-to left
-    bindsym l exec sway-move-to right
-    bindsym j exec sway-move-to bottom
-    bindsym k exec sway-move-to top
+set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
+mode $space_m_map {
+    bindsym mod4+control+m fullscreen,mode "default"
+    bindsym h focus left
+    bindsym l focus right
+    bindsym j focus down
+    bindsym k focus up
+    bindsym u focus parent
+    bindsym i focus child
+    bindsym o focus next
+    bindsym mod4+control+o focus next
+    
+    bindsym equal resize grow width 15px
+    bindsym minus resize shrink width 15px
+    bindsym shift+equal resize grow height 15px
+    bindsym shift+minus resize shrink height 15px
+    bindsym control+equal resize grow height 15px
+    bindsym control+minus resize shrink height 15px
+    
+     # swap with other container
+    bindsym Shift+h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
+    bindsym Shift+j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
+    bindsym Shift+k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
+    bindsym Shift+l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
+    
 
     # these reflect the position on the keyboard:
     # w e r
     # s d f
     # x c v
-    bindsym w     exec sway-move-to top-left
-    bindsym e     exec sway-move-to mid-top
-    bindsym r     exec sway-move-to top-right
-    bindsym s     exec sway-move-to mid-left
-    bindsym d     exec sway-move-to centre
-    bindsym f     exec sway-move-to mid-right
-    bindsym x     exec sway-move-to bottom-left
-    bindsym c     exec sway-move-to mid-bottom
-    bindsym v     exec sway-move-to bottom-right 
+    bindsym w     exec $HOME/bin/sway-move-to top-left,mode "default"
+    bindsym e     exec $HOME/bin/sway-move-to mid-top,mode "default"
+    bindsym r     exec $HOME/bin/sway-move-to top-right,mode "default"
+    bindsym s     exec $HOME/bin/sway-move-to mid-left,mode "default"
+    bindsym d     exec $HOME/bin/sway-move-to centre,mode "default"
+    bindsym f     exec $HOME/bin/sway-move-to mid-right,mode "default"
+    bindsym x     exec $HOME/bin/sway-move-to bottom-left,mode "default"
+    bindsym c     exec $HOME/bin/sway-move-to mid-bottom,mode "default"
+    bindsym v     exec $HOME/bin/sway-move-to bottom-right ,mode "default"
 
-    bindsym greater exec sway-next-empty-workspace --take-focused
-    bindsym n       exec sway-next-empty-workspace --take-focused
-    bindsym less    exec sway-next-empty-workspace --reverse --take-focused
-    bindsym p       exec sway-next-empty-workspace --reverse --take-focused
+    # move window no next empty
+    bindsym n       exec sway-next-empty-workspace --take-focused,mode "default"
+    # bindsym p       exec sway-next-empty-workspace --reverse --take-focused
+    bindsym control+h     move container to workspace prev,workspace prev,mode "default"
+    bindsym control+l     move container to workspace next,workspace next,mode "default"
+    
+    
+    bindsym mod4+control+n       workspace next,mode "default"
+    bindsym mod4+control+p       workspace prev,mode "default"
+    bindsym 1 workspace number 1,mode "default"
+    bindsym 2 workspace number 2,mode "default"
+    bindsym 3 workspace number 3,mode "default"
+    bindsym 4 workspace number 4,mode "default"
+    bindsym 5 workspace number 5,mode "default"
+    bindsym 6 workspace number 6,mode "default"
+    bindsym 7 workspace number 7,mode "default"
+    bindsym 8 workspace number 8,mode "default"
+    bindsym 9 workspace number 9,mode "default"
+    bindsym 0 workspace number 10,mode "default"
 
     # Return to default mode
-    bindsym q mode "default"
-    bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym Space mode "default"
 }
-bindsym mod4+mod1+m mode "move"
-
-# # 多显示器窗格移动
-# mode "move-to-output" {
-#     bindsym l  focus output left
-#     bindsym h focus output right
-#     bindsym k    focus output up
-#     bindsym j  focus output down
-
-#     bindsym mod4+mod1+h  move container to output left;  focus output left
-#     bindsym mod4+mod1+l move container to output right; focus output right
-#     bindsym mod4+mod1+k    move container to output up;    focus output up
-#     bindsym mod4+mod1+j  move container to output down;  focus output down
-
-#     bindsym control+mod4+mod1+Left  move workspace to output left;  focus output left
-#     bindsym control+mod4+mod1+Right move workspace to output right; focus output right
-#     bindsym control+mod4+mod1+Up    move workspace to output up;    focus output up
-#     bindsym control+mod4+mod1+Down  move workspace to output down;  focus output down
-#     # Return to default mode
-#     bindsym Return mode "default"
-#     bindsym Escape mode "default"
-# }
-# bindsym mod4+mod1+o mode "move-to-output"
+bindsym mod4+control+m mode $space_m_map
 
         
 include /etc/sway/config.d/*
