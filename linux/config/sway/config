@@ -131,10 +131,10 @@ mode $space_m_map {
     bindsym v     exec $HOME/bin/sway-move-to bottom-right ,mode "default"
 
     # move window no next empty
-    bindsym n       exec sway-next-empty-workspace --take-focused,mode "default"
+    bindsym mod4+control+j    exec sway-next-empty-workspace --take-focused,mode "default"
     # bindsym p       exec sway-next-empty-workspace --reverse --take-focused
-    bindsym mod4+control+h     move container to workspace prev,workspace prev,mode "default"
-    bindsym mod4+control+l     move container to workspace next,workspace next,mode "default"
+    bindsym mod4+control+h    exec $HOME/bin/sway-move-to-prev-workspace,mode "default"
+    bindsym mod4+control+l    exec $HOME/bin/sway-move-to-next-workspace,mode "default"
     
     
     bindsym mod4+control+n       workspace next,mode "default"

@@ -1,0 +1,13 @@
+# -*- mode:sh -*-
+# move window to next workspace ,if workspace not fount creat a new one
+wsinfo=`swaymsg -t get_workspaces | jq '.[] | select(.focused==true)'`
+ws_index=`echo $wsinfo|jq  '.num'`
+max_ws="5"
+echo $ws_index
+if [ "$ws_index" = "1" ]; then
+    swaymsg move container to workspace $max_ws ,workspace $max_ws
+else
+    ws_index=$(( $ws_index - 1 ))
+   echo "$ws_index"
+    swaymsg move container to workspace $ws_index,workspace $ws_index
+fi
