@@ -120,11 +120,6 @@ exec swayidle -w \
     bindsym mod4+mod1+control+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    assign [class="Firefox"] → number 2
-    assign [app_id="firefox"] → number 2
-    assign [app_id="chromium"] → number 2
-    assign [app_id="google-chrome"] → number 2
-    assign [class="Google-chrome"] → number 2
     
 #
 # Layout stuff:
@@ -246,27 +241,27 @@ mode "move" {
 }
 bindsym mod4+mod1+m mode "move"
 
-# 多显示器窗格移动
-mode "move-to-output" {
-    bindsym l  focus output left
-    bindsym h focus output right
-    bindsym k    focus output up
-    bindsym j  focus output down
+# # 多显示器窗格移动
+# mode "move-to-output" {
+#     bindsym l  focus output left
+#     bindsym h focus output right
+#     bindsym k    focus output up
+#     bindsym j  focus output down
 
-    bindsym mod4+mod1+h  move container to output left;  focus output left
-    bindsym mod4+mod1+l move container to output right; focus output right
-    bindsym mod4+mod1+k    move container to output up;    focus output up
-    bindsym mod4+mod1+j  move container to output down;  focus output down
+#     bindsym mod4+mod1+h  move container to output left;  focus output left
+#     bindsym mod4+mod1+l move container to output right; focus output right
+#     bindsym mod4+mod1+k    move container to output up;    focus output up
+#     bindsym mod4+mod1+j  move container to output down;  focus output down
 
-    bindsym control+mod4+mod1+Left  move workspace to output left;  focus output left
-    bindsym control+mod4+mod1+Right move workspace to output right; focus output right
-    bindsym control+mod4+mod1+Up    move workspace to output up;    focus output up
-    bindsym control+mod4+mod1+Down  move workspace to output down;  focus output down
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym mod4+mod1+o mode "move-to-output"
+#     bindsym control+mod4+mod1+Left  move workspace to output left;  focus output left
+#     bindsym control+mod4+mod1+Right move workspace to output right; focus output right
+#     bindsym control+mod4+mod1+Up    move workspace to output up;    focus output up
+#     bindsym control+mod4+mod1+Down  move workspace to output down;  focus output down
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym mod4+mod1+o mode "move-to-output"
 
         
 include /etc/sway/config.d/*
