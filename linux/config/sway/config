@@ -19,34 +19,16 @@
 # on the original workspace that the command was run on.
 set $menu  bemenu-run -p "run:"|xargs swagmsg exec --
 
-### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
 
-### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-### Key bindings
-#
-# Basics:
-    # Start a terminal
-    #
+         
     bindsym mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
     bindsym mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
     bindsym mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
@@ -54,6 +36,7 @@ exec swayidle -w \
 
     # Start your launcher
     bindsym mod4+mod1+d exec $menu
+    bindsym mod4+control+q kill
 
     # Drag floating windows by holding down mod4+mod1 and left mouse button.
     # Resize them with right mouse button + mod4+mod1.
@@ -72,10 +55,6 @@ exec swayidle -w \
 # Moving around:
 #
     # Move the focused window with the same, but add control
-    bindsym mod4+mod1+control+h move left
-    bindsym mod4+mod1+control+j move down
-    bindsym mod4+mod1+control+k move up
-    bindsym mod4+mod1+control+l move right
 #
 # Workspaces:
 #
@@ -89,41 +68,16 @@ exec swayidle -w \
     bindgesture pinch:inward+left move left
     bindgesture pinch:inward+right move right
     
-    # Move focused container to workspace
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-    
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # mod4+mod1+b or mod4+mod1+v, for horizontal and vertical splits
-    # respectively.
     bindsym mod4+mod1+i splith
     bindsym mod4+mod1+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym mod4+mod1+slash layout stacking
-    bindsym mod4+mod1+t layout tabbed
-    bindsym mod4+mod1+e layout toggle split
+    # bindsym mod4+mod1+t layout tabbed
+    bindsym mod4+mod1+t layout toggle split
 
-    # Make the current focus fullscreen
-    # bindsym mod4+control+m fullscreen
-
-    # Toggle the current focus between tiling and floating mode
     bindsym mod4+mod1+f floating toggle
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
-    bindsym mod4+mod1+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym mod4+mod1+minus scratchpad show
+    bindsym mod4+mod1+h move scratchpad
+    bindsym mod4+mod1+control+h scratchpad show
 
 	bindsym XF86MonBrightnessDown exec light -U 10
 	bindsym XF86MonBrightnessUp exec light -A 10
@@ -135,27 +89,31 @@ exec swayidle -w \
 set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
 mode $space_m_map {
     bindsym mod4+control+m fullscreen,mode "default"
-    bindsym h focus left
-    bindsym l focus right
-    bindsym j focus down
-    bindsym k focus up
-    bindsym u focus parent
-    bindsym i focus child
-    bindsym o focus next
-    bindsym mod4+control+o focus next
+    bindsym h focus left,mode "default"
+    bindsym l focus right,mode "default"
+    bindsym j focus down,mode "default"
+    bindsym k focus up,mode "default"
+    bindsym u focus parent,mode "default"
+    bindsym i focus child,mode "default"
+    bindsym o focus next,mode "default"
+    bindsym mod4+control+o focus next,mode "default"
     
-    bindsym equal resize grow width 15px
-    bindsym minus resize shrink width 15px
-    bindsym shift+equal resize grow height 15px
-    bindsym shift+minus resize shrink height 15px
-    bindsym control+equal resize grow height 15px
-    bindsym control+minus resize shrink height 15px
+    bindsym equal resize grow width 15px,mode "default"
+    bindsym minus resize shrink width 15px,mode "default"
+    bindsym shift+equal resize grow height 15px,mode "default"
+    bindsym shift+minus resize shrink height 15px,mode "default"
+    bindsym control+equal resize grow height 15px,mode "default"
+    bindsym control+minus resize shrink height 15px,mode "default"
     
      # swap with other container
-    bindsym Shift+h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
-    bindsym Shift+j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
-    bindsym Shift+k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
-    bindsym Shift+l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
+    bindsym control+h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
+    bindsym control+j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
+    bindsym control+k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
+    bindsym control+l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
+    bindsym control+s move left,mode "default"
+    bindsym control+d move down,mode "default"
+    bindsym control+e move up,mode "default"
+    bindsym control+f move right,mode "default"
     
 
     # these reflect the position on the keyboard:
@@ -175,8 +133,8 @@ mode $space_m_map {
     # move window no next empty
     bindsym n       exec sway-next-empty-workspace --take-focused,mode "default"
     # bindsym p       exec sway-next-empty-workspace --reverse --take-focused
-    bindsym control+h     move container to workspace prev,workspace prev,mode "default"
-    bindsym control+l     move container to workspace next,workspace next,mode "default"
+    bindsym mod4+control+h     move container to workspace prev,workspace prev,mode "default"
+    bindsym mod4+control+l     move container to workspace next,workspace next,mode "default"
     
     
     bindsym mod4+control+n       workspace next,mode "default"
@@ -194,6 +152,7 @@ mode $space_m_map {
 
     # Return to default mode
     bindsym Escape mode "default"
+    bindsym control+g mode "default"
     bindsym Space mode "default"
 }
 bindsym mod4+control+m mode $space_m_map
