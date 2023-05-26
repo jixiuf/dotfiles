@@ -7851,21 +7851,21 @@
                 },
                 {
                     "from": {
-                        "key_code": "right_command"
-                    },
-                    "to": [
-                        {
-                            "key_code": "right_shift"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "key_code": "left_control"
                     },
                     "to": [
                         {
                             "key_code": "left_command"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "right_command"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift"
                         }
                     ]
                 }
