@@ -14,13 +14,13 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "format": "{value}", // includes {num}
-        "persistent_workspaces": { // puts blanks ws's for all other outputs
-            // "1": [],
-            "2": [],
-            "3": [],
-            "4": []
-        }
+        "format": "{value}" // includes {num}
+        // "persistent_workspaces": { // puts blanks ws's for all other outputs
+        //     // "1": [],
+        //     "2": [],
+        //     "3": [],
+        //     "4": []
+        // }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"

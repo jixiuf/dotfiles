@@ -29,10 +29,10 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
          
-    bindsym mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
-    bindsym mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
-    bindsym mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
-	bindsym mod4+control+Return fullscreen disable, exec foot
+    bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
+    bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
+    bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+	bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
 
     # Start your launcher
     bindsym mod4+mod1+d exec $menu
