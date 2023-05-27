@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-track-prev-focus
+# shellcheck disable=SC2034
+TIME_STAMP="20230101.124033"
+
+# Copyright (C) 2020-2021 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# I like these bindings:
+# bindsym $mod+grave [con_mark=_prev] focus
+# to enable fast switching between 2 apps
+
+# from https://gist.github.com/ckafi
+
+case $1 in
+    -h|--help)
+        echo "Usage: $( basename "$0" )"
+        echo
+        echo "Tracks focus changes in sway, renames workspaces and marks windows with _prev. This enables the following key binding:" |fmt
+        echo "    bindsym \$mod+grave [con_mark=_prev] focus"
+        exit 0
+        ;;
+esac
+
+prev_focus=$(swaymsg -r -t get_seats | jq '.[0].focus')
+
+swaymsg -m -t subscribe '["window"]' 2> /dev/null | \
+    jq --unbuffered -r 'select(.change == "focus").container.id' | \
+    while read -r new_focus; do
+        # echo $new_focus
+        TREE=$( swaymsg -t get_tree )
+        ACTIVE_WINDOW_NAME=$( echo "$TREE" | jq -r '..|try select(.focused == true).window_properties.class' )
+        [[ "$ACTIVE_WINDOW_NAME" == "null" ]] &&
+            ACTIVE_WINDOW_NAME=$( echo "$TREE" | jq -r '..|try select(.focused == true).app_id' )
+        [[ "$ACTIVE_WINDOW_NAME" == "null" ]] && ACTIVE_WINDOW_NAME=""
+
+        NUM=$( swaymsg -t get_workspaces|jq '.[]|select(.focused==true).num' )
+        swaymsg "rename workspace to $NUM:${ACTIVE_WINDOW_NAME::12}" >/dev/null 2>&1
+
+        swaymsg -- "[con_id=${prev_focus}] mark _prev" &>/dev/null
+        prev_focus=$new_focus
+    done
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
