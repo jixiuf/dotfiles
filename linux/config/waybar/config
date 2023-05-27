@@ -1,0 +1,108 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "spacing": 0,
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "passthrough": false,
+    "fixed-center": true,
+    // "modules-left": ["wlr/workspaces", "hyprland/window"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{value}", // includes {num}
+        "persistent_workspaces": { // puts blanks ws's for all other outputs
+            // "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "network": {
+        "interface": "wl*", // (Optional) To force the use of this interface
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "",     // {signalStrength}%
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {essid} {ipaddr}/{cidr}"
+    },
+    "tray": {
+        "spacing": 0
+    },
+    "clock": {
+        // "interval": 1,
+        "tooltip": true,
+        "format": "{:%d%a %H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "on-click-right": "gnome-clocks",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>\n\nR:Clocks"
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        // "format": "  {:%H:%M}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+    "memory": {
+        "format": "  {used:0.2f}G"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 60,
+            "error": 30,
+            "critical": 15
+        },
+        "interval": 5,
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "on-click-right": "gnome-control-center power",
+        "on-click-middle": "toggle-devices",
+        "tooltip-format": "{}\nM: toggle-devices\nR:Power Control"
+    },
+
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "on-click": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": ["", "", ""]
+    } ,
+    "custom/logo": {
+		"format": "",
+		"tooltip": false
+	},
+    "custom/sep": {
+		"format": "|",
+		"tooltip": false
+	},
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "power-menu",
+        "format": " ",
+    },
+}
