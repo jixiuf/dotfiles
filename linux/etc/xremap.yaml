@@ -72,7 +72,7 @@ keymap:
 
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, Emacs,emacs]
+      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dropdown-term]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       Super-C-a: C-a
