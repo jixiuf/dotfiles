@@ -39,29 +39,18 @@ gui-wm/hyprland X
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram  -stroke -terra-pinyin  -wubi 
 >=app-i18n/fcitx-qt-5.0.17-r1 qt5
 >=dev-qt/qtgui-5.15.9 egl
-gui-wm/sway wallpapers X
+gui-wm/sway wallpapers X -swaybar grimshot
 media-libs/mesa -llvm vulkan
 sys-devel/gcc jit gcc
 sys-fs/lvm2 lvm 
 sys-kernel/gentoo-kernel savedconfig
 media-libs/freetype X
-# required by media-libs/mesa-23.0.3-r1::gentoo
-# required by x11-libs/gtk+-3.24.37::gentoo[wayland]
-# required by x11-themes/adwaita-icon-theme-44.0::gentoo
 >=media-libs/libglvnd-1.6.0 X
-# required by gui-wm/hyprland-0.25.0::gentoo
-# required by hyprland (argument)
 >=gui-libs/wlroots-0.16.2 X
-# required by x11-libs/gtk+-3.24.37::gentoo
-# required by x11-themes/adwaita-icon-theme-44.0::gentoo
 >=x11-libs/cairo-1.17.8 X
 >=media-libs/libpulse-16.1-r2 X
-# required by media-sound/pulseaudio-daemon-16.1-r7::gentoo[alsa,alsa-plugin]
-# required by media-libs/libpulse-16.1-r2::gentoo
-# required by gui-apps/waybar-0.9.17-r3::gentoo[pulseaudio]
-# required by waybar (argument)
-# >=media-plugins/alsa-plugins-1.2.7.1-r1 pipewire 
-gui-apps/waybar wifi  network pipewire
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+gui-apps/waybar wifi  network pipewire upower tray experimental
 >=media-video/pipewire-0.3.65-r1 ffmpeg  extra bluetooth dbus  sound-server 
 media-sound/pulseaudio -daemon
 media-video/ffmpeg mp3

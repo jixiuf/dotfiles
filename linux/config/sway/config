@@ -103,12 +103,12 @@ mode $space_m_map {
     bindsym o focus next,mode "default"
     bindsym mod4+control+o focus next,mode "default"
     
-    bindsym equal resize grow width 15px,mode "default"
-    bindsym minus resize shrink width 15px,mode "default"
-    bindsym shift+equal resize grow height 15px,mode "default"
-    bindsym shift+minus resize shrink height 15px,mode "default"
-    bindsym control+equal resize grow height 15px,mode "default"
-    bindsym control+minus resize shrink height 15px,mode "default"
+    bindsym equal resize grow width 15px
+    bindsym minus resize shrink width 15px
+    bindsym shift+equal resize grow height 15px
+    bindsym shift+minus resize shrink height 15px
+    bindsym control+equal resize grow height 15px
+    bindsym control+minus resize shrink height 15px
     
      # swap with other container
     bindsym control+h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"

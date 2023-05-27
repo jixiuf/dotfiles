@@ -146,3 +146,5 @@
 	rebase = true
 [init]
 	defaultBranch = master
+[safe]
+	directory = /var/tmp/portage/gui-wm/sway-9999/work/sway-9999

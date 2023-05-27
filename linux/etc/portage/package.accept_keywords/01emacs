@@ -5,5 +5,8 @@ media-libs/libdisplay-info ~amd64
 dev-libs/hyprland-protocols ~amd64
 dev-libs/libliftoff ~amd64
 dev-libs/date ~amd64
+gui-wm/sway **
+gui-libs/wlroots **
+app-text/scdoc **
 app-i18n/* ~amd64 
 x11-libs/xcb-imdkit ~amd64 
