@@ -66,6 +66,7 @@ keymap:
       only: [emacs,Emacs]
     remap:
       C-Space: Super-C-Space
+      C-g: [Super-Space,f15]
 
   - name: Default -- some of these are overridden by the above definitions
     application:

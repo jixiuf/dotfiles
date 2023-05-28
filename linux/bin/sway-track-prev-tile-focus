@@ -37,7 +37,6 @@ prev_focus=$(swaymsg -r -t get_seats | jq '.[0].focus')
 swaymsg -m -t subscribe '["window"]' 2> /dev/null | \
     jq --unbuffered -r 'select(.change == "focus") | "{\"id\":\(.container.id),\"class\":\"\(.container.window_properties.class)\",\"app_id\":\"\(.container.app_id)\",\"type\":\"\(.container.type)\"}"' | \
     while read -r id_type; do
-        echo "sssssss"
         new_focus=$(echo $id_type|jq -r '.id') # id
         new_focus_type=$(echo $id_type|jq -r '.type') # type: con or floating_con
         # new_focus_class=$(echo $id_type|jq -r '.class')
