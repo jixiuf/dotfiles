@@ -29,68 +29,73 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
          
-    bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
-    bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
-    bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
-    bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
-    bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
-    
-	bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
- 
-    # Start your launcher
-    bindsym mod4+mod1+d exec $menu
-    bindsym mod4+control+q kill
+bindsym mod4+control+8 exec swaylock --ignore-empty-password --show-failed-attempts \
+--color 1e1e1e --inside-color cccccc --ring-color ffffff \
+--inside-clear-color 11a8cd --ring-clear-color 29b8db \
+--inside-ver-color 2472c8 --ring-ver-color 3b8eea \
+--inside-wrong-color cd3131 --ring-wrong-color f14c4c
 
-    # Drag floating windows by holding down mod4+mod1 and left mouse button.
-    # Resize them with right mouse button + mod4+mod1.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier control normal
+bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
+bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
+bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
+bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
 
-    # Reload the configuration file
-    bindsym mod4+mod1+c reload
-    bindsym mod4+mod1+control+c reload
+bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym mod4+mod1+q exec swaymsg exit
+# Start your launcher
+bindsym mod4+mod1+d exec $menu
+bindsym mod4+control+q kill
+
+# Drag floating windows by holding down mod4+mod1 and left mouse button.
+# Resize them with right mouse button + mod4+mod1.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier control normal
+
+# Reload the configuration file
+bindsym mod4+mod1+c reload
+bindsym mod4+mod1+control+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym mod4+mod1+q exec swaymsg exit
 #
 # Moving around:
 #
-    # Move the focused window with the same, but add control
+# Move the focused window with the same, but add control
 #
 # Workspaces:
 #
-    # 左右滑
-    bindgesture swipe:4:right workspace prev
-    bindgesture swipe:4:left workspace next
+# 左右滑
+bindgesture swipe:4:right workspace prev
+bindgesture swipe:4:left workspace next
 
-    # 捏
-    bindgesture pinch:inward+up move up
-    bindgesture pinch:inward+down move down
-    bindgesture pinch:inward+left move left
-    bindgesture pinch:inward+right move right
-    
-    bindsym mod4+mod1+i splith
-    bindsym mod4+mod1+v splitv
+# 捏
+bindgesture pinch:inward+up move up
+bindgesture pinch:inward+down move down
+bindgesture pinch:inward+left move left
+bindgesture pinch:inward+right move right
 
-    # bindsym mod4+mod1+t layout tabbed
-    bindsym mod4+mod1+t layout toggle split
+bindsym mod4+mod1+i splith
+bindsym mod4+mod1+v splitv
 
-    bindsym mod4+mod1+f floating toggle
-    # Move the currently focused window to the scratchpad
-    bindsym mod4+mod1+h move scratchpad
-    bindsym mod4+mod1+control+h scratchpad show
+# bindsym mod4+mod1+t layout tabbed
+bindsym mod4+mod1+t layout toggle split
 
-	bindsym XF86MonBrightnessDown exec light -U 5
-	bindsym XF86MonBrightnessUp exec light -A 5
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-    
-     # wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle #microphone
-    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    
-    
+bindsym mod4+mod1+f floating toggle
+# Move the currently focused window to the scratchpad
+bindsym mod4+mod1+h move scratchpad
+bindsym mod4+mod1+control+h scratchpad show
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+    # wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle #microphone
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
 
 
 
