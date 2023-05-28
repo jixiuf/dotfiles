@@ -32,6 +32,7 @@ keymap:
     application:
       only: [Google-chrome,google-chrome]
     remap:
+      M-backspace: C-Backspace
       Super-C-u: C-Shift-t
       Super-C-p: C-Shift-t
       Super-C-n: C-tab
@@ -47,10 +48,18 @@ keymap:
       C-p: up
       C-f: right
       C-b: left
+      C-a: Home
+      C-e: End
+      M-f: C-right
+      M-b: C-left
+      Super-M-f: Super-C-right
+      Super-M-b: Super-C-left
       Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
       Super-C-b: Super-C-b
       Super-C-p: Super-C-p
       Super-C-n: Super-C-n
+      Super-C-a: Super-C-a
+      Super-C-e: Super-C-e
 
 # 非 emacs 程序中按下 right shift  dual-function-keys 将 shift 其转成 ctrl-space
 # 此处将 ctrl-space 转成 spuer-space 触发输入法切换
