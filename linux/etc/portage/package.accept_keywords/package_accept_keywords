@@ -10,3 +10,4 @@ gui-libs/wlroots **
 app-text/scdoc **
 app-i18n/* ~amd64 
 x11-libs/xcb-imdkit ~amd64 
+x11-misc/ydotool ~amd64

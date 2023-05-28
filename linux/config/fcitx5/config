@@ -46,7 +46,7 @@ ShareInputState=All
 # 在程序中显示预编辑文本
 PreeditEnabledByDefault=True
 # 切换输入法时显示输入法信息
-ShowInputMethodInformation=True
+ShowInputMethodInformation=False
 # 在焦点更改时显示输入法信息
 showInputMethodInformationWhenFocusIn=True
 # 显示紧凑的输入法信息
