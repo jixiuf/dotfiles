@@ -32,8 +32,9 @@ exec swayidle -w \
     bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
     bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
     bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+    bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 	bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
-
+ 
     # Start your launcher
     bindsym mod4+mod1+d exec $menu
     bindsym mod4+control+q kill
