@@ -61,23 +61,11 @@ keymap:
       Super-C-a: Super-C-a
       Super-C-e: Super-C-e
 
-# 非 emacs 程序中按下 right shift  dual-function-keys 将 shift 其转成 ctrl-space
-# 此处将 ctrl-space 转成 spuer-space 触发输入法切换
-# 而 emacs 中直接处理 ctrl-space 的绑定
-  - name: Toggle Input Method for App but not Emacs
-    application:
-      not: [emacs,Emacs]
-    remap:
-      Super-M-Space: C-Space
   - name: Emacs
     application:
       only: [emacs,Emacs]
     remap:
-      # Super-Space:  [Esc , C-Space]
-      # C-g:   [Esc, C-g]
-      # fcitx5 配置 Alt-space 切换到英文态，然后再向 emacs 发送 C-g
-      # C-g:   [Alt-Space, C-g]
-      # Esc:   [Alt-Space, Esc]
+      C-Space: Super-C-Space
 
   - name: Default -- some of these are overridden by the above definitions
     application:
