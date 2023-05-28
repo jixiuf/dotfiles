@@ -19,6 +19,13 @@ deploy:
 		fi;\
 	done
 
+	@-mkdir -p ~/.local/share
+	@-for file in local/share/*; do \
+		if [ -h ~/.$$file ]; then \
+		unlink ~/.$$file ;\
+        fi;\
+		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
+	done
 	@-mkdir -p ~/.config/
 	@-for file in config/*; do \
 		if [ -h ~/.$$file ]; then \

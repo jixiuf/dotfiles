@@ -14,7 +14,7 @@ appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | sel
 if [ ! "$appinfo" ]; then
     # if app not found ,run the cmd
     $cmd &
-    sleep 0.5                   # wait starting
+    sleep 1                   # wait starting
     # after starting , focus the new started window
     appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
