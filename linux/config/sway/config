@@ -35,7 +35,7 @@ bindsym mod4+control+8 exec swaylock --ignore-empty-password --show-failed-attem
 --inside-ver-color 2472c8 --ring-ver-color 3b8eea \
 --inside-wrong-color cd3131 --ring-wrong-color f14c4c
 
-bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacs 
+bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacsclient -c -r -n
 bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
 bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
 bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
@@ -94,10 +94,6 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
     # wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle #microphone
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-
-
-
-
 
 set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
 mode $space_m_map {
@@ -169,7 +165,6 @@ mode $space_m_map {
     bindsym Space mode "default"
 }
 bindsym mod4+control+m mode $space_m_map
-
         
 include /etc/sway/config.d/*
 include $HOME/.config/sway/sway.d/*.conf
