@@ -44,6 +44,7 @@ bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance
 bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
 
 # Start your launcher
+bindsym mod4+mod1+r exec $menu
 bindsym mod4+mod1+d exec $menu
 bindsym mod4+control+q kill
 

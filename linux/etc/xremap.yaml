@@ -56,9 +56,7 @@ keymap:
       Super-M-b: Super-C-left
       Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
       Super-C-b: Super-C-b
-      Super-C-p: Super-C-p
-      Super-C-n: Super-C-n
-      Super-C-a: Super-C-a
+      Super-C-a: C-a
       Super-C-e: Super-C-e
 
   - name: Emacs
