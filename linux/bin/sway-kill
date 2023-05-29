@@ -1,0 +1,13 @@
+appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) |select(.focused)'`
+app_id=`echo $appinfo|jq -r '(.app_id // "")'`
+if [ -z "$app_id" ]; then
+    app_id=`echo $appinfo|jq -r '(.window_properties.class // "")'`
+fi
+if [ "$app_id" = "emacs" ]; then
+           # /usr/include/linux/input-event-codes.h
+    # C-x 5 0 delete frame
+    ydotool key 29:1 45:1 45:0  29:0 6:1 6:0 11:1 11:0
+else
+    swaymsg kill
+
+fi
