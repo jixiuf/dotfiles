@@ -65,6 +65,7 @@ keymap:
     remap:
       C-Space: Super-C-Space
       C-g: [Super-Space,f15]
+      Super-C-g: Super-C-g
 
   - name: Default -- some of these are overridden by the above definitions
     application:
