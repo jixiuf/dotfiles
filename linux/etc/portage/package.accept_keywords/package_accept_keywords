@@ -13,5 +13,5 @@ x11-libs/xcb-imdkit ~amd64
 x11-misc/ydotool ~amd64
 net-im/weixin-uos ~amd64
 app-office/bytedance-feishu ~amd64
-gui-apps/wofi **
+gui-apps/wofi ~amd64
 

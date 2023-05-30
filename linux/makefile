@@ -9,7 +9,10 @@ SYS_CONFIG_FILES_LINUX := `echo `
 SYSTEMD_SERVICE := `echo  xremap.service`
 
 deploy:
-	@-mkdir -p ~/bin
+	@-mkdir -p ~/bin ~/.cargo/ ~/go/
+	@-rm -rf ~/.cargo/bin ~/go/bin
+	ln -fs ~/bin/ ~/.cargo/bin
+	ln -fs ~/bin/ ~/go/bin
 	@-for file in bin/*; do \
 		if [ -h /$$file ]; then \
 		unlink /$$file ;\
