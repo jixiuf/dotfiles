@@ -6,7 +6,7 @@ DATE := `date +%Y-%m-%d_%H-%M-%S`
 LINK_CMD := ln -s -f
 # SYS_CONFIG_FILES_LINUX := `echo xremap.yaml`
 SYS_CONFIG_FILES_LINUX := `echo `
-SYSTEMD_SERVICE := `echo  xremap.service`
+# SYSTEMD_SERVICE := `echo  xremap.service`
 
 deploy:
 	@-mkdir -p ~/bin ~/.cargo/ ~/go/
@@ -54,4 +54,4 @@ sudo:
 		$(LINK_CMD) $(PWD)/$$file /usr/local/$$file ;\
 	done
 
-	for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \
+	# for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \
