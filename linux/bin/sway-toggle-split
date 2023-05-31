@@ -9,7 +9,6 @@ id=$focused_con_id
 while true; do
     parent_con=$(swaymsg -t get_tree | jq -r "recurse(.nodes[], .floating_nodes[])|select (.nodes[].id == ${id})")
     if [ -z "$parent_con"  ]; then
-        echo "break parent not found">>/tmp/a.log
         break
     fi
     children=$(echo $parent_con| jq -r '.nodes')
@@ -18,15 +17,12 @@ while true; do
         exit 2;
     elif [ $cnt -gt 1 ]; then     # nodes.length>1
         typ=$(echo $children| jq -r '.[].type')
-        echo "$cnt $tyy"
-        echo "type:$typ">>/tmp/a.log
         break
     fi
     # 只有一个 node
     typ=$(echo $children| jq -r '.[].type')
     # 如果 node 的类型不是容器，则退出，说明 只有一个窗口，无须 swap
     if [ "$typ" != "con" ]; then
-        echo "type not con: $typ">>/tmp/a.log
         exit 4;
     fi
     id=$(echo $parent_con| jq '.id')
@@ -34,20 +30,11 @@ done
 
 # try swap
 orientation=$(echo $parent_con|jq -r '.orientation')
-echo $orientation
 if [ "$orientation" = "horizontal" ]; then
-    echo $children
     first_child_id=$(echo $children|jq -r '.[0].id')
-    swaymsg "[con_id=$first_child_id] move down"
+    swaymsg "[con_id=$first_child_id] move up"
 elif [ "$orientation" = "vertical" ]; then
-    echo $children
     first_child_id=$(echo $children|jq -r '.[0].id')
-    swaymsg "[con_id=$first_child_id] move left"
+    swaymsg "[con_id=$first_child_id] move right"
 fi
 echo "done"
-echo $parent_con>/tmp/b
-
-#     swaymsg mark --add "sway-toggle-split:focused"
-# mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
-# swaymsg []mark --add "sway-toggle-split:focused"
-# focus
