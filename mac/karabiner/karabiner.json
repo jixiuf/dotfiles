@@ -1961,13 +1961,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome H-p =reopen tab",
+                                "description": "Chrome C-p =reopen tab",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -1991,13 +1990,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome H-n =无痕模式",
+                                "description": "Chrome C-n =无痕模式",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2046,13 +2044,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome hyper-k prev tab",
+                                "description": "Chrome C-k prev tab",
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2076,13 +2073,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome hyper-j next tab",
+                                "description": "Chrome C-j next tab",
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2106,7 +2102,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome ctrl-s search =cmd-f",
+                                "description": "Chrome C-s search =cmd-f",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": {
@@ -2134,12 +2130,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome H-o focus addressbar cmd-l",
+                                "description": "Chrome C-o focus addressbar cmd-l",
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2276,12 +2271,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome H-i develop tools",
+                                "description": "Chrome C-i develop tools",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2320,7 +2314,6 @@
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2353,12 +2346,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-l backward",
+                                "description": "Chrome C-l backward",
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2486,12 +2478,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari hyper-h backward cmd-[",
+                                "description": "Safari C-h backward cmd-[",
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2518,12 +2509,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari hyper-h backward cmd-[",
+                                "description": "Safari C-h backward cmd-[",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2581,12 +2571,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari hyper-i open debug window",
+                                "description": "Safari C-i open debug window",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2614,12 +2603,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari hyper-k prev tab cmd+shift+ [",
+                                "description": "Safari C-k prev tab cmd+shift+ [",
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command",
                                             "control"
                                         ],
                                         "optional": [
@@ -2647,12 +2635,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari hyper-j prev tab cmd+shift+ ]",
+                                "description": "Safari C-j prev tab cmd+shift+ ]",
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command",
                                             "control"
                                         ],
                                         "optional": [
@@ -2680,12 +2667,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-o focus addressbar cmd-l",
+                                "description": "Safari C-o focus addressbar cmd-l",
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -2811,13 +2797,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-p =reopen tab",
+                                "description": "Firefox C-p =reopen tab",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2841,13 +2826,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-n =无痕模式",
+                                "description": "Firefox C-n =无痕模式",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2896,13 +2880,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox hyper-k prev tab",
+                                "description": "Firefox C-k prev tab",
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2926,13 +2909,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox hyper-j next tab",
+                                "description": "Firefox C-j next tab",
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
-                                            "command"
+                                            "control"
                                         ]
                                     }
                                 },
@@ -2984,12 +2966,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-o focus addressbar cmd-l",
+                                "description": "Firefox C-o focus addressbar cmd-l",
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3022,12 +3003,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-i develop tools",
+                                "description": "Firefox C-i develop tools",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3061,12 +3041,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Firefox H-h backward",
+                                "description": "Firefox C-h backward",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3139,7 +3118,6 @@
                                     "key_code": "7",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3167,12 +3145,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Safari H-l backward",
+                                "description": "Safari C-l backward",
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3234,62 +3211,6 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.tencent\\.WeWorkMac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "微信/企业微信 ctrl-j next session",
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.tencent\\.WeWorkMac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "微信/企业微信 ctrl-j next session",
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
                                             "^com\\.tencent\\.xinWeChat$",
                                             "^com\\.tencent\\.WeWorkMac$"
                                         ],
@@ -3319,110 +3240,16 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.tencent\\.WeWorkMac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "企业微信 ctrl-k prev session",
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.tencent\\.WeWorkMac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "企业微信 hyper-p prev session",
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.tencent\\.WeWorkMac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "企业微信 hyper-j next active session",
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "command",
-                                            "option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
                                             "^com\\.tencent\\.xinWeChat$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "微信 hyper-j next active session",
+                                "description": "微信 C-n next active session",
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3666,62 +3493,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "飞书 C-n/next session",
+                                "description": "飞书 C-n next active session",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.electron\\.lark$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "飞书 C-p/prev session",
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.electron\\.lark$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "飞书 hyper-j next active session",
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
@@ -3749,12 +3525,11 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "飞书 hyper-k next active session",
+                                "description": "飞书 C-p next active session",
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
                                             "left_control"
                                         ],
                                         "optional": [
