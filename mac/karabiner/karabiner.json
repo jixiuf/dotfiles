@@ -1961,9 +1961,66 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
+                                "description": "Chrome C-w =close tab",
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "w",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Chrome C-t =reopen tab",
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "t",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "description": "Chrome C-p =reopen tab",
                                 "from": {
-                                    "key_code": "p",
+                                    "key_code": "u",
                                     "modifiers": {
                                         "mandatory": [
                                             "control"
@@ -1990,12 +2047,12 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Chrome C-n =无痕模式",
+                                "description": "Chrome M-t =无痕模式",
                                 "from": {
-                                    "key_code": "n",
+                                    "key_code": "t",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control"
+                                            "option"
                                         ]
                                     }
                                 },
