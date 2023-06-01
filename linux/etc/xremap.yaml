@@ -9,17 +9,12 @@ keymap:
     application:
       only: firefox
     remap:
-      # Super-C-p: C-Shift-t
-      Super-C-u: C-Shift-t
-      Super-C-p: C-Shift-t
-      Super-C-k: C-Shift-tab
-      Super-C-j: C-tab
-      Super-C-h: M-left
-      Super-C-l: M-right
-      Super-C-o: C-l
-      Super-C-w: C-w
-      Super-C-t: C-t
-      Super-C-r: C-r
+      C-u: C-Shift-t
+      C-k: C-Shift-tab
+      C-j: C-tab
+      C-h: M-left
+      C-l: M-right
+      C-o: C-l
       C-n: down
       C-p: up
       C-f: right
@@ -34,16 +29,11 @@ keymap:
     remap:
       M-backspace: C-Backspace
       Super-C-u: C-Shift-t
-      Super-C-p: C-Shift-t
-      Super-C-n: C-tab
-      Super-C-k: C-Shift-tab
-      Super-C-j: C-tab
-      Super-C-h: M-left
-      Super-C-l: M-right
-      Super-C-o: C-l
-      Super-C-w: C-w
-      Super-C-t: C-t
-      Super-C-r: C-r
+      C-j: C-tab
+      C-k: C-Shift-tab
+      C-h: M-left
+      C-l: M-right
+      C-o: C-l
       C-n: down
       C-p: up
       C-f: right

@@ -37,4 +37,5 @@ elif [ "$orientation" = "vertical" ]; then
     first_child_id=$(echo $children|jq -r '.[0].id')
     swaymsg "[con_id=$first_child_id] move right"
 fi
+    swaymsg "[con_id=$focused_con_id] focus"
 echo "done"
