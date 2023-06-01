@@ -67,7 +67,7 @@ keymap:
       Super-C-v: C-v
       Super-C-z: C-z
       Super-C-s: C-s
-      Super-C-r: C-r
+      # Super-C-r: C-r
       Super-C-x: C-x
       # Super-M-r: M-F2
       # C-a: Home

@@ -101,36 +101,30 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym mod4+control+o    exec $HOME/bin/swayr next-window current-workspace,mode "default"
 # like C-x1 in emacs :delete otheer windows
 bindsym mod4+control+1    exec $HOME/bin/sway-kill-other-window
-set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
-mode $space_m_map {
-    bindsym mod4+control+m fullscreen,mode "default"
-    bindsym Left focus left,mode "default"
-    bindsym Right focus right,mode "default"
-    bindsym Down focus down,mode "default"
-    bindsym Up focus up,mode "default"
-    bindsym u focus parent,mode "default"
-    bindsym i focus child,mode "default"
-    bindsym o exec $HOME/bin/swayr next-window current-workspace,mode "default"
-    bindsym mod4+control+o    exec $HOME/bin/swayr next-window current-workspace,mode "default"
+set $ctrl_w_map  "C-w"  
+mode $ctrl_w_map {
+    bindsym control+w kill,mode "default"
+    bindsym Return exec $HOME/bin/sway-toggle-split,mode "default"
+    bindsym control+r reload
+    bindsym 1 exec $HOME/bin/sway-kill-other-window,mode "default"
     
-    bindsym equal resize grow width 15px
-    bindsym minus resize shrink width 15px
-    bindsym shift+equal resize grow height 15px
-    bindsym shift+minus resize shrink height 15px
-    bindsym control+equal resize grow height 15px
-    bindsym control+minus resize shrink height 15px
+    bindsym control+o exec $HOME/bin/swayr next-window current-workspace,mode "default"
+    bindsym control+h focus left,mode "default"
+    bindsym control+l focus right,mode "default"
+    bindsym control+j focus down,mode "default"
+    bindsym control+k focus up,mode "default"
+    bindsym control+u focus parent,mode "default"
+    bindsym control+i focus child,mode "default"
     
-     # swap with other container
+    #  # swap with other container
+    # bindsym control+s move left,mode "default"
+    # bindsym control+d move down,mode "default"
+    # bindsym control+e move up,mode "default"
+    # bindsym control+f move right,mode "default"
     bindsym h mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap" ,mode "default"
     bindsym j mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap" , mode "default"
     bindsym k mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap" ,mode "default"
     bindsym l mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap" ,mode "default"
-    bindsym control+s move left,mode "default"
-    bindsym control+d move down,mode "default"
-    bindsym control+e move up,mode "default"
-    bindsym control+f move right,mode "default"
-    
-
     # these reflect the position on the keyboard:
     # w e r
     # s d f
@@ -145,30 +139,49 @@ mode $space_m_map {
     bindsym c     exec $HOME/bin/sway-move-to mid-bottom,mode "default"
     bindsym v     exec $HOME/bin/sway-move-to bottom-right ,mode "default"
 
-    # move window no next empty
-    bindsym mod4+control+j    exec sway-next-empty-workspace --take-focused,mode "default"
-    # bindsym p       exec sway-next-empty-workspace --reverse --take-focused
-    bindsym mod4+control+h    exec $HOME/bin/sway-move-to-prev-workspace,mode "default"
-    bindsym mod4+control+l    exec $HOME/bin/sway-move-to-next-workspace,mode "default"
     
-    
-    bindsym mod4+control+n       workspace next,mode "default"
-    bindsym mod4+control+p       workspace prev,mode "default"
-    bindsym 1 workspace number 1,mode "default"
-    bindsym 2 workspace number 2,mode "default"
-    bindsym 3 workspace number 3,mode "default"
-    bindsym 4 workspace number 4,mode "default"
-    bindsym 5 workspace number 5,mode "default"
-    bindsym 6 workspace number 6,mode "default"
-    bindsym 7 workspace number 7,mode "default"
-    bindsym 8 workspace number 8,mode "default"
-    bindsym 9 workspace number 9,mode "default"
-    bindsym 0 workspace number 10,mode "default"
+    bindsym equal exec swaymsg resize grow height 15px,mode "default"
+    bindsym minus exec swaymsg resize shrink height 15px,mode "default"
+    bindsym control+equal exec swaymsg resize grow height 15px,mode "default"
+    bindsym control+minus exec swaymsg resize shrink height 15px,mode "default"
+    bindsym control+comma exec swaymsg resize grow width 15px,mode "default"
+    bindsym control+period exec swaymsg resize shrink width 15px,mode "default"
 
+    bindsym control+1 workspace number 1,mode "default"
+    bindsym control+2 workspace number 2,mode "default"
+    bindsym control+3 workspace number 3,mode "default"
+    bindsym control+4 workspace number 4,mode "default"
+    bindsym control+5 workspace number 5,mode "default"
+    bindsym control+6 workspace number 6,mode "default"
+    bindsym control+7 workspace number 7,mode "default"
+    bindsym control+8 workspace number 8,mode "default"
+    bindsym control+9 workspace number 9,mode "default"
+    bindsym control+0 workspace number 10,mode "default"
+    bindsym n       workspace next,mode "default"
+    bindsym p       workspace prev,mode "default"
+    bindsym control+e    exec sway-next-empty-workspace --take-focused,mode "default"
+    # bindsym p       exec sway-next-empty-workspace --reverse --take-focused
+    bindsym control+b    exec $HOME/bin/sway-move-to-prev-workspace,mode "default"
+    bindsym control+f    exec $HOME/bin/sway-move-to-next-workspace,mode "default"
+    
+    # ydotool: /usr/include/linux/input-event-codes.h
+    # send C-w
+    # bindsym control+w exec ydotool key 29:1 17:1 17:0 29:0,mode "default" 
+    bindsym Escape mode "default"
+    bindsym control+g mode "default"
+    #C-g for emacs ,emacs map C-g:[Super-Space,C-g]
+    bindsym Mod4+Space mode "default"
+}
+bindsym  control+w mode $ctrl_w_map
+
+set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
+mode $space_m_map {
+    bindsym mod4+control+m fullscreen,mode "default"
     # Return to default mode
     bindsym Escape mode "default"
     bindsym control+g mode "default"
-    bindsym Space mode "default"
+    #C-g for emacs ,emacs map C-g:[Super-Space,C-g]
+    bindsym Mod4+Space mode "default"
 }
 bindsym mod4+control+m mode $space_m_map
         
