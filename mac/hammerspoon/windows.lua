@@ -19,7 +19,7 @@ require('hyper')
 
 windowLayoutMode = hs.hotkey.modal.new(hyper, 'm')
 local message = require('status-message')
-windowLayoutMode.statusMessage = message.new('(主键H-m Return退出)(H-hjkl 上下左右) (hjkl) (H-89io 4角) (调大小-+)')
+windowLayoutMode.statusMessage = message.new('(主键 H-m esc 退出)(H-hjkl 上下左右) (hjkl) (H-89io 4 角) (调大小-+)')
 windowLayoutMode.entered = function()
   windowLayoutMode.statusMessage:show()
 end
@@ -34,7 +34,10 @@ function windowLayoutMode.bindWithAutomaticExit(mode,mod, key, fn)
     fn()
   end)
 end
-windowLayoutMode:bind({},'return', function()
+windowLayoutMode:bind({},'escape', function()
+      windowLayoutMode:exit()
+end)
+windowLayoutMode:bind({"ctrl"},'g', function()
       windowLayoutMode:exit()
 end)
 windowLayoutMode:bind({},'=', function() winIncrease() end)
@@ -114,7 +117,7 @@ end)
 --    hs.window.focusedWindow():left()
 -- end)
 -- open -g hammerspoon://moveWinLeft
--- karabiner 绑定Fn+Left 键，因 hammerspoon 不支持Fn的绑定
+-- karabiner 绑定 Fn+Left 键，因 hammerspoon 不支持 Fn 的绑定
 -- hs.urlevent.bind("moveWinLeft", function(eventName, params) hs.window.focusedWindow():left() end)
 -- hs.urlevent.bind("moveWinRight", function(eventName, params) hs.window.focusedWindow():right() end)
 -- hs.urlevent.bind("moveWinUp", function(eventName, params) hs.window.focusedWindow():up() end)
