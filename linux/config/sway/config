@@ -11,10 +11,6 @@
 
 # Spacekey   = Mod4+control = cmd+control
 # Caplocks   =mod4+mod1     =cmd+alt
-# Your preferred terminal emulator
-# wget https://github.com/alacritty/alacritty/blob/master/extra/alacritty.info
-# sudo tic -xe alacritty,alacritty-direct ./alacritty.info
-# Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu   bemenu-run -i   --fn 'Sarasa Term SC Nerd 24' --hp 5 -W 0.5  -p run: --fb "#1e1e2e" --ff "#00ffff" --nb "#1e1e2e" --nf "#f5e0dc" --tb "#1e1e2e" --hb "#1e1e2e" --hf "#00ffff" --tf "#f5e0dc" --af "#f5e0dc" --ab "#1e1e2e"  -l 10 -n |xargs swagmsg exec --
@@ -35,19 +31,16 @@ bindsym mod4+control+8 exec swaylock --ignore-empty-password --show-failed-attem
 --inside-ver-color 2472c8 --ring-ver-color 3b8eea \
 --inside-wrong-color cd3131 --ring-wrong-color f14c4c
 
-bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs emacsclient -c -r -n
+bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs  $HOME/bin/runemacs
 bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
-bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdomwn-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
 bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
 
 bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
 
 # Start your launcher
-bindsym mod4+mod1+r exec $menu
-bindsym mod4+mod1+d exec $menu
-bindsym mod4+control+q kill
-bindsym mod4+control+period kill
+bindsym mod4+control+r exec $menu
 
 # Drag floating windows by holding down mod4+mod1 and left mouse button.
 # Resize them with right mouse button + mod4+mod1.
@@ -56,9 +49,6 @@ bindsym mod4+control+period kill
 # mouse button for dragging.
 floating_modifier control normal
 
-# Reload the configuration file
-bindsym mod4+mod1+c reload
-bindsym mod4+mod1+control+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym mod4+mod1+q exec swaymsg exit
@@ -98,7 +88,8 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     # wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle #microphone
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-bindsym mod4+control+o    exec $HOME/bin/swayr next-window current-workspace,mode "default"
+# bindsym mod4+control+o    exec $HOME/bin/swayr next-window current-workspace
+bindsym mod4+control+o    exec $HOME/bin/sway-focus-next
 # like C-x1 in emacs :delete otheer windows
 bindsym mod4+control+1    exec $HOME/bin/sway-kill-other-window
 set $ctrl_w_map  "C-w"  
@@ -106,6 +97,7 @@ mode $ctrl_w_map {
     bindsym control+w kill,mode "default"
     bindsym Return exec $HOME/bin/sway-toggle-split,mode "default"
     bindsym control+r reload
+    # like C-x 1 in emacs 
     bindsym 1 exec $HOME/bin/sway-kill-other-window,mode "default"
     
     bindsym control+o exec $HOME/bin/swayr next-window current-workspace,mode "default"
@@ -140,12 +132,12 @@ mode $ctrl_w_map {
     bindsym v     exec $HOME/bin/sway-move-to bottom-right ,mode "default"
 
     
-    bindsym equal exec swaymsg resize grow height 15px,mode "default"
-    bindsym minus exec swaymsg resize shrink height 15px,mode "default"
-    bindsym control+equal exec swaymsg resize grow height 15px,mode "default"
-    bindsym control+minus exec swaymsg resize shrink height 15px,mode "default"
-    bindsym control+comma exec swaymsg resize grow width 15px,mode "default"
-    bindsym control+period exec swaymsg resize shrink width 15px,mode "default"
+    bindsym equal exec swaymsg resize grow height 15px
+    bindsym minus exec swaymsg resize shrink height 15px
+    bindsym control+equal exec swaymsg resize grow height 15px
+    bindsym control+minus exec swaymsg resize shrink height 15px
+    bindsym control+comma exec swaymsg resize shrink width 15px
+    bindsym control+period exec swaymsg resize  grow width 15px
 
     bindsym control+1 workspace number 1,mode "default"
     bindsym control+2 workspace number 2,mode "default"

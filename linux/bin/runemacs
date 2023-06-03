@@ -1,0 +1,3 @@
+#!/bin/sh
+[[ "`ps -ef|grep emacs|grep  daemon`"  ]]||emacs --daemon
+emacsclient -c -r -n
