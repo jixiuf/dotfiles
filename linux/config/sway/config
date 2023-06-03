@@ -33,7 +33,7 @@ bindsym mod4+control+8 exec swaylock --ignore-empty-password --show-failed-attem
 
 bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs  $HOME/bin/runemacs
 bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
-bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdomwn-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
+bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
 bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
 
@@ -94,11 +94,31 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym mod4+control+o    exec $HOME/bin/sway-focus-next
 # like C-x1 in emacs :delete otheer windows
 bindsym mod4+control+1    exec $HOME/bin/sway-kill-other-window
+
+mode passthrough {
+# 不绑定任何 key ,当进入此 mode 时，sway 不拦截任何 key
+# 此时可以通过 ydotool 向 app 发送任何 key
+  	bindsym Escape mode default
+}
+
+set $ctrl_x_map  "C-x"  
+mode $ctrl_x_map {
+    bindsym control+c exec swaymsg kill,exec swaymsg mode default      #C-x C-c: kill app
+    # ydotool: /usr/include/linux/input-event-codes.h
+    # C-xC-x: send C-x
+    bindsym control+x  exec sh -c "swaymsg mode passthrough;sleep 0.2;ydotool key 29:1 45:1 45:0 29:0;swaymsg mode default"
+  	bindsym Escape mode default
+}
+# see https://github.com/jixiuf/dotfiles/blob/main/linux/etc/xremap.yaml#L64
+# xremap : C-x would send:mod4+mod1+control+x  for any app except emacs
+bindsym  mod4+mod1+control+x mode $ctrl_x_map
+
 set $ctrl_w_map  "C-w"  
 mode $ctrl_w_map {
-    bindsym control+w kill,mode "default"
-    # bindsym control+w exec ydotool key 29:1 17:1 17:0 29:0,mode "default" 
-    # bindsym control+w send_key "ctrl+w", mode "default"
+
+    # C-wC-w send: "C-w"
+    # ydotool: /usr/include/linux/input-event-codes.h
+    bindsym control+w  exec sh -c "swaymsg mode passthrough;sleep 0.2;ydotool key 29:1 17:1 17:0 29:0;swaymsg mode default"
     bindsym Return exec $HOME/bin/sway-toggle-split,mode "default"
     bindsym control+r reload
     # like C-x 1 in emacs 
@@ -165,9 +185,6 @@ mode $ctrl_w_map {
     bindsym control+b    exec $HOME/bin/sway-move-to-prev-workspace,mode "default"
     bindsym control+f    exec $HOME/bin/sway-move-to-next-workspace,mode "default"
     
-    # ydotool: /usr/include/linux/input-event-codes.h
-    # send C-w
-    # bindsym control+w exec ydotool key 29:1 17:1 17:0 29:0,mode "default" 
     bindsym Escape mode "default"
     bindsym control+g mode "default"
     #C-g for emacs ,emacs map C-g:[Super-Space,C-g]

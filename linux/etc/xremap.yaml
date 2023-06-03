@@ -55,7 +55,17 @@ keymap:
     remap:
       C-Space: Super-C-Space
       C-g: [Super-Space,f15]
+      # C-x: C-x
       Super-C-g: Super-C-g
+
+  - name: Not Emacs
+    application:
+      not: [emacs,Emacs]
+    remap:
+      C-x: Super-C-M-x
+      Super-C-x: [Super-C-M-x,C-x]
+      C-M-x: C-M-x
+      Super-M-x: Super-M-x
 
   - name: Default -- some of these are overridden by the above definitions
     application:
@@ -68,7 +78,6 @@ keymap:
       Super-C-z: C-z
       Super-C-s: C-s
       # Super-C-r: C-r
-      Super-C-x: C-x
       # Super-M-r: M-F2
       # C-a: Home
       # C-e: End
