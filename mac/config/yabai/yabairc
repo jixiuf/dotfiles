@@ -2,10 +2,13 @@
 
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
-# yabai --stop-service;yabai --start-service  
+# yabai --stop-service;yabai --start-service
 
+# https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#rule
 yabai -m rule --add app="^系统" manage=off
 yabai -m rule --add app="^Karabiner*" manage=off
+yabai -m rule --add app="Emacs" space=2
+yabai -m rule --add app="Chrome" space=3
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 

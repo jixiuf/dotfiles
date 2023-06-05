@@ -28,3 +28,4 @@
 /linux/config/systemd/user/pipewire.service.wants/
 /linux/config/systemd/user/sockets.target.wants/
 /linux/config/systemd/user/default.target.wants/ydotool.service
+/mac/config/karabiner/automatic_backups/
