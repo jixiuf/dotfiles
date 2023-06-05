@@ -3310,6 +3310,11 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    } ,
+                                    {
                                         "bundle_identifiers": [
                                             "^com\\.apple\\.finder$"
                                         ],
@@ -4118,6 +4123,11 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    } ,
+                                    {
                                         "bundle_identifiers": [
                                             "^com\\.Eltima\\.ElmediaPlayer$"
                                         ],
@@ -4212,6 +4222,11 @@
                             },
                             {
                                 "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    } ,
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.niltsh\\.MPlayerX$"
@@ -4656,6 +4671,11 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
@@ -4719,6 +4739,12 @@
                             },
                             {
                                 "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
@@ -4803,6 +4829,12 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+
+                                    {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
@@ -4867,6 +4899,12 @@
                             },
                             {
                                 "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
@@ -4933,6 +4971,11 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
@@ -4997,6 +5040,11 @@
                             },
                             {
                                 "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
@@ -5063,6 +5111,11 @@
                             {
                                 "conditions": [
                                     {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
@@ -5127,6 +5180,11 @@
                             },
                             {
                                 "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
                                     {
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",

@@ -1,10 +1,13 @@
+# https://github.com/koekeishiya/yabai/wiki/Commands#space-commands
+
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
 # yabai --stop-service;yabai --start-service  
 
+yabai -m rule --add app="^系统" manage=off
+yabai -m rule --add app="^Karabiner*" manage=off
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
-
 
 yabai -m config                                 \
     mouse_follows_focus          on            \
@@ -14,14 +17,14 @@ yabai -m config                                 \
     window_zoom_persist          on             \
     window_topmost               off            \
     window_shadow                on             \
-    window_animation_duration    0.1            \
+    window_animation_duration    0            \
     window_animation_frame_rate  120            \
     window_opacity_duration      0.0            \
     active_window_opacity        0.9            \
     normal_window_opacity        0.90           \
     window_opacity               on            \
     insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xffcc5759     \
+    active_window_border_color   0xffa6f759     \
     normal_window_border_color   0xff555555     \
     window_border_width          0              \
     window_border_radius         12             \
