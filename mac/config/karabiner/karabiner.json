@@ -1830,8 +1830,41 @@
                         ]
                     },
                     {
-                        "description": "Chrome H-p reopen tab H-n=private ctrl-s=cmd-f,hyper-j/k =next/prev tab H-h/l=f/b",
+                        "description": "Chrome C-u reopen tab ctrl-s=cmd-f,C-,. =next/prev tab C-h/l=f/b",
                         "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Chrome C-r =reload",
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "r",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "conditions": [
                                     {
