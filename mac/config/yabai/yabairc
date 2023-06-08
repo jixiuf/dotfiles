@@ -5,7 +5,10 @@
 # yabai --stop-service;yabai --start-service
 
 # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#rule
+# 查 window 信息 yabai -m query --windows
 yabai -m rule --add app="^系统" manage=off
+yabai -m rule --add app="Lark Helper" manage=off
+
 yabai -m rule --add app="^Karabiner*" manage=off
 yabai -m rule --add app="Emacs" space=2
 yabai -m rule --add app="Chrome" space=3

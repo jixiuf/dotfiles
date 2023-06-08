@@ -4759,6 +4759,27 @@
                         "manipulators": [
                             {
                                 "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option",
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --toggle float"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
+                                "from": {
                                     "key_code": "backslash",
                                     "modifiers": {
                                         "mandatory": [
