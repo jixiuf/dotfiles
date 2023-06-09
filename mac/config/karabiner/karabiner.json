@@ -26,6 +26,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^org\\.gnu\\.Aquamacs$"
                                         ],
@@ -63,6 +64,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^org\\.gnu\\.Aquamacs$"
                                         ],
@@ -116,6 +118,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^org\\.gnu\\.Aquamacs$"
                                         ],
@@ -311,6 +314,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^org\\.gnu\\.Aquamacs$"
                                         ],
@@ -362,6 +366,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^org\\.gnu\\.Aquamacs$"
                                         ],
@@ -549,6 +554,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.electron\\.lark$"
                                         ],
@@ -988,6 +994,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1020,6 +1027,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -1040,7 +1048,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/iTerm.app"
+                                        "shell_command": "open  -a /Applications/Alacritty.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -3027,6 +3035,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -3071,6 +3080,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -3116,6 +3126,7 @@
                                             "^com\\.apple\\.finder$",
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -3162,6 +3173,7 @@
                                             "^com\\.apple\\.finder$",
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4096,6 +4108,7 @@
                                     },
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -4133,6 +4146,7 @@
                                     },
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -4170,6 +4184,7 @@
                                     },
                                     {
                                         "bundle_identifiers": [
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -4291,6 +4306,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4330,6 +4346,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4369,6 +4386,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4434,6 +4452,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4474,6 +4493,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4514,6 +4534,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4554,6 +4575,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4594,6 +4616,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -4634,6 +4657,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$"
                                         ],
                                         "file_paths": [
@@ -5458,6 +5482,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5504,6 +5529,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5543,6 +5569,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5582,6 +5609,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5618,6 +5646,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5654,6 +5683,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5711,6 +5741,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5748,6 +5779,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5785,6 +5817,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5822,6 +5855,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5859,6 +5893,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5900,6 +5935,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5939,6 +5975,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -5975,6 +6012,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -6014,6 +6052,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
@@ -6053,6 +6092,7 @@
                                         "bundle_identifiers": [
                                             "^org\\.gnu\\.Emacs$",
                                             "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.microsoft\\.VSCode$"
                                         ],
