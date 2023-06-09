@@ -686,6 +686,28 @@
                         "description": "Toggle App H-d:iterm2 H-f:Chrome H-e:Emacs H-5:apifox H-b:微信 H-3:飞书",
                         "manipulators": [
                             {
+                                "description": "hyper-return    Emacs vterm ",
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_option"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/usr/local/bin/emacsclient -r -n --eval \"(vterm t)\""
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
                                 "description": "hyper-e  toggle Emacs",
                                 "from": {
                                     "key_code": "e",
