@@ -701,7 +701,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/jixiuf/bin/toggle-emacs"
+                                        "shell_command": "/Users/jixiuf/bin/yabai-toggle-emacs"
                                     }
                                 ],
                                 "type": "basic"
@@ -763,6 +763,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -824,6 +827,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -885,6 +891,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -917,6 +926,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -979,7 +991,11 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
+
                                 ],
                                 "type": "basic"
                             },
@@ -1123,6 +1139,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -1184,6 +1203,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -1245,6 +1267,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -1306,6 +1331,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"
@@ -1367,6 +1395,9 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    },
+                                    {
+                                        "shell_command": "/usr/local/bin/yabai -m window --focus $(cat /tmp/yabai_prev_focus)"
                                     }
                                 ],
                                 "type": "basic"

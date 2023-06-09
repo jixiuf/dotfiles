@@ -10,12 +10,15 @@
 # 查 window 信息 yabai -m query --windows
 yabai -m rule --add app="^系统" manage=off
 yabai -m rule --add app="Lark Helper" manage=off
-
 yabai -m rule --add app="^Karabiner*" manage=off
 yabai -m rule --add app="Emacs" space=2
 yabai -m rule --add app="Chrome" space=3
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
+# 记录 最后获得焦点的 window id 到 yabai_last_focus yabai_prev_focus 两文件中
+touch /tmp/yabai_prev_focus /tmp/yabai_last_focus
+yabai -m signal --add event=window_focused action='cp -f /tmp/yabai_last_focus /tmp/yabai_prev_focus;echo  $YABAI_WINDOW_ID>/tmp/yabai_last_focus'
+
 
 yabai -m config                                 \
     mouse_follows_focus          on            \
