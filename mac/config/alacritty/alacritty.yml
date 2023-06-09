@@ -1,5 +1,11 @@
 # modus-vivendi (Dark theme)
-# key_mappings:
+key_bindings:
+  - { key: Y, mods: Control, action: Paste }
+  # - { key: G,  mods: Control, mode: ~Search,    action: ToggleViMode            }
+  # - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
+
+  # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
+  # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
 
 font:
   normal:

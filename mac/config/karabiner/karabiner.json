@@ -686,14 +686,6 @@
                         "description": "Toggle App H-d:iterm2 H-f:Chrome H-e:Emacs H-5:apifox H-b:微信 H-3:飞书",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "org.gnu.Emacs"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "description": "hyper-e  toggle Emacs",
                                 "from": {
                                     "key_code": "e",
@@ -709,39 +701,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open  /usr/local/opt/emacs-plus@30/Emacs.app"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "org.gnu.Emacs"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "hyper-e  toggle Emacs",
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "h",
-                                        "modifiers": [
-                                            "command"
-                                        ]
+                                        "shell_command": "/Users/jixiuf/bin/toggle-emacs"
                                     }
                                 ],
                                 "type": "basic"
@@ -4801,7 +4761,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "from": {
                                     "key_code": "backslash",

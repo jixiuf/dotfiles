@@ -3,6 +3,8 @@
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
 # yabai --stop-service;yabai --start-service
+# 聚焦特定的窗口
+# yabai -m window --focus $(yabai -m query --windows  | jq -r '.[] | select(.app == "Emacs") | .id')
 
 # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#rule
 # 查 window 信息 yabai -m query --windows

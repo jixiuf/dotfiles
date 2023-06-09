@@ -14,6 +14,7 @@ deploy:
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/midnight.plist ~/Library/LaunchAgents/
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/autosshD_ssh_port.plist ~/Library/LaunchAgents/autosshD_ssh_port.plist
 	@-$(LINK_CMD) $(PWD)/LaunchAgents/mbsync.plist ~/Library/LaunchAgents/mbsync.plist
+	@-$(LINK_CMD) $(PWD)/LaunchAgents/emacs-daemon.plist ~/Library/LaunchAgents/emacs-daemon.plist
 	defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 	defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 
@@ -24,6 +25,16 @@ deploy:
         fi;\
 		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
 	done
+	@mkdir -p ~/bin
+	@-for file in bin/*; do \
+		if [ -h /$$file ]; then \
+		unlink /$$file ;\
+        fi;\
+		if	[ -f $$file ]; then \
+			$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
+		fi;\
+	done
+
 	@-rm -rf $$HOME/.hammerspoon
 	@-$(LINK_CMD) $(PWD)/hammerspoon $$HOME/.hammerspoon
 
@@ -37,7 +48,6 @@ deploy:
 	@-$(LINK_CMD) $(PWD)/terminfo ~/.terminfo
 
 	@make -C rime_input_method/
-	@mkdir -p ~/bin
 # @-$(LINK_CMD) $(PWD)/squirrel_toggle_option $$HOME/bin
 
 # Enable apps at startup
