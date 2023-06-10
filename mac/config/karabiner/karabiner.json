@@ -691,8 +691,8 @@
                                     "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_command",
-                                            "right_option"
+                                            "left_command",
+                                            "left_control"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -701,7 +701,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/usr/local/bin/emacsclient -r -n --eval \"(vterm t)\""
+                                        "shell_command": "cd ~;/usr/local/bin/emacsclient -c --eval \"(with-current-buffer (vterm t) (tab-line-mode -1))\""
                                     }
                                 ],
                                 "type": "basic"
