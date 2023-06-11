@@ -27,7 +27,7 @@ if [ -n "$wids" ]; then
 else
 # Otherwise, launch Emacs if it's not already running and focus it
     $EMACSCLIENT -c -n &
-    sleep 1 # Wait for Emacs to start
+    sleep 0.3 # Wait for Emacs to start
     emacs_wins=$($YABAI -m query --windows | $JQ -r '.[] | select(.title | test("GNU/Emacs"))')
     wids=$(echo "$emacs_wins"|$JQ -r ".id")
     for id in ${wids[@]}; do
