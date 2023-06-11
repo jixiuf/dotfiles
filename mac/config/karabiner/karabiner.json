@@ -687,6 +687,27 @@
                         "manipulators": [
                             {
                                 "description": "hyper-return    Emacs vterm ",
+                                "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
+                                            "^com\\.googlecode\\.iterm2$"
+                                        ],
+                                        "file_paths": [
+                                            "/usr/local/emacs/bin/emacs",
+                                            "/usr/local/bin/emacs"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": {
@@ -701,7 +722,51 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "cd ~;/usr/local/bin/emacsclient -c --eval \"(with-current-buffer (vterm t) (tab-line-mode -1))\""
+                                        "shell_command": "/Users/jixiuf/bin/yabai-vterm"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "hyper-return    Emacs vterm ",
+                                "conditions": [
+                                    {
+                                        "name": "C-w",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^org\\.alacritty$",
+                                            "^com\\.googlecode\\.iterm2$"
+                                        ],
+                                        "file_paths": [
+                                            "/usr/local/emacs/bin/emacs",
+                                            "/usr/local/bin/emacs"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f12",
+                                        "modifiers": [
+                                            "command"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"

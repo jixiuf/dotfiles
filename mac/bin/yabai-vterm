@@ -1,0 +1,19 @@
+#!/bin/bash
+YABAI=/usr/local/bin/yabai
+EMACSCLIENT=/usr/local/bin/emacsclient
+JQ=/usr/local/bin/jq
+
+default_directory=~
+
+front_app=$($YABAI -m query --windows | $JQ -r '.[] | select(."has-focus"==true)')
+if [ -n "$front_app" ]; then
+    app=$(echo $front_app|$JQ -r '.app')
+    if [ "$app" = "Emacs" ]; then
+        # "title":"坐见幽州骑，长驱河洛昏。 「*scratch*   」(ELisp/d)   GNU/Emacs /Users/jixiuf/  —  (123 × 30)",
+        # title=$(echo $front_app|$JQ -r '.title')
+        default_directory=$(echo $front_app|$JQ -r '.title| split("GNU/Emacs<")[1]|split(">")[0]')
+    fi
+fi
+
+cd $default_directory
+${EMACSCLIENT} -c --eval "(with-current-buffer (vterm t) (tab-line-mode -1))"
