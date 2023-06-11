@@ -14,4 +14,4 @@ x11-misc/ydotool ~amd64
 net-im/weixin-uos ~amd64
 app-office/bytedance-feishu ~amd64
 gui-apps/wofi ~amd64
-
+gui-apps/swaylock-effects ~amd64

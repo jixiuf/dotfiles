@@ -56,3 +56,6 @@ gui-apps/waybar wifi  network pipewire upower tray experimental
 media-sound/pulseaudio -daemon
 media-video/ffmpeg mp3
 x11-misc/j4-dmenu-desktop -dmenu
+net-misc/networkmanager connection-sharing  bluetooth iwd iptables
+>=net-wireless/wpa_supplicant-2.10-r1 dbus
+>=net-dns/dnsmasq-2.89 dbus

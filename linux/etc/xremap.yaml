@@ -23,14 +23,14 @@ keymap:
       Super-C-b: Super-C-b
       Super-C-p: Super-C-p
       Super-C-n: Super-C-n
-  - name: Google Search
+  - name: Google Chrome
     application:
       only: [Google-chrome,google-chrome]
     remap:
       M-backspace: C-Backspace
       Super-C-u: C-Shift-t
-      C-j: C-tab
-      C-k: C-Shift-tab
+      C-comma: C-Shift-tab
+      C-dot: C-tab
       C-h: M-left
       C-l: M-right
       C-o: C-l
