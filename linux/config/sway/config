@@ -25,7 +25,7 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
          
-bindsym mod4+control+8 exec swaylock --ignore-empty-password --show-failed-attempts \
+bindsym mod4+control+7 exec swaylock --ignore-empty-password --show-failed-attempts \
 --color 1e1e1e --inside-color cccccc --ring-color ffffff \
 --inside-clear-color 11a8cd --ring-clear-color 29b8db \
 --inside-ver-color 2472c8 --ring-ver-color 3b8eea \
@@ -36,6 +36,7 @@ bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-ch
 bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dropdown-term foot --term=xterm-256color  --app-id=dropdown-term -w 900x500 
 bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
+bindsym --no-repeat mod4+control+8 exec $HOME/bin/sway-run-or-raise.sh corplink  /opt/Corplink/corplink 
 
 bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
 
@@ -82,8 +83,8 @@ bindsym mod4+mod1+f floating toggle
 # Move the currently focused window to the scratchpad
 bindsym mod4+mod1+h move scratchpad
 bindsym mod4+mod1+control+h scratchpad show
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 2
+bindsym XF86MonBrightnessUp exec light -A 2
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
