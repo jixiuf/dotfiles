@@ -102,19 +102,20 @@ mode passthrough {
   	bindsym Escape mode default
 }
 
-set $ctrl_x_map  "C-x"  
-mode $ctrl_x_map {
-    bindsym control+c exec swaymsg kill,exec swaymsg mode default      #C-x C-c: kill app
-    # ydotool: /usr/include/linux/input-event-codes.h
-    # C-xC-x: send C-x
-    bindsym control+x  exec sh -c "swaymsg mode passthrough;sleep 0.2;ydotool key 29:1 45:1 45:0 29:0;swaymsg mode default"
-  	bindsym Escape mode default
-}
-# see https://github.com/jixiuf/dotfiles/blob/main/linux/etc/xremap.yaml#L64
-# xremap : C-x would send:mod4+mod1+control+x  for any app except emacs
-bindsym  mod4+mod1+control+x mode $ctrl_x_map
+# set $ctrl_x_map  "C-x"  
+# mode $ctrl_x_map {
+#     bindsym control+c exec swaymsg kill,exec swaymsg mode default      #C-x C-c: kill app
+#     # ydotool: /usr/include/linux/input-event-codes.h
+#     # C-xC-x: send C-x
+#     bindsym control+x  exec sh -c "swaymsg mode passthrough;sleep 0.2;ydotool key 29:1 45:1 45:0 29:0;swaymsg mode default"
+#   	bindsym Escape mode default
+# }
+# # see https://github.com/jixiuf/dotfiles/blob/main/linux/etc/xremap.yaml#L64
+# # xremap : C-x would send:mod4+mod1+control+x  for any app except emacs
+# bindsym  mod4+mod1+control+x mode $ctrl_x_map
 bindgesture swipe:3:right exec $HOME/bin/sway-move-to-next-workspace
 bindgesture swipe:3:left exec $HOME/bin/sway-move-to-prev-workspace
+bindsym mod4+control+m  fullscreen
 
 set $ctrl_w_map  "C-w"  
 mode $ctrl_w_map {
@@ -195,16 +196,16 @@ mode $ctrl_w_map {
 }
 bindsym  control+w mode $ctrl_w_map
 
-set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
-mode $space_m_map {
-    bindsym mod4+control+m fullscreen,mode "default"
-    # Return to default mode
-    bindsym Escape mode "default"
-    bindsym control+g mode "default"
-    #C-g for emacs ,emacs map C-g:[Super-Space,C-g]
-    bindsym Mod4+Space mode "default"
-}
-bindsym mod4+control+m mode $space_m_map
+# set $space_m_map  "hjklo:focus,HJKL:swap,ui:parent-child wersdfxcv:9pos,1:tag,+-C-+-:grow/shrink"  
+# mode $space_m_map {
+#     bindsym mod4+control+m fullscreen,mode "default"
+#     # Return to default mode
+#     bindsym Escape mode "default"
+#     bindsym control+g mode "default"
+#     #C-g for emacs ,emacs map C-g:[Super-Space,C-g]
+#     bindsym Mod4+Space mode "default"
+# }
+# bindsym mod4+control+m mode $space_m_map
         
 include /etc/sway/config.d/*
 include $HOME/.config/sway/sway.d/*.conf
