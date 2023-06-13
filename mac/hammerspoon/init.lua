@@ -47,54 +47,54 @@ require('windows_layout')
 require('input_method')
 require('paste')
 -- require('app_watcher')
-local seal=hs.loadSpoon("Seal")
-seal.hotkeyToggle=hs.hotkey.new({"control"},"tab", function() seal:toggle() end)
-seal:loadPlugins({"apps","useractions"})
-hs.urlevent.bind("seal", function() seal:toggle() end)
+-- local seal=hs.loadSpoon("Seal")
+-- seal.hotkeyToggle=hs.hotkey.new({"control"},"tab", function() seal:toggle() end)
+-- seal:loadPlugins({"apps","useractions"})
+-- hs.urlevent.bind("seal", function() seal:toggle() end)
 
 
-seal.plugins.useractions.actions =
-   {
-      ["rebootmac"] = {
-         fn = hs.caffeinate.restartSystem,
-         -- hotkey = { hyper2, "r" },
-         keyword = "restart",
-         -- icon = swisscom_logo,
-      },
-      ["shutdownmac"] = {
-         fn = hs.caffeinate.shutdownSystem,
-         -- hotkey = { hyper2, "r" },
-         keyword = "shutdown",
-      },
-      ["haltmac"] = {
-         fn = hs.caffeinate.shutdownSystem,
-         -- hotkey = { hyper2, "r" },
-         keyword = "halt",
-      },
-      ["lockmac"] = {
-         fn = hs.caffeinate.lockScreen,
-         -- hotkey = { hyper2, "r" },
-         keyword = "lock",
-      },
-      ["vpn"] = {
-         fn = function(cmd) hs.execute("~/bin/vpn") end,
-      },
+-- seal.plugins.useractions.actions =
+--    {
+--       ["rebootmac"] = {
+--          fn = hs.caffeinate.restartSystem,
+--          -- hotkey = { hyper2, "r" },
+--          keyword = "restart",
+--          -- icon = swisscom_logo,
+--       },
+--       ["shutdownmac"] = {
+--          fn = hs.caffeinate.shutdownSystem,
+--          -- hotkey = { hyper2, "r" },
+--          keyword = "shutdown",
+--       },
+--       ["haltmac"] = {
+--          fn = hs.caffeinate.shutdownSystem,
+--          -- hotkey = { hyper2, "r" },
+--          keyword = "halt",
+--       },
+--       ["lockmac"] = {
+--          fn = hs.caffeinate.lockScreen,
+--          -- hotkey = { hyper2, "r" },
+--          keyword = "lock",
+--       },
+--       ["vpn"] = {
+--          fn = function(cmd) hs.execute("~/bin/vpn") end,
+--       },
 
-      ["vpnclose"] = {
-         fn = function(cmd)
-            hs.execute("/opt/cisco/anyconnect/bin/vpn disconnect") end,
-      },
+--       ["vpnclose"] = {
+--          fn = function(cmd)
+--             hs.execute("/opt/cisco/anyconnect/bin/vpn disconnect") end,
+--       },
 
-      ["Exec shell command"] = {
-         keyword = "sh",
+--       ["Exec shell command"] = {
+--          keyword = "sh",
 
-         fn = function(cmd)
-            hs.execute("zsh -ic \"" .. cmd .. "\"") end,
-      },
-   }
+--          fn = function(cmd)
+--             hs.execute("zsh -ic \"" .. cmd .. "\"") end,
+--       },
+--    }
 
-seal:refreshAllCommands()
-seal:start()
+-- seal:refreshAllCommands()
+-- seal:start()
 
 local caffeine=hs.loadSpoon("Caffeine")
 caffeine:start()
