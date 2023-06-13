@@ -21,9 +21,10 @@ touch /tmp/yabai_prev_focus /tmp/yabai_last_focus
 yabai -m signal --add event=window_focused action='cp -f /tmp/yabai_last_focus /tmp/yabai_prev_focus;echo  $YABAI_WINDOW_ID>/tmp/yabai_last_focus'
 
 
+# focus_follows_mouse          autofocus            \
 yabai -m config                                 \
     mouse_follows_focus          on            \
-    focus_follows_mouse          autofocus            \
+    focus_follows_mouse          off            \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          on             \

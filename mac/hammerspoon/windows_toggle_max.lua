@@ -1,5 +1,5 @@
 -- require('hyper')
--- hs.hotkey.bind(hyper, "M", function ()toggleMaximized() end)
+hs.hotkey.bind(hyper, "M", function ()toggleMaximized() end)
 -- hs.hotkey.bind({"cmd"}, "M", function ()toggleMaximized() end)
 
 local toggleMaximizedMap={}
@@ -47,7 +47,7 @@ function toggleMaximized()
          win:moveToUnit(hs.geometry.rect(math.random()*0.1,math.random()*0.1, 0.718, 0.718),0)
       end
    else                         -- 当前是非最大化状态，
-      if not (maximizedFrame.w-curFrame.w<0 or maximizedFrame.h-curFrame.h<0 )then -- 从fullscreen 恢复回来的则不记录其窗口大小
+      if not (maximizedFrame.w-curFrame.w<0 or maximizedFrame.h-curFrame.h<0 )then -- 从 fullscreen 恢复回来的则不记录其窗口大小
          toggleMaximizedMap[winKey]=hs.geometry.copy(curFrame) -- 存储当前窗口大小
       end
    end

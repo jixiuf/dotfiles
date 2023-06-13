@@ -1,17 +1,17 @@
 -- http://www.hammerspoon.org/go/#winresize
--- hammerspoon 不能实现的区分左右cmd shift等，也不能实别Fn键，
--- 这些可以与karabiner 通过Hammerspoon with URLs实现通信,即，
--- 通过karabiner 来按键，而 hammerspoon来实现相应的事件
+-- hammerspoon 不能实现的区分左右 cmd shift 等，也不能实别 Fn 键，
+-- 这些可以与 karabiner 通过 Hammerspoon with URLs 实现通信,即，
+-- 通过 karabiner 来按键，而 hammerspoon 来实现相应的事件
 -- 如
--- 在命令行下调用open -g "hammerspoon://someAlert?message=hello"
+-- 在命令行下调用 open -g "hammerspoon://someAlert?message=hello"
 -- hs.urlevent.bind("someAlert", function(eventName, params)
 --                     if params["message"] then
 --                        hs.alert.show(params["message"])
 --                     end
 -- end)
 
--- hs.hotkey的一个缺点是 当焦点在桌面上（即menu里显示当前激活的是finder ，但其实finder的窗口并不在最前方时，hotkey按下时回调函数没回调成功）
--- 但是 karabiner可以检测到这样的按键，故建议用karabiner来回调
+-- hs.hotkey 的一个缺点是 当焦点在桌面上（即 menu 里显示当前激活的是 finder ，但其实 finder 的窗口并不在最前方时，hotkey 按下时回调函数没回调成功）
+-- 但是 karabiner 可以检测到这样的按键，故建议用 karabiner 来回调
 
 math.randomseed(os.time())
 function reloadConfig(files)
@@ -37,7 +37,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 local fmW = hs.window.frontmostWindow()
 
 require('hyper')
-require('windows')
+-- require('windows')
 require('windows_toggle_max')
 require('emacs')
 require('toggle_app')
@@ -110,7 +110,7 @@ menubarFlag.colors = {
    -- Spanish = {hs.drawing.color.x11.red, hs.drawing.color.x11.yellow, hs.drawing.color.x11.red},
    -- German = {hs.drawing.color.x11.black, hs.drawing.color.x11.red, hs.drawing.color.x11.yellow},
 }
--- 在命令行下调用open -g "hammerspoon://input_method_switch?id=Squirrel"
+-- 在命令行下调用 open -g "hammerspoon://input_method_switch?id=Squirrel"
 hs.urlevent.bind("input_method_switch", function(eventName, params)
                     if params["id"] == "Squirrel" then
                        menubarFlag:drawIndicators(params["id"])
@@ -129,7 +129,7 @@ emacsOrgClockFlag.colors = {
    ["org-clock-out"] = { }, -- empty list or no table entry means "no indicator"
    ["org-clock-in"] = {hs.drawing.color.x11.cyan},
 }
--- 在命令行下调用open -g "hammerspoon://org-clock?id=org-clock-in"
+-- 在命令行下调用 open -g "hammerspoon://org-clock?id=org-clock-in"
 hs.urlevent.bind("org-clock", function(eventName, params)
                     if params["id"] == "org-clock-in" then
                        emacsOrgClockFlag:drawIndicators("org-clock-in")
@@ -141,16 +141,16 @@ end)
 -- emacsOrgClockFlag:start()
 
 
--- 当此文件变化时自动reload debug用
+-- 当此文件变化时自动 reload debug 用
 hs.alert.show("HammerSpoon Config loaded")
---- end........当此文件变化时自动reload
+--- end........当此文件变化时自动 reload
 --------------------------------------------------------------------------
--- 手动reload 此文件
+-- 手动 reload 此文件
 -- hs.hotkey.bind(hyper, "R", function()
 hs.hotkey.bind(hyper2, "r", function()
       hs.reload()
 end)
--- -- 每3秒reload 一次
+-- -- 每 3 秒 reload 一次
 -- -- hs.timer.doAfter(10, function() hs.reload() end) --
 -- local superGenPass=hs.loadSpoon("SuperGenPass")
 -- superGenPass.showMenubar=false
@@ -176,12 +176,12 @@ end)
 ---------------------------------------------------------------
 -- wifi 连接或断开时的处理
 -- hs.wifi.watcher.new(function()
---       -- hs.wifi.currentNetwork()返回的是wifi的名字，可以用于区分连的是哪个wifi
+--       -- hs.wifi.currentNetwork()返回的是 wifi 的名字，可以用于区分连的是哪个 wifi
 --       if  hs.wifi.currentNetwork()==nil then
 --          -- 断开
 --       else
 --          -- 连接
---          hs.execute("pkill autossh") -- 关闭autossh ,以便其重新连接
+--          hs.execute("pkill autossh") -- 关闭 autossh ,以便其重新连接
 --       end
 -- end ):start()
 
@@ -190,7 +190,7 @@ hs.application.enableSpotlightForNameSearches(true)
 
 ---------------------------------------------------------------
 
--- 在命令行下调用open -g "hammerspoon://echo?message=hello"
+-- 在命令行下调用 open -g "hammerspoon://echo?message=hello"
 hs.urlevent.bind("echo", function(eventName, params)
                     if params["message"] then
                        hs.alert.show(params["message"] )
@@ -242,7 +242,7 @@ end)
 -- ---------------------------------------------------------------
 -- require('super')
 
--- -- 如果 windowLayout里有配相应app的初始大小，则将对应win设置成此大小
+-- -- 如果 windowLayout 里有配相应 app 的初始大小，则将对应 win 设置成此大小
 -- function moveToInitPos (win,appName)
 --    for k,v in pairs(windowLayout) do
 --       if v[1]==appName then
@@ -262,7 +262,7 @@ end)
 
 
 -- -- -- 焦点转移
--- -- -- 当一个app关闭 隐藏时，自动将焦点转移动下个app上，不要停在desk上
+-- -- -- 当一个 app 关闭 隐藏时，自动将焦点转移动下个 app 上，不要停在 desk 上
 -- local lastLoseFocusAppPid =0
 -- hs.application.watcher.new(function(appName,event,app)
 --       -- if  event == hs.application.watcher.terminated then
@@ -276,7 +276,7 @@ end)
 --          local topWin=hs.window.frontmostWindow()
 --          if topWin:application():title()=="Finder" and topWin:role() == "AXScrollArea" then -- 桌面
 --             -- app:selectMenuItem({"Window", "Bring All to Front"})
---             toggleFinder()      -- 打开finder 窗口
+--             toggleFinder()      -- 打开 finder 窗口
 --             -- hs.eventtap.keyStroke("cmd", "tab")
 --          else
 --             local topApp =hs.application.frontmostApplication()
