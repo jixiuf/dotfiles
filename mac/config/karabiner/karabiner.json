@@ -408,7 +408,7 @@
                         ]
                     },
                     {
-                        "description": "Change , to hyper+shift(cmd+ctrl+option+shift). (Post , if pressed alone)",
+                        "description": "Change , to spacebar+shift(cmd+ctrl+option+shift). (Post , if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -468,7 +468,7 @@
                         ]
                     },
                     {
-                        "description": "让 hyper 键具有 cmd 键常用的功能，如剪切复制等 hyper-{/n/p/q/w/r/t/0/-/=/,} = cmd-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,}",
+                        "description": "让 hyper 键具有 cmd 键常用的功能，如剪切复制等 spacebar-{/n/p/q/w/r/t/0/-/=/,} = cmd-{a/s/z/x/c/v/n/p/q/w/r/t/0/-/=/,}",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -479,7 +479,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-r = command-r",
+                                "description": "spacebar-r = command-r",
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": {
@@ -503,7 +503,103 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-w = command-w",
+                                "description": "spacebar-x = command-x",
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "x",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "spacebar-v = command-v",
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "spacebar-c = command-c",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "spacebar-a = command-a",
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": [
+                                            "right_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "spacebar-w = command-w",
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
@@ -527,7 +623,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-t = command-t",
+                                "description": "spacebar-t = command-t",
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
@@ -561,7 +657,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-, = command-,",
+                                "description": "spacebar-, = command-,",
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
@@ -585,7 +681,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-= = command-=",
+                                "description": "spacebar-= = command-=",
                                 "from": {
                                     "key_code": "equal_sign",
                                     "modifiers": {
@@ -609,7 +705,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-- = command--",
+                                "description": "spacebar-- = command--",
                                 "from": {
                                     "key_code": "hyphen",
                                     "modifiers": {
@@ -633,7 +729,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-0 = command-0",
+                                "description": "spacebar-0 = command-0",
                                 "from": {
                                     "key_code": "0",
                                     "modifiers": {
@@ -657,7 +753,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-8 = command-g (飞连 toggle 连断)",
+                                "description": "spacebar-8 = command-g (飞连 toggle 连断)",
                                 "from": {
                                     "key_code": "8",
                                     "modifiers": {
@@ -686,7 +782,7 @@
                         "description": "Toggle App H-d:iterm2 H-f:Chrome H-e:Emacs H-5:apifox H-b:微信 H-3:飞书",
                         "manipulators": [
                             {
-                                "description": "hyper-return    Emacs vterm ",
+                                "description": "spacebar-return    Emacs vterm ",
                                 "conditions": [
                                     {
                                         "name": "C-w",
@@ -728,7 +824,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "hyper-return    Emacs vterm ",
+                                "description": "spacebar-return    Emacs vterm ",
                                 "conditions": [
                                     {
                                         "name": "C-w",
@@ -773,7 +869,7 @@
                             },
 
                             {
-                                "description": "hyper-e  toggle Emacs",
+                                "description": "spacebar-e  toggle Emacs",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
@@ -802,7 +898,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-5  toggle apifox",
+                                "description": "spacebar-5  toggle apifox",
                                 "from": {
                                     "key_code": "5",
                                     "modifiers": {
@@ -831,7 +927,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "hyper-5  toggle apifox",
+                                "description": "spacebar-5  toggle apifox",
                                 "from": {
                                     "key_code": "5",
                                     "modifiers": {
@@ -866,7 +962,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-b  toggle 微信",
+                                "description": "spacebar-b  toggle 微信",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -895,7 +991,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "hyper-b  toggle 微信",
+                                "description": "spacebar-b  toggle 微信",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -930,7 +1026,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-3  toggle 飞书",
+                                "description": "spacebar-3  toggle 飞书",
                                 "from": {
                                     "key_code": "3",
                                     "modifiers": {
@@ -959,7 +1055,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "hyper-3  toggle 飞书",
+                                "description": "spacebar-3  toggle 飞书",
                                 "from": {
                                     "key_code": "3",
                                     "modifiers": {
@@ -994,7 +1090,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "hyper-f  toggle Chrome",
+                                "description": "spacebar-f  toggle Chrome",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -1029,7 +1125,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-f  toggle chrome",
+                                "description": "spacebar-f  toggle chrome",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -1059,7 +1155,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "hyper-d  toggle iterm",
+                                "description": "spacebar-d  toggle iterm",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -1096,7 +1192,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "hyper-d  toggle iterm",
+                                "description": "spacebar-d  toggle iterm",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -2512,7 +2608,7 @@
                         ]
                     },
                     {
-                        "description": "微信/企业微信 ctrl-s=cmd-f ctrl-n/p ctrl-jk next/prev session hyper-j next active session",
+                        "description": "微信/企业微信 ctrl-s=cmd-f ctrl-n/p ctrl-jk next/prev session spacebar-j next active session",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -2655,7 +2751,7 @@
                         ]
                     },
                     {
-                        "description": "飞书  ctrl-n/p ctrl-,. next/prev session hyper-j next active session",
+                        "description": "飞书  ctrl-n/p ctrl-,. next/prev session spacebar-j next active session",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -2967,10 +3063,10 @@
                         ]
                     },
                     {
-                        "description": "hyper-4 使用飞书截图=cmd+shift+a",
+                        "description": "spacebar-4 使用飞书截图=cmd+shift+a",
                         "manipulators": [
                             {
-                                "description": "hyper-4 使用飞书截图=cmd+shift+a",
+                                "description": "spacebar-4 使用飞书截图=cmd+shift+a",
                                 "from": {
                                     "key_code": "4",
                                     "modifiers": {
@@ -4175,7 +4271,7 @@
                         ]
                     },
                     {
-                        "description": "iterm2 hyper-{n,p},next/prev tab,hyper-i open profiles",
+                        "description": "iterm2 spacebar-{n,p},next/prev tab,spacebar-i open profiles",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -4295,7 +4391,7 @@
                         ]
                     },
                     {
-                        "description": "Xcode ctrl-return open in external editor,hyper-i quick open files",
+                        "description": "Xcode ctrl-return open in external editor,spacebar-i quick open files",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -4344,7 +4440,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Xcode hyper-i quick open files",
+                                "description": "Xcode spacebar-i quick open files",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
