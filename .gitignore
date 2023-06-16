@@ -30,3 +30,4 @@
 /linux/config/systemd/user/default.target.wants/ydotool.service
 /mac/config/karabiner/automatic_backups/
 /mac/terminfo/61/
+/linux/etc/interception/udevmon.yaml

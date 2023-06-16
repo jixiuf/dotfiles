@@ -144,3 +144,7 @@ keymap:
       # Alt -> Ctrl
       # Super-Enter: M-Enter
       # C-w: [C-Shift-left, delete]
+
+  # - name: All
+  #   remap:
+  #     esc: grave

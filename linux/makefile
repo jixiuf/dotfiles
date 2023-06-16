@@ -14,8 +14,8 @@ deploy:
 	ln -fs ~/bin/ ~/.cargo/bin
 	ln -fs ~/bin/ ~/go/bin
 	@-for file in bin/*; do \
-		if [ -h /$$file ]; then \
-		unlink /$$file ;\
+		if [ -h ~/$$file ]; then \
+		unlink ~/$$file ;\
         fi;\
 		if	[ -f $$file ]; then \
 			$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
@@ -44,12 +44,14 @@ deploy:
 
 sudo:
 	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;
+	ln -sf udevmon_$$HOSTNAME.yaml etc/interception/udevmon.yaml
 	@-for file in etc/*; do \
 		if [ -h /$$file ]; then \
 		unlink /$$file ;\
         fi;\
 		$(LINK_CMD) $(PWD)/$$file /$$file ;\
 	done
+
 	@-for file in bin/*; do \
 		$(LINK_CMD) $(PWD)/$$file /usr/local/$$file ;\
 	done
