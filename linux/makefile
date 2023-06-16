@@ -44,7 +44,7 @@ deploy:
 
 sudo:
 	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;
-	ln -sf udevmon_$$HOSTNAME.yaml etc/interception/udevmon.yaml
+# ln -sf udevmon_$$HOSTNAME.yaml etc/interception/udevmon.yaml
 	@-for file in etc/*; do \
 		if [ -h /$$file ]; then \
 		unlink /$$file ;\
