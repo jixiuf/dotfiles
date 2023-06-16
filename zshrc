@@ -1184,6 +1184,6 @@ alias gov='go vet'
 ##########################################################################################################
 if [ $(uname -s ) = "Linux" ] ; then
     if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-        dbus-run-session sway
+        dbus-run-session sway 2>&1 >/tmp/sway.log
     fi
 fi
