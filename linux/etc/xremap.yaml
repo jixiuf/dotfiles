@@ -31,6 +31,7 @@ keymap:
       Super-C-u: C-Shift-t
       C-comma: C-Shift-tab
       C-dot: C-tab
+      C-r: C-r
       C-h: M-left
       C-l: M-right
       C-o: C-l
