@@ -15,3 +15,8 @@ net-im/weixin-uos ~amd64
 app-office/bytedance-feishu ~amd64
 gui-apps/wofi ~amd64
 gui-apps/swaylock-effects ~amd64
+media-sound/t2-better-audio ~amd64
+sys-kernel/t2gentoo-kernel ~amd64
+=sys-kernel/t2gentoo-sources-6.3.8::t2 ~amd64
+sys-kernel/t2gentoo-sources ~amd64
+sys-firmware/apple-bcm-firmware ~amd64

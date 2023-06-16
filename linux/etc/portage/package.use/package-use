@@ -41,7 +41,7 @@ app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram  -stroke -terra-
 >=app-i18n/fcitx-qt-5.0.17-r1 qt5
 >=dev-qt/qtgui-5.15.9 egl
 gui-wm/sway wallpapers X -swaybar grimshot
-media-libs/mesa -llvm vulkan
+media-libs/mesa llvm vulkan
 sys-devel/gcc jit gcc
 sys-fs/lvm2 lvm 
 sys-kernel/gentoo-kernel savedconfig
@@ -56,6 +56,7 @@ gui-apps/waybar wifi  network pipewire upower tray experimental
 media-sound/pulseaudio -daemon
 media-video/ffmpeg mp3
 x11-misc/j4-dmenu-desktop -dmenu
-net-misc/networkmanager connection-sharing  bluetooth iwd iptables
+net-misc/networkmanager connection-sharing  bluetooth  iptables
 >=net-wireless/wpa_supplicant-2.10-r1 dbus
 >=net-dns/dnsmasq-2.89 dbus
+>=x11-libs/libdrm-2.4.115 video_cards_radeon
