@@ -29,6 +29,9 @@ MAPPINGS:
   #   HOLD_START: BEFORE_CONSUME_OR_RELEASE
   #   HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
 
+  - KEY: KEY_ESC # esc->`
+    TAP: [KEY_GRAVE]
+    HOLD: [KEY_LEFTALT]
   - KEY: KEY_LEFTMETA # left cmd-> ctrl or esc
     TAP: KEY_ESC
     HOLD: KEY_LEFTCTRL
@@ -40,9 +43,6 @@ MAPPINGS:
   - KEY: KEY_RIGHTMETA # right cmd-> cmd+alt
     TAP: [KEY_LEFTCTRL,KEY_SPACE]
     HOLD: [KEY_LEFTMETA,KEY_LEFTALT]
-  - KEY: KEY_ESC # right cmd-> cmd+alt
-    TAP: [KEY_GRAVE]
-    HOLD: [KEY_GRAVE]
 
   # - KEY: KEY_LEFTSHIFT
   #   TAP: [KEY_LEFTCTRL,KEY_SPACE]

@@ -49,6 +49,7 @@ keymap:
       Super-C-a: C-a
       Super-C-e: Super-C-e
       Super-C-d: Super-C-d
+      Super-C-w: C-f4           # close tab
 
   - name: Emacs
     application:
@@ -59,11 +60,15 @@ keymap:
       # C-x: C-x
       Super-C-g: Super-C-g
 
-  - name: Not Emacs
-    application:
-      not: [emacs,Emacs]
-    remap:
 
+  - name: Terminal
+    application:
+      only: [foot,Foot,dropdown-term]
+    remap:
+      C-x:
+        remap:
+          C-x: C-x              # C-xC-x send C-x
+          C-c: { launch: ["/usr/local/bin/sway-kill"] }
 
   - name: Default -- some of these are overridden by the above definitions
     application:
@@ -123,6 +128,7 @@ keymap:
       # C-x YYY
       C-x:
         remap:
+          C-x: C-x              # C-xC-x send C-x
           # C-x h (select all)
           h: [C-home, C-a, { set_mark: true }]
           # C-x C-f (open)
@@ -132,19 +138,4 @@ keymap:
           # C-x k (kill tab)
           k: C-f4
           # C-x C-c (exit)
-          C-c: { launch: ["swaymsg", "kill"] }
-          # C-x u (undo)
-          u: [C-z, { set_mark: false }]
-
-      # Super-C-r: C-r
-      # Super-M-r: M-F2
-      # C-a: Home
-      # C-e: End
-
-      # Alt -> Ctrl
-      # Super-Enter: M-Enter
-      # C-w: [C-Shift-left, delete]
-
-  # - name: All
-  #   remap:
-  #     esc: grave
+          C-c: { launch: ["/usr/local/bin/sway-kill"] }

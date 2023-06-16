@@ -66,7 +66,6 @@ else
         else
             # 需要与 bin/sway-track-prev-focus  的配合使用
             # 如果目标窗口已经是当前窗口,且不是 floating，则将焦点转到上一次聚焦的窗口，
-            swaymsg get_marks
             swaymsg '[con_mark=_prev_con] focus'
         fi
         # if [ "$fullscreen_mode" == "1" ]; then
