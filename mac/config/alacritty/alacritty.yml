@@ -30,31 +30,31 @@ env:
   TERM: xterm-256color
 colors:
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
+    background: "#1f1f1f"
+    foreground: "#eeeeeb"
   # Bright and dim foreground colors
     dim_foreground: "#1e1e1e"
     bright_foreground: "#ffffff"
   # Normal colors
   normal:
-    black:   "#000000"
-    red:     "#ff5f59"
-    green:   "#44bc44"
-    yellow:  "#d0bc00"
-    blue:    "#2fafff"
-    magenta: "#feacd0"
-    cyan:    "#00d3d0"
-    white:   "#ffffff"
+    black:   "#616161"
+    red:     "#ff8272"
+    green:   "#b4fa72"
+    yellow:  "#fefdc2"
+    blue:    "#a5d5fe"
+    magenta: "#ff8ffd"
+    cyan:    "#d0d1fe"
+    white:   "#f1f1f1"
   # Bright colors
   bright:
-    black:   "#000000"
-    red:     "#ff5f5f"
-    green:   "#44df44"
-    yellow:  "#efef00"
-    blue:    "#338fff"
-    magenta: "#ff66ff"
-    cyan:    "#9ac8e0"
-    white:   "#ffffff"
+    black:   "#8e8e8e"
+    red:     "#ffc4bd"
+    green:   "#d6fcb9"
+    yellow:  "#fefdd5"
+    blue:    "#c1e3fe"
+    magenta: "#ffb1fe"
+    cyan:    "#e5e6fe"
+    white:   "#feffff"
   # Dim colors
   dim:
     black:   "#000000"
