@@ -1,13 +1,18 @@
 # modus-vivendi (Dark theme)
 key_bindings:
   - { key: Y, mods: Control, action: Paste }
-  # - { key: G,  mods: Control, mode: ~Search,    action: ToggleViMode            }
+  # C-2 with xremap to C-Shift-space
+  # - { key: V, mods: Shift|Control, action: ToggleViMode }
+  - { key: Escape,   mode: Vi, action: ToggleViMode          }
+  - { key: Return,   mode: Vi, action: ToggleViMode          }
+  - { key: G,mods: Control,   mode: Vi, action: ToggleViMode          }
   # - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
 
   # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
 font:
   normal:
+#     family: Monaco
     family: Sarasa Term SC Nerd
     style: Regular
 
@@ -24,55 +29,32 @@ font:
     style: Bold Italic
 
   size: 15
-
-# font:
-#   normal:
-#     family: Monaco
-#     style: Regular
-
-#   bold:
-#     family: Monaco
-#     style: Bold
-
-#   italic:
-#     family: Monaco
-#     style: Italic
-
-#   bold_italic:
-#     family: Monaco
-#     style: Bold Italic
-
-#   size: 15
 env:
   TERM: xterm-256color
 colors:
   primary:
-    background: "#1f1f1f"
-    foreground: "#eeeeeb"
-  # Bright and dim foreground colors
-    dim_foreground: "#1e1e1e"
-    bright_foreground: "#ffffff"
-  # Normal colors
+    background: '0x111111'
+    foreground: '0xdcdccc'
+    # dim_foreground: "#1e1e1e"
+    # bright_foreground: "#ffffff"
   normal:
-    black:   "#616161"
-    red:     "#ff8272"
-    green:   "#b4fa72"
-    yellow:  "#fefdc2"
-    blue:    "#a5d5fe"
-    magenta: "#ff8ffd"
-    cyan:    "#d0d1fe"
-    white:   "#f1f1f1"
-  # Bright colors
+    black:   '0x222222'
+    red:     '0xcc9393'
+    green:   '0x7f9f7f'
+    yellow:  '0xd0bf8f'
+    blue:    '0x6ca0a3'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xdcdccc'
   bright:
-    black:   "#8e8e8e"
-    red:     "#ffc4bd"
-    green:   "#d6fcb9"
-    yellow:  "#fefdd5"
-    blue:    "#c1e3fe"
-    magenta: "#ffb1fe"
-    cyan:    "#e5e6fe"
-    white:   "#feffff"
-  # Dim colors
+    black:   '0x666666'
+    red:     '0xdca3a3'
+    green:   '0xbfebbf'
+    yellow:  '0xf0dfaf'
+    blue:    '0x8cd0d3'
+    magenta: '0xfcace3'
+    cyan:    '0xb3ffff'
+    white:   '0xffffff'
   dim:
     black:   "#000000"
     red:     "#ff9580"

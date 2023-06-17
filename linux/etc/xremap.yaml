@@ -62,8 +62,9 @@ keymap:
 
   - name: Terminal
     application:
-      only: [foot,Foot,dropdown-term]
+      only: [foot,Foot,dropdown-term,Alacritty,alacritty]
     remap:
+      C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
@@ -71,7 +72,7 @@ keymap:
 
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dropdown-term]
+      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dropdown-term,Alacritty,alacritty]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       Super-C-a: C-a
@@ -117,7 +118,7 @@ keymap:
       C-slash: [C-z, { set_mark: false }]
       C-Shift-ro: C-z
       # Mark
-      C-2: { set_mark: true }
+      # C-2: { set_mark: true }
       # Search
       C-s: F3
       C-r: Shift-F3
@@ -143,14 +144,14 @@ keymap:
     remap:
       Super-C-e: { launch: ["sway-run-or-raise.sh","emacs","runemacs"] }
       Super-C-f: { launch: ["sway-run-or-raise.sh","google-chrome","google-chrome-stable"] }
-      Super-C-d: { launch: ["sway-run-or-raise.sh","dropdown-term","foot --term=xterm-256color  --app-id=dropdown-term -w 900x500"] }
+      Super-C-d: { launch: ["sway-run-or-raise.sh","dropdown-term","alacritty  --class=dropdown-term"] }
       Super-C-b: { launch: ["sway-run-or-raise.sh","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["sway-run-or-raise.sh","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
       Super-C-8: { launch: ["sway-run-or-raise.sh","corplink","/opt/Corplink/corplink"] }
       Super-C-9: { launch: ["pick-color"] }
       Super-C-r: { launch: ["run-bemenu"] }
-      Super-C-Enter: { launch: ["sh","-c","LANG=zh_CN.UTF8 foot"] }
+      Super-C-Enter: { launch: ["alacritty"] }
       Super-C-q: { launch: ["swaymsg","kill"] }
       Super-M-q: { launch: ["swaymsg","exit"] }
 
