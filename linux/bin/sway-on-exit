@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+swaymsg -m -t subscribe '["shutdown"]' # would block util sway exit
+
+echo "sway-on-exit shutdowning ">>/tmp/sway.log
+systemctl --user stop sway-session.target
+
+# Local Variables:
+# mode: shell-script
+# End:
