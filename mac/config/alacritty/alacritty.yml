@@ -6,6 +6,8 @@ key_bindings:
   - { key: Escape,   mode: Vi, action: ToggleViMode          }
   - { key: Return,   mode: Vi, action: ToggleViMode          }
   - { key: G,mods: Control,   mode: Vi, action: ToggleViMode          }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance } # spacebar+return
+
   # - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
 
   # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }

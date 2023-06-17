@@ -62,9 +62,10 @@ keymap:
 
   - name: Terminal
     application:
-      only: [foot,Foot,dropdown-term,Alacritty,alacritty]
+      only: [dropdown-term,Alacritty,alacritty]
     remap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
+      Super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
