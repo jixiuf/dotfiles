@@ -4,10 +4,12 @@ wsinfo=`swaymsg -t get_workspaces | jq '.[] | select(.focused==true)'`
 ws_index=`echo $wsinfo|jq  '.num'`
 max_ws="5"
 if [ "$ws_index" = "$max_ws" ]; then
-    swaymsg move container to workspace 1 ,workspace 1
+    swaymsg move container to workspace number 1 ,workspace number 1
 else
-    swaymsg -- mark --add "_prev_focused"
-    swaymsg move container to workspace next_on_output
-    swaymsg  "[con_mark=_prev_focused] focus"
-    swaymsg  "unmark _prev_focused"
+    ws_index=$(( $ws_index + 1 ))
+    swaymsg move container to workspace number $ws_index,workspace number $ws_index
+    # swaymsg -- mark --add "_prev_focused"
+    # swaymsg move container to workspace next_on_output
+    # swaymsg  "[con_mark=_prev_focused] focus"
+    # swaymsg  "unmark _prev_focused"
 fi

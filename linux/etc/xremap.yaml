@@ -45,11 +45,9 @@ keymap:
       M-b: C-left
       Super-M-f: Super-C-right
       Super-M-b: Super-C-left
-      Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
+      # Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
       Super-C-b: Super-C-b
       Super-C-a: C-a
-      Super-C-e: Super-C-e
-      Super-C-d: Super-C-d
       Super-C-w: C-f4           # close tab
 
   - name: Emacs
@@ -69,7 +67,7 @@ keymap:
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
-          C-c: { launch: ["/usr/local/bin/sway-kill"] }
+          C-c: { launch: ["sway-kill"] }
 
   - name: Default -- some of these are overridden by the above definitions
     application:
@@ -139,4 +137,103 @@ keymap:
           # C-x k (kill tab)
           k: C-f4
           # C-x C-c (exit)
-          C-c: { launch: ["/usr/local/bin/sway-kill"] }
+          C-c: { launch: ["sway-kill" ] }
+
+  - name: Global
+    remap:
+      Super-C-e: { launch: ["sway-run-or-raise.sh","emacs","runemacs"] }
+      Super-C-f: { launch: ["sway-run-or-raise.sh","google-chrome","google-chrome-stable"] }
+      Super-C-d: { launch: ["sway-run-or-raise.sh","dropdown-term","foot --term=xterm-256color  --app-id=dropdown-term -w 900x500"] }
+      Super-C-b: { launch: ["sway-run-or-raise.sh","weixin","weixin-uos 2>&1 >/dev/null"] }
+      Super-C-3: { launch: ["sway-run-or-raise.sh","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+      Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
+      Super-C-8: { launch: ["sway-run-or-raise.sh","corplink","/opt/Corplink/corplink"] }
+      Super-C-9: { launch: ["pick-color"] }
+      Super-C-r: { launch: ["run-bemenu"] }
+      Super-C-Enter: { launch: ["sh","-c","LANG=zh_CN.UTF8 foot"] }
+      Super-C-q: { launch: ["swaymsg","kill"] }
+      Super-M-q: { launch: ["swaymsg","exit"] }
+
+      Super-M-i: { launch: ["swaymsg","splith"] }
+      Super-M-v: { launch: ["swaymsg","splitv"] }
+      Super-M-t: { launch: ["swaymsg","layout toggle split"] }
+      Super-C-Backslash: { launch: ["sway-toggle-split"] }
+      Super-M-f: { launch: ["swaymsg","floating toggle"] }
+      Super-M-f: { launch: ["swaymsg","floating toggle"] }
+      Super-M-h: { launch: ["swaymsg","move scratchpad"] }
+      Super-C-M-h: { launch: ["swaymsg","scratchpad show"] }
+
+      Super-C-o: { launch: ["sway-focus-next"] }
+      Super-C-1: { launch: ["sway-kill-other-window"] }
+      Super-C-m: { launch: ["swaymsg","fullscreen"] }
+      Super-C-w: Super-C-w
+      C-w:
+        remap:
+          C-w: C-w              # C-wC-w send C-w
+          Enter: { launch: ["sway-toggle-split"] }
+          C-r: { launch: ["swaymsg","reload"] }
+          "1": { launch: ["sway-kill-other-window"] }
+          C-o: { launch: ["sway-focus-next"] }
+          o: { launch: ["sway-focus-next"] }
+
+          C-h: { launch: ["sh","-c","swaymsg focus left;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+          C-j: { launch: ["sh","-c","swaymsg focus down;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+          C-k: { launch: ["sh","-c","swaymsg focus up;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+          C-l: { launch: ["sh","-c","swaymsg focus right;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+          C-u: { launch: ["sh","-c","swaymsg focus parent;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+          C-i: { launch: ["sh","-c","swaymsg focus child;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
+
+          h: { launch: ["swaymsg","mark --add \"_swap\", focus left, swap container with mark \"_swap\", focus left, unmark \"_swap\" " ] }
+
+          j: { launch: ["swaymsg","mark --add \"_swap\", focus down, swap container with mark \"_swap\", focus down, unmark \"_swap\" " ] }
+          k: { launch: ["swaymsg","mark --add \"_swap\", focus up, swap container with mark \"_swap\", focus up, unmark \"_swap\" " ] }
+          l: { launch: ["swaymsg","mark --add \"_swap\", focus right, swap container with mark \"_swap\", focus right, unmark \"_swap\" " ] }
+
+          #mark a window
+          m: { launch: ["swaymsg","mark --add \"_swapping\"" ] }
+          # sway with the marked window
+          C-m: { launch: ["swaymsg","swap container with mark \"_swapping\", \"[con_mark=_swapping] focus\", unmark \"_swapping\"" ] }
+
+          # these reflect the position on the keyboard:
+          # w e r
+          # s d f
+          # x c v
+          w:  { launch: ["sway-move-to" ,"top-left"]}
+          e:  { launch: ["sway-move-to" ,"mid-top"]}
+          r:  { launch: ["sway-move-to" ,"top-right"]}
+          s:  { launch: ["sway-move-to" ,"mid-left"]}
+          d:  { launch: ["sway-move-to" ,"centre"]}
+          f:  { launch: ["sway-move-to" ,"mid-right"]}
+          x:  { launch: ["sway-move-to" ,"bottom-left"]}
+          c:  { launch: ["sway-move-to" ,"mid-bottom"]}
+          v:  { launch: ["sway-move-to" ,"bottom-right"]}
+
+          equal:  { launch: ["swaymsg" ,"resize grow height 15px"]}
+          minus:  { launch: ["swaymsg" ,"resize shrink height 15px"]}
+          C-equal:  { launch: ["swaymsg" ,"resize grow height 15px"]}
+          C-minus:  { launch: ["swaymsg" ,"resize shrink height 15px"]}
+
+          C-comma:  { launch: ["swaymsg" ,"resize shrink width 15px"]}
+          C-dot: { launch: ["swaymsg" ,"resize grow width 15px"]}
+
+          C-1: { launch: ["swaymsg" ,"workspace number  1"]}
+          C-2: { launch: ["swaymsg" ,"workspace number  2"]}
+          C-3: { launch: ["swaymsg" ,"workspace number  3"]}
+          C-4: { launch: ["swaymsg" ,"workspace number  4"]}
+          C-5: { launch: ["swaymsg" ,"workspace number  5"]}
+          C-6: { launch: ["swaymsg" ,"workspace number  6"]}
+          C-7: { launch: ["swaymsg" ,"workspace number  7"]}
+          C-8: { launch: ["swaymsg" ,"workspace number  8"]}
+          C-9: { launch: ["swaymsg" ,"workspace number  9"]}
+
+          n: { launch: ["swaymsg" ,"workspace next"]}
+          p: { launch: ["swaymsg" ,"workspace prev"]}
+          C-n: { launch: ["swaymsg" ,"workspace next"]}
+          C-p: { launch: ["swaymsg" ,"workspace prev"]}
+          down: { launch: ["swaymsg" ,"workspace next"]}
+          up: { launch: ["swaymsg" ,"workspace prev"]}
+
+          C-e: { launch: ["sway-next-empty-workspace" ,"--take-focused"]}
+          C-v: { launch: ["sway-next-empty-workspace" ,"--reverse  --take-focused"]}
+          C-b: { launch: ["sway-move-to-prev-workspace"]}
+          C-f: { launch: ["sway-move-to-next-workspace"]}

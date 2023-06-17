@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # arg1: app_id or class
 # arg2: command
 # demo:
@@ -9,10 +10,11 @@ target=`echo $target|tr '[:upper:]' '[:lower:]'`
 # 获取除第 1 个参数外的所有参数
 shift 1
 cmd="$@"
+echo "$cmd" >>/tmp/b.log
 #
 appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
 if [ ! "$appinfo" ]; then
-    # if app not found ,run the cmd
+    # if app not found ,run the cmde
     $cmd &
     sleep 1                   # wait starting
     # after starting , focus the new started window

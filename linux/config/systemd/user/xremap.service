@@ -6,6 +6,7 @@ BindsTo=sway-session.target
 # DefaultDependencies=no
 
 [Service]
+Environment="LANG=zh_CN.UTF-8"
 Type=simple
 # User=jixiuf
 # Group=users
