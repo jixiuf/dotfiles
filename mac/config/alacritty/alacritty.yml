@@ -6,26 +6,43 @@ key_bindings:
 
   # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   # - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
-
 font:
   normal:
-    family: Monaco
+    family: Sarasa Term SC Nerd
     style: Regular
 
   bold:
-    family: Monaco
+    family: Sarasa Term SC Nerd
     style: Bold
 
   italic:
-    family: Monaco
+    family: Sarasa Term SC Nerd
     style: Italic
 
   bold_italic:
-    family: Monaco
+    family: Sarasa Term SC Nerd
     style: Bold Italic
 
-  size: 11
   size: 15
+
+# font:
+#   normal:
+#     family: Monaco
+#     style: Regular
+
+#   bold:
+#     family: Monaco
+#     style: Bold
+
+#   italic:
+#     family: Monaco
+#     style: Italic
+
+#   bold_italic:
+#     family: Monaco
+#     style: Bold Italic
+
+#   size: 15
 env:
   TERM: xterm-256color
 colors:
