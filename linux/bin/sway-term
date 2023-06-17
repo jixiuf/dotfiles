@@ -1,0 +1,12 @@
+#!/bin/sh
+appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) |select(.focused)'`
+if [ -n "$appinfo" ]; then
+    # if front app exits
+    app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
+    class=`echo $appinfo|jq -r '(.window_properties.class // "")'|head -n 1`
+    if [[ "$app_id" = "emacs" || "$class" = "Emacs" ]]; then
+        default_directory=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
+    fi
+fi
+cd $default_directory
+alacritty $@

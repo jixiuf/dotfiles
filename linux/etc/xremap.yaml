@@ -152,7 +152,7 @@ keymap:
       Super-C-8: { launch: ["sway-run-or-raise.sh","corplink","/opt/Corplink/corplink"] }
       Super-C-9: { launch: ["pick-color"] }
       Super-C-r: { launch: ["run-bemenu"] }
-      Super-C-Enter: { launch: ["alacritty"] }
+      Super-C-Enter: { launch: ["sway-term"] }
       Super-C-q: { launch: ["swaymsg","kill"] }
       Super-M-q: { launch: ["swaymsg","exit"] }
 

@@ -4,7 +4,6 @@ key_bindings:
   # C-2 with xremap to C-Shift-space
   # - { key: V, mods: Shift|Control, action: ToggleViMode }
   - { key: Escape,   mode: Vi, action: ToggleViMode          }
-  - { key: Return,   mode: Vi, action: ToggleViMode          }
   - { key: G,mods: Control,   mode: Vi, action: ToggleViMode          }
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance } # spacebar+return
 
