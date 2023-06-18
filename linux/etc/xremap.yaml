@@ -62,7 +62,7 @@ keymap:
 
   - name: Terminal
     application:
-      only: [dropdown-term,Alacritty,alacritty]
+      only: [dterm,Alacritty,alacritty]
     remap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
       Super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
@@ -73,7 +73,7 @@ keymap:
 
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dropdown-term,Alacritty,alacritty]
+      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,Alacritty,alacritty]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       Super-C-a: C-a
@@ -145,7 +145,7 @@ keymap:
     remap:
       Super-C-e: { launch: ["sway-run-or-raise.sh","emacs","runemacs"] }
       Super-C-f: { launch: ["sway-run-or-raise.sh","google-chrome","google-chrome-stable"] }
-      Super-C-d: { launch: ["sway-run-or-raise.sh","dropdown-term","alacritty  --class=dropdown-term"] }
+      Super-C-d: { launch: ["sway-run-or-raise.sh","dterm","sway-term  --class=dterm"] }
       Super-C-b: { launch: ["sway-run-or-raise.sh","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["sway-run-or-raise.sh","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
