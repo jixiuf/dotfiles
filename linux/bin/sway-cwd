@@ -1,5 +1,11 @@
 #!/bin/sh
+# get current work directory of front most app
+# supported app:
+# 1. emacs
+#    frame-title-format '( "%f  GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
+
 appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) |select(.focused)'`
+default_directory=${HOME}
 if [ -n "$appinfo" ]; then
     # if front app exits
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
@@ -8,5 +14,4 @@ if [ -n "$appinfo" ]; then
         default_directory=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
     fi
 fi
-cd $default_directory
-alacritty $@
+echo $default_directory

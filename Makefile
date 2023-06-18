@@ -4,10 +4,9 @@ PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
 NORMAL_FILES_COMMON := `echo gitconfig gitattributes gitignore  vimrc  zshenv zshrc  tmux.conf  bashrc  fzf.zsh yank.sh mbsyncrc mailrc msmtprc`
-echo:
-	@echo "run:"
-	@echo "    make deploy"
-	@echo "    sudo make sudo"
+default:
+	make deploy
+	sudo make sudo
 
 deploy:
 	@for file in $(NORMAL_FILES_COMMON); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done

@@ -1,4 +1,6 @@
-# modus-vivendi (Dark theme)
+window:
+  opacity: 0.75
+
 key_bindings:
   - { key: Y, mods: Control, action: Paste }
   # C-2 with xremap to C-Shift-space

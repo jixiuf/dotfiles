@@ -7,6 +7,9 @@ LINK_CMD := ln -s -f
 # SYS_CONFIG_FILES_LINUX := `echo xremap.yaml`
 SYS_CONFIG_FILES_LINUX := `echo `
 # SYSTEMD_SERVICE := `echo  xremap.service`
+default:
+	make deploy
+	sudo make sudo
 
 deploy:
 	@-mkdir -p ~/bin ~/.cargo/ ~/go/

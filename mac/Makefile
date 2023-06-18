@@ -2,6 +2,10 @@
 .PHONY: deploy
 PWD := `pwd`
 LINK_CMD := ln -s -f
+default:
+	make deploy
+	sudo make sudo
+
 deploy:
 	@-mkdir -p  ~/Library/LaunchAgents/
 	@-mkdir -p /usr/local/etc/
