@@ -47,12 +47,26 @@ else
     #     swaymsg  "[con_id=$id] move window to workspace current"
     # fi
     #
+    cwd=$(sway-cwd)
     if [  $isfocused == "false" ]; then
         if [ -z "$app_id" ]; then # no app_id,x11 window
             swaymsg "[class=\"${class}\"] focus"
         else                    # wayland window
             swaymsg "[app_id=\"${app_id}\"] focus"
         fi
+            if [[ "$target" = "alacritty " || "$target" = "dterm" ]]; then
+                if [ -n "$cwd" ]; then
+                    # echo "cd $cwd" | wl-copy --primary
+                    echo -n "cd $cwd" | wl-copy  --primary
+                    sleep 0.3
+                    # /usr/include/linux/input-event-codes.h
+                    # C-Shift-v paste from primary and enter
+                    ydotool key 29:1 42:1 47:1 47:0  42:0 29:0 28:1 28:0
+                    # echo "cd $cwd"| ydotool type -d 0 -D 0 -f -
+                fi
+
+            fi
+        
         # if [ "$is_mark_floating" != "true" ]; then # 如果原来不是 floating，则将期恢复原状
         #     swaymsg floating disable
         #     swaymsg unmark "sway-run-or-raise:floating_con:$id"

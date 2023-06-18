@@ -137,23 +137,13 @@ alias tn='TERM=screen-256color tmux new -A -s'
 alias tmux='TERM=screen-256color tmux'
 bindkey -s '^T' 'ta\n'
 
-alias dnsclean='sudo killall -HUP mDNSResponder'
 alias httpserver="python -m SimpleHTTPServer 8888"
-alias "brewi"="brew install --build-from-source"
-alias "tbrewi"="tsocks brew install --build-from-source"
-alias d='sudo docker'
-alias da='sudo docker attach --sig-proxy=false'
-alias lc='launchctl'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
 # tmux_porcess_cnt=`pgrep tmux |wc -l`
 
 alias g=git
 alias gst='git status'
 alias gbr='git branch'
 
-alias showfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 
 # alias tcpinfo='netstat -n | awk "/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}"'
@@ -209,7 +199,10 @@ else
     alias topm='top -o mreg'
     alias gdb='sudo gdb'
     alias ip="ifconfig en0"
-
+    alias dnsclean='sudo killall -HUP mDNSResponder'
+    alias "brewi"="brew install --build-from-source"
+    alias "tbrewi"="tsocks brew install --build-from-source"
+    alias lc='launchctl'
 fi
 alias chown='chown -R'
 alias chmod='chmod -R'
@@ -221,8 +214,6 @@ alias srm="sudo rm -rf"
 alias lp='ls|less'
 alias pp='ps -ef|grep -v grep|grep'
 alias su="su -l"
-alias "df-h"="df -h"
-alias "dfh"="df -h"
 
 
 # alias s=" rc-service"
@@ -300,7 +291,6 @@ function kkk(){
 # alias reboot="sync;sudo reboot"
 alias mount="sudo mount"
 alias umount="sudo umount"
-alias ettercap="sudo ettercap "
 # alias env-update="sudo env-update"
 # alias etc-update="sudo etc-update"
 alias now="date '+%s'"

@@ -1,17 +1,19 @@
 #!/bin/sh
 # get current work directory of front most app
+# demo using: alacritty  --working-directory=$(sway-cwd||echo $HOME)
 # supported app:
 # 1. emacs
 #    frame-title-format '( "%f  GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
 
 appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) |select(.focused)'`
-default_directory=${HOME}
 if [ -n "$appinfo" ]; then
     # if front app exits
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
     class=`echo $appinfo|jq -r '(.window_properties.class // "")'|head -n 1`
     if [[ "$app_id" = "emacs" || "$class" = "Emacs" ]]; then
         default_directory=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
+        echo $default_directory
+        exit 0
     fi
 fi
-echo $default_directory
+exit 1
