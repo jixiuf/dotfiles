@@ -20,3 +20,5 @@ sys-kernel/t2gentoo-kernel ~amd64
 =sys-kernel/t2gentoo-sources-6.3.8::t2 ~amd64
 sys-kernel/t2gentoo-sources ~amd64
 sys-firmware/apple-bcm-firmware ~amd64
+dev-db/dbeaver-bin  ~amd64 
+dev-go/gopls ~amd64 
