@@ -1,4 +1,6 @@
 #!/bin/bash
+# 依次将焦点切换到下一个窗口(只针对当前 workspace)
+#
 #有焦点的窗口
 focused_con_id=$(swaymsg -t get_seats|jq '.[].focus'|head -n 1)
 if [ -z "$focused_con_id" ]; then

@@ -1,5 +1,5 @@
 #!/bin/bash
-# kill all the windows in current workspace
+# kill all other windows in current workspace
 # like (delete-other-windows) in emacs
 
 # 获取当前 workspace 的信息

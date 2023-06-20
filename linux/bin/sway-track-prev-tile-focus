@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# 同 sway-track-prev-focus 不过只记录 平铺窗口的焦点
 # I like these bindings:
 # bindsym $mod+grave [con_mark=_prev] focus
 # to enable fast switching between 2 apps

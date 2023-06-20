@@ -1,4 +1,9 @@
 #!/bin/bash
+# 切换当前 workspace 中窗口的布局，通常对两个窗口的布局有效
+# 即 将上下布局的两个窗口切换成左右布局
+# 或 将左右布局的两个窗口切换成上下布局
+# 大于两个窗口的窗口也可以切换，不过行为太复杂，不建议使用本脚本切换，可自行体会
+
 #有焦点的窗口
 focused_con_id=$(swaymsg -t get_seats|jq '.[].focus'|head -n 1)
 if [ -z "$focused_con_id" ]; then

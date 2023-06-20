@@ -23,6 +23,8 @@ keymap:
       C-p: up
       C-f: right
       C-b: left
+      C-v: pagedown
+      M-v: pageup
   - name: Google Chrome
     application:
       only: [Google-chrome,google-chrome]
