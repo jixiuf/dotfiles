@@ -7,11 +7,15 @@
 keymap:
   - name: firefox
     application:
-      only: firefox
+      only: [firefox,firefox-esr]
     remap:
+    # http://7is7.com/software/firefox/shortcuts.html
+      M-backspace: C-Backspace
       C-u: C-Shift-t
-      C-k: C-Shift-tab
-      C-j: C-tab
+      C-comma: C-Pageup
+      C-dot: C-Pagedown
+      C-r: C-r
+      C-7: C-Shift-l
       C-h: M-left
       C-l: M-right
       C-o: C-l
@@ -19,10 +23,6 @@ keymap:
       C-p: up
       C-f: right
       C-b: left
-      Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
-      Super-C-b: Super-C-b
-      Super-C-p: Super-C-p
-      Super-C-n: Super-C-n
   - name: Google Chrome
     application:
       only: [Google-chrome,google-chrome]
@@ -144,7 +144,8 @@ keymap:
   - name: Global
     remap:
       Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
-      Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
+      Super-C-f: { launch: ["sway-run-or-raise","firefox-esr","firefox"] }
+      # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
       Super-C-d: { launch: ["sway-run-or-raise","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
