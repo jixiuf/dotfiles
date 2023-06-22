@@ -8,22 +8,31 @@ LINK_CMD := ln -s -f
 SYS_CONFIG_FILES_LINUX := `echo `
 # SYSTEMD_SERVICE := `echo  xremap.service`
 default:
-	make deploy
 	sudo make sudo
+	make deploy
 
 deploy:
-	@-mkdir -p ~/bin ~/.cargo/ ~/go/
+	@-mkdir -p ~/bin ~/.cargo/ ~/go/ /usr/local/bin/
 	@-rm -rf ~/.cargo/bin ~/go/bin
-	ln -fs ~/bin/ ~/.cargo/bin
-	ln -fs ~/bin/ ~/go/bin
+	ln -fs /usr/local/bin/ ~/.cargo/bin
+	ln -fs /usr/local/bin/  ~/go/bin
+# @-for file in bin/*; do \
+#	if [ -h ~/$$file ]; then \
+#	unlink ~/$$file ;\
+#     fi;\
+#	if	[ -f $$file ]; then \
+#		$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
+#	fi;\
+# done
 	@-for file in bin/*; do \
-		if [ -h ~/$$file ]; then \
-		unlink ~/$$file ;\
+		if [ -h /usr/local/$$file ]; then \
+		unlink /usr/local/$$file ;\
         fi;\
 		if	[ -f $$file ]; then \
-			$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
+			$(LINK_CMD) $(PWD)/$$file /usr/local/$$file ;\
 		fi;\
 	done
+
 
 	@-mkdir -p ~/.local/share
 	@-for file in local/share/*; do \
@@ -54,9 +63,8 @@ sudo:
         fi;\
 		$(LINK_CMD) $(PWD)/$$file /$$file ;\
 	done
+	mkdir -p /usr/local/{bin,}
+	chown jixiuf:users /usr/local  -R
 
-	@-for file in bin/*; do \
-		$(LINK_CMD) $(PWD)/$$file /usr/local/$$file ;\
-	done
 
 	# for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \

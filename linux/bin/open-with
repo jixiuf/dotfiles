@@ -1,0 +1,22 @@
+#!/bin/bash
+
+arg="$1"
+
+# echo "$1">>/tmp/a.log
+if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
+    # echo "aaaaaaaaaa">>/tmp/a.log
+    file="${BASH_REMATCH[1]}"
+    line="${BASH_REMATCH[2]}"
+
+    if [[ -f $file || -d $file ]]; then
+        # ec is my wrapper of emacsclient
+        ec -n +$line "$file"
+    fi
+else
+    # echo "bbbbbbbb">>/tmp/a.log
+    if [[ -f $arg || -d $arg ]]; then
+        ec -n "$arg"
+    else
+        xdg-open "$arg"
+    fi
+fi
