@@ -163,9 +163,9 @@ alias download="pushd ~/Downloads/"
 # alias emacsq="emacs -q -debug-init"
 # alias sftp="sudo /etc/init.d/proftpd restart"
 if [ $(uname -s ) = "Linux" ] ; then
-    alias eme='sudo emerge -av'
+    alias eme='sudo emerge -a'
     alias emerge='sudo emerge'
-    alias emeu='sudo emerge -avuDN @world'
+    alias emeu='sudo emerge -auDN @world'
     alias esync='sudo emerge --sync'
 
     alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
