@@ -150,8 +150,8 @@ keymap:
   - name: Global
     remap:
       Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
-      # Super-C-f: { launch: ["sway-run-or-raise","firefox-esr","firefox"] }
-      Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
+      Super-C-f: { launch: ["sway-run-or-raise","firefox","firefox |firefox-bin"] }
+      # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
       Super-C-d: { launch: ["sway-run-or-raise", "--floating-only","--","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }

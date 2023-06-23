@@ -22,3 +22,6 @@ sys-kernel/t2gentoo-sources ~amd64
 sys-firmware/apple-bcm-firmware ~amd64
 dev-db/dbeaver-bin  ~amd64 
 dev-go/gopls ~amd64 
+# www-client/firefox ~amd64 
+# dev-libs/nss ~amd64 
+
