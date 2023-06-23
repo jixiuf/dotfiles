@@ -11,7 +11,7 @@
 # Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
 # Super-C-f: { launch: ["sway-run-or-raise","firefox-esr","firefox"] }
 # # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
-# Super-C-d: { launch: ["sway-run-or-raise","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+# Super-C-d: { launch: ["sway-run-or-raise", "--floating-only","--","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
 # Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
 # Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
 
@@ -20,6 +20,32 @@
 # 而我的目录窗口若是 alacritty 终端，则当我切换到 alacritty 终端时，我希望执行 cd directory 命令，切换到与 emacs 中文件所有目录 相同的目录
 # 需要依赖 ydotool
 #
+PROG=$( basename "$0" )
+floating_only=""
+
+TEMP=$( getopt --options fh --longoptions floating-only,help -- "$@" ) || exit 1
+eval set -- "$TEMP"
+
+for i in "$@"; do
+    case "$i" in
+        -h|--help)
+            echo "Usage: $PROG OPTIONS target [runstring]"
+            echo
+            echo "Give focus to a program based on target (app_id for sway or class for Xwayland). If we can't give focus to something with that app_id or class, then exec 'runstring'" |fmt
+            echo
+            echo "OPTIONS"
+            echo "-f|--floating-only  只在 floating 窗口中寻找匹配的 target"
+            exit 0
+            ;;
+        -f|--floating-only*)
+            floating_only="set"
+            shift
+            ;;
+    esac
+done
+
+shift
+
 # $target= app_id for wayland or class for x11
 target=$1
 # 转成小写
@@ -28,7 +54,11 @@ target=`echo $target|tr '[:upper:]' '[:lower:]'`
 shift 1
 cmd="$@"
 #
-appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+if [ -n "$floating_only" ]; then
+    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'")) and (.type =="floating_con") )'`
+else
+    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+fi
 if [ ! "$appinfo" ]; then
     # if app not found ,run the cmde
     if echo "$cmd" | grep -q " "; then
@@ -38,7 +68,11 @@ if [ ! "$appinfo" ]; then
     fi
     sleep 1                   # wait starting
     # after starting , focus the new started window
-    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+    if [ -n "$floating_only" ]; then
+        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'")) and (.type =="floating_con") )'`
+    else
+        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+    fi
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
     class=`echo $appinfo|jq -r '(.window_properties.class // "")'|head -n 1`
     if [ -z "$app_id" ]; then # no app_id,x11 window
@@ -108,7 +142,7 @@ else
         fi
         # if [ "$fullscreen_mode" == "1" ]; then
         #     swaymsg mark "sway-run-or-raise:fullscreen:$id"
-        # fi
+          # fi
         # # swaymsg '[con_name="Term"] mark my-terminal'
     fi
 fi
