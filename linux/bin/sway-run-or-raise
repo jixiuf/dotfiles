@@ -22,8 +22,9 @@
 #
 PROG=$( basename "$0" )
 floating_only=""
+cd=""
 
-TEMP=$( getopt --options fh --longoptions floating-only,help -- "$@" ) || exit 1
+TEMP=$( getopt --options cfh --longoptions cd,floating-only,help -- "$@" ) || exit 1
 eval set -- "$TEMP"
 
 for i in "$@"; do
@@ -36,6 +37,10 @@ for i in "$@"; do
             echo "OPTIONS"
             echo "-f|--floating-only  只在 floating 窗口中寻找匹配的 target"
             exit 0
+            ;;
+        -c|--cd*)
+            cd="set"
+            shift
             ;;
         -f|--floating-only*)
             floating_only="set"
@@ -106,12 +111,12 @@ else
             swaymsg "[app_id=\"${app_id}\"] focus"
         fi
             if [[ "$target" = "alacritty " || "$target" = "dterm" ]]; then
-                if [ -n "$cwd" ]; then
+                if [[ -n "$cwd" && -n "$cd" ]]; then
                     # 如果 sway-cwd 获取到当前 working directory
                     # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录
                     # echo "cd $cwd" | wl-copy --primary
                     echo -n "cd $cwd" | wl-copy  --primary
-                    sleep 0.3
+                    sleep 0.5
                     # /usr/include/linux/input-event-codes.h
                     # C-Shift-v paste from primary and enter
                     ydotool key 29:1 42:1 47:1 47:0  42:0 29:0 28:1 28:0
