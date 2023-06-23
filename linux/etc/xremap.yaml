@@ -72,6 +72,10 @@ keymap:
         remap:
           C-x: C-x              # C-xC-x send C-x
           C-c: { launch: ["sway-kill"] }
+      C-c:
+        remap:
+          C-c: C-c              # C-xC-x send C-x
+          C-e: C-Shift-M        # hints
 
   - name: Default -- some of these are overridden by the above definitions
     application:
@@ -148,7 +152,7 @@ keymap:
       Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
       Super-C-f: { launch: ["sway-run-or-raise","firefox-esr","firefox"] }
       # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
-      Super-C-d: { launch: ["sway-run-or-raise","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+      Super-C-d: { launch: ["sway-run-or-raise","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
@@ -156,7 +160,7 @@ keymap:
       Super-C-9: { launch: ["pick-color"] }
       # Super-C-r: { launch: ["run-bemenu"] }
       C-Tab: { launch: ["run-bemenu"] }
-      Super-C-Enter: { launch: ["sh","-c","alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
+      Super-C-Enter: { launch: ["sh","-c","nohup alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
       Super-C-q: { launch: ["swaymsg","kill"] }
       Super-M-q: { launch: ["swaymsg","exit"] }
 
@@ -173,6 +177,13 @@ keymap:
       Super-C-1: { launch: ["sway-kill-other-window"] }
       Super-C-m: { launch: ["swaymsg","fullscreen"] }
       Super-C-w: Super-C-w
+      Super-C-n: { launch: ["swaymsg" ,"workspace next"]}
+      Super-C-p: { launch: ["swaymsg" ,"workspace prev"]}
+      Super-M-comma: { launch: ["swaymsg" ,"resize shrink width 15px"]}
+      Super-M-dot: { launch: ["swaymsg" ,"resize grow width 15px"]}
+      Super-C-M-comma: { launch: ["swaymsg" ,"resize shrink height 15px"]}
+      Super-C-M-dot: { launch: ["swaymsg" ,"resize grow height 15px"]}
+
       C-w:
         remap:
           C-w: C-w              # C-wC-w send C-w
@@ -214,13 +225,6 @@ keymap:
           c:  { launch: ["sway-move-to" ,"mid-bottom"]}
           v:  { launch: ["sway-move-to" ,"bottom-right"]}
 
-          equal:  { launch: ["swaymsg" ,"resize grow height 15px"]}
-          minus:  { launch: ["swaymsg" ,"resize shrink height 15px"]}
-          C-equal:  { launch: ["swaymsg" ,"resize grow height 15px"]}
-          C-minus:  { launch: ["swaymsg" ,"resize shrink height 15px"]}
-
-          C-comma:  { launch: ["swaymsg" ,"resize shrink width 15px"]}
-          C-dot: { launch: ["swaymsg" ,"resize grow width 15px"]}
 
           C-1: { launch: ["swaymsg" ,"workspace number  1"]}
           C-2: { launch: ["swaymsg" ,"workspace number  2"]}

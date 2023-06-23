@@ -31,8 +31,8 @@ output * bg ./sway-bg.jpg fill
 # bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 # bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
 # bindsym --no-repeat mod4+control+8 exec $HOME/bin/sway-run-or-raise.sh corplink  /opt/Corplink/corplink 
-
-# bindsym --no-repeat mod4+control+Return fullscreen disable, exec foot
+# 多数绑定都挪到 xremap 中了， 这里留一个以免 xremap 异常
+bindsym --no-repeat mod4+control+Return fullscreen disable, exec alacritty
 
 # Start your launcher
 # bindsym mod4+control+r exec $menu
@@ -54,10 +54,13 @@ output * bg ./sway-bg.jpg fill
 bindgesture swipe:4:right workspace prev
 bindgesture swipe:4:left workspace next
 # 捏
-bindgesture pinch:inward+up move up
-bindgesture pinch:inward+down move down
-bindgesture pinch:inward+left move left
-bindgesture pinch:inward+right move right
+# ydotool: /usr/include/linux/input-event-codes.h C-- C-+
+bindgesture pinch:2:inward exec ydotool key 29:1 12:1 12:0 29:0
+bindgesture pinch:2:outward exec ydotool key 29:1 13:1 13:0 29:0
+# bindgesture pinch:inward+up move up
+# bindgesture pinch:inward+down move down
+# bindgesture pinch:inward+left move left
+# bindgesture pinch:inward+right move right
 bindgesture swipe:3:right exec $HOME/bin/sway-move-to-next-workspace
 bindgesture swipe:3:left exec $HOME/bin/sway-move-to-prev-workspace
 

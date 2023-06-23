@@ -1,3 +1,4 @@
+# /usr/share/doc/alacritty-0.10.1/alacritty.yml.bz2
 window:
   opacity: 0.75
 selection:
@@ -5,8 +6,12 @@ selection:
 
 key_bindings:
   - { key: Y, mods: Control, action: Paste }
-  - { key: V, mods: Control, action: Paste }
   - { key: V, mods: Control|Shift, action: PasteSelection }
+
+  - { key: V,  mods: Control,         action: ScrollPageDown }
+  - { key: V,  mods: Alt,         action: ToggleViMode }
+  - { key: V,  mods: Control,        mode: Vi, action: ScrollPageDown }
+  - { key: V,  mods: Alt,         mode: Vi, action: ScrollPageUp }
 
   # C-2 with xremap to C-Shift-space
   # - { key: V, mods: Shift|Control, action: ToggleViMode }
@@ -50,7 +55,7 @@ key_bindings:
 hints:
   #alphabet: "jfkdls;ahgurieowpq"
   enabled:
-   - regex: "((ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+)|(([\\w\\./]+/)*[\\w\\.]+\\.[\\w]+(:\\d+)?)"
+   - regex: "((ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+)|(([\\w\\.\\-_/]+/)*[\\w\\-_\\.]+\\.[\\w]+(:\\d+)?)"
    # - regex: "([\\w\\./]+/)*[\\w]+\\.[\\w]+(:\\d+)?"
      hyperlinks: true
      command: open-with
