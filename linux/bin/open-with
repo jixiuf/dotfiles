@@ -2,12 +2,13 @@
 
 arg="$1"
 if [ -z "$arg" ]; then
+    # 如果未传参数，则使用 sway-cwd  来从 window title 中获取当前目录
+    # 目录支持 emacs/alacritty 均需要按一定的格式进行定制 window title
     arg=$(sway-cwd)
 fi
 
-# echo "$1">>/tmp/a.log
+# 如果是 /path/to/filename:linenum 格式的 使用 emacsclient 打开
 if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
-    # echo "aaaaaaaaaa">>/tmp/a.log
     file="${BASH_REMATCH[1]}"
     line="${BASH_REMATCH[2]}"
 
@@ -16,7 +17,7 @@ if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
         ec -n +$line "$file"
     fi
 else
-    # echo "bbbbbbbb">>/tmp/a.log
+    # 如果 arg 对应的文件或目录存在， 则使用 ec 打开否则使用 xdg-open
     if [[ -f $arg || -d $arg ]]; then
         ec -n "$arg"
     else

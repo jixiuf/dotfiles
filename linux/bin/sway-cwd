@@ -8,8 +8,14 @@
 # get current work directory of front most app
 # supported app:
 # 1. emacs
-#    frame-title-format '( "%f  GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
-
+#       frame-title-format '( "%f  GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
+#       详见：https://github.com/jixiuf/vmacs/blob/master/conf/conf-common.el#L56
+# 2. alacritty with zsh
+#       autoload -U add-zsh-hook
+#       update_cwd(){
+#           print -Pn "\e]2;$(pwd)\a" #s
+#       }
+#       add-zsh-hook precmd update_cwd
 appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) |select(.focused)'`
 if [ -n "$appinfo" ]; then
     # if front app exits
