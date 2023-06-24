@@ -16,8 +16,18 @@ if [ -n "$appinfo" ]; then
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
     class=`echo $appinfo|jq -r '(.window_properties.class // "")'|head -n 1`
     if [[ "$app_id" = "emacs" || "$class" = "Emacs" ]]; then
-        default_directory=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
-        echo $default_directory
+        cwd=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
+        echo $cwd
+        exit 0
+    elif [[ "$app_id" = "alacritty" || "$app_id" = "dterm" ]]; then
+        # for zsh
+        # autoload -U add-zsh-hook
+        # update_cwd(){
+        #     print -Pn "\e]2;$(pwd)\a" #s
+        # }
+        # add-zsh-hook precmd update_cwd
+        cwd=$(echo $appinfo|jq -r '.name')
+        echo $cwd
         exit 0
     fi
 fi

@@ -62,6 +62,17 @@ keymap:
       # C-x: C-x
       Super-C-g: Super-C-g
 
+  - name: dterm                 # dropdown terminal by alacritty
+    application:
+      only: [dterm]
+    remap:
+    # 对于 dropdown 形式的 alacritty,spacebar-enter 时，先将当前 term 转成平铺窗口
+    # 然后再使用 alacritty 的 SpawnNewInstance 重新打开一个 class=dterm 的窗口
+    # 这个新窗口根据 swaywm 的规则，必是 floating 的
+      # Super-M-f: { launch: ["swaymsg","floating toggle"] }
+      Super-C-Enter:
+        - { launch: ["swaymsg","floating toggle"] }
+        - Shift-C-Enter
 
   - name: Terminal
     application:
@@ -79,6 +90,7 @@ keymap:
         remap:
           C-c: C-c              # C-xC-x send C-x
           C-e: C-Shift-M        # hints
+
 
   - name: Default -- some of these are overridden by the above definitions
     application:
