@@ -50,6 +50,11 @@ swaymsg -m -t subscribe '["window"]' 2> /dev/null | \
         swaymsg "rename workspace to $NUM:${ACTIVE_WINDOW_NAME::12}" >/dev/null 2>&1
 
         swaymsg -- "[con_id=${prev_focus}] mark --add _prev" &>/dev/null
+        prev_app_type=$( echo "$TREE" | jq -r "..|try select(.id == ${prev_focus}).type" )
+        if [  "$prev_app_type" = "floating_con" ]; then
+            # 如果失去焦点的窗口是 floating,则将其 send 到 scratchpad
+            swaymsg --  "[con_id=${prev_focus}] move window to scratchpad"
+        fi
         prev_focus=$new_focus
     done
 
