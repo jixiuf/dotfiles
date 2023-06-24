@@ -90,6 +90,7 @@ keymap:
         remap:
           C-c: C-c              # C-xC-x send C-x
           C-e: C-Shift-M        # hints
+          C-j: { launch: ["open-with"]}
 
 
   - name: Default -- some of these are overridden by the above definitions
