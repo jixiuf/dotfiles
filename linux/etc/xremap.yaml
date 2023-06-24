@@ -12,6 +12,7 @@ keymap:
     # http://7is7.com/software/firefox/shortcuts.html
       M-backspace: C-Backspace
       C-u: C-Shift-t
+      C-i: C-Shift-i
       C-comma: C-Pageup
       C-dot: C-Pagedown
       C-r: C-r

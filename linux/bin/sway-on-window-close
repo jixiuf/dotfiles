@@ -5,8 +5,11 @@
 swaymsg -m -t subscribe '["window"]' 2> /dev/null | \
     jq --unbuffered -r 'select(.change == "close").container.id' | \
     while read -r new_closed; do
-        # echo $new_closed
-        swaymsg '[con_mark=_prev_con] focus'
+        # previd=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[])| select(.marks?[]? == "_prev") | .id')
+        # echo "$new_closed  closed $previd">>/tmp/a.log
+        swaymsg '[con_mark=_prev] focus'
+        # prev_focus=$(cat /tmp/sway-prev-focus)
+        # swaymsg "[con_id=${prev_focus}] focus"
     done
 
 # Local Variables:
