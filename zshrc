@@ -504,7 +504,7 @@ case $TERM in
         # unfunction preexec
         PS1='$ '
         ;;
-    (*xterm*|*rxvt*|(dt|k)term*|*screen*))
+    (*xterm*|*rxvt*|(dt|k)term*|*screen*|alacritty*|linux*))
         PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
         add-zsh-hook -Uz chpwd (){

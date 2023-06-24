@@ -97,6 +97,7 @@ font:
 
   size: 15
 env:
+# ssh 兼容性好
   TERM: xterm-256color
 colors:
   primary:

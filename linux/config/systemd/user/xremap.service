@@ -11,7 +11,7 @@ Type=simple
 # User=jixiuf
 # Group=users
 Restart=always
-ExecStartPre=sleep 3
+ExecStartPre=sleep 1
 ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml --watch
 
 [Install]
