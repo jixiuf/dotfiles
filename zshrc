@@ -507,9 +507,14 @@ case $TERM in
     (*xterm*|*rxvt*|(dt|k)term*|*screen*|alacritty*|linux*))
         PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
-        add-zsh-hook -Uz chpwd (){
-            print -Pn "\e]2;%2~\a" #s
+
+        update_cwd(){
+            print -Pn "\e]2;$(pwd)\a" #s
         }
+        add-zsh-hook precmd update_cwd
+        # add-zsh-hook -Uz chpwd ()
+        #     print -Pn "\e]2;$(pwd)\a" #s
+        # }
         vterm_prompt_end() {
             vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
         }
