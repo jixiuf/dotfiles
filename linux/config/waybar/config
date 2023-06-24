@@ -33,7 +33,9 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip-format": "{ifname}: {essid} {ipaddr}/{cidr}"
+        "tooltip-format": "{ifname}: {essid} {ipaddr}/{cidr}",
+        "on-click-right": "alacritty --class=nmtui -e nmtui",
+
     },
     "tray": {
         "spacing": 0
