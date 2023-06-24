@@ -152,19 +152,20 @@ keymap:
 
   - name: Global
     remap:
-      Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
-      Super-C-f: { launch: ["sway-run-or-raise","firefox","firefox |firefox-bin"] }
+    # 使用 swaymsg exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
+      Super-C-e: { launch: ["swaymsg","exec","--","sway-run-or-raise","emacs","runemacs"] }
+      Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","firefox","firefox"] }
       # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
-      Super-C-d: { launch: ["sway-run-or-raise", "--cd","--floating-only","--","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
-      Super-C-comma: { launch: ["sway-run-or-raise", "--floating-only","--","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
-      Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
-      Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+      Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+      Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+      Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
+      Super-C-3: { launch: ["swaymsg","exec","--","sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
-      Super-C-8: { launch: ["sway-run-or-raise","corplink","/opt/Corplink/corplink"] }
+      Super-C-8: { launch: ["swaymsg","exec","--","sway-run-or-raise","corplink","/opt/Corplink/corplink"] }
       Super-C-9: { launch: ["pick-color"] }
       # Super-C-r: { launch: ["run-bemenu"] }
-      C-Tab: { launch: ["run-bemenu"] }
-      Super-C-Enter: { launch: ["sh","-c","nohup alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
+      C-Tab: { launch: ["swaymsg","exec","--","run-bemenu"] }
+      Super-C-Enter: { launch: ["swaymsg","exec","--","sh","-c"," alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
       Super-C-q: { launch: ["swaymsg","kill"] }
       Super-M-q: { launch: ["swaymsg","exit"] }
 
