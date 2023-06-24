@@ -115,12 +115,11 @@ else
                     # 如果 sway-cwd 获取到当前 working directory
                     # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录
                     # echo "cd $cwd" | wl-copy --primary
-                    echo -n "cd $cwd" | wl-copy  --primary
-                    sleep 0.5
+                    echo -n "cd $cwd" | wl-copy                    # sleep 1
+                    # fcitx5-remote -s keyboard-us
                     # /usr/include/linux/input-event-codes.h
-                    # C-Shift-v paste from primary and enter
-                    ydotool key 29:1 42:1 47:1 47:0  42:0 29:0 28:1 28:0
-                    # echo "cd $cwd"| ydotool type -d 0 -D 0 -f -
+                    # C-y Enter C-l
+                    ydotool key  29:1 21:1 21:0 29:0 28:1 28:0 29:1 38:1  38:0  29:0
                 fi
 
             fi

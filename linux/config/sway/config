@@ -26,8 +26,8 @@ output * bg ./sway-bg.jpg fill
 # --inside-wrong-color cd3131 --ring-wrong-color f14c4c
 
 # bindsym --no-repeat mod4+control+e exec $HOME/bin/sway-run-or-raise.sh emacs  $HOME/bin/runemacs
-# bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable 
-# bindsym --no-repeat mod4+control+d exec $HOME/bin/sway-run-or-raise.sh dterm foot --term=xterm-256color  --app-id=dterm -w 900x500 
+# bindsym --no-repeat mod4+control+f exec $HOME/bin/sway-run-or-raise.sh google-chrome google-chrome-stable
+bindsym --no-repeat mod4+control+d exec sway-run-or-raise  --cd --floating-only -- dterm nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm 
 # bindsym --no-repeat mod4+control+b exec $HOME/bin/sway-run-or-raise.sh weixin weixin-uos 2>&1 >/dev/null
 # bindsym --no-repeat mod4+control+3 exec $HOME/bin/sway-run-or-raise.sh Bytedance-feishu bytedance-feishu-stable  2>&1 >/dev/null
 # bindsym --no-repeat mod4+control+8 exec $HOME/bin/sway-run-or-raise.sh corplink  /opt/Corplink/corplink 
@@ -64,8 +64,8 @@ bindgesture swipe:4:left workspace next
 # bindgesture pinch:inward+down move down
 # bindgesture pinch:inward+left move left
 # bindgesture pinch:inward+right move right
-bindgesture swipe:3:right exec $HOME/bin/sway-move-to-next-workspace
-bindgesture swipe:3:left exec $HOME/bin/sway-move-to-prev-workspace
+bindgesture swipe:3:right exec sway-move-to-next-workspace
+bindgesture swipe:3:left exec sway-move-to-prev-workspace
 
 # bindsym mod4+mod1+i splith
 # bindsym mod4+mod1+v splitv
