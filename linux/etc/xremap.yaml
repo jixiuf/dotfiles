@@ -68,6 +68,7 @@ keymap:
     remap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
       Super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
+      Super-C-w: { launch: ["sway-kill"] }
       C-Enter: [C-y,Enter]
       C-x:
         remap:
