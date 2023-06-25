@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# arg1: app_id or class
+# arg1: app_id or class (regexp)
 # other args: command
 # demo:
 # 根据 arg1(app_id or window class) 来匹配当前运行的程序中有没有匹配的窗口，
@@ -8,16 +8,19 @@
 # 1.2 若此窗口不是当前聚焦的窗口，则将焦点转移到此窗口
 # 2. 如果没有，则使用 arg2 及之后的参数 以启动目录程序,并聚焦之(有可能程序是在其他 workspace 启动，故需要将焦点转移到那)
 # demo: from ../etc/xremap.yaml
-# Super-C-e: { launch: ["sway-run-or-raise","emacs","runemacs"] }
-# Super-C-f: { launch: ["sway-run-or-raise","firefox-esr","firefox"] }
-# # Super-C-f: { launch: ["sway-run-or-raise","google-chrome","google-chrome-stable"] }
-# Super-C-d: { launch: ["sway-run-or-raise", "--floating-only","--","dterm","nohup alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
-# Super-C-b: { launch: ["sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
-# Super-C-3: { launch: ["sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+# 使用 swaymsg exec -- 来执行 是为了避免重启 xremap 时 也跟着退出
+# Super-C-e: { launch: ["swaymsg","exec","--","sway-run-or-raise","emacs","runemacs"] }
+# app_id 可以使用正则如 firefox|firefox-esr
+# Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","firefox|firefox-esr","firefox"] }
+# Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+# Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+# Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
+# Super-C-3: { launch: ["swaymsg","exec","--","sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+# Super-C-8: { launch: ["swaymsg","exec","--","sway-run-or-raise","corplink","/opt/Corplink/corplink"] }
 
 # 有个特例，参见 sway-cwd
 # 若当前窗口是 emacs ,我能从 emacs 的 title 中获取到 emacs 的 default-directory(emacs 当前编辑的文件所在的目录)
-# 而我的目录窗口若是 alacritty 终端，则当我切换到 alacritty 终端时，我希望执行 cd directory 命令，切换到与 emacs 中文件所有目录 相同的目录
+# 而我的目录窗口若是 alacritty 终端，则当我切换到 alacritty 终端时，我希望执行 cd directory 命令，切换到与 emacs 中文件所在目录 相同的目录
 # 需要依赖 ydotool
 #
 PROG=$( basename "$0" )
@@ -54,15 +57,15 @@ shift
 # $target= app_id for wayland or class for x11
 target=$1
 # 转成小写
-target=`echo $target|tr '[:upper:]' '[:lower:]'`
+# target=`echo $target|tr '[:upper:]' '[:lower:]'`
 # 获取除第 1 个参数外的所有参数
 shift 1
 cmd="$@"
 #
 if [ -n "$floating_only" ]; then
-    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'")) and (.type =="floating_con") )'`
+    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")| test("'"$target"'"; "i")) or ((.window_properties.class  // "")| test("'"$target"'"; "i"))) and (.type =="floating_con") )'`
 else
-    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+    appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")| test("'"$target"'"; "i")) or ((.window_properties.class  // "")|test("'"$target"'"; "i")))'`
 fi
 if [ ! "$appinfo" ]; then
     # if app not found ,run the cmde
@@ -74,9 +77,9 @@ if [ ! "$appinfo" ]; then
     sleep 1                   # wait starting
     # after starting , focus the new started window
     if [ -n "$floating_only" ]; then
-        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'")) and (.type =="floating_con") )'`
+        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select(( ((.app_id // "")| test("'"$target"'"; "i")) or ((.window_properties.class  // "")| test("'"$target"'"; "i"))) and (.type =="floating_con") )'`
     else
-        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")|ascii_downcase == "'"$target"'") or ((.window_properties.class  // "")|ascii_downcase == "'"$target"'"))'`
+        appinfo=`swaymsg -t get_tree | jq -r 'recurse(.nodes[], .floating_nodes[]) | select( ((.app_id // "")| test("'"$target"'"; "i")) or ((.window_properties.class  // "")|test("'"$target"'"; "i")))'`
     fi
     app_id=`echo $appinfo|jq -r '(.app_id // "")'|head -n 1`
     class=`echo $appinfo|jq -r '(.window_properties.class // "")'|head -n 1`
@@ -118,8 +121,8 @@ else
                     echo -n "cd $cwd" | wl-copy                    # sleep 1
                     # fcitx5-remote -s keyboard-us
                     # /usr/include/linux/input-event-codes.h
-                    # C-y Enter C-l
-                    ydotool key  29:1 21:1 21:0 29:0 28:1 28:0 29:1 38:1  38:0  29:0
+                    # C-u C-y Enter C-l
+                    ydotool key  29:1 22:1 22:0 21:1 21:0 29:0 28:1 28:0 29:1 38:1  38:0  29:0
                 fi
 
             fi
