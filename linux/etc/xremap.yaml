@@ -61,6 +61,7 @@ keymap:
       C-g: [Super-Space,f15]
       # C-x: C-x
       Super-C-g: Super-C-g
+      Super-C-t: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
 
   - name: dterm                 # dropdown terminal by alacritty
     application:
