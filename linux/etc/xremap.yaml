@@ -5,6 +5,13 @@
 # super = cmd on macos and win on windows
 # journalctl -u xremap
 keymap:
+  - name: DBeaver
+    application:
+      only: [DBeaver]
+    remap:
+    # http://7is7.com/software/firefox/shortcuts.html
+      C-r: F5
+
   - name: firefox
     application:
       only: [firefox,firefox-esr]
