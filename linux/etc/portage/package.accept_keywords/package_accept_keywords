@@ -24,4 +24,4 @@ dev-db/dbeaver-bin  ~amd64
 dev-go/gopls ~amd64 
 # www-client/firefox ~amd64 
 # dev-libs/nss ~amd64 
-
+app-misc/keyd  ~amd64 
