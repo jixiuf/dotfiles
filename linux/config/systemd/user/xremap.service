@@ -12,7 +12,7 @@ Type=simple
 # Group=users
 Restart=always
 ExecStartPre=sleep 1
-ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml --watch
+ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml  --device 'keyd virtual keyboard' --watch=config,device
 
 [Install]
 WantedBy=sway-session.target
