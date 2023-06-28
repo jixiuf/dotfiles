@@ -10,6 +10,7 @@ key_bindings:
 
   - { key: V,  mods: Control,         action: ScrollPageDown }
   - { key: V,  mods: Alt,         action: ToggleViMode }
+  - { key: A,         mode: Vi|~Search, action: ToggleViMode }
   - { key: V,  mods: Control,        mode: Vi, action: ScrollPageDown }
   - { key: V,  mods: Alt,         mode: Vi, action: ScrollPageUp }
 
