@@ -25,3 +25,4 @@ dev-go/gopls ~amd64
 # www-client/firefox ~amd64 
 # dev-libs/nss ~amd64 
 app-misc/keyd  ~amd64 
+net-misc/apifox ~amd64
