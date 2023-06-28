@@ -217,7 +217,7 @@ keymap:
         remap:
           C-w: C-w              # C-wC-w send C-w
           Enter: { launch: ["sway-toggle-split"] }
-          C-r: { launch: ["swaymsg","reload"] }
+          C-r: Super-M-r        # reload
           "1": { launch: ["sway-kill-other-window"] }
           C-o: { launch: ["sway-focus-next"] }
           o: { launch: ["sway-focus-next"] }
