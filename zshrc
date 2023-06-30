@@ -170,15 +170,15 @@ if [ $(uname -s ) = "Linux" ] ; then
 
     alias ls='ls --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls -a --color=auto  '
-    alias ll='ls -lth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
+    alias ll='ls -lth --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
     # sort by time 倒序
-    alias llr='ls -lrth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
+    alias llr='ls -lrth --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
     # sort by time
-    alias lla='ls -alth --color=auto --time-style=+"%m 月%d 日 %H:%M"'
+    alias lla='ls -alth --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
     # sort by size
-    alias lls='ls -lSh --color=auto --time-style=+"%m 月%d 日 %H:%M"'
+    alias lls='ls -lSh --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
     # sort by name
-    alias lln='ls -lh --color=auto --time-style=+"%m 月%d 日 %H:%M"'
+    alias lln='ls -lh --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
 else
     #-v  http:/lujun.info/2012/10/osx-%E7%9A%84-iterm2%E4%B8%AD%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/
 
