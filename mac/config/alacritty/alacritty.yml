@@ -7,6 +7,7 @@ selection:
 key_bindings:
   - { key: Y, mods: Control, action: Paste }
   - { key: V, mods: Control|Shift, action: PasteSelection }
+  - { key: L, mods: Control|Shift, action: ClearHistory}
 
   - { key: V,  mods: Control,         action: ScrollPageDown }
   - { key: V,  mods: Alt,         action: ToggleViMode }
