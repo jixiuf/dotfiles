@@ -44,7 +44,7 @@ zle     -N   fzf-file-widget
 
 
 # CTRL-R - Paste the selected command from history into the command line
-# 改造fc -rl 1 改成history -n 1
+# 改造 fc -rl 1 改成 history -n 1
 fzf-history-widget() {
     setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
     item=`history -nr  1 |
@@ -56,6 +56,15 @@ fzf-history-widget() {
 }
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
+if [ $(uname -s ) = "Linux" ] ; then
+    fzf-cliphist(){
+        item=`cliphist list | fzf | cliphist decode`
+        LBUFFER="${item} "
+        return items
+    }
+    zle     -N   fzf-cliphist
+    bindkey "^[y" fzf-cliphist
+fi
 
 
 
@@ -134,7 +143,7 @@ flsof() {
 export FZF_DEFAULT_COMMAND='rg --files'
 # https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS="--layout=reverse  --exact --no-height --cycle  --color hl:#ffd900,hl+:#79ed0d,bg+:#616161,info:#616161,prompt:#b4fa72,spinner:107,pointer:#b4fa72  --inline-info --prompt='filter> '  --bind=ctrl-k:kill-line,ctrl-v:page-down,alt-v:page-up,ctrl-m:accept "
-# 有些太长，一行显示不下，在最后3行进行预览完整命令
+# 有些太长，一行显示不下，在最后 3 行进行预览完整命令
 export FZF_CTRL_R_OPTS="--preview 'echo {}'  --preview-window up:3:wrap "
 export FZF_CDR_OPTS="  "
 # export FZF_CTRL_R_OPTS="--sort --exact --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
