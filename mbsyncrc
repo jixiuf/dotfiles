@@ -5,10 +5,10 @@ IMAPAccount luojilab
 Host imap.feishu.cn 
 Port 993
 User jixiufeng@luojilab.com
-# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# 从 keychain 获取密码 https://www.jianshu.com/p/191978f84853
 # security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
 # security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.feishu.cn" -w "mypass"
-PassCmd "security find-internet-password -g -a jixiufeng@luojilab.com -s smtp.feishu.cn -w"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine smtp.feishu.cn login jixiuf@luojilab.com password/ {print $NF}'"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -40,10 +40,11 @@ IMAPAccount 139
 Host imap.139.com
 Port 993
 User jixiuf@139.com
-# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# 从 keychain 获取密码 https://www.jianshu.com/p/191978f84853
 # security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
 # security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.exmail.qq.com" -w "mypass"
-PassCmd "security find-internet-password -g -a jixiuf@139.com -s smtp.139.com -w"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine smtp.139.com login jixiuf@139.com password/ {print $NF}'"
+# PassCmd "security find-internet-password -g -a jixiuf@139.com -s smtp.139.com -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -74,10 +75,11 @@ IMAPAccount qq
 Host imap.qq.com
 Port 993
 User jixiuf@qq.com
-# 从keychain 获取密码 https://www.jianshu.com/p/191978f84853
+# 从 keychain 获取密码 https://www.jianshu.com/p/191978f84853
 # security add-internet-password -a "所属用户" -s "密码项名称" -w "密码"
 # security add-internet-password -a "jixiufeng@luojilab.com" -s "smtp.exmail.qq.com" -w "mypass"
-PassCmd "security find-internet-password -g -a jixiuf@qq.com -s smtp.qq.com -w"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine smtp.qq.cn login jixiuf@qq.com password/ {print $NF}'"
+# PassCmd "security find-internet-password -g -a jixiuf@qq.com -s smtp.qq.com -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
