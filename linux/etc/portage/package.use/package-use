@@ -27,6 +27,7 @@ x11-libs/libxkbcommon X
 # required by www-client/google-chrome-113.0.5672.126::gentoo
 # required by google-chrome (argument)
 >=app-text/ghostscript-gpl-10.01.1 cups
+www-client/google-chrome qt5
 # required by sys-auth/polkit-122-r1::gentoo[systemd]
 >=sys-apps/systemd-253.3-r1 policykit
 # required by gnome-base/gnome-keyring-42.1-r2::gentoo
