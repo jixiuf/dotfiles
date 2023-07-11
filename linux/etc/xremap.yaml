@@ -180,6 +180,7 @@ keymap:
       Super-C-e: { launch: ["swaymsg","exec","--","sway-run-or-raise","emacs","runemacs"] }
       Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","'firefox|firefox-esr'","firefox"] }
       Super-C-5: { launch: ["sway-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
+      Super-C-6: { launch: ["sway-run-or-raise","DBeaver","dbeaver"] }
       Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
