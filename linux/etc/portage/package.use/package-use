@@ -67,3 +67,4 @@ www-client/firefox dbus clang pulseaudio
 media-libs/libsdl2 gles2
 >=dev-lang/rust-bin-1.69.0 rust-src rust-analyzer
 net-mail/mu emacs
+>=app-arch/brotli-1.0.9-r6 python

@@ -27,3 +27,4 @@ dev-go/gopls ~amd64
 app-misc/keyd  ~amd64 
 net-misc/apifox ~amd64
 dev-util/rust-analyzer ~amd64
+net-proxy/charles ~amd64 

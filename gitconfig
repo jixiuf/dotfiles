@@ -12,6 +12,9 @@
 	user = jixiuf
 [includeIf "gitdir:~/go/src/gitlab.luojilab.com/"]
     path = ~/go/src/gitlab.luojilab.com/gitconfig
+[includeIf "gitdir:~/go/src/"]
+    path = ~/go/src/gitconfig
+    
 #~/go/src/gitlab.luojilab.com/.gitconfig 内容如下注释
 # [user]
 #     email = jixiufeng@luojilab.com
