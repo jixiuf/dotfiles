@@ -185,6 +185,7 @@ keymap:
       Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
       Super-C-3: { launch: ["swaymsg","exec","--","sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+      Super-C-g: { launch: ["swaymsg","exec","--","sway-run-or-raise","org.gnome.Nautilus","nautilus"] }
       # eme slurp swappy
       Super-C-4: { launch: ["sh","-c","grim -g \"$( slurp)\" - | swappy -f -"]}
 
