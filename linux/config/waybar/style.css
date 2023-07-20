@@ -3,9 +3,9 @@
 @define-color foreground-warning white;
 @define-color background-warning #2980b9;
 @define-color foreground-error black;
-@define-color background-error orange;
+@define-color background-error #B0C4DE;
 @define-color foreground-critical black;
-@define-color background-critical red;
+@define-color background-critical #DC143C;
 
 * {
   min-height: 0;
