@@ -30,3 +30,6 @@ dev-util/rust-analyzer ~amd64
 net-proxy/charles ~amd64 
 x11-misc/dex  ~amd64 
 x11-misc/ksnip ~amd64
+media-fonts/twemoji ~amd64
+dev-python/notofonttools ~amd64
+
