@@ -5,6 +5,18 @@
 # super = cmd on macos and win on windows
 # journalctl -u xremap
 keymap:
+  - name: swappy
+    application:
+      only: [swappy]
+    remap:
+    # http://7is7.com/software/firefox/shortcuts.html
+      C-y: C-y
+      C-b: C-b
+      C-g: [C-c, esc]
+      C-slash: C-z
+      C-x:
+        remap:
+          C-c: [C-c, esc]
   - name: DBeaver
     application:
       only: [DBeaver]
