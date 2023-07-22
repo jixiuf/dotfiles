@@ -41,7 +41,7 @@ gui-wm/hyprland X
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram  -stroke -terra-pinyin  -wubi 
 >=app-i18n/fcitx-qt-5.0.17-r1 qt5
 >=dev-qt/qtgui-5.15.9 egl
-gui-wm/sway wallpapers X -swaybar grimshot
+gui-wm/sway  X -swaybar grimshot
 media-libs/mesa llvm vulkan
 sys-devel/gcc jit gcc
 sys-fs/lvm2 lvm 
