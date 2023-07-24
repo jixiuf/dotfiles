@@ -12,11 +12,11 @@ keymap:
     # http://7is7.com/software/firefox/shortcuts.html
       C-y: C-y
       C-b: C-b
-      C-g: [C-c, esc]
+      C-g: [C-c,C-s, esc]
       C-slash: C-z
       C-x:
         remap:
-          C-c: [C-c, esc]
+          C-c: [C-c,C-s, esc]
   - name: DBeaver
     application:
       only: [DBeaver]
@@ -193,6 +193,7 @@ keymap:
       Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","'firefox|firefox-esr'","firefox"] }
       Super-C-5: { launch: ["sway-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       Super-C-6: { launch: ["sway-run-or-raise","DBeaver","dbeaver"] }
+      Super-C-j: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--","mitp","alacritty --class=mitp -e mitmproxy -p 8888"] }
       Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
