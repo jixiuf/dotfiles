@@ -1,6 +1,10 @@
 #!/bin/zsh
 # appendPath(newPath)
 # 如果 newPath 已经在 PATH 下了， 则不添加
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+export GPG_TTY=$(tty)
+
 export APM_OUTPUT_PATH=/tmp/trace/
 export LC_ALL=zh_CN.UTF-8
 export GO111MODULE=on
