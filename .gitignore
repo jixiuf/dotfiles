@@ -32,3 +32,10 @@ gnupg/random_seed
 /mac/terminfo/61/
 /mac/rime_input_method/luna_pinyin.userdb/
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230625_p20230707
+/mitmproxy/command_history
+/mitmproxy/mitmproxy-ca-cert.cer
+/mitmproxy/mitmproxy-ca-cert.p12
+/mitmproxy/mitmproxy-ca-cert.pem
+/mitmproxy/mitmproxy-ca.p12
+/mitmproxy/mitmproxy-ca.pem
+/mitmproxy/mitmproxy-dhparam.pem
