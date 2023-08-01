@@ -13,7 +13,7 @@ var direct = 'DIRECT';
 var hasOwnProperty = Object.hasOwnProperty;
 
 function FindProxyForURL(url, host) {
-    if (/(entree)/i.test(host)) return httpproxy;
+    if (/(entree|mitm)/i.test(host)) return httpproxy;
     return direct;
     // 这regexp 过滤一部分，有时google 会有好多域名 一一列举太麻烦，只要域名中含google就代理
     // if (/(amazon|instagram|dropbox|github|google|gstatic|asahichinese|appspot|delicious|facebook|ggpht|html5rocks|hulu|twitter|twimg|staticflickr)/i.test(host)) return proxy;
@@ -35,3 +35,8 @@ function FindProxyForURL(url, host) {
         pos = host.lastIndexOf('.', pos - 1);
     }
 }
+
+// Local Variables:
+// mode: conf
+// eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "make")) t)
+// End:

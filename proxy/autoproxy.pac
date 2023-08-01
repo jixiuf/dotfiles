@@ -1991,3 +1991,7 @@ function FindProxyForURL(url, host) {
         pos = host.lastIndexOf('.', pos - 1);
     }
 }
+// Local Variables:
+// mode: conf
+// eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "make")) t)
+// End:
