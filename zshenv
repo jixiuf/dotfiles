@@ -102,11 +102,8 @@ if [ $(uname -s ) = "Darwin" ] ; then
     #launchctl setenv PATH $PATH
 fi
 
-if [ -x ~/.emacs.d/bin/em ]; then
-    export EDITOR=~/.emacs.d/bin/em
-fi
-if [ -x ~/.emacs.d/bin/ec ]; then
-    export EDITOR=~/.emacs.d/bin/ec
+if [ -x /usr/local/bin/ec ]; then
+    export EDITOR=/usr/local/bin/ec
 fi
 
 export GOTRACEBACK=crash prog

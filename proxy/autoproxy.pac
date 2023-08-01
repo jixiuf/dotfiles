@@ -1992,6 +1992,5 @@ function FindProxyForURL(url, host) {
     }
 }
 // Local Variables:
-// mode: conf
 // eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "make")) t)
 // End:
