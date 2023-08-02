@@ -9,7 +9,7 @@ default:
 	make deploy
 
 deploy:
-	@for file in $(NORMAL_FILES_COMMON); do $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
+	@for file in $(NORMAL_FILES_COMMON); do unlink ~/.$$file ; $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
 
 # @if [ ! -d ~/bin ]; then\
 #	mkdir ~/bin;\
