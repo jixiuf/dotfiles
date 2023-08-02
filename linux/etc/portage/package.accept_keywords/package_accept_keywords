@@ -1,3 +1,4 @@
+app-editors/vscode ~amd64
 <app-editors/emacs-30.0.9999 **
 gui-apps/waybar ~amd64  **~amd64
 gui-wm/hyprland ~amd64
