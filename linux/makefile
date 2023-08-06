@@ -4,9 +4,6 @@ PWD := `pwd`
 DIR := `pwd`
 DATE := `date +%Y-%m-%d_%H-%M-%S`
 LINK_CMD := ln -s -f
-# SYS_CONFIG_FILES_LINUX := `echo xremap.yaml`
-SYS_CONFIG_FILES_LINUX := `echo `
-# SYSTEMD_SERVICE := `echo  xremap.service`
 default:
 	sudo make sudo
 	make deploy
@@ -34,19 +31,22 @@ deploy:
 	done
 
 
-	@-mkdir -p ~/.local/share
-	@-for file in local/share/*; do \
-		if [ -h ~/.$$file ]; then \
-		unlink ~/.$$file ;\
+	@-for file in local/*; do \
+		link_name=$$(echo "$$file" | tr ':' '/'); \
+		mkdir -p "$$HOME/.$$(dirname "$$link_name")"; \
+		if [ -h ~/.$$link_name ]; then \
+			unlink ~/.$$link_name ;\
         fi;\
-		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
+		$(LINK_CMD) $(PWD)/$$file ~/.$$link_name ;\
 	done
 	@-mkdir -p ~/.config/
 	@-for file in config/*; do \
-		if [ -h ~/.$$file ]; then \
-		unlink ~/.$$file ;\
+		link_name=$$(echo "$$file" | tr ':' '/'); \
+		mkdir -p "$$HOME/.$$(dirname "$$link_name")"; \
+		if [ -h ~/.$$link_name ]; then \
+			unlink ~/.$$link_name ;\
         fi;\
-		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
+		$(LINK_CMD) $(PWD)/$$file ~/.$$link_name ;\
 	done
 #	@-mkdir -p ~/.local/share/gnome-shell/extensions
 #	if [ ! -d ~/.local/share/gnome-shell/extensions/gnome-magic-window@adrienverge ]; then \
@@ -55,16 +55,14 @@ deploy:
 #	gnome-extensions enable gnome-magic-window@adrienverge
 
 sudo:
-	for file in $(SYS_CONFIG_FILES_LINUX); do $(LINK_CMD) $(PWD)/$$file /etc/$$file; done;
 # ln -sf udevmon_$$HOSTNAME.yaml etc/interception/udevmon.yaml
 	@-for file in etc/*; do \
-		if [ -h /$$file ]; then \
-		unlink /$$file ;\
+		link_name=$$(echo "$$file" | tr ':' '/'); \
+		mkdir -p "/$$(dirname "$$link_name")"; \
+		if [ -h /$$link_name ]; then \
+			unlink /$$link_name ;\
         fi;\
-		$(LINK_CMD) $(PWD)/$$file /$$file ;\
+		$(LINK_CMD) $(PWD)/$$file /$$link_name ;\
 	done
 	mkdir -p /usr/local/{bin,}
 	chown jixiuf:users /usr/local  -R
-
-
-	# for file in $(SYSTEMD_SERVICE); do $(LINK_CMD) $(PWD)/$$file /etc/systemd/system/$$file; systemctl restart $$file; done; \

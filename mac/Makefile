@@ -24,10 +24,12 @@ deploy:
 
 	@-mkdir -p ~/.config/
 	@-for file in config/*; do \
-		if [ -h ~/.$$file ]; then \
-		unlink ~/.$$file ;\
+		link_name=$$(echo "$$file" | tr ':' '/'); \
+		mkdir -p "$$HOME/.$$(dirname "$$link_name")"; \
+		if [ -h ~/.$$link_name ]; then \
+			unlink ~/.$$link_name ;\
         fi;\
-		$(LINK_CMD) $(PWD)/$$file ~/.$$file ;\
+		$(LINK_CMD) $(PWD)/$$file ~/.$$link_name ;\
 	done
 	@mkdir -p ~/bin
 	@-for file in bin/*; do \
