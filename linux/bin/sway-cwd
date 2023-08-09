@@ -25,7 +25,7 @@ if [ -n "$appinfo" ]; then
         cwd=$(echo $appinfo|jq -r '.name| split("GNU/Emacs<")[1]|split(">")[0]')
         echo $cwd
         exit 0
-    elif [[ "$app_id" = "alacritty" || "$app_id" = "dterm" ]]; then
+    elif [[ "$app_id" = "Alacritty" || "$app_id" = "dterm" ]]; then
         # for zsh
         # autoload -U add-zsh-hook
         # update_cwd(){

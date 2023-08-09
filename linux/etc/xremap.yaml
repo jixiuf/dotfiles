@@ -209,7 +209,7 @@ keymap:
       Super-C-y: { launch: ["run-bemenu-cliphist"] }
       # Super-C-r: { launch: ["run-bemenu"] }
       C-Tab: { launch: ["swaymsg","exec","--","run-bemenu"] }
-      Super-C-Enter: { launch: ["swaymsg","exec","--","sh","-c"," alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
+      Super-C-Enter: { launch: ["swaymsg","exec","--", "alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
       Super-C-q: { launch: ["swaymsg","kill"] }
       Super-M-q: { launch: ["swaymsg","exit"] }
 

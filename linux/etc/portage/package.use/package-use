@@ -71,3 +71,4 @@ net-mail/mu emacs
 >=app-misc/mime-types-2.1.53 nginx
 app-crypt/pinentry emacs
 dev-lang/php gd
+media-libs/gd fontconfig
