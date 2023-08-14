@@ -40,3 +40,4 @@ gnupg/random_seed
 /mitmproxy/mitmproxy-ca.pem
 /mitmproxy/mitmproxy-dhparam.pem
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230625_p20230724
+/linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230804

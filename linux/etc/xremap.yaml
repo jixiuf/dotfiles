@@ -24,6 +24,7 @@ keymap:
     remap:
     # http://7is7.com/software/firefox/shortcuts.html
       C-r: F5
+      C-s: C-s
 
   - name: firefox
     application:

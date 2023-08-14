@@ -1,3 +1,4 @@
+dev-lang/go ~amd64
 app-editors/vscode ~amd64
 <app-editors/emacs-30.0.9999 ~amd64
 gui-apps/waybar ~amd64  **~amd64
