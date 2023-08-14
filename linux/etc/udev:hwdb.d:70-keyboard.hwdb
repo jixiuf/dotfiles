@@ -5,6 +5,8 @@
 # evtest 可用于显示每个按键的scancode 与
 # KEYBOARD_KEY_<scan_code>=<key_code>
 # sudo systemd-hwdb update;sudo udevadm trigger
+# 更底层 针对键盘层面的 remap 
+
 
 evdev:input:b0003v*p*
   KEYBOARD_KEY_700e3=leftalt
