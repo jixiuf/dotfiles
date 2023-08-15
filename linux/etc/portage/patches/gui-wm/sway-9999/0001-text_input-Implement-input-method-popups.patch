@@ -1,4 +1,4 @@
-From 2c43d21f55b3875c83b85104dbaea8345654dab9 Mon Sep 17 00:00:00 2001
+From 3e103d05ec58cccfbd7e74d1cfb2663e4b8bcfbb Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Wed, 3 May 2023 14:21:27 +0800
 Subject: [PATCH] text_input: Implement input-method popups
@@ -77,10 +77,10 @@ index 4de96d44..2dbd5920 100644
 +
  #endif
 diff --git a/include/sway/output.h b/include/sway/output.h
-index 50d90d25..93020257 100644
+index 62d866bc..439126a4 100644
 --- a/include/sway/output.h
 +++ b/include/sway/output.h
-@@ -156,6 +156,10 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
+@@ -154,6 +154,10 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
  	void *user_data);
  #endif
  
@@ -92,7 +92,7 @@ index 50d90d25..93020257 100644
  	struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  	void *user_data);
 diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index 476bfd25..be00b296 100644
+index aed1fdeb..b859eca1 100644
 --- a/sway/desktop/output.c
 +++ b/sway/desktop/output.c
 @@ -23,6 +23,7 @@
@@ -146,10 +146,10 @@ index 476bfd25..be00b296 100644
  		iterator, user_data);
  }
 diff --git a/sway/desktop/render.c b/sway/desktop/render.c
-index 21014042..0d3834f6 100644
+index c4c0004e..fab0772b 100644
 --- a/sway/desktop/render.c
 +++ b/sway/desktop/render.c
-@@ -202,6 +202,15 @@ static void render_unmanaged(struct render_context *ctx, struct wl_list *unmanag
+@@ -183,6 +183,15 @@ static void render_unmanaged(struct render_context *ctx, struct wl_list *unmanag
  }
  #endif
  
@@ -165,7 +165,7 @@ index 21014042..0d3834f6 100644
  static void render_drag_icons(struct render_context *ctx, struct wl_list *drag_icons) {
  	struct render_data data = {
  		.alpha = 1.0f,
-@@ -1076,6 +1085,10 @@ void output_render(struct render_context *ctx) {
+@@ -1057,6 +1066,10 @@ void output_render(struct render_context *ctx) {
  		goto renderer_end;
  	}
  
@@ -176,7 +176,7 @@ index 21014042..0d3834f6 100644
  	if (output_has_opaque_overlay_layer_surface(output)) {
  		goto render_overlay;
  	}
-@@ -1138,8 +1151,6 @@ void output_render(struct render_context *ctx) {
+@@ -1119,8 +1132,6 @@ void output_render(struct render_context *ctx) {
  
  	render_seatops(ctx);
  
@@ -185,7 +185,7 @@ index 21014042..0d3834f6 100644
  	if (focus && focus->view) {
  		render_view_popups(ctx, focus->view, focus->alpha);
  	}
-@@ -1149,6 +1160,7 @@ render_overlay:
+@@ -1130,6 +1141,7 @@ render_overlay:
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
  	render_layer_popups(ctx,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
@@ -194,10 +194,10 @@ index 21014042..0d3834f6 100644
  
  renderer_end:
 diff --git a/sway/input/cursor.c b/sway/input/cursor.c
-index d8ec11ac..cd9cbc85 100644
+index 62c74d04..11759ec4 100644
 --- a/sway/input/cursor.c
 +++ b/sway/input/cursor.c
-@@ -37,6 +37,28 @@ static uint32_t get_current_time_msec(void) {
+@@ -38,6 +38,28 @@ static uint32_t get_current_time_msec(void) {
  	return now.tv_sec * 1000 + now.tv_nsec / 1000000;
  }
  
@@ -226,7 +226,7 @@ index d8ec11ac..cd9cbc85 100644
  static struct wlr_surface *layer_surface_at(struct sway_output *output,
  		struct wl_list *layer, double ox, double oy, double *sx, double *sy) {
  	struct sway_layer_surface *sway_layer;
-@@ -119,6 +141,10 @@ struct sway_node *node_at_coords(
+@@ -120,6 +142,10 @@ struct sway_node *node_at_coords(
  		return NULL;
  	}
  
@@ -687,5 +687,4 @@ index ec54fed8..dd58bbcf 100644
  	const char *role = wlr_surface->role ? wlr_surface->role->name : NULL;
  	sway_log(SWAY_DEBUG, "Surface of unknown type (role %s): %p",
 -- 
-2.39.3
-
+2.41.0
