@@ -62,6 +62,11 @@ json_escape () {
 alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
 alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
 
+if [ ! -d ~/venv ]; then
+    virtualenv venv
+fi
+source ~/venv/bin/activate
+
 if [ -f ~/.zshrc_local ]; then
    .  ~/.zshrc_local
 else

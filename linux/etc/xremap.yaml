@@ -133,32 +133,14 @@ keymap:
       # C-M-x: C-M-x
       # Super-M-x: Super-M-x
       # Cursor
-      C-b: { with_mark: left }
-      C-f: { with_mark: right }
-      C-p: { with_mark: up }
-      C-n: { with_mark: down }
-      # Forward/Backward word
-      M-b: { with_mark: C-left }
-      M-f: { with_mark: C-right }
-      # Beginning/End of line
-      C-a: { with_mark: home }
-      C-e: { with_mark: end }
-      # Page up/down
-      M-v: { with_mark: pageup }
-      C-v: { with_mark: pagedown }
-      # Beginning/End of file
-      M-Shift-comma: { with_mark: C-home }
-      M-Shift-dot: { with_mark: C-end }
       # Newline
       C-m: enter
-      C-j: enter
       C-o: [enter, left]
       # Copy
       # C-w: [C-x, { set_mark: false }]
       M-w: [C-c, { set_mark: false }]
       C-y: [C-v, { set_mark: false }]
       # Delete
-      C-d: [delete, { set_mark: false }]
       M-d: [C-delete, { set_mark: false }]
       # Kill line
       C-k: [Shift-end, C-x, { set_mark: false }]
@@ -167,11 +149,6 @@ keymap:
       C-Shift-ro: C-z
       # Mark
       # C-2: { set_mark: true }
-      # Search
-      C-s: F3
-      C-r: Shift-F3
-      M-Shift-5: C-h
-      # Cancel
       C-g: [esc, { set_mark: false }]
       # C-x YYY
       C-x:
