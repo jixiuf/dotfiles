@@ -1,3 +1,5 @@
+dev-libs/bemenu ~amd64
+www-plugins/passff-host ~amd64
 app-admin/bitwarden-desktop-bin ~amd64
 app-admin/pass-update  ~amd64
 dev-lang/go ~amd64

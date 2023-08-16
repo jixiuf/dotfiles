@@ -25,6 +25,7 @@ keymap:
     # http://7is7.com/software/firefox/shortcuts.html
       C-r: F5
       C-s: C-s
+      C-d: delete
 
   - name: firefox
     application:
@@ -37,7 +38,7 @@ keymap:
       C-comma: C-Pageup
       C-dot: C-Pagedown
       C-r: C-r
-      C-7: C-Shift-l
+      # C-7: C-Shift-l
       C-h: M-left
       C-l: M-right
       C-o: C-l
@@ -139,7 +140,7 @@ keymap:
       # Copy
       # C-w: [C-x, { set_mark: false }]
       M-w: [C-c, { set_mark: false }]
-      C-y: [C-v, { set_mark: false }]
+      # C-y: [C-v, { set_mark: false }]
       # Delete
       M-d: [C-delete, { set_mark: false }]
       # Kill line
@@ -170,8 +171,8 @@ keymap:
     # 使用 swaymsg exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
       Super-C-e: { launch: ["swaymsg","exec","--","sway-run-or-raise","emacs","runemacs"] }
       Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","'firefox|firefox-esr'","firefox"] }
-      Super-C-5: { launch: ["sway-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
-      Super-C-6: { launch: ["sway-run-or-raise","DBeaver","dbeaver"] }
+      Super-C-5: { launch: ["swaymsg","exec","--", "sway-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
+      Super-C-6: { launch: ["swaymsg","exec","--","sway-run-or-raise","DBeaver","dbeaver"] }
       Super-C-j: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--","mitp","alacritty --class=mitp -e mitmproxy -p 8888"] }
       Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
       Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }

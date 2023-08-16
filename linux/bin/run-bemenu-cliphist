@@ -1,5 +1,11 @@
 #!/bin/sh
-cliphist list | bemenu -i -I 0   --fn 'Sarasa Term SC Nerd 24' --hp 5 -W 0.5  -p run: --fb "#1e1e2e" --ff "#00ffff" --nb "#1e1e2e" --nf "#f5e0dc" --tb "#1e1e2e" --hb "#1e1e2e" --hf "#00ffff" --tf "#f5e0dc" --af "#f5e0dc" --ab "#1e1e2e"  -l 10 -n | cliphist decode | wl-copy
-# keyd do C-y
-# /usr/include/linux/input-event-codes.h
-ydotool key  29:1 21:1 21:0 29:0
+export BEMENU_OPTS='-i -I 0   --fn "Sarasa Term SC Nerd 24" --hp 5 -W 0.7   --fb "#1e1e2e" --ff "#00ffff" --nb "#1e1e2e" --nf "#f5e0dc" --tb "#1e1e2e" --hb "#1e1e2e" --hf "#00ffff" --tf "#f5e0dc" --af "#f5e0dc" --ab "#1e1e2e"  -l 10 -n'
+# cliphist list | bemenu -p cliphist: -W 0.8 | cliphist decode | wl-copy
+content=`cliphist list | bemenu -p cliphist: `
+if [ $? = 0 ]; then
+    echo "$content"| cliphist decode | wl-copy
+    # |ydotool type -d 0 -D 0 --file -
+    # keyd do C-y
+    # /usr/include/linux/input-event-codes.h
+    ydotool key  29:1 21:1 21:0 29:0
+fi
