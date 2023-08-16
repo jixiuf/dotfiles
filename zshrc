@@ -61,25 +61,6 @@ json_escape () {
 }
 alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
 alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
-# python -c "import sys, urllib as ul;  ;print ul.quote(sys.stdin.read());"
-# brew install pyenv-virtualenv
-if which pyenv-virtualenv-init > /dev/null; then
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1;
-    # https://github.com/davidparsson/zsh-pyenv-lazy/blob/master/pyenv-lazy.plugin.zsh
-    # lazy load pyenv and python ,以加快启动速度
-    function pyenv() {
-        unset -f pyenv
-        eval "$(command pyenv init -)"
-        eval "$(command pyenv virtualenv-init -)"
-        pyenv $@
-    }
-    function python() {
-        unset -f python
-        pyenv activate env-3.9.7  2>/dev/null;
-        python $@
-    }
-fi
-
 
 if [ -f ~/.zshrc_local ]; then
    .  ~/.zshrc_local
