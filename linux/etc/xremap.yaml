@@ -25,6 +25,10 @@ keymap:
     # http://7is7.com/software/firefox/shortcuts.html
       C-r: F5
       C-s: C-s
+      C-b: left
+      C-n: down
+      C-p: up
+      C-f: right
       C-d: delete
 
   - name: firefox
