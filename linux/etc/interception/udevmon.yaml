@@ -6,7 +6,7 @@
     Events:
      # 估计这里的 key 列表 与 .dual-function-keys.yaml MAPPINGS  下的 key 需要一致
      # KEY_F,KEY_E,KEY_TAB,KEY_COMMA,
-      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTMETA,KEY_LEFTCTRL,KEY_RIGHTMETA,KEY_LEFTSHIFT]
+      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTCTRL,KEY_RIGHTMETA]
 - JOB: "intercept -g $DEVNODE | dual-function-keys -c /etc/interception/dual-function-keys.yaml | uinput -d $DEVNODE"
   DEVICE:
     # libinput list-devices | grep "^Device"
@@ -15,7 +15,7 @@
     Events:
      # 估计这里的 key 列表 与 .dual-function-keys.yaml MAPPINGS  下的 key 需要一致
      # KEY_F,KEY_E,KEY_TAB,KEY_COMMA,
-      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTMETA,KEY_LEFTCTRL,KEY_RIGHTMETA,KEY_LEFTSHIFT]
+      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTCTRL,KEY_RIGHTMETA]
 - JOB: "intercept -g $DEVNODE | dual-function-keys -c /etc/interception/dual-function-keys.yaml | uinput -d $DEVNODE"
   DEVICE:
     # libinput list-devices | grep "^Device"
@@ -24,7 +24,7 @@
     Events:
      # 估计这里的 key 列表 与 .dual-function-keys.yaml MAPPINGS  下的 key 需要一致
      # KEY_F,KEY_E,KEY_TAB,KEY_COMMA,
-      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTMETA,KEY_LEFTCTRL,KEY_RIGHTMETA,KEY_LEFTSHIFT]
+      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTCTRL,KEY_RIGHTMETA]
 - JOB: "intercept -g $DEVNODE | dual-function-keys -c /etc/interception/dual-function-keys.yaml | uinput -d $DEVNODE"
   DEVICE:
     # libinput list-devices | grep "^Device"
@@ -33,4 +33,4 @@
     Events:
      # 估计这里的 key 列表 与 .dual-function-keys.yaml MAPPINGS  下的 key 需要一致
      # KEY_F,KEY_E,KEY_TAB,KEY_COMMA,
-      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTMETA,KEY_LEFTCTRL,KEY_RIGHTMETA,KEY_LEFTSHIFT]
+      EV_KEY: [ KEY_SPACE,KEY_CAPSLOCK,KEY_LEFTCTRL,KEY_RIGHTMETA]

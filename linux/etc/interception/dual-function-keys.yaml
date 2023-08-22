@@ -32,13 +32,13 @@ MAPPINGS:
   - KEY: KEY_ESC # esc->`
     TAP: [KEY_GRAVE]
     HOLD: [KEY_LEFTALT]
-  - KEY: KEY_LEFTMETA # left cmd-> ctrl or esc
+  # - KEY: KEY_LEFTMETA
+  #   TAP: KEY_ESC
+  #   HOLD: KEY_LEFTMETA
+
+  - KEY: KEY_LEFTCTRL
     TAP: KEY_ESC
     HOLD: KEY_LEFTCTRL
-
-  - KEY: KEY_LEFTCTRL # left ctrl-> cmd
-    TAP: KEY_LEFTMETA
-    HOLD: KEY_LEFTMETA
 
   - KEY: KEY_RIGHTMETA # right cmd-> cmd+alt
     TAP: [KEY_LEFTCTRL,KEY_SPACE]
