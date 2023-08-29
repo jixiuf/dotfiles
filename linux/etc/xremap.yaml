@@ -28,6 +28,8 @@ keymap:
       C-b: left
       C-n: down
       C-p: up
+      C-a: home
+      C-e: end
       C-f: right
       C-d: delete
 
