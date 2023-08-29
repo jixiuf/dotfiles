@@ -25,13 +25,6 @@ keymap:
     # http://7is7.com/software/firefox/shortcuts.html
       C-r: F5
       C-s: C-s
-      C-b: left
-      C-n: down
-      C-p: up
-      C-a: home
-      C-e: end
-      C-f: right
-      C-d: delete
 
   - name: firefox
     application:
@@ -125,6 +118,17 @@ keymap:
           C-j: { launch: ["open-with"]}
 
 
+  - name: global_emacs
+    application:
+      only: [DBeaver,apifox-pdv]
+    remap:
+      C-b: left
+      C-n: down
+      C-p: up
+      C-a: home
+      C-e: end
+      C-f: right
+      C-d: delete
   - name: Default -- some of these are overridden by the above definitions
     application:
       not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,Alacritty,alacritty]
@@ -153,7 +157,6 @@ keymap:
       C-k: [Shift-end, C-x, { set_mark: false }]
       # Undo
       C-slash: [C-z, { set_mark: false }]
-      C-Shift-ro: C-z
       # Mark
       # C-2: { set_mark: true }
       C-g: [esc, { set_mark: false }]
