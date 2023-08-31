@@ -13,6 +13,6 @@
 #usb
 evdev:input:b0003v05ACp0256e0111*
   KEYBOARD_KEY_700e2=leftctrl
-  KEYBOARD_KEY_700e3=rightalt
+  KEYBOARD_KEY_700e3=leftalt
   KEYBOARD_KEY_700e0=leftmeta
   KEYBOARD_KEY_700e6=rightmeta
