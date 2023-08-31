@@ -12,7 +12,12 @@
 # I: Bus=0003 Vendor=05ac Product=0256 Version=0111
 #usb
 evdev:input:b0003v05ACp0256e0111*
+   # /usr/include/linux/input-event-codes.h
   KEYBOARD_KEY_700e2=leftctrl
   KEYBOARD_KEY_700e3=leftalt
   KEYBOARD_KEY_700e0=leftmeta
   KEYBOARD_KEY_700e6=rightmeta
+# esc-> ` 
+  KEYBOARD_KEY_70029=grave
+#  `->esc  
+  KEYBOARD_KEY_70035=esc
