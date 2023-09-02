@@ -41,3 +41,4 @@ gnupg/random_seed
 /mitmproxy/mitmproxy-dhparam.pem
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230625_p20230724
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230804
+/mac/rime_input_method/sync/
