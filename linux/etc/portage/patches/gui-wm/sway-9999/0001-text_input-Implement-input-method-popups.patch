@@ -1,4 +1,4 @@
-From 3e103d05ec58cccfbd7e74d1cfb2663e4b8bcfbb Mon Sep 17 00:00:00 2001
+From 12c52ff345cfd0b7279c7186b0e33fb08f346343 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Wed, 3 May 2023 14:21:27 +0800
 Subject: [PATCH] text_input: Implement input-method popups
@@ -25,7 +25,7 @@ index 1ec0cb52..876a15a6 100644
  subprojects
 +.cache
 diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
-index 4de96d44..2dbd5920 100644
+index 214e61d1..a01ddf55 100644
 --- a/include/sway/input/text_input.h
 +++ b/include/sway/input/text_input.h
 @@ -21,18 +21,37 @@ struct sway_input_method_relay {
@@ -194,7 +194,7 @@ index c4c0004e..fab0772b 100644
  
  renderer_end:
 diff --git a/sway/input/cursor.c b/sway/input/cursor.c
-index 62c74d04..11759ec4 100644
+index 44a5d6f7..c11999de 100644
 --- a/sway/input/cursor.c
 +++ b/sway/input/cursor.c
 @@ -38,6 +38,28 @@ static uint32_t get_current_time_msec(void) {
@@ -226,7 +226,7 @@ index 62c74d04..11759ec4 100644
  static struct wlr_surface *layer_surface_at(struct sway_output *output,
  		struct wl_list *layer, double ox, double oy, double *sx, double *sy) {
  	struct sway_layer_surface *sway_layer;
-@@ -120,6 +142,10 @@ struct sway_node *node_at_coords(
+@@ -121,6 +143,10 @@ struct sway_node *node_at_coords(
  		return NULL;
  	}
  
@@ -659,7 +659,7 @@ index 58911c2d..05c867d6 100644
  				text_input_set_pending_focused_surface(text_input, surface);
  			}
 diff --git a/sway/tree/container.c b/sway/tree/container.c
-index d2c4ffc4..37a45197 100644
+index 8c344a6d..f45f11d2 100644
 --- a/sway/tree/container.c
 +++ b/sway/tree/container.c
 @@ -392,6 +392,9 @@ static bool surface_is_popup(struct wlr_surface *surface) {
@@ -671,7 +671,7 @@ index d2c4ffc4..37a45197 100644
 +	}
  	struct wlr_xdg_surface *xdg_surface =
  		wlr_xdg_surface_try_from_wlr_surface(surface);
- 	return xdg_surface->role == WLR_XDG_SURFACE_ROLE_POPUP;
+ 	return xdg_surface->role == WLR_XDG_SURFACE_ROLE_POPUP && xdg_surface->popup != NULL;
 diff --git a/sway/tree/view.c b/sway/tree/view.c
 index ec54fed8..dd58bbcf 100644
 --- a/sway/tree/view.c
