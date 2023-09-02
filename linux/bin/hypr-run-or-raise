@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# arg1: target_class (regexp)
+# other args: command
+# demo:
+# 根据 arg1(window target_class) 来匹配当前运行的程序中有没有匹配的窗口，
+# 1. 如果有
+# 1.1 若此窗口已经是聚焦的窗口，则将焦点转移到上一次聚焦的窗口上
+# 1.2 若此窗口不是当前聚焦的窗口，则将焦点转移到此窗口
+# 2. 如果没有，则使用 arg2 及之后的参数 以启动目录程序,并聚焦之(有可能程序是在其他 workspace 启动，故需要将焦点转移到那)
+# hypr-run-or-raise emacs emacs
+# hypr-run-or-raise 'firefox|firefox-esr' firefox
+# hypr-run-or-raise --cd --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
+# hypr-run-or-raise --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
+
+# 有个特例，参见 hypr-cwd
+# 若当前窗口是 emacs ,我能从 emacs 的 title 中获取到 emacs 的 default-directory(emacs 当前编辑的文件所在的目录)
+# 而我的目录窗口若是 alacritty 终端，则当我切换到 alacritty 终端时，我希望执行 cd directory 命令，切换到与 emacs 中文件所在目录 相同的目录
+# 需要依赖 ydotool
+#
+PROG=$( basename "$0" )
+floating_only=""
+cd=""
+
+TEMP=$( getopt --options cfh --longoptions cd,floating-only,help -- "$@" ) || exit 1
+eval set -- "$TEMP"
+
+for i in "$@"; do
+    case "$i" in
+        -h|--help)
+            echo "Usage: $PROG OPTIONS target [runstring]"
+            echo
+            echo "Give focus to a program based on window class. If we can't give focus to something with that window class, then exec 'runstring'" |fmt
+            echo
+            echo "OPTIONS"
+            echo "-f|--floating-only  只在 target_floating 窗口中寻找匹配的 target"
+            exit 0
+            ;;
+        -c|--cd*)
+            cd="set"
+            shift
+            ;;
+        -f|--floating-only*)
+            floating_only="set"
+            shift
+            ;;
+    esac
+done
+
+shift
+
+# $target= app_id for wayland or target_class for x11
+target=$1
+# 转成小写
+# target=`echo $target|tr '[:upper:]' '[:lower:]'`
+# 获取除第 1 个参数外的所有参数
+shift 1
+cmd="$@"
+#
+if [ -n "$floating_only" ]; then
+    target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
+else
+    target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class |test("'"$target"'"; "i")))'`
+fi
+if [ ! "$target_appinfo" ]; then
+    # if app not found ,run the cmde
+    if echo "$cmd" | grep -q " "; then
+        sh -c "$cmd" &
+    else
+        $cmd &
+    fi
+else
+    # frontappinfo=`hyprctl clients -j | jq -r '.[] |select(.focused)'`
+    front_app=`hyprctl activewindow -j`
+    front_class=`echo $front_app|jq -r '.class'`
+    front_floating=`echo $front_app|jq -r '.floating'`
+    front_ws_name=`echo $front_app|jq -r '.workspace.name'|head -n 1`
+    # jq 的(.app_id // "") 表示取 app_id 若无此字段则为空串
+    target_class=`echo $target_appinfo|jq -r '.class'|head -n 1`
+    target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
+    cwd=$(hypr-cwd)
+    if [  "$front_class" != "$target_class" ]; then
+        # 如果当前窗口是special 的window，则先隐藏之,以免其遮挡聚焦后的窗口
+        if [[ "$front_ws_name" == *"special"* ]]; then
+            hyprctl dispatch "togglespecialworkspace"
+        fi
+        # 如果当前窗口是floating，则将其move 到special workspace,以免其遮挡聚焦后的窗口
+        if [[ "$front_floating" == "true" ]]; then
+            hyprctl dispatch "movetoworkspacesilent special:${front_class}"
+        fi
+
+        if [ "$target_floating" == "true" ]; then
+            # move window to current ws
+            hyprctl dispatch "movetoworkspace e+0,$target_class"
+        else
+            hyprctl dispatch "focuswindow ${target_class}"
+        fi
+        if [[ "$target" = "alacritty" || "$target" = "dterm" ]]; then
+            if [[ -n "$cwd" && -n "$cd" ]]; then
+                # 如果 hypr-cwd 获取到当前 working directory
+                # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录
+                wl-copy  --primary "cd $cwd"
+                sleep 0.5
+                # fcitx5-remote -s keyboard-us
+                # /usr/include/linux/input-event-codes.h
+                # keyd do C-u C-S-v enter C-l
+                ydotool key  29:1 22:1 22:0 42:1 47:1 47:0 42:0 29:0  28:1 28:0 29:1 38:1  38:0  29:0
+            fi
+        fi
+    else
+
+        if [[ "$front_ws_name" == *"special"* ]]; then
+            # hide 当前special workspace
+            hyprctl dispatch "togglespecialworkspace"
+        elif [ "$target_floating" == "true" ]; then
+            hyprctl dispatch "movetoworkspacesilent special:$target_class"
+        else
+            hyprctl dispatch "focuscurrentorlast"
+        fi
+    fi
+fi

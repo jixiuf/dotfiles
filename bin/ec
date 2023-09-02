@@ -25,8 +25,12 @@ function call_emacsclient(){
                             set visible of process appName to true
                             set frontmost of process appName to true
                     end tell '
-                else
+            else
+                if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+                    hyprctl  dispatch "focuswindow emacs"
+                elif  [ "$XDG_CURRENT_DESKTOP" == "sway" ]; then
                     swaymsg "[app_id=\"emacs\"] focus"
+                fi
             fi
 
         else
@@ -35,20 +39,24 @@ function call_emacsclient(){
     else                            # 如果 emacs 已经有 emacsclient 窗口了，则不再打开新的窗口，只把原窗口前置
         # https://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_classes.html#//apple_ref/doc/uid/TP40000983-CH216-SW51
         # tell application appName to reopen 使最小化的窗口恢复
-            if [ `uname -s` = "Darwin" ] ; then
-                osascript -e 'set appName to "Emacs"
+        if [ `uname -s` = "Darwin" ] ; then
+            osascript -e 'set appName to "Emacs"
                    tell application appName to reopen
                     tell application "System Events"
                             set visible of process appName to true
                             set frontmost of process appName to true
                     end tell '
-            else
+        else
+            if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+                hyprctl  dispatch "focuswindow emacs"
+            elif  [ "$XDG_CURRENT_DESKTOP" == "sway" ]; then
                 swaymsg "[app_id=\"emacs\"] focus"
             fi
+        fi
         if [ 0 -ne "$#" ]; then        # 有文件名才执行 emacsclient 命令
             $EMACSCLIENT $socket_file_switch "$@"
-        # else
-        #     # $EMACSCLIENT --no-wait
+            # else
+            #     # $EMACSCLIENT --no-wait
         fi
 
     fi

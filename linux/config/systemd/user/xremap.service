@@ -13,7 +13,7 @@ Type=simple
 Restart=always
 ExecStartPre=sleep 1
 # ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml  --device 'keyd virtual keyboard' --watch=config,device
-ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml   --watch=config,device
+ExecStart=/usr/local/bin/xremap  /etc/xremap.yaml   --watch=device
 
 
 [Install]

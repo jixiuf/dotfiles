@@ -82,7 +82,7 @@ keymap:
       C-g: [Super-Space,f15]
       # C-x: C-x
       Super-C-g: Super-C-g
-      Super-C-t: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+      Super-C-t: { launch: ["hyprctl","dispatch","dispatch","exec  hypr-run-or-raise --cd --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
 
   - name: dterm                 # dropdown terminal by alacritty
     application:
@@ -91,9 +91,9 @@ keymap:
     # 对于 dropdown 形式的 alacritty,spacebar-enter 时，先将当前 term 转成平铺窗口
     # 然后再使用 alacritty 的 SpawnNewInstance 重新打开一个 class=dterm 的窗口
     # 这个新窗口根据 swaywm 的规则，必是 floating 的
-      # Super-M-f: { launch: ["swaymsg","floating toggle"] }
+      # Super-M-f: { launch: ["hyprctl","dispatch","floating toggle"] }
       Super-C-Enter:
-        - { launch: ["swaymsg","floating toggle"] }
+        - { launch: ["hyprctl","dispatch","dispatch togglefloating"] }
         - Shift-C-Enter
 
   - name: Terminal
@@ -102,15 +102,15 @@ keymap:
     remap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
       Super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
-      Super-C-w: { launch: ["sway-kill"] }
+      Super-C-w: Super-C-q
       Super-C-v: C-y
       Super-C-c: C-Shift-c
-      Super-C-t: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
+      Super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       C-Enter: [C-y,Enter]
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
-          C-c: { launch: ["sway-kill"] }
+          C-c: Super-C-q
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
@@ -173,114 +173,76 @@ keymap:
           # C-x k (kill tab)
           k: C-f4
           # C-x C-c (exit)
-          C-c: { launch: ["sway-kill" ] }
+          C-c: Super-C-q
 
   - name: Global
     remap:
-    # 使用 swaymsg exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
-      Super-C-e: { launch: ["swaymsg","exec","--","sway-run-or-raise","emacs","runemacs"] }
-      Super-C-f: { launch: ["swaymsg","exec","--","sway-run-or-raise","'firefox|firefox-esr'","firefox"] }
-      Super-C-5: { launch: ["swaymsg","exec","--", "sway-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
-      Super-C-6: { launch: ["swaymsg","exec","--","sway-run-or-raise","DBeaver","dbeaver"] }
-      Super-C-j: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--","mitp","alacritty --class=mitp -e mitmproxy -p 8888"] }
-      Super-C-d: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
-      Super-C-comma: { launch: ["swaymsg","exec","--","sway-run-or-raise", "--floating-only","--","dterm","alacritty  --working-directory=$(sway-cwd||echo $HOME) --class=dterm "] }
-      Super-C-b: { launch: ["swaymsg","exec","--","sway-run-or-raise","weixin","weixin-uos 2>&1 >/dev/null"] }
-      Super-C-3: { launch: ["swaymsg","exec","--","sway-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
-      Super-C-g: { launch: ["swaymsg","exec","--","sway-run-or-raise","org.gnome.Nautilus","nautilus"] }
+    # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
+      Super-C-e: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","emacs","runemacs"] }
+      Super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
+      Super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
+      Super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
+      Super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
+      Super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-comma: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
+      Super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+      Super-C-g: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.gnome.Nautilus nautilus"] }
       # eme slurp swappy
-      Super-C-4: { launch: ["sh","-c","grim -g \"$( slurp)\" - | swappy -f -"]}
+      Super-C-4: { launch: ["sh","-c","grim -g \"$(slurp)\" - | swappy -f -"]}
 
       Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
-      Super-C-8: { launch: ["swaymsg","exec","--","sway-run-or-raise","corplink","/opt/Corplink/corplink"] }
+      Super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
       Super-C-9: { launch: ["pick-color"] }
       Super-C-y: { launch: ["run-bemenu-cliphist"] }
-      # Super-C-r: { launch: ["run-bemenu"] }
-      C-Tab: { launch: ["swaymsg","exec","--","run-bemenu"] }
-      Super-C-Enter: { launch: ["swaymsg","exec","--", "alacritty --working-directory=$(sway-cwd||echo $HOME)"] }
-      Super-C-q: { launch: ["swaymsg","kill"] }
-      Super-M-q: { launch: ["swaymsg","exit"] }
+      Super-C-r: { launch: ["run-bemenu"] }
+      C-Tab: { launch: ["wofi","--show","drun"] }
+      Super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
+      Super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
+      Super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
+      Super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
+      Super-C-M-h: { launch: ["hyprctl","dispatch","togglespecialworkspace"] }
 
-      Super-M-i: { launch: ["swaymsg","splith"] }
-      Super-M-v: { launch: ["swaymsg","splitv"] }
-      Super-M-t: { launch: ["swaymsg","layout toggle split"] }
-      Super-C-Backslash: { launch: ["sway-toggle-split"] }
-      Super-M-f: { launch: ["swaymsg","floating toggle"] }
-      Super-M-f: { launch: ["swaymsg","floating toggle"] }
-      Super-M-h: { launch: ["swaymsg","move scratchpad"] }
-      Super-C-M-h: { launch: ["swaymsg","scratchpad show"] }
-
-      Super-C-o: { launch: ["sway-focus-next"] }
-      Super-C-1: { launch: ["sway-kill-other-window"] }
-      Super-C-m: { launch: ["swaymsg","fullscreen"] }
+      Super-C-o: { launch: ["hyprctl","dispatch","cyclenext"] }
+      Super-C-1: { launch: ["hypr-kill-other-window"] }
+      Super-C-m: { launch: ["hyprctl","dispatch","fullscreen","1"] }
+      Super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
       Super-C-w: Super-C-w
-      Super-C-n: { launch: ["swaymsg" ,"workspace next"]}
-      Super-C-p: { launch: ["swaymsg" ,"workspace prev"]}
-      Super-M-comma: { launch: ["swaymsg" ,"resize shrink width 15px"]}
-      Super-M-dot: { launch: ["swaymsg" ,"resize grow width 15px"]}
-      Super-C-M-comma: { launch: ["swaymsg" ,"resize shrink height 15px"]}
-      Super-C-M-dot: { launch: ["swaymsg" ,"resize grow height 15px"]}
+      Super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
+      Super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
+      Super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
+      Super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
+      Super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
+      Super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","10"]}
 
       C-w:
         remap:
           C-w: C-w              # C-wC-w send C-w
-          Enter: { launch: ["sway-toggle-split"] }
+          Enter: Super-C-Backslash
           C-r: Super-M-r        # reload
-          "1": { launch: ["sway-kill-other-window"] }
-          C-o: { launch: ["sway-focus-next"] }
-          o: { launch: ["sway-focus-next"] }
+          C-o: Super-C-o
+          o: Super-C-o
+          "1": { launch: ["hyprctl" ,"dispatch","movetoworkspace","1"]}
+          "2": { launch: ["hyprctl" ,"dispatch","movetoworkspace","2"]}
+          "3": { launch: ["hyprctl" ,"dispatch","movetoworkspace","3"]}
+          "4": { launch: ["hyprctl" ,"dispatch","movetoworkspace","4"]}
+          "5": { launch: ["hyprctl" ,"dispatch","movetoworkspace","5"]}
+          "6": { launch: ["hyprctl" ,"dispatch","movetoworkspace","6"]}
+          "7": { launch: ["hyprctl" ,"dispatch","movetoworkspace","7"]}
+          "8": { launch: ["hyprctl" ,"dispatch","movetoworkspace","8"]}
+          "9": { launch: ["hyprctl" ,"dispatch","movetoworkspace","9"]}
+          "0": { launch: ["hyprctl" ,"dispatch","movetoworkspace","10"]}
+          "C-1": { launch: ["hyprctl" ,"dispatch","movetoworkspace","1"]}
+          "C-2": { launch: ["hyprctl" ,"dispatch","movetoworkspace","2"]}
+          "C-3": { launch: ["hyprctl" ,"dispatch","movetoworkspace","3"]}
+          "C-4": { launch: ["hyprctl" ,"dispatch","movetoworkspace","4"]}
+          "C-5": { launch: ["hyprctl" ,"dispatch","movetoworkspace","5"]}
+          "C-6": { launch: ["hyprctl" ,"dispatch","movetoworkspace","6"]}
+          "C-7": { launch: ["hyprctl" ,"dispatch","movetoworkspace","7"]}
+          "C-8": { launch: ["hyprctl" ,"dispatch","movetoworkspace","8"]}
+          "C-9": { launch: ["hyprctl" ,"dispatch","movetoworkspace","9"]}
+          "C-0": { launch: ["hyprctl" ,"dispatch","movetoworkspace","10"]}
 
-          C-h: { launch: ["sh","-c","swaymsg focus left;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-          C-j: { launch: ["sh","-c","swaymsg focus down;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-          C-k: { launch: ["sh","-c","swaymsg focus up;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-          C-l: { launch: ["sh","-c","swaymsg focus right;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-          C-u: { launch: ["sh","-c","swaymsg focus parent;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-          C-i: { launch: ["sh","-c","swaymsg focus child;notify-send -t 3000 'C-w:\n  C-h/j/k/l focus\n  C-u:focus parent\n  C-i:focus child\n  C-o:focus next' "] }
-
-          h: { launch: ["swaymsg","mark --add \"_swap\", focus left, swap container with mark \"_swap\", focus left, unmark \"_swap\" " ] }
-
-          j: { launch: ["swaymsg","mark --add \"_swap\", focus down, swap container with mark \"_swap\", focus down, unmark \"_swap\" " ] }
-          k: { launch: ["swaymsg","mark --add \"_swap\", focus up, swap container with mark \"_swap\", focus up, unmark \"_swap\" " ] }
-          l: { launch: ["swaymsg","mark --add \"_swap\", focus right, swap container with mark \"_swap\", focus right, unmark \"_swap\" " ] }
-
-          #mark a window
-          m: { launch: ["swaymsg","mark --add \"_swapping\"" ] }
-          # sway with the marked window
-          C-m: { launch: ["swaymsg","swap container with mark \"_swapping\", \"[con_mark=_swapping] focus\", unmark \"_swapping\"" ] }
-
-          # these reflect the position on the keyboard:
-          # w e r
-          # s d f
-          # x c v
-          w:  { launch: ["sway-move-to" ,"top-left"]}
-          e:  { launch: ["sway-move-to" ,"mid-top"]}
-          r:  { launch: ["sway-move-to" ,"top-right"]}
-          s:  { launch: ["sway-move-to" ,"mid-left"]}
-          d:  { launch: ["sway-move-to" ,"centre"]}
-          f:  { launch: ["sway-move-to" ,"mid-right"]}
-          x:  { launch: ["sway-move-to" ,"bottom-left"]}
-          c:  { launch: ["sway-move-to" ,"mid-bottom"]}
-          v:  { launch: ["sway-move-to" ,"bottom-right"]}
-
-
-          C-1: { launch: ["swaymsg" ,"workspace number  1"]}
-          C-2: { launch: ["swaymsg" ,"workspace number  2"]}
-          C-3: { launch: ["swaymsg" ,"workspace number  3"]}
-          C-4: { launch: ["swaymsg" ,"workspace number  4"]}
-          C-5: { launch: ["swaymsg" ,"workspace number  5"]}
-          C-6: { launch: ["swaymsg" ,"workspace number  6"]}
-          C-7: { launch: ["swaymsg" ,"workspace number  7"]}
-          C-8: { launch: ["swaymsg" ,"workspace number  8"]}
-          C-9: { launch: ["swaymsg" ,"workspace number  9"]}
-
-          n: { launch: ["swaymsg" ,"workspace next"]}
-          p: { launch: ["swaymsg" ,"workspace prev"]}
-          C-n: { launch: ["swaymsg" ,"workspace next"]}
-          C-p: { launch: ["swaymsg" ,"workspace prev"]}
-          down: { launch: ["swaymsg" ,"workspace next"]}
-          up: { launch: ["swaymsg" ,"workspace prev"]}
-
-          C-e: { launch: ["sway-next-empty-workspace" ,"--take-focused"]}
-          C-v: { launch: ["sway-next-empty-workspace" ,"--reverse  --take-focused"]}
-          C-b: { launch: ["sway-move-to-prev-workspace"]}
-          C-f: { launch: ["sway-move-to-next-workspace"]}
+          C-e:  { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
+          C-f: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
+          C-b: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
