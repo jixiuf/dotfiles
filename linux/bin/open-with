@@ -4,7 +4,11 @@ arg="$1"
 if [ -z "$arg" ]; then
     # 如果未传参数，则使用 sway-cwd  来从 window title 中获取当前目录
     # 目录支持 emacs/alacritty 均需要按一定的格式进行定制 window title
-    arg=$(sway-cwd)
+    if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+        arg=$(hypr-cwd)
+    elif  [ "$XDG_CURRENT_DESKTOP" == "sway" ]; then
+        arg=$(sway-cwd)
+    fi
 fi
 
 # 如果是 /path/to/filename:linenum 格式的 使用 emacsclient 打开

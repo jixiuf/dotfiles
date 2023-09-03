@@ -82,7 +82,7 @@ keymap:
       C-g: [Super-Space,f15]
       # C-x: C-x
       Super-C-g: Super-C-g
-      Super-C-t: { launch: ["hyprctl","dispatch","dispatch","exec  hypr-run-or-raise --cd --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only --maximize -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
 
   - name: dterm                 # dropdown terminal by alacritty
     application:
@@ -105,7 +105,7 @@ keymap:
       Super-C-w: Super-C-q
       Super-C-v: C-y
       Super-C-c: C-Shift-c
-      Super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--maximize","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       C-Enter: [C-y,Enter]
       C-x:
         remap:
@@ -183,8 +183,8 @@ keymap:
       Super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       Super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       Super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
-      Super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
-      Super-C-comma: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      Super-C-comma: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       Super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       Super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       Super-C-g: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.gnome.Nautilus nautilus"] }
@@ -246,3 +246,4 @@ keymap:
           C-e:  { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
           C-f: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
           C-b: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
+          # C-c: { launch: ["hyprctl" ,"dispatch","movetoworkspace","e+0"]}

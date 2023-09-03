@@ -19,9 +19,10 @@
 #
 PROG=$( basename "$0" )
 floating_only=""
+maximize=""
 cd=""
 
-TEMP=$( getopt --options cfh --longoptions cd,floating-only,help -- "$@" ) || exit 1
+TEMP=$( getopt --options mcfh --longoptions maximize,cd,floating-only,help -- "$@" ) || exit 1
 eval set -- "$TEMP"
 
 for i in "$@"; do
@@ -37,6 +38,11 @@ for i in "$@"; do
             ;;
         -c|--cd*)
             cd="set"
+            shift
+            ;;
+
+        -m|--maximize*)
+            maximize="set"
             shift
             ;;
         -f|--floating-only*)
@@ -91,6 +97,9 @@ else
         if [ "$target_floating" == "true" ]; then
             # move window to current ws
             hyprctl dispatch "movetoworkspace e+0,$target_class"
+            if [ $maximize ]; then
+                hyprctl dispatch "fullscreen 1"
+            fi
         else
             hyprctl dispatch "focuswindow ${target_class}"
         fi

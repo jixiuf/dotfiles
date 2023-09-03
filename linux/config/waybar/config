@@ -7,10 +7,31 @@
     "gtk-layer-shell": true,
     "passthrough": false,
     "fixed-center": true,
-    // "modules-left": ["wlr/workspaces", "hyprland/window"],
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
+    // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["hyprland/window"], // sway/window
     "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power"],
+	"wlr/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+                        "1": "一",
+            //			"2": "二",
+            //			"3": "三",
+            //			"4": "四",
+            //			"5": "五",
+			"urgent": "",
+			"active": "",
+			"default": "󰧞",
+            "sort-by-number": true
+        },
+    },
+
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
