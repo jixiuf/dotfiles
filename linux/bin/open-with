@@ -11,6 +11,15 @@ if [ -z "$arg" ]; then
     fi
 fi
 
+if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+    front_app=`hyprctl activewindow -j`
+    front_class=`echo $front_app|jq -r '.class'`
+    front_floating=`echo $front_app|jq -r '.floating'`
+    if [[ "$front_floating" == "true" && ("$front_class" == "Alacritty" || "$front_class" == "dterm") ]]; then
+        hyprctl dispatch "movetoworkspacesilent special:${front_class}"
+    fi
+fi
+
 # 如果是 /path/to/filename:linenum 格式的 使用 emacsclient 打开
 if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
     file="${BASH_REMATCH[1]}"
