@@ -1,0 +1,6 @@
+# cat /proc/bus/input/devices 可查看所有device的 busid vendorid  等
+# I: Bus=0003 Vendor=05ac Product=027c Version=0001
+# 注意需要将小定变大定， 如05AC
+# sudo udevadm control --reload-rules
+
+ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0256", RUN+="/bin/su -c '/bin/systemctl --user stop xremap;/bin/systemctl --user stop ydottool; /bin/systemctl --user stop udevmon;/usr/bin/sleep 2 ;/bin/systemctl --user start udevmon;/usr/bin/sleep 0.5; /bin/systemctl --user start xremap;/usr/bin/sleep 0.5;/bin/systemctl --user start ydotool' jixiuf"
