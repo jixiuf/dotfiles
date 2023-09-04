@@ -10,20 +10,20 @@ export APM_OUTPUT_PATH=/tmp/trace/
 export LC_ALL=zh_CN.UTF-8
 export GO111MODULE=on
 appendPath(){
-    addPath="$1"
-    if [ -d $addPath ]; then
-        PATH="${PATH/:$addPath}"     # remove if already there (包括分隔符，)
-        PATH="${PATH/$addPath}"      # remove if already there (不包括分隔符,主要在行首时)
-        export PATH=$PATH:$addPath
-    fi
+  local new_path=$1
+  local path_array=("${(@s/:/)PATH}")
+
+  if [[ ! ${path_array[(ie)$new_path]} -gt 0 ]]; then
+        export PATH=$PATH:$new_path
+  fi
 }
-prependPath(){
-    addPath="$1"
-    if [ -d $addPath ]; then
-        PATH="${PATH/:$addPath}"     # remove if already there (包括分隔符，)
-        PATH="${PATH/$addPath}"      # remove if already there (不包括分隔符,主要在行首时)
-        export PATH=$addPath:$PATH
-    fi
+prependPath() {
+  local new_path=$1
+  local path_array=("${(@s/:/)PATH}")
+
+  if [[ ! ${path_array[(ie)$new_path]} -gt 0 ]]; then
+    export PATH="$new_path:$PATH"
+  fi
 }
 
 prependPath "$HOME/bin"
