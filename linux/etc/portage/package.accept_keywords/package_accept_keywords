@@ -7,8 +7,13 @@ app-editors/vscode ~amd64
 <app-editors/emacs-30.0.9999 ~amd64
 gui-apps/waybar ~amd64  **~amd64
 gui-wm/hyprland ~amd64
+gui-libs/xdg-desktop-portal-hyprland ~amd64
+dev-qt/qtbase  ~amd64
+dev-qt/qtdeclarative ~amd64
+dev-qt/qtshadertools  ~amd64
 media-libs/libdisplay-info ~amd64
 dev-libs/hyprland-protocols ~amd64
+dev-qt/qtwayland ~amd64
 dev-libs/libliftoff ~amd64
 dev-libs/date ~amd64
 gui-wm/sway **
