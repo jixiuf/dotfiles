@@ -1,0 +1,14 @@
+#!/bin/bash
+# kill xremap
+sudo -E -u jixiuf /bin/systemctl --user stop xremap 2>&1 >>/tmp/a
+sudo -E -u jixiuf /bin/systemctl --user stop ydotool
+sudo -E -u jixiuf /bin/systemctl --user stop udevmon
+# /usr/bin/sleep 2
+sudo -E -u jixiuf /bin/systemctl --user start udevmon
+/usr/bin/sleep 0.5
+sudo -E -u jixiuf /bin/systemctl --user start xremap
+/usr/bin/sleep 0.5
+sudo -E -u jixiuf /bin/systemctl --user start ydotool
+sudo -E -u jixiuf /usr/bin/touch /tmp/test2
+# ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0256", RUN+="/usr/local/bin/restart-udevmon"
+# udevadm trigger --verbose --type=subsystems --action=remove --subsystem-match=usb --attr-match="idVendor=05ac"

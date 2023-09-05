@@ -10,21 +10,32 @@ export APM_OUTPUT_PATH=/tmp/trace/
 export LC_ALL=zh_CN.UTF-8
 export GO111MODULE=on
 appendPath(){
-  local new_path=$1
-  local path_array=("${(@s/:/)PATH}")
-
-  if [[ ! ${path_array[(ie)$new_path]} -gt 0 ]]; then
-        export PATH=$PATH:$new_path
-  fi
+    if [[ -z "${1}" ]]; then
+        echo "Usage: appendPath <path>"
+        return 1
+    fi
+    realpath=$1
+    if [ -d "$realpath" ]; then
+        realpath=`realpath $1`
+        if [[ ":${PATH}:" != *":${realpath}:"* ]]; then
+            export PATH="${PATH}:${1}"
+        fi
+    fi
 }
 prependPath() {
-  local new_path=$1
-  local path_array=("${(@s/:/)PATH}")
-
-  if [[ ! ${path_array[(ie)$new_path]} -gt 0 ]]; then
-    export PATH="$new_path:$PATH"
-  fi
+    if [[ -z "${1}" ]]; then
+        echo "Usage: prependPath <path>"
+        return 1
+    fi
+    realpath=$1
+    if [ -d "$realpath" ]; then
+        realpath=`realpath $1`
+        if [[ ":${PATH}:" != *":${realpath}:"* ]]; then
+            export PATH="${1}:${PATH}"
+        fi
+    fi
 }
+
 
 prependPath "$HOME/bin"
 appendPath "$HOME/.emacs.d/bin"

@@ -33,8 +33,8 @@ bindsym --no-repeat mod4+control+d exec sway-run-or-raise  --cd --floating-only 
 # bindsym --no-repeat mod4+control+8 exec $HOME/bin/sway-run-or-raise.sh corplink  /opt/Corplink/corplink 
 # 多数绑定都挪到 xremap 中了， 这里留一个以免 xremap 异常
 bindsym --no-repeat mod4+control+Return fullscreen disable, exec alacritty
-bindsym --no-repeat mod4+mod1+r reload, exec sh -c 'systemctl --user stop xremap;systemctl --user stop ydottool;systemctl --user stop udevmon;sleep 2 ;systemctl --user start udevmon;sleep 0.5; systemctl --user start xremap;sleep 0.5;systemctl --user start ydotool'
-bindsym --no-repeat mod4+mod1+s reload, exec sh -c 'systemctl --user stop xremap;systemctl --user stop ydottool;systemctl --user stop udevmon'
+bindsym --no-repeat mod4+mod1+r reload, exec sh -c 'systemctl --user stop xremap;systemctl --user stop ydotool;systemctl --user stop udevmon;sleep 2 ;systemctl --user start udevmon;sleep 0.5; systemctl --user start xremap;sleep 0.5;systemctl --user start ydotool'
+bindsym --no-repeat mod4+mod1+s reload, exec sh -c 'systemctl --user stop xremap;systemctl --user stop ydotool;systemctl --user stop udevmon'
 
 # Start your launcher
 # bindsym mod4+control+r exec $menu
