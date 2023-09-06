@@ -4,6 +4,35 @@
 # sudo systemctl restart xremap
 # super = cmd on macos and win on windows
 # journalctl -u xremap
+keypress_delay_ms: 20           # https://github.com/k0kubun/xremap/issues/179
+modmap:
+  - name: Global
+    remap:
+      space:
+        held: [ctrl_l,super_l]
+        alone: space
+        alone_timeout_millis: 1000 # Optional
+      capslock :
+        held: [alt_l,super_l]
+        alone: capslock # Required
+        alone_timeout_millis: 1000 # Optional
+      ctrl_l :
+        held: ctrl_l
+        alone: esc
+        alone_timeout_millis: 1000
+      super_r :
+        held: [alt_l,super_l]
+        alone: [ctrl_l,space]
+        alone_timeout_millis: 1000 # Optional
+  - name: Emacs
+    application:
+      only: emacs
+    remap:
+      super_r :
+        held: [alt_l,super_l]
+        alone: [super_l,ctrl_l,space]
+        alone_timeout_millis: 1000 # Optional
+
 keymap:
   - name: swappy
     application:
@@ -37,6 +66,7 @@ keymap:
       C-comma: C-Pageup
       C-dot: C-Pagedown
       C-r: C-r
+      C-s: C-f
       # C-7: C-Shift-l
       C-h: M-left
       C-l: M-right
@@ -52,7 +82,7 @@ keymap:
       only: [Google-chrome,google-chrome]
     remap:
       M-backspace: C-Backspace
-      Super-C-u: C-Shift-t
+      super-C-u: C-Shift-t
       C-comma: C-Shift-tab
       C-dot: C-tab
       C-r: C-r
@@ -67,22 +97,20 @@ keymap:
       C-e: End
       M-f: C-right
       M-b: C-left
-      Super-M-f: Super-C-right
-      Super-M-b: Super-C-left
-      # Super-C-f: Super-C-f      #否则会变成 Super-right,因上面 C-f->right
-      Super-C-b: Super-C-b
-      Super-C-a: C-a
-      Super-C-w: C-f4           # close tab
+      super-M-f: super-C-right
+      super-M-b: super-C-left
+      # super-C-f: super-C-f      #否则会变成 super-right,因上面 C-f->right
+      super-C-b: super-C-b
+      super-C-a: C-a
+      super-C-w: C-f4           # close tab
 
   - name: Emacs
     application:
       only: [emacs,Emacs]
     remap:
-      C-Space: Super-C-Space
-      C-g: [Super-Space,f15]
+      C-g: [super-Space,f15]
       # C-x: C-x
-      Super-C-g: Super-C-g
-      Super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only --maximize -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only --maximize -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
 
   - name: dterm                 # dropdown terminal by alacritty
     application:
@@ -91,8 +119,8 @@ keymap:
     # 对于 dropdown 形式的 alacritty,spacebar-enter 时，先将当前 term 转成平铺窗口
     # 然后再使用 alacritty 的 SpawnNewInstance 重新打开一个 class=dterm 的窗口
     # 这个新窗口根据 swaywm 的规则，必是 floating 的
-      # Super-M-f: { launch: ["hyprctl","dispatch","floating toggle"] }
-      Super-C-Enter:
+      # super-M-f: { launch: ["hyprctl","dispatch","floating toggle"] }
+      super-C-Enter:
         - { launch: ["hyprctl","dispatch","dispatch togglefloating"] }
         - Shift-C-Enter
 
@@ -101,16 +129,16 @@ keymap:
       only: [dterm,Alacritty,alacritty]
     remap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
-      Super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
-      Super-C-w: Super-C-q
-      Super-C-v: C-y
-      Super-C-c: C-Shift-c
-      Super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--maximize","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
+      super-C-w: super-C-q
+      super-C-v: C-y
+      super-C-c: C-Shift-c
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--maximize","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       C-Enter: [C-y,Enter]
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
-          C-c: Super-C-q
+          C-c: super-C-q
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
@@ -134,15 +162,15 @@ keymap:
       not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,Alacritty,alacritty]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
-      Super-C-a: C-a
-      Super-C-c: C-c
-      Super-C-v: C-v
-      Super-C-z: C-z
-      Super-C-s: C-s
-      # C-x: Super-C-M-x
-      # Super-C-x: [Super-C-M-x,C-x]
+      super-C-a: C-a
+      super-C-c: C-c
+      super-C-v: C-v
+      super-C-z: C-z
+      super-C-s: C-s
+      # C-x: super-C-M-x
+      # super-C-x: [super-C-M-x,C-x]
       # C-M-x: C-M-x
-      # Super-M-x: Super-M-x
+      # super-M-x: super-M-x
       # Cursor
       # Newline
       C-m: enter
@@ -173,55 +201,55 @@ keymap:
           # C-x k (kill tab)
           k: C-f4
           # C-x C-c (exit)
-          C-c: Super-C-q
+          C-c: super-C-q
 
   - name: Global
     remap:
     # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
-      Super-C-e: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","emacs","runemacs"] }
-      Super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
-      Super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
-      Super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
-      Super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
-      Super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
-      Super-C-comma: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
-      Super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
-      Super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
-      Super-C-g: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.gnome.Nautilus nautilus"] }
+      super-C-e: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","emacs","runemacs"] }
+      super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
+      super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
+      super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
+      super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-comma: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only --maximize  dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
+      super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
+      super-C-g: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.gnome.Nautilus nautilus"] }
       # eme slurp swappy
-      Super-C-4: { launch: ["sh","-c","grim -g \"$(slurp)\" - | swappy -f -"]}
+      super-C-4: { launch: ["sh","-c","grim -g \"$(slurp)\" - | swappy -f -"]}
 
-      Super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
-      Super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
-      Super-C-9: { launch: ["pick-color"] }
-      Super-C-y: { launch: ["run-bemenu-cliphist"] }
-      Super-C-r: { launch: ["run-bemenu"] }
+      super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
+      super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
+      super-C-9: { launch: ["pick-color"] }
+      super-C-y: { launch: ["run-bemenu-cliphist"] }
+      super-C-r: { launch: ["run-bemenu"] }
       C-Tab: { launch: ["wofi","--show","drun"] }
-      Super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
-      Super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
-      Super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
-      Super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
-      Super-C-M-h: { launch: ["hyprctl","dispatch","togglespecialworkspace"] }
+      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
+      super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
+      super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
+      super-C-M-h: { launch: ["hyprctl","dispatch","togglespecialworkspace"] }
 
-      Super-C-o: { launch: ["hyprctl","dispatch","cyclenext"] }
-      Super-C-1: { launch: ["hypr-kill-other-window"] }
-      Super-C-m: { launch: ["hyprctl","dispatch","fullscreen","1"] }
-      Super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
-      Super-C-w: Super-C-w
-      Super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
-      Super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
-      Super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
-      Super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
-      Super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
-      Super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","10"]}
+      super-C-o: { launch: ["hyprctl","dispatch","cyclenext"] }
+      super-C-1: { launch: ["hypr-kill-other-window"] }
+      super-C-m: { launch: ["hyprctl","dispatch","fullscreen","1"] }
+      super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
+      super-C-w: super-C-w
+      super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
+      super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
+      super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
+      super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
+      super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
+      super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","10"]}
 
       C-w:
         remap:
           C-w: C-w              # C-wC-w send C-w
-          Enter: Super-C-Backslash
-          C-r: Super-M-r        # reload
-          C-o: Super-C-o
-          o: Super-C-o
+          Enter: super-C-Backslash
+          C-r: super-M-r        # reload
+          C-o: super-C-o
+          o: super-C-o
           "1": { launch: ["hyprctl" ,"dispatch","movetoworkspace","1"]}
           "2": { launch: ["hyprctl" ,"dispatch","movetoworkspace","2"]}
           "3": { launch: ["hyprctl" ,"dispatch","movetoworkspace","3"]}
