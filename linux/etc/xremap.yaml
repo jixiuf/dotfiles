@@ -16,10 +16,6 @@ modmap:
         held: [alt_l,super_l]
         alone: capslock # Required
         alone_timeout_millis: 1000 # Optional
-      ctrl_l :
-        held: ctrl_l
-        alone: esc
-        alone_timeout_millis: 1000
       super_r :
         held: [alt_l,super_l]
         alone: [ctrl_l,space]

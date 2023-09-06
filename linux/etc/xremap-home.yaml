@@ -1,0 +1,14 @@
+  # - KEY: KEY_LEFTMETA
+  #   TAP: KEY_ESC
+  #   HOLD: KEY_LEFTCTRL
+  # - KEY: KEY_LEFTCTRL
+  #   TAP: KEY_ESC
+  #   HOLD: KEY_LEFTMETA
+modmap:
+  - name: Global for windows pc keyboard
+    remap:
+      ctrl_l :
+        held: super_l
+        alone: esc
+        alone_timeout_millis: 1000
+      super_l : ctrl_l

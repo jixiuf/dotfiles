@@ -1,0 +1,7 @@
+modmap:
+  - name: Global for windows pc keyboard
+    remap:
+      ctrl_l :
+        held: ctrl_l
+        alone: esc
+        alone_timeout_millis: 1000

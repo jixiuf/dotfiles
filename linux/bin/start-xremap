@@ -1,0 +1,11 @@
+#!/bin/bash
+pkill xremap
+if [ "$HOST" == "jxfluoji" ]; then
+    if [ -f "/tmp/xremap" ]; then
+        /usr/local/bin/xremap  /etc/xremap.yaml /etc/xremap-win.yaml   --watch=device
+    else
+        /usr/local/bin/xremap  /etc/xremap.yaml /etc/xremap-mac.yaml   --watch=device
+    fi
+else
+    /usr/local/bin/xremap  /etc/xremap.yaml /etc/xremap-home.yaml   --watch=device
+fi
