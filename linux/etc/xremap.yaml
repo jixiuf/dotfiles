@@ -1,7 +1,8 @@
 # https://github.com/k0kubun/xremap
 # key 的名字参见
+
 # https://github.com/emberian/evdev/blob/1d020f11b283b0648427a2844b6b980f1a268221/src/scancodes.rs#L26-L572
-# sudo systemctl restart xremap
+# systemctl --user restart xremap
 # super = cmd on macos and win on windows
 # journalctl -u xremap
 keypress_delay_ms: 20           # https://github.com/k0kubun/xremap/issues/179
@@ -69,8 +70,12 @@ keymap:
       C-o: C-l
       C-n: down
       C-p: up
+      M-b: C-left
+      M-f: C-right
       C-f: right
       C-b: left
+      C-e: end
+      C-a: home
       C-v: pagedown
       M-v: pageup
   - name: Google Chrome
@@ -271,3 +276,7 @@ keymap:
           C-f: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
           C-b: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
           # C-c: { launch: ["hyprctl" ,"dispatch","movetoworkspace","e+0"]}
+#  Local Variables:
+#  mode: conf
+#  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "systemctl --user restart xremap")) t)
+#  End:
