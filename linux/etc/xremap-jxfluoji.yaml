@@ -5,3 +5,8 @@ modmap:
         held: ctrl_l
         alone: esc
         alone_timeout_millis: 1000
+
+#  Local Variables:
+#  mode: conf
+#  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "systemctl --user restart xremap")) t)
+#  End:

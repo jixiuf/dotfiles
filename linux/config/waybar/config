@@ -10,7 +10,7 @@
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
-    "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power"],
+    "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard"],
 	"wlr/workspaces": {
         "active-only": false,
         "all-outputs": true,
@@ -128,4 +128,10 @@
         "on-click": "power-menu",
         "format": " ",
     },
+    "custom/keyboard": {
+        "format": "{} ",
+        "on-click": "systemctl --user stop xremap;pkill xremap",
+        "on-click-right": "systemctl --user restart xremap"
+
+    } ,
 }
