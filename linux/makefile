@@ -66,3 +66,4 @@ sudo:
 	done
 	mkdir -p /usr/local/{bin,}
 	chown jixiuf:users /usr/local  -R
+	on-keyboard-update

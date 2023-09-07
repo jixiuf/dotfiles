@@ -7,8 +7,8 @@
 modmap:
   - name: Global for windows pc keyboard
     remap:
+      super_l : ctrl_l
       ctrl_l :
         held: super_l
         alone: esc
         alone_timeout_millis: 1000
-      super_l : ctrl_l
