@@ -125,7 +125,7 @@
 	},
     "custom/power": {
         "tooltip": false,
-        "on-click": "power-menu",
+        "on-click": "/home/jixiuf/.config/rofi/scripts/power",
         "format": " ",
     },
     "custom/keyboard": {

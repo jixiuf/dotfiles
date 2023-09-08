@@ -226,8 +226,7 @@ keymap:
       super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
       super-C-9: { launch: ["pick-color"] }
       super-C-y: { launch: ["run-bemenu-cliphist"] }
-      super-C-r: { launch: ["run-bemenu"] }
-      C-Tab: { launch: ["wofi","--show","drun"] }
+      C-Tab: { launch: ["hyprctl","dispatch","exec","rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
       super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
       super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
