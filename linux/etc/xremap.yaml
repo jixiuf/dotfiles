@@ -5,7 +5,7 @@
 # systemctl --user restart xremap
 # super = cmd on macos and win on windows
 # journalctl -u xremap
-keypress_delay_ms: 20           # https://github.com/k0kubun/xremap/issues/179
+keypress_delay_ms: 10           # https://github.com/k0kubun/xremap/issues/179
 modmap:
   - name: Global
     remap:
@@ -110,7 +110,7 @@ keymap:
     application:
       only: [emacs,Emacs]
     remap:
-      C-g: [super-Space,f15]
+      C-g: [super-Space,C-g]
       # C-x: C-x
       super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only --maximize -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
 

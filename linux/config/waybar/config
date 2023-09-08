@@ -130,8 +130,8 @@
     },
     "custom/keyboard": {
         "format": "{} ",
-        "on-click": "systemctl --user stop xremap;pkill xremap",
-        "on-click-right": "systemctl --user restart xremap"
+        "on-click": "systemctl --user stop xremap;pkill -9 xremap",
+        "on-click-right": "pkill xremap;pkill -9 xremap;systemctl --user restart xremap"
 
     } ,
 }
