@@ -8,7 +8,7 @@
     "passthrough": false,
     "fixed-center": true,
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["custom/applauch","wlr/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
     "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard"],
 	"wlr/workspaces": {
@@ -123,6 +123,11 @@
 		"format": "|",
 		"tooltip": false
 	},
+    "custom/applauch": {
+        "tooltip": false,
+        "on-click": "rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi",
+        "format": "",
+    },
     "custom/power": {
         "tooltip": false,
         "on-click": "/home/jixiuf/.config/rofi/scripts/power",

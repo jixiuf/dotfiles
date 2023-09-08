@@ -194,8 +194,8 @@ button selected.normal {
 }
 
 entry {
-    placeholder: "...";
-    placeholder-color: #28f738;
+    placeholder: "开始搜索吧";
+    placeholder-color: #B0C4DE;
     border-color: #353446;
     background-color: #353446;
     border:        10px;

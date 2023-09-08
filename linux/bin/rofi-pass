@@ -10,7 +10,7 @@ fi
 
 if [[ -n $WAYLAND_DISPLAY ]]; then
     export BEMENU_OPTS='-p password: -i -I 0   --fn "Sarasa Term SC Nerd 24" --hp 5 -W 0.7   --fb "#1e1e2e" --ff "#00ffff" --nb "#1e1e2e" --nf "#f5e0dc" --tb "#1e1e2e" --hb "#1e1e2e" --hf "#00ffff" --tf "#f5e0dc" --af "#f5e0dc" --ab "#1e1e2e"  -l 10 -n'
-	dmenu="bemenu"
+	dmenu="rofi"
 	xdotool="ydotool type --file -"
 elif [[ -n $DISPLAY ]]; then
 	dmenu=dmenu
@@ -25,7 +25,7 @@ password_files=( "$prefix"/**/*.gpg )
 password_files=( "${password_files[@]#"$prefix"/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}"| "$dmenu" "$@")
+password=$(printf '%s\n' "${password_files[@]}"| "$dmenu" "-dmenu" "-i" "$@")
 
 [[ -n $password ]] || exit
 

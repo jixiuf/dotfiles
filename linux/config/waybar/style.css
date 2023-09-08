@@ -1,11 +1,32 @@
-@define-color foreground white;
-@define-color background grey;
+/* @define-color foreground white; */
+/* @define-color background grey; */
+@define-color foreground #bfbfc0;
+@define-color background #020103;
 @define-color foreground-warning white;
 @define-color background-warning #2980b9;
 @define-color foreground-error black;
 @define-color background-error #B0C4DE;
 @define-color foreground-critical black;
 @define-color background-critical #DC143C;
+@define-color cursor #bfbfc0;
+
+@define-color color0 #020103;
+@define-color color1 #FBBA52;
+@define-color color2 #4B3E81;
+@define-color color3 #705E91;
+@define-color color4 #9575A6;
+@define-color color5 #CB7B96;
+@define-color color6 #AB8EAC;
+@define-color color7 #bfbfc0;
+@define-color color8 #414042;
+@define-color color9 #FBBA52;
+@define-color color10 #4B3E81;
+@define-color color11 #705E91;
+@define-color color12 #9575A6;
+@define-color color13 #CB7B96;
+@define-color color14 #AB8EAC;
+@define-color color15 #bfbfc0;
+/* @import 'colors-waybar.css'; */
 
 * {
   min-height: 0;
@@ -25,29 +46,46 @@ window#waybar {
 window#waybar.hidden {
   opacity: 0.5;
 }
-
 #workspaces {
-  background-color: transparent;
+    background: @background-color;
+    margin: 0px 0px 0px 0px;
+    /* padding: 4px 1px; */
+    border-radius: 12px;
+    font-weight: normal;
+    font-style: normal;
+    opacity:0.8;
 }
 
 #workspaces button {
-  all: initial;
-  min-width: 0;
-  box-shadow: inset 0 -3px transparent;
-  padding: 0px 8px;
-  min-height: 0;
-  margin: 0px 0px;
-  border-radius: 10px;
-  background-color: #1e1e2e;
-  color: #cdd6f4;
+    padding: 0px 5px;
+    margin: 0px 1px;
+    border-radius: 12px;
+    color: @color15;
+    background-color: @color11;
+    transition: all 0.3s ease-in-out;
+    opacity:0.4;
+    font-size:13px;
+    
+}
+
+#workspaces button.active {
+    color: #cdd6f4;
+    background-color: @color11;
+    border-radius: 10px;
+    min-width: 30px;
+    background-size: 400% 400%;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
 }
 
 #workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-  color: #1e1e2e;
-  background-color: #cdd6f4;
+    background-color: @color1;
+    color: #cdd6f4;
+    border-radius: 10px;
+    min-width: 30px;
+    background-size: 400% 400%;
 }
+
 
 #workspaces button.persistent {
   color: #cba6f7;
@@ -133,11 +171,15 @@ window#waybar.hidden {
 }
 
 tooltip {
-  border-radius: 6px;
+    border-radius: 10px;
+    background-color: @background-error;
+    opacity:0.8;
+    padding:20px;
+    margin:0px;
 }
-#battery {
-  color: #74c7ec;
-  /* color: #b4befe; */
+
+tooltip label {
+    color: @color11;
 }
 
 #battery.discharging {
@@ -155,3 +197,17 @@ tooltip {
 }
 
 
+#custom-applauch {
+    /* margin-right:5px; */
+    /* margin-left:5px; */
+    min-width: 10px;
+    transition: all 0.3s ease-in-out;
+    /* font-size:20px; */
+    /* color: #cdd6f4; */
+    background-color: @foreground-critical;
+    border-radius: 10px;
+    min-width: 30px;
+    background-size: 400% 400%;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}

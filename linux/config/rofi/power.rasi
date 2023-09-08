@@ -18,7 +18,7 @@ window {
 
 mainbox {
   spacing: 0px;
-  children: [message,listview];
+  children: [inputbar,listview];
 }
 
 message {
@@ -176,8 +176,8 @@ button selected.normal {
 }
 
 entry {
-    placeholder: "Search here";
-    placeholder-color: #282738;
+    placeholder: "Bye!";
+    placeholder-color: #B0C4DE;
     border-color: #353446;
     background-color: #353446;
     border:        10px;
