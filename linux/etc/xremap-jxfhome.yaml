@@ -1,14 +1,8 @@
-  # - KEY: KEY_LEFTMETA
-  #   TAP: KEY_ESC
-  #   HOLD: KEY_LEFTCTRL
-  # - KEY: KEY_LEFTCTRL
-  #   TAP: KEY_ESC
-  #   HOLD: KEY_LEFTMETA
 modmap:
-  - name: Global for windows pc keyboard
+  - name: Global for jxfhome
     remap:
-      super_l : ctrl_l
-      ctrl_l :
-        held: super_l
+      super_l :
+        held: ctrl_l
         alone: esc
         alone_timeout_millis: 1000
+      ctrl_l : super_l
