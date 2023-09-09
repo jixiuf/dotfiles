@@ -73,3 +73,4 @@ net-mail/mu emacs
 app-crypt/pinentry emacs
 dev-lang/php gd
 media-libs/gd fontconfig
+gui-apps/rofi-wayland  drun windowmode

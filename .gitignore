@@ -42,4 +42,4 @@ gnupg/random_seed
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230625_p20230724
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230804
 /mac/rime_input_method/sync/
-/linux/config/fcitx5/profile_XeP6Oq
+/linux/config/fcitx5/profile_*

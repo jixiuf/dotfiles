@@ -227,7 +227,7 @@ keymap:
       super-C-9: { launch: ["pick-color"] }
       super-C-y: { launch: ["rofi-cliphist"] }
       super-C-0: { launch: ["rofi-pass"] }
-      C-Tab: { launch: ["hyprctl","dispatch","exec","rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
+      C-Tab: { launch: ["hyprctl","dispatch","exec","killall rofi ||rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
       super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
       super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
