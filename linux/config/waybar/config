@@ -10,7 +10,7 @@
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
     "modules-left": ["custom/applauch","wlr/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
-    "modules-right": ["idle_inhibitor","cpu", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard"],
+    "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard"],
 	"wlr/workspaces": {
         "active-only": false,
         "all-outputs": true,
@@ -25,9 +25,9 @@
             //			"3": "三",
             //			"4": "四",
             //			"5": "五",
-			// "urgent": "",
-			// "active": "",
-			// "default": "󰧞",
+			"urgent": "",
+			"active": "",
+			"default": "󰧞",
             "sort-by-number": true
         },
     },

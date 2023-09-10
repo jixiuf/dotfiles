@@ -19,14 +19,14 @@ modmap:
         alone_timeout_millis: 1000 # Optional
       super_r :
         held: [alt_l,super_l]
-        alone: [ctrl_l,space]
+        alone: [f12]
         alone_timeout_millis: 1000 # Optional
   - name: Emacs
     application:
       only: emacs
     remap:
       super_r :
-        held: [alt_l,super_l]
+        held: [f12]             
         alone: [super_l,ctrl_l,space]
         alone_timeout_millis: 1000 # Optional
 
@@ -35,7 +35,7 @@ keymap:
     application:
       only: [swappy]
     remap:
-    # http://7is7.com/software/firefox/shortcuts.html
+    # http://7is7.com/software/firefox/shortcuts.html 
       C-y: C-y
       C-b: C-b
       C-g: [C-c,C-s, esc]

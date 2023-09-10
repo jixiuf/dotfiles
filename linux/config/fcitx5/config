@@ -15,7 +15,7 @@ DeactivateKeys=
 TogglePreedit=
 
 [Hotkey/TriggerKeys]
-0=Control+space
+0=F12
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
