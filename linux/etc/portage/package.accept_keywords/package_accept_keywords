@@ -39,6 +39,7 @@ app-misc/keyd  ~amd64
 net-misc/apifox ~amd64
 dev-util/rust-analyzer ~amd64
 dev-lang/rust-bin ~amd64
+dev-util/rustup ~amd64
 net-proxy/charles ~amd64 
 x11-misc/dex  ~amd64 
 x11-misc/ksnip ~amd64
