@@ -69,6 +69,7 @@ keymap:
       C-h: M-left
       C-l: M-right
       C-o: C-l
+      C-d: delete
       C-n: down
       C-p: up
       M-b: C-left
