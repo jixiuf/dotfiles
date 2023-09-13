@@ -47,3 +47,4 @@ media-fonts/twemoji ~amd64
 dev-python/notofonttools ~amd64
 
 gui-apps/rofi-wayland  ~amd64
+sys-auth/pam-gnupg  ~amd64

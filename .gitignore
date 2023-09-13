@@ -24,10 +24,6 @@ gnupg/random_seed
 /mac/rime_input_method/user.yaml
 /mac/rime_input_method/wubi_pinyin_jixiuf.userdb/
 /mac/rime_input_method/installation.yaml
-/linux/config/systemd/user/pipewire-session-manager.service
-/linux/config/systemd/user/pipewire.service.wants/
-/linux/config/systemd/user/sockets.target.wants/
-/linux/config/systemd/user/default.target.wants/ydotool.service
 /mac/config/karabiner/automatic_backups/
 /mac/terminfo/61/
 /mac/rime_input_method/luna_pinyin.userdb/
