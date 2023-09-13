@@ -17,6 +17,10 @@ modmap:
         held: [alt_l,super_l]
         alone: capslock # Required
         alone_timeout_millis: 1000 # Optional
+  - name: Not Emacs
+    application:
+      not: emacs
+    remap:
       super_r :
         held: [alt_l,super_l]
         alone: [f12]
@@ -26,7 +30,7 @@ modmap:
       only: emacs
     remap:
       super_r :
-        held: [f12]             
+        held: [alt_l,super_l]
         alone: [super_l,ctrl_l,space]
         alone_timeout_millis: 1000 # Optional
 
