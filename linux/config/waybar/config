@@ -125,7 +125,7 @@
 	},
     "custom/applauch": {
         "tooltip": false,
-        "on-click": "rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi",
+        "on-click": "killall rofi||rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi",
         "format": "",
     },
     "custom/power": {

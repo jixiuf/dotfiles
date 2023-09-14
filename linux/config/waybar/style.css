@@ -60,10 +60,10 @@ window#waybar.hidden {
     padding: 0px 5px;
     margin: 0px 1px;
     border-radius: 12px;
-    color: @color15;
+    color: @color7;
     background-color: @color11;
     transition: all 0.3s ease-in-out;
-    opacity:0.4;
+    opacity:0.5;
     font-size:13px;
     
 }
@@ -80,7 +80,7 @@ window#waybar.hidden {
 
 #workspaces button:hover {
     background-color: @color1;
-    color: #cdd6f4;
+    color: #0000ff;
     border-radius: 10px;
     min-width: 30px;
     background-size: 400% 400%;
@@ -204,7 +204,7 @@ tooltip label {
     transition: all 0.3s ease-in-out;
     /* font-size:20px; */
     /* color: #cdd6f4; */
-    background-color: @foreground-critical;
+    background-color: #a6adc8;
     border-radius: 10px;
     min-width: 30px;
     background-size: 400% 400%;
