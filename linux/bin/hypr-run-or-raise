@@ -91,7 +91,7 @@ else
         fi
         # 如果当前窗口是floating，则将其move 到special workspace,以免其遮挡聚焦后的窗口
         if [[ "$front_floating" == "true" ]]; then
-            hyprctl dispatch "movetoworkspacesilent special:${front_class}"
+            hyprctl dispatch "movetoworkspacesilent special"
         fi
 
         if [ "$target_floating" == "true" ]; then
@@ -121,7 +121,7 @@ else
             # hide 当前special workspace
             hyprctl dispatch "togglespecialworkspace"
         elif [ "$target_floating" == "true" ]; then
-            hyprctl dispatch "movetoworkspacesilent special:$target_class"
+            hyprctl dispatch "movetoworkspacesilent special"
         else
             hyprctl dispatch "focuscurrentorlast"
         fi
