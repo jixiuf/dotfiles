@@ -8,17 +8,15 @@
     "passthrough": false,
     "fixed-center": true,
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
-    "modules-left": ["custom/applauch","wlr/workspaces"],
+    "modules-left": ["custom/applauch","hyprland/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
     "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard"],
-	"wlr/workspaces": {
-        "active-only": false,
-        "all-outputs": true,
-        "disable-scroll": false,
-        "on-scroll-up": "hyprctl dispatch workspace -1",
-        "on-scroll-down": "hyprctl dispatch workspace +1",
+    "hyprland/workspaces": {
 		"format": "{name}",
-		"on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "sort-by":"number",
+        // "show-special":true,
 		"format-icons": {
                         // "1": "一",
             //			"2": "二",
@@ -27,11 +25,15 @@
             //			"5": "五",
 			"urgent": "",
 			"active": "",
-			"default": "󰧞",
-            "sort-by-number": true
-        },
+			"default": "󰧞"
+        }
     },
-
+    // "hyprland/language": {
+    //     "format": "Lang: {}",
+    //     "format-en": "AMERICA, HELL YEAH!",
+    //     "format-tr": "As bayrakları",
+    //     "keyboard-name": "at-translated-set-2-keyboard"
+    // } ,
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -43,9 +45,9 @@
         //     "4": []
         // }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
+    // "sway/mode": {
+    //     "format": "<span style=\"italic\">{}</span>"
+    // },
     "network": {
         "interface": "wl*", // (Optional) To force the use of this interface
         // "format-wifi": "{essid} ({signalStrength}%) ",
@@ -79,14 +81,14 @@
         }
     },
 
-    "cpu": {
-        "format": "  {usage}%",
-        "tooltip": true,
-        "interval": 1
-    },
-    "memory": {
-        "format": "  {used:0.2f}G"
-    },
+    // "cpu": {
+    //     "format": "  {usage}%",
+    //     "tooltip": true,
+    //     "interval": 1
+    // },
+    // "memory": {
+    //     "format": "  {used:0.2f}G"
+    // },
     "battery": {
         "states": {
             // "good": 95,
@@ -119,10 +121,10 @@
 		"format": "",
 		"tooltip": false
 	},
-    "custom/sep": {
-		"format": "|",
-		"tooltip": false
-	},
+    // "custom/sep": {
+	//  "format": "|",
+	//  "tooltip": false
+	// },
     "custom/applauch": {
         "tooltip": false,
         "on-click": "killall rofi||rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi",
@@ -140,3 +142,8 @@
 
     } ,
 }
+
+//  Local Variables:
+//  mode: conf
+//  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "systemctl --user restart waybar" nil nil)) t)
+//  End:

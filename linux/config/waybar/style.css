@@ -7,7 +7,7 @@
 @define-color foreground-error black;
 @define-color background-error #B0C4DE;
 @define-color foreground-critical black;
-@define-color background-critical #DC143C;
+@define-color background-critical #ffff00;
 @define-color cursor #bfbfc0;
 
 @define-color color0 #020103;
@@ -97,7 +97,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  background-color: #ff0000;
 }
 
 #clock,
