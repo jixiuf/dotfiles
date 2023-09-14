@@ -154,9 +154,18 @@ keymap:
           C-j: { launch: ["open-with"]}
 
 
+  - name: Bytedance-feishu
+    application:
+      only: [Bytedance-feishu]
+    remap:
+      C-comma: C-leftbrace
+      C-dot: C-rightbrace
+      C-j: down
+      C-k: up
+      # C-j: C-RIGHTBRACE
   - name: global_emacs
     application:
-      only: [DBeaver,apifox-pdv]
+      only: [Bytedance-feishu,DBeaver,apifox-pdv]
     remap:
       C-b: left
       C-n: down
