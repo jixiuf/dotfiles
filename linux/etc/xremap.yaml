@@ -160,8 +160,17 @@ keymap:
     remap:
       C-comma: C-leftbrace
       C-dot: C-rightbrace
-      C-j: down
-      C-k: up
+      C-n: down
+      C-p: up
+      C-v:
+        - { launch: ["ydotool","mousemove","--absolute","180","300"] }
+        - { launch: ["ydotool","click","0xC0"] }
+        - Pagedown
+      M-v:
+        - { launch: ["ydotool","mousemove","--absolute","180","300"] }
+        - { launch: ["ydotool","click","0xC0"] }
+        - Pageup
+      
       # C-j: C-RIGHTBRACE
   - name: global_emacs
     application:
