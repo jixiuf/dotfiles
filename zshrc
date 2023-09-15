@@ -56,6 +56,9 @@ alias curljson='curl -H "Content-Type: application/json" '
 function crc32(){
     php -r "echo crc32($1),PHP_EOL;"
 }
+function crc(){
+    echo "`php -r \"echo crc32($1),PHP_EOL;\"`%100"|bc
+}
 json_escape () {
      php -r 'echo json_encode(file_get_contents("php://stdin"));'
 }
