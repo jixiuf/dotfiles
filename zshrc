@@ -155,7 +155,7 @@ alias download="pushd ~/Downloads/"
 if [ $(uname -s ) = "Linux" ] ; then
     alias eme='sudo emerge -aqv --autounmask-write'
     alias emerge='sudo emerge'
-    alias emeu='sudo emerge -auvqDN  @world'
+    alias emeu='sudo emerge -auvqDN --with-bdeps=y  @world'
     alias esync='sudo emerge --sync'
 
     alias ls='ls --hyperlink=auto --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
