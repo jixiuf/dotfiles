@@ -3,13 +3,19 @@
 PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
-NORMAL_FILES_COMMON := `echo pam-gnupg gnupg mitmproxy authinfo.gpg gitconfig gitattributes gitignore  vimrc  zshenv zshrc  tmux.conf  bashrc  fzf.zsh yank.sh mbsyncrc mailrc msmtprc`
+NORMAL_FILES_COMMON := `echo ssh pam-gnupg gnupg mitmproxy authinfo.gpg gitconfig gitattributes gitignore  vimrc  zshenv zshrc  tmux.conf  bashrc  fzf.zsh yank.sh mbsyncrc mailrc msmtprc`
 default:
 	sudo make sudo
 	make deploy
 
 deploy:
 	@for file in $(NORMAL_FILES_COMMON); do unlink ~/.$$file ; $(LINK_CMD) $(PWD)/$$file ~/.$$file; done
+	gpg -d ~/.ssh/id_rsa.gpg > ~/.ssh/id_rsa
+	gpg -d ~/.ssh/config.gpg > ~/.ssh/config
+	gpg -d ~/.ssh/authorized_keys.gpg > ~/.ssh/authorized_keys
+	chmod 600 ~/.ssh/id_rsa
+	chmod 600 ~/.ssh/config
+	chmod 600 ~/.ssh/authorized_keys
 
 # @if [ ! -d ~/bin ]; then\
 #	mkdir ~/bin;\

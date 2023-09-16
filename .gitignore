@@ -39,3 +39,8 @@ gnupg/random_seed
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230804
 /mac/rime_input_method/sync/
 /linux/config/fcitx5/profile_*
+/ssh/id_rsa
+/ssh/config
+/ssh/known_hosts
+/ssh/authorized_keys
+/ssh/known_hosts.old
