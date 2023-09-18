@@ -157,6 +157,8 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias emerge='sudo emerge'
     alias emeu='sudo emerge -auvqDN --with-bdeps=y  @world'
     alias esync='sudo emerge --sync'
+    alias emec='sudo emerge -ac'
+    alias emes='sudo emerge -aSqv'
 
     alias ls='ls --hyperlink=auto --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls --hyperlink=auto -a --color=auto  '
