@@ -170,12 +170,14 @@ keymap:
         - { launch: ["ydotool","mousemove","--absolute","180","300"] }
         - { launch: ["ydotool","click","0xC0"] }
         - Pageup
-      
+
       # C-j: C-RIGHTBRACE
   - name: global_emacs
     application:
       only: [Bytedance-feishu,DBeaver,apifox-pdv]
     remap:
+      M-f: C-right
+      M-b: C-left
       C-b: left
       C-n: down
       C-p: up
