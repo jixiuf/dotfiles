@@ -97,13 +97,13 @@
             "critical": 15
         },
         "interval": 5,
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}{icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "on-click-right": "gnome-control-center power",
         "on-click-middle": "toggle-devices",
         "tooltip-format": "{}\nM: toggle-devices\nR:Power Control"
@@ -143,7 +143,7 @@
     } ,
 }
 
-//  Local Variables:
-//  mode: conf
+ // Local Variables:
+//  mode: jsonc
 //  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "systemctl --user restart waybar" nil nil)) t)
 //  End:
