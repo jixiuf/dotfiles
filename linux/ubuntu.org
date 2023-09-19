@@ -29,43 +29,5 @@ im-config 更换输入法
 https://github.com/k0kubun/xremap
 https://github.com/k0kubun/xremap/blob/master/example/config.yml
 
-* toggle App(废弃)
-将以下脚本绑定到某快捷键上即可
-#+begin_src sh
-#!/bin/bash
-# Check if Emacs is running
-if [[ $(xdotool search --onlyvisible --name "emacs") ]]; then
-    # Check if the current window is Emacs
-    active_window=$(xdotool getactivewindow)
-    emacs_window=$(xdotool search --onlyvisible --name "emacs")
-    if [[ $active_window == $emacs_window ]]; then
-        # Hide Emacs if it is the active window
-        xdotool windowminimize $active_window
-    else
-        # Bring Emacs to front if it is not the active window
-        xdotool windowactivate $emacs_window
-    fi
-else
-    # Launch Emacs if it is not running
-    emacs &
-fi
-
-#+end_src
-* spacebar 作为 mac 的 cmd 或者 windows 的 win 来用
-https://github.com/alols/xcape/issues/122
-https://emacsredux.com/blog/2020/07/05/remap-enter-to-control-in-gnu-linux-2020-edition/
-
-#+begin_src sh
-sudo apt install libudev-dev libyaml-cpp-dev libevdev-dev cmake gcc g++ libboost-dev libinput-tools
-mkdir src && cd src
-git clone https://gitlab.com/interception/linux/tools
-# build and install the interception framework
-cd tools;mkdir build; cd build; cmake ..; make;sudo make install; cd ../..
-# build the dual-function-keys plugin
-git clone https://gitlab.com/interception/linux/plugins/dual-function-keys
-cd dual-function-keys; make && sudo make install
-#+end_src
-
-#+begin_src sh
-ln -s dual-function-keys.yaml ~/dual-function-keys.yaml
-#+end_src
+** spacebar 作为 mac 的 cmd 或者 windows 的 win 来用
+使用xremap 即可

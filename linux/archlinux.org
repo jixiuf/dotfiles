@@ -217,7 +217,7 @@ GRUB_FONT=/boot/grub/fonts/DejaVuSansMono.pf2
 grub-mkconfig -o /boot/grub/grub.cfg
 #+end_src
 
-* tty 终端下的字体
+* tty 终端下的字体(未生效)
 #+begin_src sh
 ls /usr/share/kbd/consolefonts
 setfont Agafari-12 # 临时更改为Agafari-12
