@@ -1,10 +1,11 @@
-# /usr/share/doc/alacritty-0.10.1/alacritty.yml.bz2
+# /usr/share/doc/alacritty-0.10.2/alacritty.yml.bz2
 window:
   opacity: 0.75
 selection:
   save_to_clipboard: true
 
 key_bindings:
+  - { key: Key2, mods: Control,mode: ~Vi, action: ToggleViMode }
   - { key: Y, mods: Control, action: Paste }
   - { key: V, mods: Control|Super, action: Paste }
   - { key: C, mods: Control|Super, action: Copy }
@@ -16,6 +17,12 @@ key_bindings:
   - { key: A,         mode: Vi|~Search, action: ToggleViMode }
   - { key: V,  mods: Control,        mode: Vi, action: ScrollPageDown }
   - { key: V,  mods: Alt,         mode: Vi, action: ScrollPageUp }
+  - { key: E, mods: Control,         mode: Vi, action: Last }
+  - { key: S,          mode: Vi, action: ToggleNormalSelection }
+  - { key: Key2, mods: Control,mode: Vi, action: ToggleNormalSelection }
+  - { key: V,          mode: Vi, action: WordLeft }
+  - { key: E,          mode: Vi, action: WordRight }
+  - { key: A, mods: Control,         mode: Vi, action: First }
 
   # C-2 with xremap to C-Shift-space
   # - { key: V, mods: Shift|Control, action: ToggleViMode }
