@@ -7,4 +7,5 @@ allow_hosts:
   - entree.igetget.com
   - entree.dev.didatrip.com
   - entree-ws.igetget.com
+  - entree-ali.igetget.com
 view_filter: "~dst entree"

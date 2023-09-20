@@ -136,11 +136,11 @@ colors:
     cyan:    '0xb3ffff'
     white:   '0xffffff'
   dim:
-    black:   "#000000"
-    red:     "#ff9580"
-    green:   "#88ca9f"
-    yellow:  "#d2b580"
-    blue:    "#82b0ec"
-    magenta: "#caa6df"
-    cyan:    "#9ac8e0"
-    white:   "#989898"
+    black:   "0x000000"
+    red:     "0xff9580"
+    green:   "0x88ca9f"
+    yellow:  "0xd2b580"
+    blue:    "0x82b0ec"
+    magenta: "0xcaa6df"
+    cyan:    "0x9ac8e0"
+    white:   "0x989898"
