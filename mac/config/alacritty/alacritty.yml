@@ -6,6 +6,8 @@ selection:
 
 key_bindings:
   - { key: Y, mods: Control, action: Paste }
+  - { key: V, mods: Control|Super, action: Paste }
+  - { key: C, mods: Control|Super, action: Copy }
   - { key: V, mods: Control|Shift, action: PasteSelection }
   - { key: L, mods: Control|Shift, action: ClearHistory}
 
@@ -18,6 +20,7 @@ key_bindings:
   # C-2 with xremap to C-Shift-space
   # - { key: V, mods: Shift|Control, action: ToggleViMode }
   - { key: Escape,   mode: Vi, action: ToggleViMode          }
+  - { key: Q,   mode: Vi, action: ToggleViMode          }
   - { key: G,mods: Control,   mode: Vi, action: ToggleViMode          }
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance } # spacebar+return
 

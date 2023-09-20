@@ -138,8 +138,6 @@ keymap:
       C-2: C-Shift-Space        # Alacritty vi mode,v:select,i: quit
       super-C-Enter: Shift-C-Enter # new  Alacritty in pwd
       super-C-w: super-C-q
-      super-C-v: C-y
-      super-C-c: C-Shift-c
       super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--maximize","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       C-l: [C-l,C-Shift-l,C-Shift-l]
       C-Enter: [C-y,Enter]
