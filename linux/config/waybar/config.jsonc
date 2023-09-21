@@ -16,7 +16,7 @@
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "sort-by":"number",
-         "show-special":true,
+        // "show-special":true,
 		"format-icons": {
                         // "1": "一",
             //			"2": "二",
