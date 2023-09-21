@@ -96,7 +96,9 @@ else
 
         if [ "$target_floating" == "true" ]; then
             # move window to current ws
-            hyprctl dispatch "movetoworkspace e+0,$target_class"
+             # hyprctl keyword animations:enabled 0
+             hyprctl dispatch "movetoworkspace e+0,$target_class"
+             # hyprctl keyword animations:enabled 1
             if [ $maximize ]; then
                 hyprctl dispatch "fullscreen 1"
             fi
