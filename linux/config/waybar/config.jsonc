@@ -97,16 +97,17 @@
             "critical": 15
         },
         "interval": 5,
-        "format": "{capacity}{icon}",
+        "format": "{icon}",
+        // "format": "{capacity}{icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "on-click-right": "gnome-control-center power",
-        "on-click-middle": "toggle-devices",
-        "tooltip-format": "{}\nM: toggle-devices\nR:Power Control"
+        // "on-click-right": "gnome-control-center power",
+        // "on-click-middle": "toggle-devices",
+        "tooltip-format": "{capacity}%\n{}\n"
     },
 
     "wireplumber": {
