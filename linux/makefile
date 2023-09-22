@@ -65,5 +65,5 @@ sudo:
 		$(LINK_CMD) $(PWD)/$$file /$$link_name ;\
 	done
 	mkdir -p /usr/local/{bin,}
-	chown jixiuf:users /usr/local  -R
+	chown ${USER}:users /usr/local  -R
 	on-keyboard-update
