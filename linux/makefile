@@ -4,6 +4,7 @@ PWD := `pwd`
 DIR := `pwd`
 DATE := `date +%Y-%m-%d_%H-%M-%S`
 LINK_CMD := ln -s -f
+USER=`$USER`
 default:
 	sudo make sudo
 	make deploy
@@ -65,5 +66,5 @@ sudo:
 		$(LINK_CMD) $(PWD)/$$file /$$link_name ;\
 	done
 	mkdir -p /usr/local/{bin,}
-	chown ${USER}:users /usr/local  -R
+	chown $(USER):users /usr/local  -R
 	on-keyboard-update
