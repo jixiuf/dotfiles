@@ -78,7 +78,11 @@
                 },
                 {
                     "label": "",
-                    "command": "swaync-client -t & ~/.config/hypr/scripts/wf-record-start.sh"
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh"
+                },
+                {
+                    "label": "!",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-stop.sh"
                 }
             ]
         }
