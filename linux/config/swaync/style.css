@@ -13,8 +13,8 @@
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
 @define-color noti-close-bg-hover rgb(204, 51, 255);
 
-@define-color text-color rgb(255, 255, 255);
-@define-color text-color-disabled rgb(150, 150, 150);
+@define-color text-color rgb(125, 205, 255);
+@define-color text-color-disabled rgb(50, 150, 150);
 
 @define-color bg-selected rgb(100, 0, 150);
 
@@ -219,6 +219,7 @@
 .widget-title {
   margin: 8px;
   font-size: 1.5rem;
+  color: @text-color-disabled;
 }
 .widget-title > button {
   font-size: initial;
@@ -237,6 +238,7 @@
 .widget-dnd {
   margin: 8px;
   font-size: 1.1rem;
+  color: @text-color-disabled;
 }
 .widget-dnd > switch {
   font-size: initial;
@@ -302,8 +304,10 @@
 .widget-buttons-grid>flowbox>flowboxchild>button{
   padding: 8px 28px;
   background: @noti-bg;
+  color: @text-color;
   border-radius: 8px;
   border: none;
+  font-size: 1.3rem;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {

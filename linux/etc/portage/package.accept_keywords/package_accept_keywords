@@ -49,3 +49,4 @@ dev-python/notofonttools ~amd64
 gui-apps/rofi-wayland  ~amd64
 sys-auth/pam-gnupg  ~amd64
 gui-apps/swaync   ~amd64
+gui-apps/wlogout ~amd64

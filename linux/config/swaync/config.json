@@ -33,16 +33,16 @@
     ],
     "widget-config": {
         "title": {
-            "text": "Notifications",
+            "text": "通知",
             "clear-all-button": true,
-            "button-text": "Clear All"
+            "button-text": "清空所有"
         },
         "dnd": {
-            "text": "Do Not Disturb"
+            "text": "请勿打扰"
         },
         "label": {
             "max-lines": 1,
-            "text": "Notification Center"
+            "text": "通知消息中心"
         },
         "mpris": {
             "image-size": 96,

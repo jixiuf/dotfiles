@@ -75,3 +75,4 @@ dev-lang/php gd
 media-libs/gd fontconfig
 gui-apps/rofi-wayland  drun windowmode
 gui-libs/gtk-layer-shell introspection
+gui-apps/wlogout layershell

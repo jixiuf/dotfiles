@@ -10,7 +10,7 @@
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
     "modules-left": ["custom/applauch","hyprland/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
-    "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/power","custom/keyboard","custom/notification"],
+    "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/keyboard","custom/notification"],
     "hyprland/workspaces": {
 		"format": "{name}",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -165,6 +165,5 @@
 }
 
  // Local Variables:
-//  mode: jsonc
 //  eval: (add-hook (make-local-variable 'after-save-hook) #'(lambda()(shell-command "systemctl --user restart waybar" nil nil)) t)
 //  End:
