@@ -100,7 +100,7 @@ systemctl start  systemd-networkd
 #+begin_src sh
 systemctl restart iwd
 #+end_src
-官方建议在 iwd.server 中加上 sleep 命令，延迟 iwd 的启动(通常在/etc/systemd/某个子目录下)
+官方建议在 iwd.service 中加上 sleep 命令，延迟 iwd 的启动(通常在/etc/systemd/某个子目录下)
 #+begin_example
 [Service]
 ExecStartPre=/usr/bin/sleep 2
