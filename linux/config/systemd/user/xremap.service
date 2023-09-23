@@ -1,6 +1,6 @@
 [Unit]
 Description=Run xremap 
-BindsTo=graphical-session.target
+BindsTo=sway-session.target
 # # After=network.target
 # After=udevmon.service
 # DefaultDependencies=no
@@ -15,4 +15,4 @@ ExecStart=sh -c '/usr/local/bin/xremap /etc/xremap.yaml /etc/xremap-$(hostname).
 
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=sway-session.target
