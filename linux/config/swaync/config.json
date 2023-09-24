@@ -91,6 +91,10 @@
                 {
                     "label": "!",
                     "command": "swaync-client -t & /usr/local/bin/wf-record-stop.sh"
+                },
+                {
+                    "label": "投屏",
+                    "command": "swaync-client -t & gnome-network-displays &disown"
                 }
             ]
         }
