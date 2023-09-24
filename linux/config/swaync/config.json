@@ -77,6 +77,14 @@
                     "command": "swaync-client -t & blueman-manager"
                 },
                 {
+                    "label": "X",
+                    "command": "swaync-client -t & systemctl --user stop xremap;pkill -9 xremap"
+                },
+                {
+                    "label": "XR",
+                    "command": "swaync-client -t & systemctl --user restart xremap"
+                },
+                {
                     "label": "",
                     "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh"
                 },

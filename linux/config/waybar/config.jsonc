@@ -10,7 +10,7 @@
     // "modules-left": ["wlr/workspaces","sway/workspaces",, "hyprland/window"],
     "modules-left": ["custom/applauch","hyprland/workspaces"],
     "modules-center": ["hyprland/window"], // sway/window
-    "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/keyboard","custom/notification"],
+    "modules-right": ["idle_inhibitor", "wireplumber",  "clock", "tray", "network","battery","custom/notification"],
     "hyprland/workspaces": {
 		"format": "{name}",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -66,7 +66,7 @@
     "clock": {
         // "interval": 1,
         "tooltip": true,
-        "format": "{:%d%a %H:%M}",
+        "format": "{:%m-%d%a%H:%M}",
         "format-alt": "{:%Y-%m-%d}",
         "on-click-right": "gnome-clocks",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>\n\nR:Clocks"
@@ -156,12 +156,6 @@
         "on-click": "/home/jixiuf/.config/rofi/scripts/power",
         "format": " ",
     },
-    "custom/keyboard": {
-        "format": "{} ",
-        "on-click": "systemctl --user stop xremap;pkill -9 xremap",
-        "on-click-right": "pkill xremap;pkill -9 xremap;systemctl --user restart xremap"
-
-    } ,
 }
 
  // Local Variables:
