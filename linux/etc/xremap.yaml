@@ -263,6 +263,7 @@ keymap:
       super-C-w: super-C-w
       super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
       super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
+      super-C-Tab: { launch: ["hyprctl","dispatch" ,"workspace","prevous"]}
       super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
       super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
       super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
