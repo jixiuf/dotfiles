@@ -98,6 +98,8 @@ else
             # move window to current ws
              # hyprctl keyword animations:enabled 0
              hyprctl dispatch "movetoworkspacesilent e+0,$target_class"
+             hyprctl dispatch "focuswindow $target_class"
+
              # hyprctl keyword animations:enabled 1
             if [ $maximize ]; then
                 hyprctl dispatch "fullscreen 1"
