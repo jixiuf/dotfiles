@@ -128,7 +128,7 @@ keymap:
     # 这个新窗口根据 swaywm 的规则，必是 floating 的
       # super-M-f: { launch: ["hyprctl","dispatch","floating toggle"] }
       super-C-Enter:
-        - { launch: ["hyprctl","dispatch","dispatch togglefloating"] }
+        - { launch: ["hyprctl","dispatch","togglefloating"] }
         - Shift-C-Enter
 
   - name: Terminal

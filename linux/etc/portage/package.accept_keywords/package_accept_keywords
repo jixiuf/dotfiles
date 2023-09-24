@@ -51,3 +51,5 @@ sys-auth/pam-gnupg  ~amd64
 gui-apps/swaync   ~amd64
 gui-apps/wlogout ~amd64
 gui-apps/wf-recorder ~amd64
+gui-apps/wlr-randr ~amd64
+
