@@ -1,6 +1,10 @@
 # /usr/share/doc/alacritty-0.10.2/alacritty.yml.bz2
 window:
-  opacity: 0.75
+  # opacity: 0.75
+  padding:
+   x: 10
+   y: 10
+
 selection:
   save_to_clipboard: true
 
