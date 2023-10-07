@@ -15,3 +15,7 @@ evdev:input:b0003v05ACp0256e0111*
   KEYBOARD_KEY_700e3=leftctrl
   KEYBOARD_KEY_700e2=leftalt
   KEYBOARD_KEY_700e0=leftmeta
+# esc-> ` 
+  KEYBOARD_KEY_70029=grave
+#  `->esc  
+  KEYBOARD_KEY_70035=esc
