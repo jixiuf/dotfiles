@@ -35,8 +35,6 @@ gnupg/random_seed
 /mitmproxy/mitmproxy-ca.p12
 /mitmproxy/mitmproxy-ca.pem
 /mitmproxy/mitmproxy-dhparam.pem
-/linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230625_p20230724
-/linux/etc/portage/savedconfig/sys-kernel/linux-firmware-20230804
 /mac/rime_input_method/sync/
 /linux/config/fcitx5/profile_*
 /ssh/id_rsa
@@ -44,3 +42,4 @@ gnupg/random_seed
 /ssh/known_hosts
 /ssh/authorized_keys
 /ssh/known_hosts.old
+/linux/etc/portage/savedconfig/sys-kernel/linux-firmware-*
