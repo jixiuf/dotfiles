@@ -5,7 +5,7 @@ app-admin/pass-update  ~amd64
 dev-lang/go ~amd64
 app-editors/vscode ~amd64
 <app-editors/emacs-30.0.9999 ~amd64
-gui-apps/waybar ~amd64  **~amd64
+gui-apps/waybar ~amd64  **
 gui-wm/hyprland ~amd64
 gui-libs/xdg-desktop-portal-hyprland ~amd64
 dev-qt/qtbase  ~amd64

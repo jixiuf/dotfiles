@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 20,
+    "height": 37,
     "spacing": 0,
     "exclusive": true,
     "gtk-layer-shell": true,
@@ -28,6 +28,14 @@
 			"default": "󰧞"
         }
     },
+    "hyprland/window": {
+        "format": "👉 {}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌎 $1",
+            "(.*) - fish": "> [$1]"
+        },
+        "separate-outputs": true
+    } ,
     // "hyprland/language": {
     //     "format": "Lang: {}",
     //     "format-en": "AMERICA, HELL YEAH!",
