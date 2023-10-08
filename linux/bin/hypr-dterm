@@ -1,0 +1,6 @@
+#/bin/bash
+app=$(hyprctl activewindow -j)
+front_addr=`echo $app|jq -r '.address'`
+hyprctl dispatch togglefloating address:${front_addr}
+hyprctl dispatch exec  alacritty --  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
+hyprctl dispatch movetoworkspacesilent 4,address:${front_addr}

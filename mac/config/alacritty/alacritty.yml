@@ -33,7 +33,8 @@ key_bindings:
   - { key: Escape,   mode: Vi, action: ToggleViMode          }
   - { key: Q,   mode: Vi, action: ToggleViMode          }
   - { key: G,mods: Control,   mode: Vi, action: ToggleViMode          }
-  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance } # spacebar+return
+  - { key: Return,   mods: Shift|Control, action: SpawnNewInstance } # spacebar+return
+  - { key: Return,   mods: Super|Control, action: SpawnNewInstance } # spacebar+return
 
   # - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
 
