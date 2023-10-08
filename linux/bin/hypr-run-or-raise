@@ -77,14 +77,16 @@ if [ ! "$target_appinfo" ]; then
 else
     # frontappinfo=`hyprctl clients -j | jq -r '.[] |select(.focused)'`
     front_app=`hyprctl activewindow -j`
-    front_class=`echo $front_app|jq -r '.class'`
+    # front_class=`echo $front_app|jq -r '.class'`
+    front_addr=`echo $front_app|jq -r '.address'`
     front_floating=`echo $front_app|jq -r '.floating'`
     front_ws_name=`echo $front_app|jq -r '.workspace.name'|head -n 1`
     # jq 的(.app_id // "") 表示取 app_id 若无此字段则为空串
-    target_class=`echo $target_appinfo|jq -r '.class'|head -n 1`
+    # target_class=`echo $target_appinfo|jq -r '.class'|head -n 1`
+    target_addr=`echo $target_appinfo|jq -r '.address'|head -n 1`
     target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
     cwd=$(hypr-cwd)
-    if [  "$front_class" != "$target_class" ]; then
+    if [  "$front_addr" != "$target_addr" ]; then
         # 如果当前窗口是special 的window，则先隐藏之,以免其遮挡聚焦后的窗口
         if [[ "$front_ws_name" == *"special"* ]]; then
             hyprctl dispatch "togglespecialworkspace"
@@ -97,15 +99,15 @@ else
         if [ "$target_floating" == "true" ]; then
             # move window to current ws
              # hyprctl keyword animations:enabled 0
-             hyprctl dispatch "movetoworkspacesilent e+0,$target_class"
-             hyprctl dispatch "focuswindow $target_class"
+             hyprctl dispatch "movetoworkspacesilent e+0,address:${target_addr}"
+             hyprctl dispatch "focuswindow address:${target_addr}"
 
              # hyprctl keyword animations:enabled 1
             if [ $maximize ]; then
                 hyprctl dispatch "fullscreen 1"
             fi
         else
-            hyprctl dispatch "focuswindow ${target_class}"
+            hyprctl dispatch "focuswindow address:${target_addr}"
         fi
         if [[ "$target" = "alacritty" || "$target" = "dterm" ]]; then
             if [[ -n "$cwd" && -n "$cd" ]]; then
