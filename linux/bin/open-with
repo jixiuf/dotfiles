@@ -29,11 +29,9 @@ if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
         # ec is my wrapper of emacsclient
         ec -n +$line "$file"
     fi
-else
+elif [[ -f $arg || -d $arg || $arg =~ ^(/ssh:).*$  ]]; then
     # 如果 arg 对应的文件或目录存在， 则使用 ec 打开否则使用 xdg-open
-    if [[ -f $arg || -d $arg ]]; then
-        ec -n "$arg"
-    else
-        xdg-open "$arg"
-    fi
+    ec -n "$arg"
+else
+    xdg-open "$arg"
 fi
