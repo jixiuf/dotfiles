@@ -117,7 +117,7 @@ keymap:
     remap:
       C-g: [super-Space,C-g]
       # C-x: C-x
-      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- dterm alacritty.sh  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
 
   - name: dterm                 # dropdown terminal by alacritty
     application:
@@ -135,7 +135,7 @@ keymap:
       only: [dterm,Alacritty,alacritty]
     remap:
       super-C-w: super-C-q
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","alacritty.sh  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       C-l: [C-l,C-Shift-l,C-Shift-l]
       C-Enter: [C-y,Enter]
       C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
@@ -234,7 +234,7 @@ keymap:
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
-      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   dterm alacritty  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   dterm alacritty.sh  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
@@ -248,7 +248,7 @@ keymap:
       super-C-y: { launch: ["rofi-cliphist"] }
       super-C-0: { launch: ["rofi-pass"] }
       C-Tab: { launch: ["hyprctl","dispatch","exec","killall rofi ||rofi -normal-window -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
-      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty.sh --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
       super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
       super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
