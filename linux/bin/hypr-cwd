@@ -22,9 +22,10 @@ if [ -n "$appinfo" ]; then
     class=`echo $appinfo|jq -r '.class'|head -n 1`
     if [[ "$class" = "emacs" ]]; then
         cwd=$(echo $appinfo|jq -r '.title| split("GNU/Emacs<")[1]|split(">")[0]')
+        eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd
         exit 0
-    elif [[ "$class" = "Alacritty" || "$class" = "dterm" ]]; then
+    elif [[ "$class" = "kitty" || "$class" = "Alacritty" || "$class" = "dterm" ]]; then
         # for zsh
         # autoload -U add-zsh-hook
         # update_cwd(){
@@ -32,6 +33,7 @@ if [ -n "$appinfo" ]; then
         # }
         # add-zsh-hook precmd update_cwd
         cwd=$(echo $appinfo|jq -r '.title')
+        eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd
         exit 0
     fi

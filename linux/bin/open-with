@@ -15,8 +15,8 @@ if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
     front_app=`hyprctl activewindow -j`
     front_class=`echo $front_app|jq -r '.class'`
     front_floating=`echo $front_app|jq -r '.floating'`
-    if [[ "$front_floating" == "true" && ("$front_class" == "Alacritty" || "$front_class" == "dterm") ]]; then
-        hyprctl dispatch "movetoworkspacesilent special:${front_class}"
+    if [[ "$front_floating" == "true" && ("$front_class" == "Alacritty" || "$front_class" == "kitty"|| "$front_class" == "dterm") ]]; then
+        hyprctl dispatch "movetoworkspacesilent special"
     fi
 fi
 
@@ -24,8 +24,7 @@ fi
 if [[ $arg =~ ^(.+):([0-9]+)$ ]]; then
     file="${BASH_REMATCH[1]}"
     line="${BASH_REMATCH[2]}"
-
-    if [[ -f $file || -d $file ]]; then
+    if [[ -f "$file" || -d "$file" ]]; then
         # ec is my wrapper of emacsclient
         ec -n +$line "$file"
     fi

@@ -4,6 +4,7 @@
 net-libs/libssh server
 sys-libs/zlib minizip
 app-editors/vim -X
+x11-terms/kitty -X
 app-editors/emacs  libxml2 gui gtk json   gzip-el cairo dynamic-loading xft harfbuzz tree-sitter  sqlite gif sound  dbus imagemagick -X
 sys-auth/seatd server 
 x11-libs/pango X

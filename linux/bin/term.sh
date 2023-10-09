@@ -1,16 +1,28 @@
 #!/bin/bash
 # alacritty的简单包装,，当 --working-directory=/ssh:root@host:/path时 将其转为
-# alacritty -e ssh -t root@host cd /path&& exec $SHELL
+# term -e ssh -t root@host cd /path&& exec $SHELL
 # 即 让alacritty 的--working-directory 支持emacs 的tramp 语法
 #!/bin/bash
 
+# term=alacritty
+# termexec="-e"
+term=kitty
+termexec=""
+
 working_directory=""
 other_args=""
+
+# term.sh --rules='[float;noanim]'
+# 指定  hyprctl dispatch exec , [float;noanim] kitty
+# https://wiki.hyprland.org/Configuring/Dispatchers/
+rules=""                         #
 
 # 解析参数
 for arg in "$@"; do
   if [[ $arg == --working-directory=* ]]; then
     working_directory="${arg#*=}"
+  elif [[ $arg == --rules=* ]]; then
+    rules="${arg#*=}"
   else
     other_args+=" $arg"
   fi
@@ -26,15 +38,20 @@ if [[ $working_directory =~ $regex ]]; then
   host=${BASH_REMATCH[2]}
   path=${BASH_REMATCH[3]}
   # 执行alacritty时移除--working-directory参数，并添加-e ssh ${USER}@${HOST} cd ${Path}&& exec $SHELL
+  # kitty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   # alacritty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
-  alacritty $other_args -e ssh -t $user@$host 'cd '$path' && exec $SHELL'
+  hyprctl dispatch exec $rules -- $term $other_args $termexec  ssh -t $user@$host 'cd '$path' && exec $SHELL'
 elif [[ $working_directory =~ $regex2 ]]; then
   user=${BASH_REMATCH[1]}
   host=${BASH_REMATCH[2]}
   port=${BASH_REMATCH[3]}
   path=${BASH_REMATCH[4]}
   # 执行alacritty时移除--working-directory参数，并添加-e ssh ${USER}@${HOST} cd ${Path}&& exec $SHELL
-  alacritty $other_args -e ssh -t $user@$host -p $port 'cd '$path' && exec $SHELL'
+  hyprctl dispatch exec $rules --    $term $other_args $termexec ssh -t $user@$host -p $port 'cd '$path' && exec $SHELL'
 else
-  alacritty --working-directory="$working_directory" $other_args
+    if [ -z "$working_directory" ]; then
+        hyprctl dispatch exec $rules --  $term  $other_args
+    else
+        hyprctl dispatch exec $rules -- $term --working-directory="$working_directory" $other_args
+    fi
 fi

@@ -117,28 +117,19 @@ keymap:
     remap:
       C-g: [super-Space,C-g]
       # C-x: C-x
-      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- dterm alacritty.sh  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- kitty term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
 
-  - name: dterm                 # dropdown terminal by alacritty
+  - name: kitty
     application:
-      only: [dterm]
-    remap:
-    # 对于 dropdown 形式的 alacritty,spacebar-enter 时，先将当前 term 转成平铺窗口
-    # 然后再使用 alacritty 的 SpawnNewInstance 重新打开一个 class=dterm 的窗口
-    # 这个新窗口根据 swaywm 的规则，必是 floating 的
-      # super-M-f: { launch: ["hyprctl","dispatch","floating toggle"] }
-      super-C-Enter:
-        - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-
-  - name: Terminal
-    application:
-      only: [dterm,Alacritty,alacritty]
+      only: [kitty]
     remap:
       super-C-w: super-C-q
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","alacritty.sh  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
-      C-l: [C-l,C-Shift-l,C-Shift-l]
-      C-Enter: [C-y,Enter]
-      C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+      super-C-Enter:
+        - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","kitty","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)  "] }
+      # C-l: [C-l,C-Shift-l,C-Shift-l]
+      # C-Enter: [C-y,Enter]
+      # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
@@ -146,8 +137,28 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          C-e: C-Shift-M        # hints
+          C-f: [C-Shift-P,O]         # hints
+          C-e: [C-Shift-P,N]         # hints
           C-j: { launch: ["open-with"]}
+
+  # - name: Terminal
+  #   application:
+  #     only: [dterm,Alacritty,alacritty]
+  #   remap:
+  #     super-C-w: super-C-q
+  #     super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","dterm","term.sh  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+  #     C-l: [C-l,C-Shift-l,C-Shift-l]
+  #     C-Enter: [C-y,Enter]
+  #     C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+  #     C-x:
+  #       remap:
+  #         C-x: C-x              # C-xC-x send C-x
+  #         C-c: super-C-q
+  #     C-c:
+  #       remap:
+  #         C-c: C-c              # C-xC-x send C-x
+  #         C-e: C-Shift-M        # hints
+  #         C-j: { launch: ["open-with"]}
 
   - name: Bytedance-feishu
     application:
@@ -182,7 +193,7 @@ keymap:
       C-d: delete
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,Alacritty,alacritty]
+      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,kitty,Alacritty,alacritty]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       super-C-a: C-a
@@ -233,8 +244,8 @@ keymap:
       super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
-      super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp alacritty -- --class=mitp -e mitmproxy -p 8888"] }
-      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   dterm alacritty.sh  -- --working-directory=$(hypr-cwd||echo $HOME) --class=dterm "] }
+      super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp kitty -- --class=mitp -e mitmproxy -p 8888"] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   kitty -- term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
@@ -248,7 +259,7 @@ keymap:
       super-C-y: { launch: ["rofi-cliphist"] }
       super-C-0: { launch: ["rofi-pass"] }
       C-Tab: { launch: ["hyprctl","dispatch","exec","killall rofi ||rofi -normal-window -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
-      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "alacritty.sh --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "term.sh --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
       super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
       super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }

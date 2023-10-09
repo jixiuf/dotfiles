@@ -2,9 +2,9 @@
 # check starting emacs daemon
 
 if [ `uname -s` = "Linux" ] ; then
-    socket_file=$(lsof -c Emacs -c emacs | grep server | grep -v eln-cache|grep -v native-lisp|tr -s " " | cut -d' ' -f9)
+    socket_file=$(lsof -c Emacs -c emacs | grep server | grep -v eln-cache|grep -v native-lisp|tr -s " " | cut -d' ' -f9|head -n 1)
 else
-    socket_file=$(lsof -c Emacs -c emacs | grep server | grep -v eln-cache|grep -v native-lisp|tr -s " " | cut -d' ' -f8)
+    socket_file=$(lsof -c Emacs -c emacs | grep server | grep -v eln-cache|grep -v native-lisp|tr -s " " | cut -d' ' -f8|head -n 1)
 fi
 socket_file_switch=""
 if [[ $socket_file != "" ]]; then

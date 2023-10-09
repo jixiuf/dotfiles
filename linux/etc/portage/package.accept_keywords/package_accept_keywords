@@ -53,3 +53,4 @@ gui-apps/wlogout ~amd64
 gui-apps/wf-recorder ~amd64
 gui-apps/wlr-randr ~amd64
 
+x11-terms/wezterm ~amd64

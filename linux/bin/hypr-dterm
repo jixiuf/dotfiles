@@ -5,9 +5,9 @@ front_addr=`echo $app|jq -r '.address'`
 cwd=$(hypr-cwd||echo $HOME)
 floating=`echo $app|jq -r '.floating'`
 if [ "$floating" == "true" ]; then
-    alacritty.sh  --working-directory=$cwd --class=dterm &disown
+    term.sh  --working-directory=$cwd --class=dterm &disown
     hyprctl dispatch togglefloating address:${front_addr}
 else
-    alacritty.sh  --working-directory=$cwd &disown
+    term.sh  --working-directory=$cwd &disown
 fi
 hyprctl dispatch movetoworkspacesilent 4,address:${front_addr}
