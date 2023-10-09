@@ -4,10 +4,10 @@
 # 即 让alacritty 的--working-directory 支持emacs 的tramp 语法
 #!/bin/bash
 
-# term=alacritty
-# termexec="-e"
-term=kitty
-termexec=""
+term=alacritty
+termexec="-e"
+# term=kitty
+# termexec=""
 
 working_directory=""
 other_args=""
