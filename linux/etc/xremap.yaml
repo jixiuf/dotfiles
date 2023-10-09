@@ -137,8 +137,9 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          C-f: [C-Shift-P,O]         # hints
-          C-e: [C-Shift-P,N]         # hints
+          C-f: [C-Shift-P,Y]         # hints: open hyperlink
+          f: [C-Shift-P,P]         # hints: open file
+          C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
   # - name: Terminal
