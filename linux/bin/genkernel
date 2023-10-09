@@ -15,3 +15,4 @@ if [ "$ver" = "linux" ]; then
 fi
 sudo dracut -a lvm --force  --kver=$ver
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo emerge @module-rebuild
