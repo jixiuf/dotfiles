@@ -1,4 +1,5 @@
-#/bin/bash
+#!/bin/bash
+
 app=$(hyprctl activewindow -j)
 front_addr=`echo $app|jq -r '.address'`
 hyprctl dispatch togglefloating address:${front_addr}

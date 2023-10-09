@@ -2,4 +2,3 @@
 >=sys-kernel/gentoo-sources-6.0.0
 #>=sys-devel/gcc-12.3.1_p20230526
 # >=sys-devel/clang-16.0.6
->=net-libs/webkit-gtk-2.40.4-r410
