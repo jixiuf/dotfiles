@@ -2,9 +2,16 @@
 
 ws=$(hyprctl activeworkspace -j)
 ws_id=`echo $ws|jq -r '.id'`
+term_workspace=4
 echo $ws_id
-if [ "$ws_id" == "4" ]; then
+if [ "$ws_id" == "$term_workspace" ]; then
     hyprctl dispatch focuscurrentorlast
 else
-    hyprctl dispatch workspace 4
+    # terminal in workspace 4
+    term_cnt=$(hyprctl clients -j | jq -cr '.[] | select(( (.class  | test("dterm"; "i")) or (.class  | test("Alacritty"; "i"))) and (.workspace.id == 4) )'|wc -l)
+    cwd=$(hypr-cwd||echo $HOME)
+    hyprctl dispatch workspace $term_workspace
+    if [ "$term_cnt" == "0" ]; then
+        alacritty.sh  --working-directory=$cwd
+    fi
 fi

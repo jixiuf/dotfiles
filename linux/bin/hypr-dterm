@@ -2,6 +2,12 @@
 
 app=$(hyprctl activewindow -j)
 front_addr=`echo $app|jq -r '.address'`
-hyprctl dispatch togglefloating address:${front_addr}
-hyprctl dispatch exec  alacritty --  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
+cwd=$(hypr-cwd||echo $HOME)
+floating=`echo $app|jq -r '.floating'`
+if [ "$floating" == "true" ]; then
+    alacritty.sh  --working-directory=$cwd --class=dterm &disown
+    hyprctl dispatch togglefloating address:${front_addr}
+else
+    alacritty.sh  --working-directory=$cwd &disown
+fi
 hyprctl dispatch movetoworkspacesilent 4,address:${front_addr}
