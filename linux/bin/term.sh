@@ -4,17 +4,17 @@
 # 即 让alacritty 的--working-directory 支持emacs 的tramp 语法
 #!/bin/bash
 
-term=alacritty
-termexec="-e"
-working_directory_arg="--working-directory"
+# term=alacritty
+# termexec="-e"
+# working_directory_arg="--working-directory"
 
 # term=kitty
 # termexec=""
 # working_directory_arg="--working-directory"
 
-# term=wezterm
-# termexec=""
-# working_directory_arg="--cwd"
+term="wezterm start "
+termexec=""
+working_directory_arg="--cwd"
 
 working_directory=""
 other_args=""
@@ -48,7 +48,8 @@ if [[ $working_directory =~ $regex ]]; then
   # 执行alacritty时移除--working-directory参数，并添加-e ssh ${USER}@${HOST} cd ${Path}&& exec $SHELL
   # kitty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   # alacritty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
-  hyprctl dispatch exec $rules -- $term $other_args $termexec  ssh -t $user@$host 'cd '$path' && exec $SHELL'
+  #
+   hyprctl dispatch exec $rules -- $term $other_args $termexec  ssh -t $user@$host 'cd '$path' && exec $SHELL'
 elif [[ $working_directory =~ $regex2 ]]; then
   user=${BASH_REMATCH[1]}
   host=${BASH_REMATCH[2]}
