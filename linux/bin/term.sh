@@ -19,18 +19,11 @@ working_directory_arg="--cwd"
 working_directory=""
 other_args=""
 
-# term.sh --rules='[float;noanim]'
-# 指定  hyprctl dispatch exec , [float;noanim] kitty
-# https://wiki.hyprland.org/Configuring/Dispatchers/
-rules=""                         #
-
 echo "$@" >/tmp/a
 # 解析参数
 for arg in "$@"; do
   if [[ $arg == --working-directory=* ]]; then
     working_directory="${arg#*=}"
-  elif [[ $arg == --rules=* ]]; then
-    rules="${arg#*=}"
   else
     other_args+=" $arg"
   fi
@@ -49,18 +42,18 @@ if [[ $working_directory =~ $regex ]]; then
   # kitty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   # alacritty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   #
-   hyprctl dispatch exec $rules -- $term $other_args $termexec  ssh -t $user@$host 'cd '$path' && exec $SHELL'
+   $term $other_args $termexec  ssh -t $user@$host 'cd '$path' && exec $SHELL'
 elif [[ $working_directory =~ $regex2 ]]; then
   user=${BASH_REMATCH[1]}
   host=${BASH_REMATCH[2]}
   port=${BASH_REMATCH[3]}
   path=${BASH_REMATCH[4]}
   # 执行alacritty时移除--working-directory参数，并添加-e ssh ${USER}@${HOST} cd ${Path}&& exec $SHELL
-  hyprctl dispatch exec $rules --    $term $other_args $termexec ssh -t $user@$host -p $port 'cd '$path' && exec $SHELL'
+  $term $other_args $termexec ssh -t $user@$host -p $port 'cd '$path' && exec $SHELL'
 else
     if [ -z "$working_directory" ]; then
-        hyprctl dispatch exec $rules --  $term  $other_args
+        $term  $other_args
     else
-        hyprctl dispatch exec $rules -- $term $working_directory_arg="$working_directory" $other_args
+        $term $working_directory_arg="$working_directory" $other_args
     fi
 fi

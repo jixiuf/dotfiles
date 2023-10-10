@@ -136,7 +136,7 @@ if wezterm.gui then
   table.insert(keys, { key = 'c', mods = 'CTRL|CMD', action = wezterm.action.CopyTo 'Clipboard' })
   table.insert(keys, { key = "v", mods = "CMD|CTRL", action = wezterm.action{PasteFrom="Clipboard"}})
   -- PrimarySelection default: C-S-v
-  -- table.insert(keys, { key = "v", mods = "SHIFT|CTRL", action = wezterm.action{PasteFrom="PrimarySelection"}})
+  table.insert(keys, { key = "v", mods = "SHIFT|CTRL", action = wezterm.action{PasteFrom="PrimarySelection"}})
   -- ActivateCopyMode default: C-S-x
   table.insert(keys, { key = '2', mods = 'CTRL', action =  wezterm.action.ActivateCopyMode })
   table.insert(keys, { key = 'v', mods = 'ALT', action =  wezterm.action.ActivateCopyMode })

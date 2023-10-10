@@ -9,8 +9,8 @@
 # 2. 如果没有，则使用 arg2 及之后的参数 以启动目录程序,并聚焦之(有可能程序是在其他 workspace 启动，故需要将焦点转移到那)
 # hypr-run-or-raise emacs emacs
 # hypr-run-or-raise 'firefox|firefox-esr' firefox
-# hypr-run-or-raise --cd --floating-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
-# hypr-run-or-raise --floating-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --cd --float-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --float-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
 
 # 有个特例，参见 hypr-cwd
 # 若当前窗口是 emacs ,我能从 emacs 的 title 中获取到 emacs 的 default-directory(emacs 当前编辑的文件所在的目录)
@@ -18,11 +18,13 @@
 # 需要依赖 ydotool
 #
 PROG=$( basename "$0" )
-floating_only=""
+float_only=""
+floating=""
 maximize=""
 cd=""
+resize=""
 
-TEMP=$( getopt --options mcfh --longoptions maximize,cd,floating-only,help -- "$@" ) || exit 1
+TEMP=$( getopt --options mcfh --longoptions maximize,cd,floating,float-only,resize:,help -- "$@" ) || exit 1
 eval set -- "$TEMP"
 
 for i in "$@"; do
@@ -33,7 +35,7 @@ for i in "$@"; do
             echo "Give focus to a program based on window class. If we can't give focus to something with that window class, then exec 'runstring'" |fmt
             echo
             echo "OPTIONS"
-            echo "-f|--floating-only  只在 target_floating 窗口中寻找匹配的 target"
+            echo "-f|--float-only  只在 target_floating 窗口中寻找匹配的 target"
             exit 0
             ;;
         -c|--cd*)
@@ -45,10 +47,22 @@ for i in "$@"; do
             maximize="set"
             shift
             ;;
-        -f|--floating-only*)
-            floating_only="set"
+        --floating*)
+            # 将目标窗口转成floating
+            floating="true"
             shift
             ;;
+        -f|--float-only*)
+            # 只匹配当前是floating 的
+            float_only="set"
+            shift
+            ;;
+        --resize*)
+            resize="$2"
+            shift
+            shift
+            ;;
+
     esac
 done
 
@@ -62,7 +76,7 @@ target=$1
 shift 1
 cmd="$@"
 #
-if [ -n "$floating_only" ]; then
+if [ -n "$float_only" ]; then
     target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
 else
     target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class |test("'"$target"'"; "i")))'`
@@ -73,6 +87,21 @@ if [ ! "$target_appinfo" ]; then
         sh -c "$cmd" &
     else
         $cmd &
+    fi
+    sleep 0.3
+    # 如果期望新创建的窗口是floating,则尝试将期转成floating
+    if [ "$floating" == "true" ]; then
+        if [ -n "$float_only" ]; then
+            target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
+        else
+            target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class |test("'"$target"'"; "i")))'`
+        fi
+        target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
+        if [ "$target_floating" == "false" ]; then
+            # 如果目标窗口不是floating,且 有--floating 参数（ 即想让目标窗口以floating的形式展示）
+            hyprctl dispatch togglefloating address:${target_addr}
+            hyprctl dispatch centerwindow
+        fi
     fi
 else
     # frontappinfo=`hyprctl clients -j | jq -r '.[] |select(.focused)'`
@@ -86,6 +115,7 @@ else
     target_addr=`echo $target_appinfo|jq -r '.address'|head -n 1`
     target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
     cwd=$(hypr-cwd)
+    echo "sss $front_addr $target_addr"
     if [  "$front_addr" != "$target_addr" ]; then
         # 如果当前窗口是special 的window，则先隐藏之,以免其遮挡聚焦后的窗口
         if [[ "$front_ws_name" == *"special"* ]]; then
@@ -96,11 +126,18 @@ else
             hyprctl dispatch "movetoworkspacesilent special"
         fi
 
-        if [ "$target_floating" == "true" ]; then
+        if [[ "$target_floating" == "true" || "$floating" == "true" ]]; then
             # move window to current ws
              # hyprctl keyword animations:enabled 0
              hyprctl dispatch "movetoworkspacesilent e+0,address:${target_addr}"
              hyprctl dispatch "focuswindow address:${target_addr}"
+             if [[ "$floating" = "true" && "$target_floating" = "false" ]]; then
+                 # 如果目标窗口不是floating,且 有--floating 参数（ 即想让目标窗口以floating的形式展示）
+                 hyprctl dispatch togglefloating address:${target_addr}
+                 hyprctl dispatch centerwindow
+                 # resize 有bug
+                 # hyprctl dispatch resizeactive "$resize"
+             fi
 
              # hyprctl keyword animations:enabled 1
             if [ $maximize ]; then
@@ -143,7 +180,6 @@ else
             fi
         fi
     else
-
         if [[ "$front_ws_name" == *"special"* ]]; then
             # hide 当前special workspace
             hyprctl dispatch "togglespecialworkspace"
