@@ -6,8 +6,15 @@
 
 term=alacritty
 termexec="-e"
+working_directory_arg="--working-directory"
+
 # term=kitty
 # termexec=""
+# working_directory_arg="--working-directory"
+
+# term=wezterm
+# termexec=""
+# working_directory_arg="--cwd"
 
 working_directory=""
 other_args=""
@@ -17,6 +24,7 @@ other_args=""
 # https://wiki.hyprland.org/Configuring/Dispatchers/
 rules=""                         #
 
+echo "$@" >/tmp/a
 # 解析参数
 for arg in "$@"; do
   if [[ $arg == --working-directory=* ]]; then
@@ -52,6 +60,6 @@ else
     if [ -z "$working_directory" ]; then
         hyprctl dispatch exec $rules --  $term  $other_args
     else
-        hyprctl dispatch exec $rules -- $term --working-directory="$working_directory" $other_args
+        hyprctl dispatch exec $rules -- $term $working_directory_arg="$working_directory" $other_args
     fi
 fi

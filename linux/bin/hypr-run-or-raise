@@ -9,8 +9,8 @@
 # 2. 如果没有，则使用 arg2 及之后的参数 以启动目录程序,并聚焦之(有可能程序是在其他 workspace 启动，故需要将焦点转移到那)
 # hypr-run-or-raise emacs emacs
 # hypr-run-or-raise 'firefox|firefox-esr' firefox
-# hypr-run-or-raise --cd --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
-# hypr-run-or-raise --floating-only -- dterm alacritty  --working-directory=$(hypr-cwd||echo $HOME) --class=dterm
+# hypr-run-or-raise --cd --floating-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --floating-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
 
 # 有个特例，参见 hypr-cwd
 # 若当前窗口是 emacs ,我能从 emacs 的 title 中获取到 emacs 的 default-directory(emacs 当前编辑的文件所在的目录)
@@ -80,7 +80,7 @@ else
     # front_class=`echo $front_app|jq -r '.class'`
     front_addr=`echo $front_app|jq -r '.address'`
     front_floating=`echo $front_app|jq -r '.floating'`
-    front_ws_name=`echo $front_app|jq -r '.workspace.name'|head -n 1`
+    front_ws_name=`echo $front_app|jq -r '.workspace.name'`
     # jq 的(.app_id // "") 表示取 app_id 若无此字段则为空串
     # target_class=`echo $target_appinfo|jq -r '.class'|head -n 1`
     target_addr=`echo $target_appinfo|jq -r '.address'|head -n 1`
@@ -109,7 +109,7 @@ else
         else
             hyprctl dispatch "focuswindow address:${target_addr}"
         fi
-        if [[ "$target" = "Alacritty" || "$target" = "dterm" || "$target" = "kitty" ]]; then
+        if [[  "$target" == *"org.wezfurlong.wezterm"*  || "$target" == *"Alacritty"*   || "$target" == *"kitty"*  ]]; then
             if [[ -n "$cwd" && -n "$cd" ]]; then
                 # 如果 hypr-cwd 获取到当前 working directory
                 # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录

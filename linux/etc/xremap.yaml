@@ -117,7 +117,7 @@ keymap:
     remap:
       C-g: [super-Space,C-g]
       # C-x: C-x
-      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- Alacritty term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating-only -- 'Alacritty|kitty|org.wezfurlong.wezterm' term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
 
   - name: kitty
     application:
@@ -126,7 +126,7 @@ keymap:
       super-C-w: super-C-q
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","Alacritty","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)  "] }
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","Alacritty|kitty|org.wezfurlong.wezterm","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)  "] }
       # C-l: [C-l,C-Shift-l,C-Shift-l]
       # C-Enter: [C-y,Enter]
       # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
@@ -142,6 +142,24 @@ keymap:
           C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
+  - name: wezterm
+    application:
+      only: [org.wezfurlong.wezterm]
+    remap:
+      super-C-Enter:
+        - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","Alacritty|kitty|org.wezfurlong.wezterm","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
+      C-Enter: [C-Super-v,Enter]
+      C-k: [C-2,C-2,C-e,y,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+      C-x:
+        remap:
+          C-x: C-x              # C-xC-x send C-x
+          C-c: super-C-q
+      C-c:
+        remap:
+          C-c: C-c              # C-xC-x send C-x
+          C-e: C-Shift-M        # hints
+          C-j: { launch: ["open-with"]}
   - name: Terminal
     application:
       only: [dterm,Alacritty,alacritty]
@@ -149,7 +167,7 @@ keymap:
       super-C-w: super-C-q
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","Alacritty","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
+      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating-only","--","Alacritty|kitty|org.wezfurlong.wezterm","term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME) "] }
       C-l: [C-l,C-Shift-l,C-Shift-l]
       C-Enter: [C-y,Enter]
       C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
@@ -196,7 +214,7 @@ keymap:
       C-d: delete
   - name: Default -- some of these are overridden by the above definitions
     application:
-      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,kitty,Alacritty,alacritty]
+      not: [Gnome-terminal, Emacs,emacs ,foot,Foot,dterm,kitty,Alacritty,org.wezfurlong.wezterm]
       # not: [Google-chrome, Slack, Gnome-terminal, jetbrains-idea,emacs]
     remap:
       super-C-a: C-a
@@ -248,7 +266,7 @@ keymap:
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp kitty -- --class=mitp -e mitmproxy -p 8888"] }
-      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   Alacritty -- term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating-only   'Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh --rules='[float]'  --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
@@ -273,21 +291,28 @@ keymap:
       super-C-m: { launch: ["hyprctl","dispatch","fullscreen","1"] }
       super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
       super-C-w: super-C-w
+      
       super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
       super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
       super-C-Tab: { launch: ["hyprctl","dispatch" ,"workspace","prevous"]}
+      # 窗口大小调整 space+ 箭头
       super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
       super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
       super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
       super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","10"]}
+      
+      super-C-M-n: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
+      super-C-M-p: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
+      super-C-M-e: { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
+      super-C-M-d: { launch: ["hyprctl" ,"dispatch","movetoworkspacesilent","empty"]}
 
       C-w:
         remap:
           C-w: C-w              # C-wC-w send C-w
-          Enter: super-C-Backslash
           C-r: super-M-r        # reload
-          C-o: super-C-o
-          o: super-C-o
+          C-e:  { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
+          C-f: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
+          C-b: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
           "1": { launch: ["hyprctl" ,"dispatch","movetoworkspace","1"]}
           "2": { launch: ["hyprctl" ,"dispatch","movetoworkspace","2"]}
           "3": { launch: ["hyprctl" ,"dispatch","movetoworkspace","3"]}
@@ -309,9 +334,6 @@ keymap:
           "C-9": { launch: ["hyprctl" ,"dispatch","movetoworkspace","9"]}
           "C-0": { launch: ["hyprctl" ,"dispatch","movetoworkspace","10"]}
 
-          C-e:  { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
-          C-f: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
-          C-b: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
           # C-c: { launch: ["hyprctl" ,"dispatch","movetoworkspace","e+0"]}
 #  Local Variables:
 #  mode: conf
