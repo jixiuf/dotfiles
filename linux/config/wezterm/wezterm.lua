@@ -96,6 +96,22 @@ config.colors = {
 }
 
 config.hide_tab_bar_if_only_one_tab = true
+
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+-- make username/project paths clickable. this implies paths like the following are for github.
+-- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
+-- as long as a full url hyperlink regex exists above this it should not match a full url to
+-- github or gitlab / bitbucket (i.e. https://gitlab.com/user/project.git is still a whole clickable url)
+table.insert(config.hyperlink_rules, {
+  regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+  format = 'https://www.github.com/$1/$3',
+})
+table.insert(config.hyperlink_rules, {
+  regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+  format = 'https://www.github.com/$1/$3',
+})
+
+
 local act = wezterm.action
 
 local copy_mode = nil
@@ -133,6 +149,36 @@ if wezterm.gui then
    -- { key = 'k', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Up', },
    -- { key = 'R', mods = 'SHIFT|CTRL', action =  wezterm.action.ReloadConfiguration },
   table.insert(keys, { key = 'Enter', mods = 'CMD|CTRL', action =  wezterm.action.SpawnWindow })
+  table.insert(keys,  {
+    key = 'P',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.QuickSelectArgs {
+      label = 'open url',
+      patterns = {
+         "((ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+)",
+        "(([\\w\\.\\-_/]+/)*[\\w\\-_\\.]+\\.[\\w]+(:\\d+)?)",
+      },
+      action = wezterm.action_callback(function(window, pane)
+        local url = window:get_selection_text_for_pane(pane)
+        local cwd_uri = pane:get_current_working_dir()
+        local cwd = ''
+        local hostname = ''
+        if cwd_uri then
+           if type(cwd_uri) == 'userdata' then
+              -- Running on a newer version of wezterm and we have
+              -- a URL object here, making this simple!
+           cwd = cwd_uri.file_path
+           hostname = cwd_uri.host or wezterm.hostname()
+           end
+        end
+
+        wezterm.log_info('opening: ' .. url)
+        wezterm.open_with(cwd,'open-with')
+      end),
+    },
+  })
+
+
    -- { key = 'U', mods = 'SHIFT|CTRL', action =  wezterm.action.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
   -- table.insert(keys, { key = 'LeftArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Left' })
   -- table.insert(keys, { key = 'RightArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Right' })
