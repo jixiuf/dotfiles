@@ -76,32 +76,9 @@ else
     touch  ~/.zshrc_local
 fi
 
-alias enw="en -nw"              # emacs -nw
-alias e="en"
-# 把当前内容重定向到 emacs 的一个 buffer
-# demo: curl baidu.com|e
-# demo: e filename
-# open files  with emacs or redirect stdio to an emacs buffer
-# function e(){
-#     if [ -t 0 ]; then
-#         #  running interactivelly
-#         ec --no-wait $@        >/dev/null  # open file with emacsclient
-#     else
-#         tmpfile="/tmp/scratch-`/bin/date +%Y-%m-%d_%H-%M-%S`-`uuidgen`"
-#         cat  >$tmpfile&& ec --no-wait --eval "(with-current-buffer (switch-to-buffer (generate-new-buffer \"*scratch-*\")) (insert-file-contents \"$tmpfile\")(set-auto-mode) (goto-char (point-min)))">/dev/null
-#     fi
-# }
-
-# alias s="cat >/tmp/scratch; e --no-wait --eval '(with-current-buffer (switch-to-buffer (generate-new-buffer \"*scratch*\")) (insert-file-contents \"/tmp/scratch\")(set-auto-mode) (goto-char (point-min)))'"
-# 把当前内容重定向到 emacs 的一个 buffer 并 json 格式化
-# alias js="cat >/tmp/scratch&& e --no-wait --eval '(with-current-buffer (switch-to-buffer (generate-new-buffer \"*scratch-*\")) (insert-file-contents \"/tmp/scratch\") (json-mode )(json-mode-beautify) (goto-char (point-min)))'>/dev/null "
-# perl 版
-# brew install jsonpp
-
-# alias jsonpretty='json_pp'
-# alias jsonpretty='python -m json.tool'
+alias en="ec -nw"
+alias e="ec"
 alias mitp="mitmproxy -p 8888 "
-
 # go tool dist list
 alias linuxgo='GOOS=linux GOARCH=amd64 go'
 alias linuxgob='GOOS=linux GOARCH=amd64 go build -ldflags "-s -w"'
@@ -133,25 +110,7 @@ alias httpserver="python -m SimpleHTTPServer 8888"
 alias g=git
 alias gst='git status'
 alias gbr='git branch'
-
-
-
-# alias tcpinfo='netstat -n | awk "/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}"'
-# alias dev12="cd $GOPATH/src/zerogame.info/thserver/thserver&& ./dev.sh 1 2"
 alias download="pushd ~/Downloads/"
-# ssh 通过代理
-#alias erl='rlwrap -a  erl'
-# alias arp='sudo arp'
-# alias mysqld='sudo /etc/init.d/mysql restart'
-# alias rr='sudo revdep-rebuild -- keep-going;sudo perl-cleaner --all;lafilefixer --justfixit;sudo python-updater;prelink -amR'
-# alias eupdatep='sudo emerge -uvDNp --keep-going world>>/tmp/emerge.log 2>&1 '
-# alias eupdatec='sudo emerge -uvDN --keep-going world>>/tmp/emerge.log 2>&1 &!'
-# alias eupdate='sudo emerge -uvDN --keep-going world>>/tmp/emerge.log 2>&1'
-# alias esync="sudo emerge --sync>>/tmp/emerge.log 2>&1&& sudo layman -S ;sudo eix-update>>/tmp/emerge.log 2>&1"
-# alias logout="echo 'awesome.quit()'|awesome-client"
-# alias emacsd="sudo /etc/init.d/emacs.$USE R restart"
-# alias emacsq="emacs -q -debug-init"
-# alias sftp="sudo /etc/init.d/proftpd restart"
 if [ $(uname -s ) = "Linux" ] ; then
     alias eme='sudo emerge -aqv --autounmask-write'
     alias emerge='sudo emerge'
@@ -159,6 +118,8 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias esync='sudo emerge --sync'
     alias emec='sudo emerge -ac'
     alias emes='sudo emerge -aSqv'
+    alias env-update="sudo env-update"
+    alias etc-update="sudo etc-update"
 
     alias ls='ls --hyperlink=auto --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
     alias la='ls --hyperlink=auto -a --color=auto  '
@@ -195,6 +156,8 @@ else
     alias "brewi"="brew install --build-from-source"
     alias "tbrewi"="tsocks brew install --build-from-source"
     alias lc='launchctl'
+    alias ftpserver='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
+    alias ftpserver_stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 fi
 alias chown='chown -R'
 alias chmod='chmod -R'
@@ -202,19 +165,13 @@ alias sl='ls'
 alias mkdir='mkdir -p'
 alias cp='cp -r'
 alias rm="rm -rf"
-alias srm="sudo rm -rf"
-alias lp='ls|less'
 alias pp='ps -ef|grep -v grep|grep'
 alias su="su -l"
-
-
-# alias s=" rc-service"
-# alias rs=" rc-service"
-# alias rc-status="sudo rc-status"
-# alias rc-update="sudo rc-update"
-alias dush="du -sh"
-
 alias v='sudo vim'
+alias mount="sudo mount"
+alias umount="sudo umount"
+alias now="date '+%s'"
+
 function vterm_printf(){
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
         # Tell tmux to pass the escape sequences through
@@ -261,8 +218,6 @@ vterm_cmd() {
     }
 fi
 
-# alias vi='em'
-# pidof vi
 function k(){
     ps -ef |grep -v grep|grep "$@"|awk '{print $2}'|xargs kill
 }
@@ -272,30 +227,8 @@ function kk(){
 function kkk(){
     ps -ef |grep -v grep|grep "$@"|cut -d " " -f 4|sudo xargs kill -9
 }
-# alias k="pkill   -f "
-# alias kk="pkill  -9 -f "
-# alias kkk="sudo pkill  -9 -f "
-#alias drd="sudo drcomd"
-# alias net="sudo /etc/init.d/net.eth0 restart"
-# alias ifconfig="sudo ifconfig"
-# alias route="sudo route"
-# alias halt="sync;sudo shutdown -h now"
-# alias reboot="sync;sudo reboot"
-alias mount="sudo mount"
-alias umount="sudo umount"
-# alias env-update="sudo env-update"
-# alias etc-update="sudo etc-update"
-alias now="date '+%s'"
-# alias dat="date +%Y-%m-%d_%H:%M-%A.%z"
 
-#export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] "
-#export PS1="\[\e[01;32m\]\u\[\e[01;34m\] \W \$\[\e[00m\] "
-
-# alias net="sudo rm /var/lib/dhcpcd/dhcpcd-eth0.lease;sudo /etc/init.d/net.eth0 restart"
 alias df="df -h"
-# alias light="echo -n 40|sudo tee /proc/acpi/video/VGA/LCD/brightness"
-# alias du="du -sh"
-# }}}
 alias -s html=vi   # 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开
 # alias -s rb=vi     # 在命令行直接输入 ruby 文件，会在 TextMate 中打开
 # alias -s py=vi       # 在命令行直接输入 python 文件，会用 vim 中打开，以下类似
@@ -310,8 +243,6 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias svnreset='svn revert -R .;for file in `svn status|grep "^ *?"|sed -e "s/^ *? *//"`; do rm $file ; done'
-alias ftpserver='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
-alias ftpserver_stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 
 #这样可以使你上面定义的那些 alias 在 sudo 时管用
 #http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo #
@@ -394,12 +325,6 @@ bindkey "^[r" history-incremental-search-backward  # M-r
 bindkey "^[n" down-line-or-history
 bindkey "^[p" up-line-or-history
 
-function copy-line-as-kill () {
- zle kill-line
- print -rn $CUTBUFFER | clipcopy 2>/dev/null
-}
-zle -N copy-line-as-kill
-# bindkey '^k' copy-line-as-kill
 
 # https://github.com/zsh-users/zsh-history-substring-search
 # bindkey -M emacs '^P' history-substring-search-up
@@ -407,35 +332,6 @@ zle -N copy-line-as-kill
 # bindkey -M emacs '^R' history-substring-search-up  # C-r
 # HISTORY_SUBSTRING_SEARCH_FUZZY='true'
 
-if [ -f ~/.zaw/zaw.zsh  ] ; then
-    . ~/.zaw/zaw.zsh
-    bindkey -M emacs '^R' zaw-history  # C-r
-    bindkey -M emacs '^O' zaw-open-file  # C-O
-
-    # autoload -U filter-select; filter-select -i
-    # to initialize `filterselect` keymap and then do like::
-   bindkey -M filterselect '^E' accept-search       # # anythins.el 的 ctrl-z
-   bindkey -M filterselect "^[[1m" accept-line # itermbind 后的 c-m
-   bindkey -M filterselect "^[h" backward-kill-word # itermbind 后的 M-h
-   bindkey -M filterselect "^[[1a" backward-kill-word # itermbind 后的 C-del
-   bindkey -M filterselect "^[^?" backward-kill-word # itermbind 后的 M-del
-   bindkey -M filterselect "^[[109;5u" accept-line # itermbind
-
-   zstyle ':filter-select:highlight' matched fg=yellow,standout
-   # zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
-
-   # extended-search:
-   #     If this style set to be true value, the searching bahavior will be
-   #     extended as follows:
-   #
-   #     ^ Match the beginning of the line if the word begins with ^
-   #     $ Match the end of the line if the word ends with $
-   #     ! Match anything except the word following it if the word begins with !
-   #     so-called smartcase searching
-   zstyle ':filter-select' extended-search yes # enable extended search regardless of the case-insensitive style
-
-fi
-# fzf
 # brew install fzf
 # To install useful key bindings and fuzzy completion:
 # $(brew --prefix)/opt/fzf/install
@@ -553,8 +449,6 @@ bindkey "^[x" ignore            # M-x 忽略
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
 
-zle -N copybuffer               # 让普通的 copybuffer 函数变成可绑定
-bindkey "^[w" copybuffer # copy 当前命令行下的内容
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -760,13 +654,6 @@ vcs_info_wrapper() {
         echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
     fi
 }
-# git_sha() {
-#     GIT_SHA=$(command git rev-parse --short HEAD 2> /dev/null)
-#     echo "%{$fg[green]%}${GIT_SHA}%{$reset_color%}$del"
-# }
-
-
-#PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 # set FPATH
 # 一些补全的函数 从这里加载
@@ -780,106 +667,6 @@ if [ -d ~/.zsh/site-functions  ]; then
 fi
 
 
-function _omz_osx_get_frontmost_app() {
-  local the_app=$(
-    osascript 2>/dev/null <<EOF
-      tell application "System Events"
-        name of first item of (every process whose frontmost is true)
-      end tell
-EOF
-  )
-  echo "$the_app"
-}
-
-
-# clipcopy - Copy data to clipboard
-#
-# Usage:
-#
-#  <command> | clipcopy    - copies stdin to clipboard
-#
-#  clipcopy <file>         - copies a file's contents to clipboard
-#
-function clipcopy() {
-  emulate -L zsh
-  local file=$1
-  if [[ $OSTYPE == darwin* ]]; then
-    if [[ -z $file ]]; then
-      pbcopy
-    else
-      cat $file | pbcopy
-    fi
-  elif [[ $OSTYPE == cygwin* ]]; then
-    if [[ -z $file ]]; then
-      cat > /dev/clipboard
-    else
-      cat $file > /dev/clipboard
-    fi
-  else
-    if (( $+commands[xclip] )); then
-      if [[ -z $file ]]; then
-        xclip -in -selection clipboard
-      else
-        xclip -in -selection clipboard $file
-      fi
-    elif (( $+commands[xsel] )); then
-      if [[ -z $file ]]; then
-        xsel --clipboard --input
-      else
-        cat "$file" | xsel --clipboard --input
-      fi
-    else
-      print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
-      return 1
-    fi
-  fi
-}
-
-
-
-
-# clippaste - "Paste" data from clipboard to stdout
-#
-# Usage:
-#
-#   clippaste   - writes clipboard's contents to stdout
-#
-#   clippaste | <command>    - pastes contents and pipes it to another process
-#
-#   clippaste > <file>      - paste contents to a file
-#
-# Examples:
-#
-#   # Pipe to another process
-#   clippaste | grep foo
-#
-#   # Paste to a file
-#   clippaste > file.txt
-function clippaste() {
-  emulate -L zsh
-  if [[ $OSTYPE == darwin* ]]; then
-    pbpaste
-  elif [[ $OSTYPE == cygwin* ]]; then
-    cat /dev/clipboard
-  else
-    if (( $+commands[xclip] )); then
-      xclip -out -selection clipboard
-    elif (( $+commands[xsel] )); then
-      xsel --clipboard --output
-    else
-      print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
-      return 1
-    fi
-  fi
-}
-
-copybuffer () {
-  if which clipcopy &>/dev/null; then
-    echo $BUFFER | clipcopy
-  else
-    echo "clipcopy function not found. Please make sure you have Oh My Zsh installed correctly."
-  fi
-}
 
 
 # for golang
