@@ -7,6 +7,10 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
+function starts_with(str, prefix)
+    return string.sub(str, 1, string.len(prefix)) == prefix
+end
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -159,14 +163,17 @@ if wezterm.gui then
    -- { key = 'k', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Up', },
    -- { key = 'R', mods = 'SHIFT|CTRL', action =  wezterm.action.ReloadConfiguration },
   table.insert(keys, { key = 'Enter', mods = 'CMD|CTRL', action =  wezterm.action.SpawnWindow })
+  -- ctrl_shift_m: 快速打开指定文件 ，http， filename:linenum
+  -- also see https://github.com/wez/wezterm/discussions/529
   table.insert(keys,  {
-    key = 'P',
+    key = 'M',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.QuickSelectArgs {
       label = 'open url',
       patterns = {
-         "((ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+)",
-        "(([\\w\\.\\-_/]+/)*[\\w\\-_\\.]+\\.[\\w]+(:\\d+)?)",
+          'https?://\\S+',
+         "([\\/\\.\\-_a-zA-Z0-9]+:[0-9]+)",
+         "([\\/\\.\\-_a-zA-Z0-9]+)",
       },
       action = wezterm.action_callback(function(window, pane)
         local url = window:get_selection_text_for_pane(pane)
@@ -177,13 +184,32 @@ if wezterm.gui then
            if type(cwd_uri) == 'userdata' then
               -- Running on a newer version of wezterm and we have
               -- a URL object here, making this simple!
-           cwd = cwd_uri.file_path
-           hostname = cwd_uri.host or wezterm.hostname()
+
+              cwd = cwd_uri.file_path
+              hostname = cwd_uri.host or wezterm.hostname()
+           else
+              -- an older version of wezterm, 20230712-072601-f4abf8fd or earlier,
+              -- which doesn't have the Url object
+              cwd_uri = cwd_uri:sub(8)
+              local slash = cwd_uri:find '/'
+              if slash then
+                 hostname = cwd_uri:sub(1, slash - 1)
+                 -- and extract the cwd from the uri, decoding %-encoding
+                 cwd = cwd_uri:sub(slash):gsub('%%(%x%x)', function(hex)
+                                                  return string.char(tonumber(hex, 16))
+                                              end)
+              end
            end
         end
-
-        wezterm.log_info('opening: ' .. url)
-        wezterm.open_with(cwd,'open-with')
+        if url:sub(1, 1) == "/" then
+           wezterm.open_with(url,'open-with')
+           -- ctrl_shift_l see log
+           -- wezterm.log_info('2222opening: ' .. cwd .. "|" .. hostname .. "|" .. url)
+        elseif starts_with(url,"http") then
+           wezterm.open_with(url)
+        else
+           wezterm.open_with(cwd .. "/" .. url,'open-with')
+        end
       end),
     },
   })
