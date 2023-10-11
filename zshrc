@@ -1,4 +1,90 @@
 #!/bin/zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview
+plugins=( golang git)
+
+if [ ! -f $ZSH/oh-my-zsh.sh ]; then
+    git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
 #解决这个问题用 Ignore insecure directories and continue [y]
 # compaudit | xargs chmod g-w
 export ARTEMIS_SHUTDOWN_SLEEP_SECONDS=0
@@ -32,21 +118,10 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cloud.tencent.com/homebrew-bottles
 function gomod(){
-go mod edit -replace=gitlab.luojilab.com/zeroteam/artemis=../../zeroteam/artemis
-go mod edit -replace=gitlab.luojilab.com/zeroteam/common=../../zeroteam/common
-go mod edit -replace=gitlab.luojilab.com/zeroteam/ddns/app/goddns=../../zeroteam/ddns/app/goddns
-
+    go mod edit -replace=gitlab.luojilab.com/zeroteam/artemis=../../zeroteam/artemis
+    go mod edit -replace=gitlab.luojilab.com/zeroteam/common=../../zeroteam/common
+    go mod edit -replace=gitlab.luojilab.com/zeroteam/ddns/app/goddns=../../zeroteam/ddns/app/goddns
 }
-
-# cd "$(brew --repo)" && git remote set-url origin https://github.com/Homebrew/brew.git
-
-#
-# cd "$(brew --repo)"; git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/brew.git/
-# cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" ;git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git/
-
-# cd "$(brew --repo)"; git remote set-url origin https://github.com/Homebrew/brew.git
-# cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" ;git remote set-url origin https://github.com/Homebrew/homebrew-core.git
-
 function schedgo(){
     GODEBUG=scheddetail=1,schedtrace=1000  $@
 }
@@ -64,11 +139,6 @@ json_escape () {
 }
 alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
 alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
-
-# if [ ! -d ~/venv ]; then
-#     virtualenv venv
-# fi
-# source ~/venv/bin/activate
 
 if [ -f ~/.zshrc_local ]; then
    .  ~/.zshrc_local
@@ -326,12 +396,6 @@ bindkey "^[n" down-line-or-history
 bindkey "^[p" up-line-or-history
 
 
-# https://github.com/zsh-users/zsh-history-substring-search
-# bindkey -M emacs '^P' history-substring-search-up
-# bindkey -M emacs '^N' history-substring-search-down
-# bindkey -M emacs '^R' history-substring-search-up  # C-r
-# HISTORY_SUBSTRING_SEARCH_FUZZY='true'
-
 # brew install fzf
 # To install useful key bindings and fuzzy completion:
 # $(brew --prefix)/opt/fzf/install
@@ -339,20 +403,6 @@ if [ `which fzf| grep -c "/fzf" ` -eq 1 ]; then  \
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
-# ulimit -n 10000 2>/dev/null
-# ulimit -n 20000 2>/dev/null
-
-
-# {{{ color
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-eval _$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-eval $color='%{$fg[${(L)color}]%}'
-(( count = $count + 1 ))
-done
 
 
 
@@ -368,14 +418,6 @@ else
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions  >/dev/null 2>&1 &
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh >/dev/null 2>&1 &
 fi
-
-
-PROMPT='%(!.%B$RED%n.%B$GREEN%n)@%m$CYAN %2~$(vcs_info_wrapper)%(?..$RED%?)$GREEN%(!.#.$)%(1j.(%j jobs%).) %b'
-
-
-
-# for bash
-# PS1='\[\033]0;\u@\H:\w\007\]\$ '
 
 # for emacs term.el
 HOSTNAME=$(uname -n)
@@ -420,11 +462,6 @@ setopt INTERACTIVE_COMMENTS
 #稍微有点混乱，不如 cd 补全实用
 setopt AUTO_CD
 
-#扩展路径
-setopt complete_in_word
-
-#禁用 core dumps
-limit coredumpsize 0
 
 #Emacs 风格 键绑定
 bindkey -e
@@ -436,8 +473,6 @@ bindkey \^H backward-kill-word
 bindkey \^Z set-mark-command
 bindkey \^U backward-kill-line
 bindkey \^M accept-line
-bindkey "^[[1h" user-complete   # itermbind 后的 ctrl-i
-bindkey "^[[1m" accept-line     #  itermbind 后的 c-m
 
 
 function ignore(){}
@@ -467,135 +502,15 @@ zle_highlight=(region:bg=magenta #选中区域
 
 #显示 path-directories ，避免候选项唯一时直接选中
 cdpath="/home"
-# }}}
 
-# {{{ startx
-# if [ $(uname -s ) = "Linux" ] ; then
-#  if [ ! -f /tmp/.X0-lock  ] ; then
-#    startx
-#   logout
-#  fi
-# fi
-
-if [ -f ~/.gentoo/java-env-classpath  ] ; then
-   . ~/.gentoo/java-env-classpath
-fi
-
-
-# }}}
-# {{{ 路径别名
 #进入相应的路径时只要 cd ~xxx
-hash -d E="/etc/env.d"
-hash -d C="/etc/conf.d"
-hash -d I="/etc/rc.d"
-hash -d X="/etc/X11"
 hash -d HIST="$HISTDIR"
-# #export GDK_NATIVE_WINDOWS=true
-# export AWT_TOOLKIT=MToolkit
-# export _JAVA_AWT_WM_NONREPARENTING=1
-# # wmname LG3D
-
-#mkdir /var/tmp/ccache
-#mount -o bind /resource/pkg/gentoo/ccache/ /var/tmp/ccache
-#export PATH=$PATH:/java/java/android-sdk-linux_86/platform-tools/:/java/java/android-sdk-linux_86/tools/
-
-function dmalloc { eval `command dmalloc -b $*`; }
-
 
 if [ $(uname -s ) = "Darwin" ] ; then
     if [ -f /usr/local/Library/Contributions/brew_zsh_completion.zsh ]; then
         ln -s -f /usr/local/Library/Contributions/brew_zsh_completion.zsh ~/.zsh/site-functions/_brew
     fi
 fi
-
-# {{{ 自动补全功能
-#setopt AUTO_LIST
-setopt AUTO_MENU
-#开启此选项，补全时会直接选中菜单项
-#setopt MENU_COMPLETE
-#横向排列
-setopt  LIST_ROWS_FIRST
-
-autoload -U compinit
-compinit
-
-
-#自动补全缓存
-#zstyle ':completion::complete:*' use-cache on
-#zstyle ':completion::complete:*' cache-path .zcache
-#zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-#自动补全选项
-zstyle ':completion:*' verbose yes
-#指定使用菜单,select 表示会高亮选中当前在哪个选项上,no=5 表示当候选项大于 5 时就不自动补全
-#而仅仅是列出可用的候选项,这样可以手动输入内容后过滤掉一部分
-#也就是说只有少于 5 个选项的时候而循环选中每一个
-#yes=long 表示当无法完整显示所有内容时,可以循环之
-# zstyle ':completion:*' menu select no=8 yes=long
-zstyle ':completion:*' menu select no=5
-#force-list 表示尽管只有一个候选项,也更出菜单,没必要
-#zstyle ':completion:*:*:default' force-list always
-zstyle ':completion:*' select-prompt '%SSelect:  lines: %L  matches: %M  [%p]'
-
-
-
-zstyle ':completion:*:match:*' original only
-zstyle ':completion::prefix-1:*' completer _complete
-zstyle ':completion:predict:*' completer _complete
-zstyle ':completion:incremental:*' completer _complete _correct
-zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
-
-#路径补全
-zstyle ':completion:*' expand 'yes'
-zstyle ':completion:*' squeeze-slashes 'yes'
-zstyle ':completion::complete:*' '\\'
-
-#彩色补全菜单
-#eval $(dircolors -b)
-export ZLSCOLORS="${LS_COLORS}"
-zmodload zsh/complist
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-if [[ "$OSTYPE" = solaris* ]]; then
-  zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm"
-else
-  zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-fi
-
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-
-#修正大小写
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-#错误校正
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-
-#补全类型提示分组
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
-zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
-zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
-zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
-
-# cd ~ 补全顺序
-zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
-
-#补全 ssh scp sftp 等
-my_accounts=(
-# deployer,ubuntu
-# deployer@{src.najaplus.com,zjh.pro.cn.najaplus.com}, #
-# kardinal@linuxtoy.org
-# 123@211.148.131.7
-)
-zstyle ':completion:*:my-accounts' users-hosts $my_accounts
-# Make zsh know about hosts already accessed by SSH
-zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 # {{{ (光标在行首)补全 "cd "
 user-complete(){
     case $BUFFER in
@@ -638,300 +553,7 @@ zle -N user-complete
 bindkey "\t" user-complete
 bindkey "^[[1h" user-complete   # my ctrl-i
 
-# zsh 显示 git 分支信息 begin
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' actionformats \
-        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{3}(%F{5}%b%F{3})%f '
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
-zstyle ':vcs_info:*' enable git svn
-
-# or use pre_cmd, see man zshcontrib
-vcs_info_wrapper() {
-    vcs_info
-    if [ -n "$vcs_info_msg_0_" ]; then
-        echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-    fi
-}
-
-# set FPATH
-# 一些补全的函数 从这里加载
-if [ -d /usr/local/share/zsh/site-functions/ ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-    # rm -f ~/.zcompdump; nohup compinit>/dev/null
-fi
-if [ -d ~/.zsh/site-functions  ]; then
-    fpath=(~/.zsh/site-functions $fpath)
-    # rm -f ~/.zcompdump; compinit
-fi
-
-
-
-
-# for golang
-##########################################################################################################
-# begin of golang
-##########################################################################################################
-# install in /etc/zsh/zshrc or your personal .zshrc
-
-# gc
-prefixes=(5 6 8)
-for p in $prefixes; do
-	compctl -g "*.${p}" ${p}l
-	compctl -g "*.go" ${p}g
-done
-
-# standard go tools
-compctl -g "*.go" gofmt
-
-# gccgo
-compctl -g "*.go" gccgo
-
-# go tool
-__go_tool_complete() {
-  typeset -a commands build_flags
-  commands+=(
-    'build[compile packages and dependencies]'
-    'clean[remove object files]'
-    'doc[run godoc on package sources]'
-    'env[print Go environment information]'
-    'fix[run go tool fix on packages]'
-    'fmt[run gofmt on package sources]'
-    'generate[generate Go files by processing source]'
-    'get[download and install packages and dependencies]'
-    'help[display help]'
-    'install[compile and install packages and dependencies]'
-    'list[list packages]'
-    'mod[modules maintenance]'
-    'run[compile and run Go program]'
-    'test[test packages]'
-    'tool[run specified go tool]'
-    'version[print Go version]'
-    'vet[run go tool vet on packages]'
-  )
-  if (( CURRENT == 2 )); then
-    # explain go commands
-    _values 'go tool commands' ${commands[@]}
-    return
-  fi
-  build_flags=(
-    '-a[force reinstallation of packages that are already up-to-date]'
-    '-n[print the commands but do not run them]'
-    '-p[number of parallel builds]:number'
-    '-race[enable data race detection]'
-    '-x[print the commands]'
-    '-work[print temporary directory name and keep it]'
-    '-ccflags[flags for 5c/6c/8c]:flags'
-    '-gcflags[flags for 5g/6g/8g]:flags'
-    '-ldflags[flags for 5l/6l/8l]:flags'
-    '-gccgoflags[flags for gccgo]:flags'
-    '-compiler[name of compiler to use]:name'
-    '-installsuffix[suffix to add to package directory]:suffix'
-    '-tags[list of build tags to consider satisfied]:tags'
-  )
-  __go_packages() {
-      local gopaths
-      declare -a gopaths
-      gopaths=("${(s/:/)$(go env GOPATH)}")
-      gopaths+=("$(go env GOROOT)")
-      for p in $gopaths; do
-        _path_files -W "$p/src" -/
-      done
-  }
-  __go_identifiers() {
-      compadd $(godoc -templates $ZSH/plugins/golang/templates ${words[-2]} 2> /dev/null)
-  }
-  case ${words[2]} in
-  doc)
-    _arguments -s -w \
-      "-c[symbol matching honors case (paths not affected)]" \
-      "-cmd[show symbols with package docs even if package is a command]" \
-      "-u[show unexported symbols as well as exported]" \
-      "2:importpaths:__go_packages" \
-      ":next identifiers:__go_identifiers"
-      ;;
-  clean)
-    _arguments -s -w \
-      "-i[remove the corresponding installed archive or binary (what 'go install' would create)]" \
-      "-n[print the remove commands it would execute, but not run them]" \
-      "-r[apply recursively to all the dependencies of the packages named by the import paths]" \
-      "-x[print remove commands as it executes them]" \
-      "*:importpaths:__go_packages"
-      ;;
-  fix|fmt|vet)
-      _alternative ':importpaths:__go_packages' ':files:_path_files -g "*.go"'
-      ;;
-  install)
-      _arguments -s -w : ${build_flags[@]} \
-        "-v[show package names]" \
-        '*:importpaths:__go_packages'
-      ;;
-  get)
-      _arguments -s -w : \
-        ${build_flags[@]}
-      ;;
-  build)
-      _arguments -s -w : \
-        ${build_flags[@]} \
-        "-v[show package names]" \
-        "-o[output file]:file:_files" \
-        "*:args:{ _alternative ':importpaths:__go_packages' ':files:_path_files -g \"*.go\"' }"
-      ;;
-  test)
-      _arguments -s -w : \
-        ${build_flags[@]} \
-        "-c[do not run, compile the test binary]" \
-        "-i[do not run, install dependencies]" \
-        "-v[print test output]" \
-        "-x[print the commands]" \
-        "-short[use short mode]" \
-        "-parallel[number of parallel tests]:number" \
-        "-cpu[values of GOMAXPROCS to use]:number list" \
-        "-run[run tests and examples matching regexp]:regexp" \
-        "-bench[run benchmarks matching regexp]:regexp" \
-        "-benchmem[print memory allocation stats]" \
-        "-benchtime[run each benchmark until taking this long]:duration" \
-        "-blockprofile[write goroutine blocking profile to file]:file" \
-        "-blockprofilerate[set sampling rate of goroutine blocking profile]:number" \
-        "-timeout[kill test after that duration]:duration" \
-        "-cpuprofile[write CPU profile to file]:file:_files" \
-        "-memprofile[write heap profile to file]:file:_files" \
-        "-memprofilerate[set heap profiling rate]:number" \
-        "*:args:{ _alternative ':importpaths:__go_packages' ':files:_path_files -g \"*.go\"' }"
-      ;;
-  list)
-      _arguments -s -w : \
-        "-f[alternative format for the list]:format" \
-        "-json[print data in json format]" \
-        "-compiled[set CompiledGoFiles to the Go source files presented to the compiler]" \
-        "-deps[iterate over not just the named packages but also all their dependencies]" \
-        "-e[change the handling of erroneous packages]" \
-        "-export[set the Export field to the name of a file containing up-to-date export information for the given package]" \
-        "-find[identify the named packages but not resolve their dependencies]" \
-        "-test[report not only the named packages but also their test binaries]" \
-        "-m[list modules instead of packages]" \
-        "-u[adds information about available upgrades]" \
-        "-versions[set the Module's Versions field to a list of all known versions of that module]:number" \
-        "*:importpaths:__go_packages"
-      ;;
-  mod)
-      typeset -a mod_commands
-      mod_commands+=(
-        'download[download modules to local cache]'
-        'edit[edit go.mod from tools or scripts]'
-        'graph[print module requirement graph]'
-        'init[initialize new module in current directory]'
-        'tidy[add missing and remove unused modules]'
-        'vendor[make vendored copy of dependencies]'
-        'verify[verify dependencies have expected content]'
-        'why[explain why packages or modules are needed]'
-      )
-      if (( CURRENT == 3 )); then
-          _values 'go mod commands' ${mod_commands[@]} "help[display help]"
-          return
-      fi
-      case ${words[3]} in
-      help)
-        _values 'go mod commands' ${mod_commands[@]}
-        ;;
-      download)
-        _arguments -s -w : \
-          "-json[print a sequence of JSON objects standard output]" \
-          "*:flags"
-        ;;
-      edit)
-        _arguments -s -w : \
-          "-fmt[reformat the go.mod file]" \
-          "-module[change the module's path]" \
-          "-replace[=old{@v}=new{@v} add a replacement of the given module path and version pair]:name" \
-          "-dropreplace[=old{@v}=new{@v} drop a replacement of the given module path and version pair]:name" \
-          "-go[={version} set the expected Go language version]:number" \
-          "-print[print the final go.mod in its text format]" \
-          "-json[print the final go.mod file in JSON format]" \
-          "*:flags"
-        ;;
-      graph)
-        ;;
-      init)
-        ;;
-      tidy)
-        _arguments -s -w : \
-          "-v[print information about removed modules]" \
-          "*:flags"
-        ;;
-      vendor)
-        _arguments -s -w : \
-          "-v[print the names of vendored]" \
-          "*:flags"
-        ;;
-      verify)
-        ;;
-      why)
-        _arguments -s -w : \
-          "-m[treats the arguments as a list of modules and finds a path to any package in each of the modules]" \
-          "-vendor[exclude tests of dependencies]" \
-          "*:importpaths:__go_packages"
-        ;;
-      esac
-      ;;
-  help)
-      _values "${commands[@]}" \
-        'environment[show Go environment variables available]' \
-        'gopath[GOPATH environment variable]' \
-        'packages[description of package lists]' \
-        'remote[remote import path syntax]' \
-        'testflag[description of testing flags]' \
-        'testfunc[description of testing functions]'
-      ;;
-  run)
-      _arguments -s -w : \
-          ${build_flags[@]} \
-          '*:file:_files -g "*.go"'
-      ;;
-  tool)
-      if (( CURRENT == 3 )); then
-          _values "go tool" $(go tool)
-          return
-      fi
-      case ${words[3]} in
-      [568]g)
-          _arguments -s -w : \
-              '-I[search for packages in DIR]:includes:_path_files -/' \
-              '-L[show full path in file:line prints]' \
-              '-S[print the assembly language]' \
-              '-V[print the compiler version]' \
-              '-e[no limit on number of errors printed]' \
-              '-h[panic on an error]' \
-              '-l[disable inlining]' \
-              '-m[print optimization decisions]' \
-              '-o[file specify output file]:file' \
-              '-p[assumed import path for this code]:importpath' \
-              '-u[disable package unsafe]' \
-              "*:file:_files -g '*.go'"
-          ;;
-      [568]l)
-          local O=${words[3]%l}
-          _arguments -s -w : \
-              '-o[file specify output file]:file' \
-              '-L[search for packages in DIR]:includes:_path_files -/' \
-              "*:file:_files -g '*.[ao$O]'"
-          ;;
-      dist)
-          _values "dist tool" banner bootstrap clean env install version
-          ;;
-      *)
-          # use files by default
-          _files
-          ;;
-      esac
-      ;;
-  esac
-}
-
-compdef __go_tool_complete go
-
-# aliases: go<~>
 function gob(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
     go build
@@ -940,22 +562,8 @@ function goi(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
     go install
 }
-alias goc='go clean'
-alias god='go doc'
-alias gof='go fmt'
-alias gofa='go fmt ./...'
-alias gog='go get'
-alias gol='go list'
-alias gom='go mod'
-alias gop='cd $GOPATH'
-alias gopb='cd $GOPATH/bin'
-alias gops='cd $GOPATH/src'
-alias gor='go run'
-alias got='go test'
-alias gov='go vet'
-##########################################################################################################
-# end of golang
-##########################################################################################################
+
+
 if [ $(uname -s ) = "Linux" ] ; then
     if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
          Hyprland 2>&1 >/tmp/sway.log
