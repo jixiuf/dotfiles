@@ -155,10 +155,12 @@ keymap:
         remap:
           C-x: C-x              # C-xC-x send C-x
           C-c: super-C-q
+          C-v: C-Shift-F        # 使用编辑器打开scrollback
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
           C-e: C-Shift-M        # hints
+          C-v: C-Shift-F        # 使用编辑器打开scrollback
           C-j: { launch: ["open-with"]}
   - name: Terminal
     application:

@@ -1,5 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local io = require 'io'
+local os = require 'os'
+local act = wezterm.action
 
 -- This table will hold the configuration.
 local config = {}
@@ -112,13 +115,20 @@ table.insert(config.hyperlink_rules, {
 })
 
 
-local act = wezterm.action
-
 local copy_mode = nil
+local search_mode = nil
 local keys = nil
 if wezterm.gui then
    -- https://wezfurlong.org/wezterm/config/lua/wezterm.gui/default_key_tables.html
   copy_mode = wezterm.gui.default_key_tables().copy_mode
+  search_mode = wezterm.gui.default_key_tables().search_mode
+
+  table.insert(search_mode, { key = 'g', mods = 'CTRL', action = act.CopyMode 'AcceptPattern' })
+
+  table.insert(copy_mode, { key = 'e', mods = 'ALT', action = act.CopyMode 'EditPattern' })
+  table.insert(copy_mode, { key = '/', mods = 'NONE', action = act.Search 'CurrentSelectionOrEmptyString' })
+
+
      -- wezterm show-keys --lua --key-table copy_mode
   table.insert(copy_mode, { key = 'a', mods = 'NONE', action = act.CopyMode 'Close' })
   table.insert(copy_mode, { key = 'v', mods = 'ALT', action = act.CopyMode 'PageUp' })
@@ -178,16 +188,47 @@ if wezterm.gui then
     },
   })
 
+  -- 使用emacsclient 打开scrollback
+  table.insert(keys,  {key = 'F', mods = 'CTRL|SHIFT', action = act.EmitEvent 'edit-scrollback'})
 
-   -- { key = 'U', mods = 'SHIFT|CTRL', action =  wezterm.action.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
-  -- table.insert(keys, { key = 'LeftArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Left' })
-  -- table.insert(keys, { key = 'RightArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Right' })
-  -- table.insert(keys, { key = 'UpArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Up' })
-  -- table.insert(keys, { key = 'DownArrow', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Down' })
-  -- table.insert(keys, { key = 'f', mods = 'CMD', action =  wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, })
-  -- table.insert(keys, { key = 'd', mods = 'CMD', action =  wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, })
-  -- table.insert(keys, { key = 'h', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Left', })
-  -- table.insert(keys, { key = 'l', mods = 'CMD', action =  wezterm.action.ActivatePaneDirection 'Right', })
+-- 使用emacsclient 打开scrollback
+wezterm.on('edit-scrollback', function(window, pane)
+  -- Retrieve the current viewport's text.
+  --
+  -- Note: You could also pass an optional number of lines (eg: 2000) to
+  -- retrieve that number of lines starting from the bottom of the viewport.
+  -- local viewport_text = pane:get_lines_as_text(20000)         -- 有换行
+  local viewport_text = pane:get_logical_lines_as_text(20000) -- 无换行
+
+
+  -- Create a temporary file to pass to emacsclient
+  local name = os.tmpname()
+  local f = io.open(name, 'w+')
+  f:write(viewport_text)
+  f:flush()
+  f:close()
+
+  -- Open a new tab running vim and tell it to open the file
+  window:perform_action(
+    act.SpawnCommandInNewTab {
+       -- 加一个非常大的行号，让emacsclient 跳转到文件末
+      -- args = { 'open-with', name..":100000"},
+      args = { 'emacsclient',"-t","+10000", name},
+    },
+    pane
+  )
+
+  -- Wait "enough" time for vim to read the file before we remove it.
+  -- The window creation and process spawn are asynchronous wrt. running
+  -- this script and are not awaitable, so we just pick a number.
+  --
+  -- Note: We don't strictly need to remove this file, but it is nice
+  -- to avoid cluttering up the temporary directory.
+  wezterm.sleep_ms(1000)
+  os.remove(name)
+end)
+
+
   -- { key = 'l', mods = 'CTRL|CMD', action =  wezterm.action.Multiple
   --   {
   --      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
@@ -196,7 +237,7 @@ if wezterm.gui then
   -- },
 
 end
-config.key_tables = {copy_mode = copy_mode}
+config.key_tables = {copy_mode = copy_mode,search_mode=search_mode}
 config.keys = keys
 -- and finally, return the configuration to wezterm
 return config
