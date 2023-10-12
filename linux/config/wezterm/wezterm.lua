@@ -127,10 +127,23 @@ if wezterm.gui then
   copy_mode = wezterm.gui.default_key_tables().copy_mode
   search_mode = wezterm.gui.default_key_tables().search_mode
 
-  table.insert(search_mode, { key = 'g', mods = 'CTRL', action = act.CopyMode 'AcceptPattern' })
 
-  table.insert(copy_mode, { key = 'e', mods = 'ALT', action = act.CopyMode 'EditPattern' })
+  table.insert(search_mode, { key = 'g', mods = 'CTRL',
+                              action =  wezterm.action.Multiple {
+                                 act.CopyMode 'EditPattern',
+                                 act.CopyMode 'ClearPattern',
+                                 act.CopyMode 'AcceptPattern',
+                                 act.CopyMode  'ClearSelectionMode' }})
+  table.insert(search_mode, { key = 'Enter', mods = 'NONE',
+                              action = wezterm.action.Multiple {
+                                 act.CopyMode 'AcceptPattern',
+                                 act.CopyMode  'ClearSelectionMode' }})
+
+  -- table.insert(copy_mode, { key = 'e', mods = 'ALT', action = act.CopyMode 'EditPattern' })
   table.insert(copy_mode, { key = '/', mods = 'NONE', action = act.Search 'CurrentSelectionOrEmptyString' })
+  table.insert(copy_mode, { key = 'p', mods = 'NONE', action = act.CopyMode 'PriorMatch' })
+  table.insert(copy_mode, { key = 'n', mods = 'SHIFT', action = act.CopyMode 'PriorMatch' })
+  table.insert(copy_mode, { key = 'n', mods = 'NONE', action = act.CopyMode 'NextMatch' })
 
 
      -- wezterm show-keys --lua --key-table copy_mode
@@ -140,8 +153,8 @@ if wezterm.gui then
   table.insert(copy_mode, { key = 'e', mods = 'CTRL',  action = act.CopyMode 'MoveToEndOfLineContent'})
   table.insert(copy_mode, { key = 'a', mods = 'CTRL',  action = act.CopyMode 'MoveToStartOfLineContent'})
   table.insert(copy_mode,    { key = '2', mods = 'CTRL', action = act.CopyMode{ SetSelectionMode =  'Cell' } })
-  table.insert(copy_mode, { key = 'x', mods = 'NONE',  action = act.CopyMode 'MoveToSelectionOtherEndHoriz'})
 
+  table.insert(copy_mode, { key = 'x', mods = 'NONE',  action = act.CopyMode 'MoveToSelectionOtherEndHoriz'})
   -- wezterm show-keys --lua
   keys = wezterm.gui.default_keys()
 
@@ -156,7 +169,17 @@ if wezterm.gui then
   -- PrimarySelection default: C-S-v
   table.insert(keys, { key = "v", mods = "SHIFT|CTRL", action = wezterm.action{PasteFrom="PrimarySelection"}})
   -- ActivateCopyMode default: C-S-x
-  table.insert(keys, { key = '2', mods = 'CTRL', action =  wezterm.action.ActivateCopyMode })
+  table.insert(keys, { key = '2', mods = 'CTRL', action =  wezterm.action.Multiple
+                            {
+                               wezterm.action.ActivateCopyMode ,
+                               -- act.SendKey { key = '/'  },
+                               -- act.SendKey { key = 'u',mods = 'CTRL'  },
+                               -- act.SendKey { key = 'Enter'},
+                               act.CopyMode  'ClearSelectionMode' ,
+                            }
+  })
+
+
   table.insert(keys, { key = 'v', mods = 'ALT', action =  wezterm.action.ActivateCopyMode })
 
   table.insert(keys, { key = 't', mods = 'CMD|CTRL', action =  wezterm.action.SpawnTab 'CurrentPaneDomain' })
