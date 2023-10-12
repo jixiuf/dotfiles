@@ -76,6 +76,7 @@ if [ ! -f $ZSH/oh-my-zsh.sh ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/plugins/iterm2/iterm2_shell_integration.zsh
 
 
 # Preferred editor for local and remote sessions

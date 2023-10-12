@@ -144,6 +144,10 @@ if wezterm.gui then
 
   -- wezterm show-keys --lua
   keys = wezterm.gui.default_keys()
+
+  table.insert(keys, { key = 'p', mods = 'CTRL|ALT', action = act.ScrollToPrompt(-1) })
+  table.insert(keys, { key = 'n', mods = 'CTRL|ALT', action = act.ScrollToPrompt(1) })
+
   table.insert(keys, { key = '.', mods = 'CTRL', action =  wezterm.action.ActivateTabRelative(1) })
   table.insert(keys, { key = ',', mods = 'CTRL', action =  wezterm.action.ActivateTabRelative(-1) })
 
@@ -254,6 +258,44 @@ wezterm.on('edit-scrollback', function(window, pane)
   os.remove(name)
 end)
 
+config.mouse_bindings = {
+  -- Change the default click behavior so that it only selects
+  -- text and doesn't open hyperlinks
+  -- {
+  --   event = { Up = { streak = 1, button = 'Left' } },
+  --   mods = 'NONE',
+  --   action = act.CompleteSelection 'ClipboardAndPrimarySelection',
+  -- },
+
+  -- -- and make CTRL-Click open hyperlinks
+  -- {
+  --   event = { Up = { streak = 1, button = 'Left' } },
+  --   mods = 'CTRL',
+  --   action = act.OpenLinkAtMouseCursor,
+  -- },
+
+  -- Scrolling up while holding CTRL increases the font size
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'CTRL',
+    action = act.IncreaseFontSize,
+  },
+
+  -- Scrolling down while holding CTRL decreases the font size
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'CTRL',
+    action = act.DecreaseFontSize,
+  },
+  {
+     -- 左键3连点，选中命令的output 内容 需要osc 133 的支持
+     -- ohmyzsh 用户可以使用 iterm2的 shell_integration 来实现
+     -- source $ZSH/plugins/iterm2/iterm2_shell_integration.zsh
+    event = { Down = { streak = 3, button = 'Left' } },
+    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+    mods = 'NONE',
+  },
+}
 
   -- { key = 'l', mods = 'CTRL|CMD', action =  wezterm.action.Multiple
   --   {

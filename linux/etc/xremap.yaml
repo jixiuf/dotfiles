@@ -161,6 +161,8 @@ keymap:
           C-c: C-c              # C-xC-x send C-x
           C-e: C-Shift-M        # hints
           C-v: C-Shift-F        # 使用编辑器打开scrollback
+          C-n: C-M-n            #next prompt
+          C-p: C-M-p  #prev prompt
           C-j: { launch: ["open-with"]}
   - name: Terminal
     application:

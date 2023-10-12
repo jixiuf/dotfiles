@@ -54,3 +54,6 @@ gui-apps/wf-recorder ~amd64
 gui-apps/wlr-randr ~amd64
 
 x11-terms/wezterm ~amd64
+app-shells/zsh-theme-powerlevel10k ~amd64
+app-shells/gitstatus ~amd64
+                  
