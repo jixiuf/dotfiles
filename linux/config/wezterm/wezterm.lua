@@ -105,18 +105,6 @@ config.colors = {
 config.hide_tab_bar_if_only_one_tab = true
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
--- make username/project paths clickable. this implies paths like the following are for github.
--- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
--- as long as a full url hyperlink regex exists above this it should not match a full url to
--- github or gitlab / bitbucket (i.e. https://gitlab.com/user/project.git is still a whole clickable url)
-table.insert(config.hyperlink_rules, {
-  regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-  format = 'https://www.github.com/$1/$3',
-})
-table.insert(config.hyperlink_rules, {
-  regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-  format = 'https://www.github.com/$1/$3',
-})
 
 
 local copy_mode = nil
@@ -172,6 +160,7 @@ if wezterm.gui then
   table.insert(keys, { key = '2', mods = 'CTRL', action =  wezterm.action.Multiple
                             {
                                wezterm.action.ActivateCopyMode ,
+                               -- act.Search { CaseSensitiveString = '' },
                                -- act.SendKey { key = '/'  },
                                -- act.SendKey { key = 'u',mods = 'CTRL'  },
                                -- act.SendKey { key = 'Enter'},
