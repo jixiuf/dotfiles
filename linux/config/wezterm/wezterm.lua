@@ -92,7 +92,7 @@ config.colors = {
   -- (index 0-15) using one of the names "Black", "Maroon", "Green",
   --  "Olive", "Navy", "Purple", "Teal", "Silver", "Grey", "Red", "Lime",
   -- "Yellow", "Blue", "Fuchsia", "Aqua" or "White".
-  copy_mode_active_highlight_fg = { AnsiColor = 'Black' },
+  copy_mode_active_highlight_fg = { AnsiColor = 'Olive' },
   copy_mode_inactive_highlight_bg = { Color = '#52ad70' },
   copy_mode_inactive_highlight_fg = { AnsiColor = 'White' },
 
@@ -118,6 +118,7 @@ if wezterm.gui then
 
   table.insert(search_mode, { key = 'g', mods = 'CTRL',
                               action =  wezterm.action.Multiple {
+                                 act.ClearSelection,
                                  act.CopyMode 'EditPattern',
                                  act.CopyMode 'ClearPattern',
                                  act.CopyMode 'AcceptPattern',
@@ -125,17 +126,107 @@ if wezterm.gui then
   table.insert(search_mode, { key = 'Enter', mods = 'NONE',
                               action = wezterm.action.Multiple {
                                  act.CopyMode 'AcceptPattern',
-                                 act.CopyMode  'ClearSelectionMode' }})
+                                 act.CopyMode  'ClearSelectionMode',
+                                 act.ClearSelection,
+                                }})
 
+  table.insert(copy_mode, { key = 'g', mods = 'CTRL',
+                              action =  wezterm.action.Multiple {
+                                 act.ClearSelection,
+                                 act.CopyMode 'ClearPattern',
+                                 act.CopyMode  'ClearSelectionMode',
+                                 act.ClearSelection,
+                                 act.CopyMode("Close"),
+  }})
+  table.insert(copy_mode, { key = 'Escape', mods = 'NONE',
+                              action =  wezterm.action.Multiple {
+                                 act.ClearSelection,
+                                 act.CopyMode 'ClearPattern',
+                                 act.CopyMode  'ClearSelectionMode',
+                                 act.ClearSelection,
+                                 act.CopyMode("Close"),
+  }})
+  table.insert(copy_mode, { key = 'a', mods = 'NONE',
+                              action =  wezterm.action.Multiple {
+                                 act.ClearSelection,
+                                 act.CopyMode 'ClearPattern',
+                                 act.CopyMode  'ClearSelectionMode',
+                                 act.ClearSelection,
+                                 act.CopyMode("Close"),
+  }})
+  table.insert(copy_mode, { key = 'q', mods = 'NONE',
+                              action =  wezterm.action.Multiple {
+                                 act.ClearSelection,
+                                 act.CopyMode 'ClearPattern',
+                                 act.CopyMode  'ClearSelectionMode',
+                                 act.ClearSelection,
+                                 act.CopyMode("Close"),
+  }})
   -- table.insert(copy_mode, { key = 'e', mods = 'ALT', action = act.CopyMode 'EditPattern' })
   table.insert(copy_mode, { key = '/', mods = 'NONE', action = act.Search 'CurrentSelectionOrEmptyString' })
-  table.insert(copy_mode, { key = 'p', mods = 'NONE', action = act.CopyMode 'PriorMatch' })
-  table.insert(copy_mode, { key = 'n', mods = 'SHIFT', action = act.CopyMode 'PriorMatch' })
-  table.insert(copy_mode, { key = 'n', mods = 'NONE', action = act.CopyMode 'NextMatch' })
+  table.insert(copy_mode,
+{
+			key = "p",
+			mods = "NONE",
+			action = act.Multiple({
+				act.CopyMode("PriorMatch"),
+				act.CopyMode("ClearSelectionMode"),
+                act.ClearSelection,
+			}),
+  })
+  table.insert(copy_mode,
+{
+			key = "n",
+			mods = "SHIFT",
+			action = act.Multiple({
+				act.CopyMode("PriorMatch"),
+				act.CopyMode("ClearSelectionMode"),
+                act.ClearSelection,
+			}),
+  })
+  table.insert(copy_mode,
+{
+			key = "n",
+			mods = "NONE",
+			action = act.Multiple({
+				act.CopyMode("NextMatch"),
+				act.CopyMode("ClearSelectionMode"),
+                act.ClearSelection,
+			}),
+  })
 
-
+  table.insert(copy_mode,
+{
+			key = "e",
+			mods = "NONE",
+			action = act({
+				Multiple = {
+					act.CopyMode("MoveForwardWord"),
+				},
+			}),
+  })
+  table.insert(copy_mode,
+{
+			key = "v",
+			mods = "NONE",
+			action = act({
+				Multiple = {
+					act.CopyMode("MoveBackwardWord"),
+				},
+			}),
+  })
+  table.insert(copy_mode, {
+                  key = "y",
+                  mods = "NONE",
+                  action = act({
+                        Multiple = {
+                           act({ CopyTo = "ClipboardAndPrimarySelection" }),
+                           act.ClearSelection,
+                           act.CopyMode("Close"),
+                        },
+                  }),
+  })
      -- wezterm show-keys --lua --key-table copy_mode
-  table.insert(copy_mode, { key = 'a', mods = 'NONE', action = act.CopyMode 'Close' })
   table.insert(copy_mode, { key = 'v', mods = 'ALT', action = act.CopyMode 'PageUp' })
   table.insert(copy_mode, { key = 'v', mods = 'CTRL', action = act.CopyMode 'PageDown' })
   table.insert(copy_mode, { key = 'e', mods = 'CTRL',  action = act.CopyMode 'MoveToEndOfLineContent'})
@@ -159,12 +250,13 @@ if wezterm.gui then
   -- ActivateCopyMode default: C-S-x
   table.insert(keys, { key = '2', mods = 'CTRL', action =  wezterm.action.Multiple
                             {
-                               wezterm.action.ActivateCopyMode ,
-                               -- act.Search { CaseSensitiveString = '' },
+                               act.Search { CaseSensitiveString = '' },
+                               act.ClearSelection,
                                -- act.SendKey { key = '/'  },
                                -- act.SendKey { key = 'u',mods = 'CTRL'  },
                                -- act.SendKey { key = 'Enter'},
                                act.CopyMode  'ClearSelectionMode' ,
+                               wezterm.action.ActivateCopyMode ,
                             }
   })
 

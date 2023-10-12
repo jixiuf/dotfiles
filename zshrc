@@ -76,6 +76,7 @@ if [ ! -f $ZSH/oh-my-zsh.sh ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+export iterm2_hostname=$(hostname) # hostname -f is slow (fix it)
 source $ZSH/plugins/iterm2/iterm2_shell_integration.zsh
 
 
@@ -93,8 +94,6 @@ alias curl2='curl --http2-prior-knowledge'
 export RUN_ENV=development
 export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
-alias apt='sudo apt'
-alias ap='sudo apt install'
 alias top4='ssh admin@192.168.52.114 -p 9090'
 alias apmdev='ssh root@10.2.0.171'
 alias apmali='ssh root@192.168.69.155'
@@ -126,7 +125,6 @@ function gomod(){
 function schedgo(){
     GODEBUG=scheddetail=1,schedtrace=1000  $@
 }
-alias ggu='go get -u '
 alias curljson='curl -H "Content-Type: application/json" '
 
 function crc32(){
@@ -160,7 +158,6 @@ alias src='pushd $GOPATH/src/gitlab.luojilab.com/'
 alias iostat="iostat -d -k -x 1 100"
 alias vmstat="vmstat 1 100"
 
-alias tget="tsocks wget"
 alias tumx='TERM=screen-256color tmux'
 ta(){
     if [ -n "$TMUX" ]; then
@@ -178,9 +175,6 @@ bindkey -s '^T' 'ta\n'
 alias httpserver="python -m SimpleHTTPServer 8888"
 # tmux_porcess_cnt=`pgrep tmux |wc -l`
 
-alias g=git
-alias gst='git status'
-alias gbr='git branch'
 alias download="pushd ~/Downloads/"
 if [ $(uname -s ) = "Linux" ] ; then
     alias eme='sudo emerge -aqv --autounmask-write'
@@ -329,28 +323,6 @@ alias -g ....=" ../../.."
 alias -g .....=" ../../../.."
 alias -g ...=" ../.."
 alias ..="cd .."
-alias cd..="cd .."
-alias d='dirs -v | head -10'
-alias 0='cd -'
-alias 1='cd -1'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
-alias cd1='cd -'
-alias cd2='cd -2'
-alias cd3='cd -3'
-alias cd4='cd -4'
-alias cd5='cd -5'
-alias cd6='cd -6'
-alias cd7='cd -7'
-alias cd8='cd -8'
-alias cd9='cd -9'
-alias cdd="pushd"
 
 # {{{ 关于历史纪录的配置
 setopt hist_ignore_all_dups hist_ignore_space # 如果你不想保存重复的历史
