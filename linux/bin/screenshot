@@ -15,7 +15,7 @@ notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:screeensh
 
 proc_notif(){
     mpv $shutter_sound &
-    ${notify_cmd_shot} -t 1500 "Screenshot" "Processing screenshot."
+    ${notify_cmd_shot} -t 1500 "截屏" "截屏。。。"
 }
 
 # Clean up tmp file
@@ -39,17 +39,17 @@ else
 fi
 
 
-if [ ! -e "$tmp" ]; then
-    tmp=$grim_output
-fi
+# if [ ! -e "$tmp" ]; then
+#     tmp=$grim_output
+# fi
 
-mv $tmp $filename
-action=$(${notify_cmd_shot} "Screenshot" "Saved to ~/Pictures/Screenshots/${file}" --action " Open containing folder")
+# mv $tmp $filename
+# action=$(${notify_cmd_shot} "Screenshot" "Saved to ~/Pictures/Screenshots/${file}" --action " Open containing folder" --action " Open containing folder")
 
-echo "action: ${action} ${filename}"
+# echo "action: ${action} ${filename}"
 
-if [[ "${action}" == "0" ]]; then
-    # todo
-    # xdg-open "${filename}"
-    nautilus "${filename}"
-fi
+# if [[ "${action}" == "0" ]]; then
+#     # todo
+#     # xdg-open "${filename}"
+#     # nautilus "${filename}"
+# fi

@@ -40,7 +40,7 @@ import html
 ################################################################################
 SEARCH_ENGINE = 'google'            # or 'duckduckgo'
 BROWSER = 'firefox'                 # or 'firefox', 'chromium', 'brave', 'lynx'
-TERMINAL = ['kitty', '--']          # or ['st', '-e'] or something like that
+TERMINAL = ['wezterm','start', '--']          # or ['st', '-e'] or something like that
 ################################################################################
 
 CONFIG = {

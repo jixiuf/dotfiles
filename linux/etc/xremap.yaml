@@ -276,7 +276,8 @@ keymap:
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
       super-C-g: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.gnome.Nautilus nautilus"] }
       # eme slurp swappy
-      super-C-4: { launch: ["sh","-c","grim -g \"$(slurp)\" - | swappy -f -"]}
+      super-C-4: { launch: ["screenshot","1"]} #area
+      super-M-4: { launch: ["screenshot"]}     #screen
 
       super-C-7: { launch: ["swaylock","--ignore-empty-password", "--show-failed-attempts", "--color", "1e1e1e", "--inside-color", "cccccc" ,"--ring-color", "ffffff", "--inside-clear-color","11a8cd", "--ring-clear-color", "29b8db","--inside-ver-color", "2472c8", "--ring-ver-color", "3b8eea", "--inside-wrong-color","cd3131","--ring-wrong-color","f14c4c"] }
       super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }

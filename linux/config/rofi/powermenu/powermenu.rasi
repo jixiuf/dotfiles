@@ -45,7 +45,7 @@ listview {
 
 mainbox {
 	background-color: @background-black;
-	children: [ inputbar, listview ];
+	children: [  listview ];
     padding: calc(50% - 70px) 0% 0% 15%;
 }
 
