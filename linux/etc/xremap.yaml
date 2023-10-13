@@ -300,10 +300,10 @@ keymap:
       super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
       super-C-Tab: { launch: ["hyprctl","dispatch" ,"workspace","prevous"]}
       # 窗口大小调整 space+ 箭头
-      super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","10","0"]}
-      super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-10","0"]}
-      super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-10"]}
-      super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","10"]}
+      super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","15","0"]}
+      super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-15","0"]}
+      super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-15"]}
+      super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","15"]}
       
       super-C-M-n: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
       super-C-M-p: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}

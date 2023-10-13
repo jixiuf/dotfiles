@@ -76,6 +76,7 @@ local copy_mode = {
    },
    { key = "e", mods = "NONE", action = act.CopyMode("MoveForwardWord"),},
    { key = "v", mods = "NONE", action = act.CopyMode("MoveBackwardWord"),},
+   { key = 's', mods = 'NONE', action = act.CopyMode{ SetSelectionMode =  'Cell' } },
    { key = "y", mods = "NONE",
      action = act({
            Multiple = {

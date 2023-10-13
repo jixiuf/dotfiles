@@ -323,6 +323,7 @@ alias -g ....=" ../../.."
 alias -g .....=" ../../../.."
 alias -g ...=" ../.."
 alias ..="cd .."
+alias cdd="pushd"
 
 # {{{ 关于历史纪录的配置
 setopt hist_ignore_all_dups hist_ignore_space # 如果你不想保存重复的历史
@@ -527,6 +528,7 @@ bindkey "\t" user-complete
 bindkey "^[[1h" user-complete   # my ctrl-i
 
 
+unalias gob
 function gob(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
     go build
