@@ -77,9 +77,18 @@ shift 1
 cmd="$@"
 #
 if [ -n "$float_only" ]; then
-    target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
+    target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
 else
-    target_appinfo=`hyprctl clients -j | jq -r '.[] | select((.class |test("'"$target"'"; "i")))'`
+    if [ "$floating" == "true" ]; then
+        # target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
+        # 优先匹配floating 的
+        target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
+        if [ -z "$target_appinfo" ]; then
+            target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class |test("'"$target"'"; "i")))'`
+        fi
+    else
+        target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class |test("'"$target"'"; "i")))'`
+    fi
 fi
 if [ ! "$target_appinfo" ]; then
     # if app not found ,run the cmde
