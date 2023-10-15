@@ -124,7 +124,6 @@ else
     target_addr=`echo $target_appinfo|jq -r '.address'|head -n 1`
     target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
     cwd=$(hypr-cwd)
-    echo "sss $front_addr $target_addr"
     if [  "$front_addr" != "$target_addr" ]; then
         # 如果当前窗口是special 的window，则先隐藏之,以免其遮挡聚焦后的窗口
         if [[ "$front_ws_name" == *"special"* ]]; then
