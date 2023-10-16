@@ -56,4 +56,6 @@ gui-apps/wlr-randr ~amd64
 x11-terms/wezterm ~amd64
 app-shells/zsh-theme-powerlevel10k ~amd64
 app-shells/gitstatus ~amd64
+dev-go/delve ~amd64
+dev-cpp/sdbus-c++ ~amd64
                   
