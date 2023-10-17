@@ -1,5 +1,5 @@
 #!/bin/sh
-# 通过当前激活 window 的 title 活不成当前的工作目录，
+# 通过当前激活 window 的 title 获取当前的工作目录，
 # 目前支持 emacs (需要配置 frame-title-format,如下文注释)
 # 后续可以添加 alacritty/foot 等的支持(需要在 zsh/bash 中配置一定的规则以更新 window title)
 # 可以实现的功能：
@@ -32,6 +32,9 @@ if [ -n "$appinfo" ]; then
         #     print -Pn "\e]2;$(pwd)\a" #s
         # }
         # add-zsh-hook precmd update_cwd
+        # 如果使用 oh my zsh ,请在source $ZSH/oh-my-zsh.sh 前加 DISABLE_AUTO_TITLE=true
+        # DISABLE_AUTO_TITLE=true
+        # source $ZSH/oh-my-zsh.sh
         cwd=$(echo $appinfo|jq -r '.title')
         eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd

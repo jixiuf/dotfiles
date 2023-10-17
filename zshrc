@@ -39,7 +39,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -74,7 +74,7 @@ plugins=( golang git)
 if [ ! -f $ZSH/oh-my-zsh.sh ]; then
     git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
 fi
-
+DISABLE_AUTO_TITLE=true
 source $ZSH/oh-my-zsh.sh
 export iterm2_hostname=$(hostname) # hostname -f is slow (fix it)
 source $ZSH/plugins/iterm2/iterm2_shell_integration.zsh
@@ -99,10 +99,9 @@ alias apmdev='ssh root@10.2.0.171'
 alias apmali='ssh root@192.168.69.155'
 alias apmali2='ssh root@192.168.56.24'
 alias bench1='ssh root@bench -p 9090'
-alias k8sudo chown admin:admin /data/go -Rs='ssh root@10.17.7.230 -p 443'
+alias k8s='ssh root@10.17.7.230 -p 443'
 alias gc='git clone '
 alias gitclean='git clean -fdx'
-alias gg='go get '
 go env -w GOPRIVATE="*.luojilab.com"
 # go env -w GOSUMDB=off
 go env -w GOSUMDB="sum.golang.google.cn"
@@ -146,7 +145,6 @@ else
 fi
 
 alias en="ec -nw"
-alias e="ec"
 alias mitp="mitmproxy -p 8888 "
 # go tool dist list
 alias linuxgo='GOOS=linux GOARCH=amd64 go'
