@@ -39,7 +39,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -217,17 +217,14 @@ else
     alias ip="ifconfig en0"
     alias dnsclean='sudo killall -HUP mDNSResponder'
     alias "brewi"="brew install --build-from-source"
-    alias "tbrewi"="tsocks brew install --build-from-source"
     alias lc='launchctl'
-    alias ftpserver='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
-    alias ftpserver_stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 fi
 alias chown='chown -R'
 alias chmod='chmod -R'
 alias sl='ls'
 alias mkdir='mkdir -p'
 alias cp='cp -r'
-alias rm="rm -rf"
+alias rm="rm -r"
 alias pp='ps -ef|grep -v grep|grep'
 alias su="su -l"
 alias v='sudo vim'
@@ -235,72 +232,8 @@ alias mount="sudo mount"
 alias umount="sudo umount"
 alias now="date '+%s'"
 
-function vterm_printf(){
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
-}
-
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-# With vterm_cmd you can execute Emacs commands directly from the shell.
-# For example, vterm_cmd message "HI" will print "HI".
-# To enable new commands, you have to customize Emacs's variable
-# vterm-eval-cmds.
-vterm_cmd() {
-    local vterm_elisp
-    vterm_elisp=""
-    while [ $# -gt 0 ]; do
-        vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
-        shift
-    done
-    vterm_printf "51;E$vterm_elisp"
-}
-    vi() {
-        if [ $# -gt 0  ]; then
-            vterm_cmd find-file "${@:-.}"
-        else
-            vim
-        fi
-    }
-
-    say() {
-        vterm_cmd message "%s" "$*"
-    }
-    clear() {
-        vterm_printf "51;Evterm-clear-scrollback"
-        tput clear
-    }
-    o() {
-        vterm_cmd  "vterm-open-other-window" "${@:-.}"
-    }
-fi
-
-function k(){
-    ps -ef |grep -v grep|grep "$@"|awk '{print $2}'|xargs kill
-}
-function kk(){
-    ps -ef |grep -v grep|grep "$@"|cut -d " " -f 4|xargs kill -9
-}
-function kkk(){
-    ps -ef |grep -v grep|grep "$@"|cut -d " " -f 4|sudo xargs kill -9
-}
-
 alias df="df -h"
-alias -s html=vi   # 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开
-# alias -s rb=vi     # 在命令行直接输入 ruby 文件，会在 TextMate 中打开
-# alias -s py=vi       # 在命令行直接输入 python 文件，会用 vim 中打开，以下类似
-alias -s js=vi
 alias -s git='git clone '
-alias -s c=vi
-alias -s java=vi
-alias -s txt=vi
-alias -s el=ec
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
@@ -310,50 +243,21 @@ alias svnreset='svn revert -R .;for file in `svn status|grep "^ *?"|sed -e "s/^ 
 #这样可以使你上面定义的那些 alias 在 sudo 时管用
 #http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo #
 alias sudo='sudo '
-# AUTOPUSHD made cd act like pushd
 DIRSTACKSIZE=10
-setopt auto_pushd
-setopt pushd_ignore_dups
 setopt pushdsilent              # 跳转时不打印目录信息
-setopt pushdminus               # PUSHDMINUS swapped the meaning of cd +1 and cd -1;
 # PUSHDSILENT keeps the shell from printing the directory stack each time we do a cd, and PUSHDTOHOME we mentioned earlier:
-alias -g ....=" ../../.."
-alias -g .....=" ../../../.."
-alias -g ...=" ../.."
-alias ..="cd .."
 alias cdd="pushd"
 
 # {{{ 关于历史纪录的配置
-setopt hist_ignore_all_dups hist_ignore_space # 如果你不想保存重复的历史
+setopt hist_ignore_all_dups  # 如果你不想保存重复的历史
 #历史纪录条目数量
 export HISTSIZE=1000000
 #注销后保存的历史纪录条目数量
 export SAVEHIST=1000000
-#历史纪录文件
-setopt share_history # share command history data
-setopt hist_ignore_space
-export HISTFILE=~/.zsh_history
 #以附加的方式写入历史纪录
 setopt INC_APPEND_HISTORY
-#如果连续输入的命令相同，历史纪录中只保留一个
-setopt HIST_IGNORE_DUPS
-#为历史纪录中的命令添加时间戳
-setopt EXTENDED_HISTORY
-
-#启用 cd 命令的历史纪录，cd -[TAB]进入历史路径
-setopt AUTO_PUSHD
-#相同的历史路径只保留一个
-setopt PUSHD_IGNORE_DUPS
-
-#在命令前添加空格，不将此命令添加到纪录文件中
-setopt HIST_IGNORE_SPACE
-
-
-
-
 alias h='history -nr'
 alias hist='history -nr 1'
-alias hgrep='history -nr 1|grep '
 
 # bindkey "^[r" history-incremental-search-backward
 # 用当前命令行下的内容搜索 history,
@@ -366,6 +270,28 @@ bindkey "^[r" history-incremental-search-backward  # M-r
 
 bindkey "^[n" down-line-or-history
 bindkey "^[p" up-line-or-history
+#允许在交互模式中使用注释  例如：
+#cmd #这是注释
+setopt INTERACTIVE_COMMENTS
+
+
+#Emacs 风格 键绑定
+bindkey -e
+# {{{ bindkey -L 列出现有的键绑定
+bindkey \^H backward-kill-word
+# bindkey \^Z set-mark-command
+# bindkey \^U backward-kill-line
+# bindkey \^M accept-line
+
+
+function ignore(){}
+zle -N ignore
+bindkey "7;2~" ignore           # f18  切换输入法 emacs 进入 insert-state 的按键，在 zsh 里忽略此按键
+
+# Alt-r
+bindkey "^[x" ignore            # M-x 忽略
+#进入相应的路径时只要 cd ~xxx
+hash -d HIST="$HISTDIR"
 
 
 # brew install fzf
@@ -414,69 +340,9 @@ case $TERM in
             print -Pn "\e]2;$(pwd)\a" #s
         }
         add-zsh-hook precmd update_cwd
-        # add-zsh-hook -Uz chpwd ()
-        #     print -Pn "\e]2;$(pwd)\a" #s
-        # }
-        vterm_prompt_end() {
-            vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
-        }
-        setopt prompt_subst
-        PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
         ;;
 esac
 
-# {{{ 杂项
-#允许在交互模式中使用注释  例如：
-#cmd #这是注释
-setopt INTERACTIVE_COMMENTS
-
-#启用自动 cd，输入目录名回车进入目录
-#稍微有点混乱，不如 cd 补全实用
-setopt AUTO_CD
-
-
-#Emacs 风格 键绑定
-bindkey -e
-#设置 [DEL]键 为向后删除
-bindkey "\e[3~" delete-char
-# {{{ bindkey -L 列出现有的键绑定
-# bindkey "" beginning-of-line #这个好像不起作用
-bindkey \^H backward-kill-word
-bindkey \^Z set-mark-command
-bindkey \^U backward-kill-line
-bindkey \^M accept-line
-
-
-function ignore(){}
-zle -N ignore
-bindkey "7;2~" ignore           # f18  切换输入法 emacs 进入 insert-state 的按键，在 zsh 里忽略此按键
-
-# Alt-r
-bindkey "^[x" ignore            # M-x 忽略
-# file rename magick
-bindkey "^[m" copy-prev-shell-word
-
-
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '\C-x\C-e' edit-command-line
-
-
-#以下字符视为单词的一部分
-WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
-# }}}
-# {{{ 行编辑高亮模式
-# Ctrl+@ 设置标记，标记和光标点之间为 region
-zle_highlight=(region:bg=magenta #选中区域
-               special:bold      #特殊字符
-               isearch:underline)#搜索时使用的关键字
-# }}}
-
-#显示 path-directories ，避免候选项唯一时直接选中
-cdpath="/home"
-
-#进入相应的路径时只要 cd ~xxx
-hash -d HIST="$HISTDIR"
 
 if [ $(uname -s ) = "Darwin" ] ; then
     if [ -f /usr/local/Library/Contributions/brew_zsh_completion.zsh ]; then
