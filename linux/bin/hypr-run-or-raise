@@ -118,6 +118,8 @@ else
     # front_class=`echo $front_app|jq -r '.class'`
     front_addr=`echo $front_app|jq -r '.address'`
     front_floating=`echo $front_app|jq -r '.floating'`
+    front_fullscreen=`echo $front_app|jq -r '.fullscreen'`
+
     front_ws_name=`echo $front_app|jq -r '.workspace.name'`
     # jq 的(.app_id // "") 表示取 app_id 若无此字段则为空串
     # target_class=`echo $target_appinfo|jq -r '.class'|head -n 1`
@@ -135,6 +137,10 @@ else
         fi
 
         if [[ "$target_floating" == "true" || "$floating" == "true" ]]; then
+            # 如果当前窗口是fullscreen，则将其恢复
+            if [ "$front_fullscreen" == "true" ]; then
+                hyprctl dispatch "fullscreen"
+            fi
             # move window to current ws
              # hyprctl keyword animations:enabled 0
              hyprctl dispatch "movetoworkspacesilent e+0,address:${target_addr}"
