@@ -12,17 +12,32 @@ local function update_window_background(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	-- If there's no foreground process, assume that we are "wezterm connect" or "wezterm ssh"
 	-- and use a different background color
+	local name = window:active_key_table()
+    if name == "copy_mode" then
+       -- overrides.window_background_image = '/home/jixiuf/.config/wallpaper/wallpaper.png'
+       -- overrides.color_scheme = "OneHalfDark"
+       overrides.colors = { background = "#222222" }
+       -- overrides.window_background_opacity=1.0
+       -- overrides.text_background_opacity=1.0 --
+       -- overrides.macos_window_background_blur = 20
+    else
+       -- overrides.window_background_opacity=0.9
+       -- overrides.text_background_opacity=1.0
+       -- overrides.cursor_fg=wezterm.color.get_default_colors().cursor_fg
+       -- overrides.color_scheme = "OneHalfDark"
+       overrides.colors = { background = wezterm.color.get_default_colors().background}
+    end
 	-- if pane:get_foreground_process_name() == nil then
-	--  -- overrides.colors = { background = "blue" }
-	--  overrides.color_scheme = "Red Alert"
+	-- --  overrides.color_scheme = "Red Alert"
 	-- end
 
-	if overrides.color_scheme == nil then
-		return
-	end
-	if pane:get_user_vars().production == "1" then
-		overrides.color_scheme = "OneHalfDark"
-	end
+	-- if overrides.color_scheme == nil then
+	--  return
+	-- end
+	-- if pane:get_user_vars().production == "1" then
+	--  overrides.color_scheme = "OneHalfDark"
+	-- end
+    -- overrides.window_background_image = '/home/jixiuf/.config/wallpaper/blured.jpg'
 	window:set_config_overrides(overrides)
 end
 wezterm.on("update-right-status", function(window, pane)
