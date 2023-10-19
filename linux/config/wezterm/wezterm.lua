@@ -22,6 +22,8 @@ end
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
+config.unix_domains = { {name = 'unix'} }
+config.default_gui_startup_args = { 'connect', 'unix' }
 -- and finally, return the configuration to wezterm
 util.merge_tables(config,theme)
 util.merge_tables(config,keybinds)

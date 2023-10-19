@@ -27,6 +27,7 @@ local function update_window_background(window, pane)
        -- overrides.color_scheme = "OneHalfDark"
        overrides.colors = { background = wezterm.color.get_default_colors().background}
     end
+    -- wezterm.log_info('2222opening: ' .. pane:get_foreground_process_name() )
 	-- if pane:get_foreground_process_name() == nil then
 	-- --  overrides.color_scheme = "Red Alert"
 	-- end
