@@ -73,8 +73,8 @@ wezterm.on('edit-scrollback', function(window, pane)
   window:perform_action(
     act.SpawnCommandInNewTab {
        -- 加一个非常大的行号，让emacsclient 跳转到文件末
-      -- args = { 'open-with', name..":100000"},
-      args = { 'emacsclient',"-t","+10000", name},
+      args = { 'open-with', name..":100000"},
+      -- args = { 'emacsclient',"-t","+10000", name},
     },
     pane
   )
