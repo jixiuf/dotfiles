@@ -9,8 +9,10 @@
 # 2. 如果没有，则使用 arg2 及之后的参数 以启动目录程序,并聚焦之(有可能程序是在其他 workspace 启动，故需要将焦点转移到那)
 # hypr-run-or-raise emacs emacs
 # hypr-run-or-raise 'firefox|firefox-esr' firefox
-# hypr-run-or-raise --cd --float-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
-# hypr-run-or-raise --float-only -- Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --cd --float-only  Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --float-only  Alacritty alacritty  --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --floating   'dterm|Alacritty|kitty|org.wezfurlong.wezterm'  term.sh --  --class=dterm --working-directory=$(hypr-cwd||echo $HOME)
+# hypr-run-or-raise --cd --floating  'dterm|Alacritty|kitty|org.wezfurlong.wezterm' term.sh -- --class=dterm  --working-directory=$(hypr-cwd||echo $HOME)
 
 # 有个特例，参见 hypr-cwd
 # 若当前窗口是 emacs ,我能从 emacs 的 title 中获取到 emacs 的 default-directory(emacs 当前编辑的文件所在的目录)
@@ -77,8 +79,10 @@ shift 1
 cmd="$@"
 #
 if [ -n "$float_only" ]; then
+    # only match floating app
     target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
 else
+    # make the target floating
     if [ "$floating" == "true" ]; then
         # target_appinfo=`hyprctl clients -j | jq -rc '.[] | select((.class  | test("'"$target"'"; "i")) and (.floating == true) )'`
         # 优先匹配floating 的
