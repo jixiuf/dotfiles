@@ -15,13 +15,13 @@ local function update_window_background(window, pane)
 	local name = window:active_key_table()
     if name == "copy_mode" then
        -- overrides.window_background_image = '/home/jixiuf/.config/wallpaper/wallpaper.png'
-       overrides.color_scheme = "OneHalfDark"
+       -- overrides.color_scheme = "OneHalfDark"
        -- overrides.colors = { background = "#222222" }
        -- overrides.window_background_opacity=1
        -- overrides.text_background_opacity=1.0 --
        -- overrides.macos_window_background_blur = 20
     else
-       overrides.color_scheme = 'foot'
+       -- overrides.color_scheme = 'foot'
        -- overrides.window_background_image = nil
        -- overrides.window_background_opacity=0.9
        -- overrides.text_background_opacity=1.0
@@ -43,13 +43,13 @@ local function update_window_background(window, pane)
     -- overrides.window_background_image = '/home/jixiuf/.config/wallpaper/blured.jpg'
 	window:set_config_overrides(overrides)
 end
-wezterm.on("update-right-status", function(window, pane)
-	-- local tmux = update_tmux_style_tab(window, pane)
-	local copy_mode = display_copy_mode(window, pane)
-	update_window_background(window, pane)
-	-- local status = utils.merge_lists(ssh, copy_mode)
-	window:set_right_status(wezterm.format(copy_mode))
-end)
+-- wezterm.on("update-right-status", function(window, pane)
+--  -- local tmux = update_tmux_style_tab(window, pane)
+--  local copy_mode = display_copy_mode(window, pane)
+-- update_window_background(window, pane)
+--  -- local status = utils.merge_lists(ssh, copy_mode)
+--  window:set_right_status(wezterm.format(copy_mode))
+-- end)
 
 -- 使用emacsclient 打开scrollback
 -- table.insert(keys,  {key = 'F', mods = 'CTRL|SHIFT', action = act.EmitEvent 'edit-scrollback'})
