@@ -1,16 +1,12 @@
 local config = {}
 local wezterm = require 'wezterm'
-
 config.scrollback_lines = 5000
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 15
 config.font = wezterm.font('Sarasa Term SC Nerd')
--- This is where you actually apply your config choices
--- For example, changing the color scheme:
--- config.color_scheme = 'AdventureTime'
--- config.color_scheme = 'Chalk'
 
-config.colors = {
+
+local foot_scheme = {
   -- The default text color
   foreground = '#dcdccc',
   -- The default background color
@@ -86,5 +82,13 @@ config.colors = {
   quick_select_match_bg = { AnsiColor = 'Navy' },
   quick_select_match_fg = { Color = '#ffffff' },
 }
+local schemes = wezterm.get_builtin_color_schemes()
+schemes['foot']=foot_scheme
+config.color_schemes =schemes
+
+-- This is where you actually apply your config choices
+-- For example, changing the color scheme:
+-- config.color_scheme = 'AdventureTime'
+config.color_scheme = 'foot'
 
 return config

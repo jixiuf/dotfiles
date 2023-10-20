@@ -15,17 +15,19 @@ local function update_window_background(window, pane)
 	local name = window:active_key_table()
     if name == "copy_mode" then
        -- overrides.window_background_image = '/home/jixiuf/.config/wallpaper/wallpaper.png'
-       -- overrides.color_scheme = "OneHalfDark"
-       overrides.colors = { background = "#222222" }
-       -- overrides.window_background_opacity=1.0
+       overrides.color_scheme = "OneHalfDark"
+       -- overrides.colors = { background = "#222222" }
+       -- overrides.window_background_opacity=1
        -- overrides.text_background_opacity=1.0 --
        -- overrides.macos_window_background_blur = 20
     else
+       overrides.color_scheme = 'foot'
+       -- overrides.window_background_image = nil
        -- overrides.window_background_opacity=0.9
        -- overrides.text_background_opacity=1.0
        -- overrides.cursor_fg=wezterm.color.get_default_colors().cursor_fg
        -- overrides.color_scheme = "OneHalfDark"
-       overrides.colors = { background = wezterm.color.get_default_colors().background}
+       -- overrides.colors = { background = wezterm.color.get_default_colors().background}
     end
     -- wezterm.log_info('2222opening: ' .. pane:get_foreground_process_name() )
 	-- if pane:get_foreground_process_name() == nil then
