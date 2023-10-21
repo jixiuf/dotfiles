@@ -297,8 +297,8 @@ keymap:
       super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
       super-C-w: super-C-w
       
-      super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","r+1"]}
-      super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","r-1"]}
+      super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","m+1"]}
+      super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","m-1"]}
       super-C-Tab: { launch: ["hyprctl","dispatch" ,"workspace","prevous"]}
       # 窗口大小调整 space+ 箭头
       super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","15","0"]}
