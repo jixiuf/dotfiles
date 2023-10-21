@@ -117,7 +117,7 @@ keymap:
     remap:
       C-g: [super-Space,C-g]
       # C-x: C-x
-      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating -- 'dterm|Alacritty|kitty|org.wezfurlong.wezterm' term.sh --class=dterm  --working-directory=$(hypr-cwd||echo $HOME) "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating --float-only -- 'dterm|Alacritty|kitty|org.wezfurlong.wezterm' term.sh --class=dterm  --working-directory=$(hypr-cwd||echo $HOME) "] }
 
   # - name: kitty
   #   application:
@@ -270,7 +270,7 @@ keymap:
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- wezterm start --class=mitp  mitmproxy -p 8888"] }
-      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating   'dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --class=dterm --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating --float-only  'dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --class=dterm --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
