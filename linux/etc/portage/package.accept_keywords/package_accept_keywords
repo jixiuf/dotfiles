@@ -60,3 +60,4 @@ dev-go/delve ~amd64
 dev-cpp/sdbus-c++ ~amd64
                   
 dev-util/mongodb-compass-bin  ~amd64
+sys-apps/xdg-desktop-portal   ~amd64
