@@ -1,4 +1,4 @@
-KERNEL!="sd[b-z][0-9]", GOTO="media_by_label_auto_mount_end"
+KERNEL!="sd[a-z][0-9]", GOTO="media_by_label_auto_mount_end"
 
 # Import FS infos
 IMPORT{program}="/sbin/blkid -o udev -p %N"
@@ -15,12 +15,12 @@ ACTION=="add", ENV{ID_FS_TYPE}=="vfat|ntfs", ENV{mount_options}="$env{mount_opti
 
 # Mount the device
 #  如果文件系统不是ntfs ,意味着是vfat
-# 同时挂载到/media/sd[b-z][0-9] 的形式
+# 同时挂载到/media/sd[a-z][0-9] 的形式
 ACTION=="add",ENV{ID_FS_TYPE}!="ntfs", RUN+="/bin/mkdir -p /mnt/usb-%k", RUN+="/bin/mount -o $env{mount_options},rw /dev/%k /mnt/usb-%k"
 
 #ntfs
 #  如果文件系统是ntfs ,以ntfs-3g 的形式挂载，实现可读写
-# 同时挂载到/media/sd[b-z][0-9] 的形式
+# 同时挂载到/media/sd[a-z][0-9] 的形式
 
 ACTION=="add",ENV{ID_FS_TYPE}=="ntfs", RUN+="/bin/mkdir -p /mnt/usb-%k", RUN+="/bin/mount -t ntfs-3g -o $env{mount_options},rw /dev/%k /mnt/usb-%k"
 # Clean up after removal
