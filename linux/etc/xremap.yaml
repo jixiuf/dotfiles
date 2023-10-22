@@ -295,6 +295,7 @@ keymap:
       super-C-1: { launch: ["hypr-kill-other-window"] }
       super-C-m: { launch: ["hyprctl","dispatch","fullscreen","1"] }
       super-M-m: { launch: ["hyprctl","dispatch","fullscreen","0"] }
+      super-M-o: { launch: ["hyprctl","dispatch","toggleopaque"] }
       super-C-w: super-C-w
       
       super-C-n: { launch: ["hyprctl","dispatch" ,"workspace","m+1"]}
