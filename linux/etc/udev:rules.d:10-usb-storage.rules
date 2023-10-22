@@ -1,3 +1,9 @@
+# sudo udevadm control --reload-rules
+# journalctl -u systemd-udevd
+  
+# /dev/nvme0n1p5      	/mnt/exfat	exfat     	rw,relatime,fmask=0022,uid=1000,dmask=0022,iocharset=utf8,errors=remount-ro	0 2
+# /dev/nvme0n1p4      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+  
 KERNEL!="sd[a-z][0-9]", GOTO="media_by_label_auto_mount_end"
 
 # Import FS infos
@@ -8,19 +14,19 @@ ENV{ID_FS_LABEL}!="", ENV{dir_name}="%E{ID_FS_LABEL}"
 ENV{ID_FS_LABEL}=="", ENV{dir_name}="usb-%k"
 
 # Global mount options
-ACTION=="add", ENV{mount_options}="rw,noauto,sync,dirsync,noexec,nodev,noatime"
+ACTION=="add", ENV{mount_options}="rw,noauto,sync,dirsync,noexec,nodev,noatime,uid=1000"
 # Filesystem-specific mount options
-# Èç¹ûÊÇvfat »òÕßntfs ÏµÍ³£¬ÔòÉèÖÃmount_options µÄÑ¡ÏîÈçÏÂ
-ACTION=="add", ENV{ID_FS_TYPE}=="vfat|ntfs", ENV{mount_options}="$env{mount_options},utf8,gid=100,umask=000"
+# å¦‚æœæ˜¯vfat æˆ–è€…ntfs ç³»ç»Ÿï¼Œåˆ™è®¾ç½®mount_options çš„é€‰é¡¹å¦‚ä¸‹
+ACTION=="add", ENV{ID_FS_TYPE}=="exfat|vfat|ntfs", ENV{mount_options}="$env{mount_options},gid=100,umask=000"
 
 # Mount the device
-#  Èç¹ûÎÄ¼şÏµÍ³²»ÊÇntfs ,ÒâÎ¶×ÅÊÇvfat
-# Í¬Ê±¹ÒÔØµ½/media/sd[a-z][0-9] µÄĞÎÊ½
+#  å¦‚æœæ–‡ä»¶ç³»ç»Ÿä¸æ˜¯ntfs ,æ„å‘³ç€æ˜¯vfat
+# åŒæ—¶æŒ‚è½½åˆ°/media/sd[a-z][0-9] çš„å½¢å¼
 ACTION=="add",ENV{ID_FS_TYPE}!="ntfs", RUN+="/bin/mkdir -p /mnt/usb-%k", RUN+="/bin/mount -o $env{mount_options},rw /dev/%k /mnt/usb-%k"
 
 #ntfs
-#  Èç¹ûÎÄ¼şÏµÍ³ÊÇntfs ,ÒÔntfs-3g µÄĞÎÊ½¹ÒÔØ£¬ÊµÏÖ¿É¶ÁĞ´
-# Í¬Ê±¹ÒÔØµ½/media/sd[a-z][0-9] µÄĞÎÊ½
+#  å¦‚æœæ–‡ä»¶ç³»ç»Ÿæ˜¯ntfs ,ä»¥ntfs-3g çš„å½¢å¼æŒ‚è½½ï¼Œå®ç°å¯è¯»å†™
+# åŒæ—¶æŒ‚è½½åˆ°/media/sd[a-z][0-9] çš„å½¢å¼
 
 ACTION=="add",ENV{ID_FS_TYPE}=="ntfs", RUN+="/bin/mkdir -p /mnt/usb-%k", RUN+="/bin/mount -t ntfs-3g -o $env{mount_options},rw /dev/%k /mnt/usb-%k"
 # Clean up after removal
