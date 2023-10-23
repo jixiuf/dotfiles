@@ -1,63 +1,57 @@
-dev-libs/bemenu ~amd64
-www-plugins/passff-host ~amd64
+<app-editors/emacs-30.0.9999 ~amd64
 app-admin/bitwarden-desktop-bin ~amd64
 app-admin/pass-update  ~amd64
-dev-lang/go ~amd64
 app-editors/vscode ~amd64
-<app-editors/emacs-30.0.9999 ~amd64
-gui-apps/waybar ~amd64  **
-gui-wm/hyprland ~amd64
-gui-libs/xdg-desktop-portal-hyprland ~amd64
+app-i18n/* ~amd64 
+app-misc/keyd  ~amd64 
+app-office/bytedance-feishu ~amd64
+app-shells/gitstatus ~amd64
+app-shells/zsh-theme-powerlevel10k ~amd64
+app-text/scdoc **
+dev-cpp/sdbus-c++ ~amd64
+dev-db/dbeaver-bin  ~amd64 
+dev-go/delve ~amd64
+dev-go/gopls ~amd64 
+dev-lang/go ~amd64
+dev-libs/bemenu ~amd64
+dev-libs/date ~amd64
+dev-libs/hyprland-protocols ~amd64
+dev-libs/libliftoff ~amd64
+dev-python/notofonttools ~amd64
 dev-qt/qtbase  ~amd64
 dev-qt/qtdeclarative ~amd64
 dev-qt/qtshadertools  ~amd64
-x11-terms/alacritty ~amd64
-media-libs/libdisplay-info ~amd64
-dev-libs/hyprland-protocols ~amd64
+dev-qt/qttranslations    ~amd64
 dev-qt/qtwayland ~amd64
-dev-libs/libliftoff ~amd64
-dev-libs/date ~amd64
-gui-wm/sway **
-gui-libs/wlroots **
-app-text/scdoc **
-app-i18n/* ~amd64 
-x11-libs/xcb-imdkit ~amd64 
-x11-misc/ydotool ~amd64
-net-im/weixin-uos ~amd64
-app-office/bytedance-feishu ~amd64
-gui-apps/wofi ~amd64
+dev-util/mongodb-compass-bin  ~amd64
+gui-apps/rofi-wayland  ~amd64
 gui-apps/swaylock-effects ~amd64
+gui-apps/swaync   ~amd64
+gui-apps/waybar ~amd64  **
+gui-apps/wf-recorder ~amd64
+gui-apps/wlogout ~amd64
+gui-apps/wlr-randr ~amd64
+gui-apps/wofi ~amd64
+gui-libs/wlroots **
+gui-libs/xdg-desktop-portal-hyprland ~amd64
+gui-wm/hyprland ~amd64
+gui-wm/sway **
+media-fonts/twemoji ~amd64
+media-libs/libdisplay-info ~amd64
 media-sound/t2-better-audio ~amd64
+net-im/weixin-uos ~amd64
+net-misc/apifox ~amd64
+net-proxy/charles ~amd64 
+sys-apps/xdg-desktop-portal   ~amd64
+sys-auth/pam-gnupg  ~amd64
+sys-firmware/apple-bcm-firmware ~amd64
 sys-kernel/t2gentoo-kernel ~amd64
 sys-kernel/t2gentoo-sources ~amd64
-sys-firmware/apple-bcm-firmware ~amd64
-dev-db/dbeaver-bin  ~amd64 
-dev-go/gopls ~amd64 
-# www-client/firefox ~amd64 
-# dev-libs/nss ~amd64 
-app-misc/keyd  ~amd64 
-net-misc/apifox ~amd64
-# dev-util/rust-analyzer ~amd64
-# dev-lang/rust-bin ~amd64
-# dev-util/rustup ~amd64
-net-proxy/charles ~amd64 
+www-plugins/passff-host ~amd64
+x11-libs/xcb-imdkit ~amd64 
 x11-misc/dex  ~amd64 
 x11-misc/ksnip ~amd64
-media-fonts/twemoji ~amd64
-dev-python/notofonttools ~amd64
-
-gui-apps/rofi-wayland  ~amd64
-sys-auth/pam-gnupg  ~amd64
-gui-apps/swaync   ~amd64
-gui-apps/wlogout ~amd64
-gui-apps/wf-recorder ~amd64
-gui-apps/wlr-randr ~amd64
-
+x11-misc/ydotool ~amd64
+x11-terms/alacritty ~amd64
 x11-terms/wezterm ~amd64
-app-shells/zsh-theme-powerlevel10k ~amd64
-app-shells/gitstatus ~amd64
-dev-go/delve ~amd64
-dev-cpp/sdbus-c++ ~amd64
-                  
-dev-util/mongodb-compass-bin  ~amd64
-sys-apps/xdg-desktop-portal   ~amd64
+dev-qt/qttools ~amd64
