@@ -8,13 +8,13 @@
 # termexec="-e"
 # working_directory_arg="--working-directory"
 
-# term=kitty
-# termexec=""
-# working_directory_arg="--working-directory"
-
-term="wezterm start "
+term=kitty
 termexec=""
-working_directory_arg="--cwd"
+working_directory_arg="--working-directory"
+
+# term="wezterm start "
+# termexec=""
+# working_directory_arg="--cwd"
 
 working_directory=""
 other_args=""

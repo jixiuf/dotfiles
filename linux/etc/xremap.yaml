@@ -121,31 +121,31 @@ keymap:
 
   - name: kitty
     application:
-      only: [kitty]
+      only: [dterm,kitty]
     remap:
-      super-C-w: super-C-q
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
       super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
       # C-l: [C-l,C-Shift-l,C-Shift-l]
       # C-Enter: [C-y,Enter]
       # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
-      C-x:
-        remap:
-          C-x: C-x              # C-xC-x send C-x
-          C-c: super-C-q
+      # C-x:
+      #   remap:
+      #     C-x: C-x              # C-xC-x send C-x
+      #     C-c: super-C-q
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
+          C-v: C-Shift-v              # open scrollback with emacsclient
           C-f: [C-Shift-P,Y]         # hints: open hyperlink
-          f: [C-Shift-P,P]         # hints: open file
+          # f: [C-Shift-P,P]         # hints: open file
           C-e: [C-Shift-P,C]         # open file:linenum
           # C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
   - name: wezterm
     application:
-      only: [dterm,org.wezfurlong.wezterm]
+      only: [org.wezfurlong.wezterm]
     remap:
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
