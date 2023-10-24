@@ -282,7 +282,14 @@ bindkey \^H backward-kill-word
 # bindkey \^Z set-mark-command
 # bindkey \^U backward-kill-line
 # bindkey \^M accept-line
+ctrl-k-kill-line () {
+  zle kill-line   # `kill-line` is the default ctrl+k binding
+  echo -n $CUTBUFFER | clipcopy
+}
 
+zle -N ctrl-k-kill-line  # register our new function
+
+bindkey \^K ctrl-k-kill-line
 
 function ignore(){}
 zle -N ignore
