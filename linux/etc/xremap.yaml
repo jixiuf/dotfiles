@@ -136,7 +136,8 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          C-v: C-Shift-v              # open scrollback with emacsclient
+          C-v: C-Shift-h              # open scrollback with emacsclient
+          C-o: C-Shift-o              # open last command output with editor
           C-f: [C-Shift-P,Y]         # hints: open hyperlink
           # f: [C-Shift-P,P]         # hints: open file
           C-e: [C-Shift-P,C]         # open file:linenum
