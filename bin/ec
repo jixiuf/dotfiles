@@ -26,9 +26,9 @@ function call_emacsclient(){
                             set frontmost of process appName to true
                     end tell '
             else
-                if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+                if [ "$XDG_SESSION_DESKTOP" == "Hyprland" ]; then
                     hyprctl  dispatch "focuswindow emacs"
-                elif  [ "$XDG_CURRENT_DESKTOP" == "sway" ]; then
+                elif  [ "$XDG_SESSION_DESKTOP" == "sway" ]; then
                     swaymsg "[app_id=\"emacs\"] focus"
                 fi
             fi
@@ -47,9 +47,9 @@ function call_emacsclient(){
                             set frontmost of process appName to true
                     end tell '
         else
-            if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+            if [ "$XDG_SESSION_DESKTOP" == "Hyprland" ]; then
                 hyprctl  dispatch "focuswindow emacs"
-            elif  [ "$XDG_CURRENT_DESKTOP" == "sway" ]; then
+            elif  [ "$XDG_SESSION_DESKTOP" == "sway" ]; then
                 swaymsg "[app_id=\"emacs\"] focus"
             fi
         fi
