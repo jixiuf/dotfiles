@@ -94,7 +94,7 @@ alias curl2='curl --http2-prior-knowledge'
 export RUN_ENV=development
 export UPGRADE_ARTEMIS_CMD=false
 export INSTANCE_ID=4
-alias le=less.sh
+alias m=less.sh
 alias top4='ssh admin@192.168.52.114 -p 9090'
 alias apmdev='ssh root@10.2.0.171'
 alias apmali='ssh root@192.168.69.155'
@@ -128,13 +128,12 @@ function schedgo(){
 alias curljson='curl -H "Content-Type: application/json" '
 
 function crc32(){
-    php -r "echo crc32($1),PHP_EOL;"
-}
-function crc(){
-    echo "`php -r \"echo crc32($1),PHP_EOL;\"`%100"|bc
+    result=$(python -c "import binascii; print(binascii.crc32('$@'.encode()))")
+    echo $result
+    echo "$result %100"|bc
 }
 json_escape () {
-     php -r 'echo json_encode(file_get_contents("php://stdin"));'
+     python -c "import sys, json; data = sys.stdin.read(); result = json.dumps(data); print(result)"
 }
 alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
 alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
