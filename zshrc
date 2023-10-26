@@ -184,17 +184,17 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias env-update="sudo env-update"
     alias etc-update="sudo etc-update"
 
-    alias ls='ls --hyperlink=auto --color=auto  --time-style=+"%m 月%d 日 %H:%M"'
+    alias ls='ls --hyperlink=auto --color=auto  --time-style=+"%m-%d %H:%M"'
     alias la='ls --hyperlink=auto -a --color=auto  '
-    alias ll='ls -lth --hyperlink=auto --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
+    alias ll='ls -lth --hyperlink=auto --color=auto --time-style=+"%m-%d %H:%M" '
     # sort by time 倒序
-    alias llr='ls -lrth --hyperlink=auto --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
+    alias llr='ls -lrth --hyperlink=auto --color=auto --time-style=+"%m-%d %H:%M" '
     # sort by time
-    alias lla='ls -alth --hyperlink=auto --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
+    alias lla='ls -alth --hyperlink=auto --color=auto --time-style=+"%m-%d %H:%M" '
     # sort by size
-    alias lls='ls -lSh --hyperlink=auto --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
+    alias lls='ls -lSh --hyperlink=auto --color=auto --time-style=+"%m-%d %H:%M" '
     # sort by name
-    alias lln='ls -lh --hyperlink=auto --color=auto --time-style=+"%m 月%d 日 %H:%M" --hyperlink=auto'
+    alias lln='ls -lh --hyperlink=auto --color=auto --time-style=+"%m-%d %H:%M" '
 else
     #-v  http:/lujun.info/2012/10/osx-%E7%9A%84-iterm2%E4%B8%AD%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/
 
