@@ -123,9 +123,10 @@ keymap:
     application:
       only: [dterm,kitty]
     remap:
+      super-C-T: C-Shift-t
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
+      # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
       # C-l: [C-l,C-Shift-l,C-Shift-l]
       # C-Enter: [C-y,Enter]
       # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
