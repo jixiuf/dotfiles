@@ -10,6 +10,7 @@ default_editor="emacsclient -t"
 
 [ ! -t 0 ] && cat > $t
 
+[[ "`ps -ef|grep emacs|grep  daemon`"  ]]||emacs --daemon
 $default_editor $t <$tty >$tty  && cat $t
 # ${EDITOR:-${VISUAL:-$default_editor}} $t <$tty >$tty  && cat $t
 
