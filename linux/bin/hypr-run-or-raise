@@ -203,7 +203,8 @@ else
             hyprctl dispatch "togglespecialworkspace"
         elif [ "$target_floating" == "true" ]; then
             hyprctl dispatch "movetoworkspacesilent special"
-        # else
+        else
+            hypr-focus-last-win
         #     hyprctl dispatch "focuscurrentorlast"
         fi
     fi
