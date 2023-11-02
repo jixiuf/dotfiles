@@ -287,9 +287,6 @@ ctrl-k-kill-line () {
   zle kill-line   # `kill-line` is the default ctrl+k binding
   echo -n $CUTBUFFER | clipcopy
 }
-function man () {
-    emacsclient -t  -e '(woman "'"$1"'")'
-}
 
 zle -N ctrl-k-kill-line  # register our new function
 
