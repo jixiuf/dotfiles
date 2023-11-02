@@ -82,7 +82,7 @@ disable-history: false;
 /*	kb-remove-to-eol: "Control+k";*/
 /*	kb-remove-to-sol: "Control+u";*/
 /*	kb-accept-entry: "Control+j,Control+m,Return,KP_Enter";*/
-/*	kb-accept-custom: "Control+Return";*/
+	kb-accept-custom: "Control+i";
 /*	kb-accept-custom-alt: "Control+Shift+Return";*/
 /*	kb-accept-alt: "Shift+Return";*/
 /*	kb-delete-entry: "Shift+Delete";*/
