@@ -173,14 +173,12 @@ mainbox {
 
 message {
     enabled:                     true;
-    margin:                      0px 100px;
-    padding:                     15px;
     border:                      0px solid;
     border-radius:               15px;
     border-color:                inherit;
     background-color:            inherit;
     text-color:                  inherit;
-    size:                        400em;
+    size:                        200em;
 }
 textbox {
     background-color:            inherit;
@@ -191,7 +189,7 @@ textbox {
     blink:                       true;
     markup:                      true;
     size:                        400em;
-    font: "JetBrainsMono Bold 15";
+    font: "Sarasa Term SC Nerd 12";
 
 }
 error-message {
@@ -298,19 +296,19 @@ element-text.selected.normal {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "Sarasa Term SC Nerd 12";
 }
 element-text.selected.urgent {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "Sarasa Term SC Nerd 12";
 }
 element-text.selected.active {
     background-color: #E5B9C6;
     border-color: #E5B9C6;
     text-color:       #282738;
-    font: "JetBrains Mono Medium";
+    font: "Sarasa Term SC Nerd 12";
 }
 scrollbar {
     width:        4px ;
