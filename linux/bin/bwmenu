@@ -27,15 +27,15 @@ CLIPBOARD_MODE=
 
 # Specify what happens when pressing Enter on an item.
 # Defaults to copy_password, can be changed to (auto_type all) or (auto_type password)
-ENTER_CMD=copy_password
+ENTER_CMD=(auto_type all)
 
 # Keyboard shortcuts
 : ${KB_SYNC="Control+r"}
-: ${KB_URLSEARCH="Alt+u"}
+: ${KB_URLSEARCH="Control+u"}
 : ${KB_NAMESEARCH="Alt+n"}
 : ${KB_FOLDERSELECT="Alt+c"}
-: ${KB_TOTPCOPY="Alt+t"}
-: ${KB_LOCK="Alt+l"}
+: ${KB_TOTPCOPY="Control+t"}
+: ${KB_LOCK="Control+l"}
 : ${KB_TYPEALL="Alt+1"}
 : ${KB_TYPEUSER="Alt+Return"}
 : ${KB_TYPEPASS="Control+Return"}
@@ -123,7 +123,7 @@ rofi_menu() {
     -kb-custom-9 $KB_LOCK
   )
 
-  msg="<b>$KB_SYNC</b>: sync | <b>$KB_URLSEARCH</b>: urls | <b>$KB_NAMESEARCH</b>: names | <b>$KB_FOLDERSELECT</b>: folders | <b>$KB_TOTPCOPY</b>: totp | <b>$KB_LOCK</b>: lock"
+  msg="<b>$KB_SYNC</b>: sync | <b>$KB_URLSEARCH</b>: urls | <b>$KB_TOTPCOPY</b>: totp | <b>$KB_LOCK</b>: lock"
 
   [[ ! -z "$AUTOTYPE_MODE" ]] && {
     actions+=(
@@ -133,10 +133,10 @@ rofi_menu() {
       -kb-custom-10 $KB_TYPETOTP
     )
     msg+="
-<b>$KB_TYPEALL</b>: Type all  | <b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
+<b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
   }
 
-  rofi -dmenu -p 'Name' \
+  rofi -config ~/.config/rofi/config-bwmenu.rasi -dmenu -p 'Name' \
     -i -no-custom \
     -mesg "$msg" \
     "${actions[@]}" \
@@ -253,14 +253,17 @@ auto_type() {
     sleep 0.3
     case "$1" in
       all)
+        type_backspace
         type_word "$(echo "$2" | jq -r '.[0].login.username')"
         type_tab
         type_word "$(echo "$2" | jq -r '.[0].login.password')"
         ;;
       username)
+        type_backspace
         type_word "$(echo "$2" | jq -r '.[0].login.username')"
         ;;
       password)
+        type_backspace
         type_word "$(echo "$2" | jq -r '.[0].login.password')"
         ;;
       totp)
@@ -289,8 +292,12 @@ type_word() {
 }
 
 type_tab() {
-  "${AUTOTYPE_MODE[@]}" key $CLEAR_MODIFIERS Tab
+  "${AUTOTYPE_MODE[@]}" key $CLEAR_MODIFIERS 15:1 15:0
 }
+type_backspace() {
+  "${AUTOTYPE_MODE[@]}" key $CLEAR_MODIFIERS 14:1 14:0
+}
+
 
 
 # Set $CLIPBOARD_MODE to a command that will put stdin into the clipboard.
