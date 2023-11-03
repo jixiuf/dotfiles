@@ -1,7 +1,7 @@
 #!/bin/bash
-BW_CLIENTID=$(pass show bitwarden.com |grep login| awk -F': ' '{print $2}')
-BW_CLIENTSECRET=$(pass show bitwarden.com |head -n 1)
-BW_MASTER=$(pass show bitwarden.com |grep master| awk -F': ' '{print $2}')
+BW_CLIENTID=$(pass show bitwarden.com |grep client-id| awk -F': ' '{print $2}')
+BW_CLIENTSECRET=$(pass show bitwarden.com |grep client_secret| awk -F': ' '{print $2}')
+BW_MASTER=$(pass show bitwarden.com |head -n 1)
 if [ "$1" == "login" ]; then
     BW_CLIENTID=$BW_CLIENTID BW_CLIENTSECRET=$BW_CLIENTSECRET bw login --nointeraction  --apikey
     exit 0
