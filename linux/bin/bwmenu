@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Rofi extension for BitWarden-cli
+# sudo emerge -av oath-toolkit # for totp
 # 不加这行，报权限不够
 keyctl link @u @s
 
@@ -110,6 +111,24 @@ exit_error() {
   exit "$code"
 }
 
+init_input() {
+    appinfo=`hyprctl activewindow -j`
+    if [ -n "$appinfo" ]; then
+        class=`echo $appinfo|jq -r '.class'|head -n 1`
+        if [ "$class" = "firefox" ]; then
+            # C-l C-c
+            ydotool key 29:1 38:1 38:0  46:1 46:0 29:0
+            url=$(wl-paste)
+            # 提取域名
+            domain=$(echo $url | awk -F[/:] '{print $4}')
+            # 去除子域名前缀
+            domain=$(echo $domain | sed 's/^[^.]*\.//')
+            # 去除参数部分
+            domain=$(echo $domain | cut -d'?' -f1)
+            echo $domain
+        fi
+    fi
+}
 # Show the Rofi menu with options
 # Reads items from stdin
 rofi_menu() {
@@ -136,7 +155,8 @@ rofi_menu() {
 <b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
   }
 
-  rofi -config ~/.config/rofi/config-bwmenu.rasi -dmenu -p 'Name' \
+  input=$(init_input)
+  rofi -filter "$input"  -config ~/.config/rofi/config-bwmenu.rasi -dmenu -p 'Name' \
     -i -no-custom \
     -mesg "$msg" \
     "${actions[@]}" \
@@ -392,8 +412,11 @@ get_totp() {
     show_full_items
   else
     id=$(echo "$1" | jq -r ".[0].id")
-
-    if ! totp=$(bw --session "$BW_HASH" get totp "$id" 2>&1); then
+    # oathtool --totp -b totpkey
+    # sudo emerge -av oath-toolkit
+    # bw --session "$BW_HASH" get totp "$id" 2>&1
+    totp_key=$(bw --session "$BW_HASH" list items|jq -r '.[] | select(.id  | test("'"$id"'"; "i"))|.login.totp' 2>&1)
+    if ! totp=$(oathtool --totp -b $totp_key); then
       exit_error 1 "$totp"
     fi
     echo -n "$totp"
