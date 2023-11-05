@@ -116,15 +116,15 @@ init_input() {
     if [ -n "$appinfo" ]; then
         class=`echo $appinfo|jq -r '.class'|head -n 1`
         if [ "$class" = "firefox" ]; then
-            # C-l C-c
-            ydotool key 29:1 38:1 38:0  46:1 46:0 29:0
-            url=$(wl-paste)
+            # show url in window title
+            # need addon for firefox: https://addons.mozilla.org/en-US/firefox/addon/add-url-to-window-title/
+            title=`echo $appinfo|jq -r '.title'|head -n 1`
+            url=$(echo $title | grep -o 'https://[^ ]*' | sed 's/— Mozilla Firefox$//' | awk '{print $1}')
             # 提取域名
             domain=$(echo $url | awk -F[/:] '{print $4}')
-            # 去除子域名前缀
-            domain=$(echo $domain | sed 's/^[^.]*\.//')
-            # 去除参数部分
+            # 去除?后
             domain=$(echo $domain | cut -d'?' -f1)
+            domain=$(tldExtract $domain)
             echo $domain
         fi
     fi
@@ -280,7 +280,9 @@ auto_type() {
         ;;
       username)
         type_backspace
-        type_word "$(echo "$2" | jq -r '.[0].login.username')"
+        username="$(echo "$2" | jq -r '.[0].login.username')"
+        type_word "$username"
+        echo -n "$username" | clipboard-set
         ;;
       password)
         type_backspace
