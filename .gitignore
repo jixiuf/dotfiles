@@ -43,3 +43,4 @@ gnupg/random_seed
 /ssh/authorized_keys
 /ssh/known_hosts.old
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-*
+/linux/config/systemd/user/default.target.wants/autossh.service

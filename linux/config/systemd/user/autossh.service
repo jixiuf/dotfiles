@@ -1,0 +1,17 @@
+[Unit]
+Description=Run autossh
+# # After=network.target
+# After=udevmon.service
+# DefaultDependencies=no
+
+[Service]
+# Environment="LANG=zh_CN.UTF-8"
+Type=simple
+# User=jixiuf
+# Group=users
+Restart=always
+ExecStart=autossh -M 20003 -NR 8092:localhost:22 root@10.2.0.171
+
+
+[Install]
+WantedBy=default.target
