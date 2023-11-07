@@ -291,7 +291,9 @@ keymap:
       # super-C-4: { launch: ["screenshot","1"]} #area
       super-M-4: { launch: ["screenshot"]}     #screen
 
-      super-C-7: { launch: ["swaylock"] }
+      super-C-7: { launch: ["bwmenu"] }
+      super-C-Grave: { launch: ["swaylock"] }
+      super-C-Esc: { launch: ["swaylock"] }
       super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
       super-C-9: { launch: ["pick-color"] }
       super-C-y: { launch: ["rofi-cliphist"] }
