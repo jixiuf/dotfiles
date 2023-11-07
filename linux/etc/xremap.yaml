@@ -291,7 +291,8 @@ keymap:
       # super-C-4: { launch: ["screenshot","1"]} #area
       super-M-4: { launch: ["screenshot"]}     #screen
 
-      super-C-7: { launch: ["bwmenu"] }
+      super-C-7: { launch: ["sh","-c","echo \"type $(pass show bitwarden.com |head -n 1)\"|dotool"] }
+      super-C-8: { launch: ["bwmenu"] }
       super-C-Grave: { launch: ["swaylock"] }
       super-C-Esc: { launch: ["swaylock"] }
       super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
