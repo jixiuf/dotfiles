@@ -194,7 +194,8 @@ else
                 # fcitx5-remote -s keyboard-us
                 # /usr/include/linux/input-event-codes.h
                 # keyd do C-u C-S-v enter C-l
-                ydotool key  29:1 22:1 22:0 42:1 47:1 47:0 42:0 29:0  28:1 28:0 29:1 38:1  38:0  29:0
+                # ydotool key  29:1 22:1 22:0 42:1 47:1 47:0 42:0 29:0  28:1 28:0 29:1 38:1  38:0  29:0
+                echo key ctrl+u ctrl+shift+v enter|dotool
             fi
         fi
     else
