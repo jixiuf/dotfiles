@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts dotoold service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/dotoold
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+TimeoutSec=180
+
+[Install]
+WantedBy=default.target

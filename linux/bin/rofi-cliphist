@@ -6,5 +6,5 @@ if [ $? = 0 ]; then
     # keyd do C-y
     # /usr/include/linux/input-event-codes.h
     # ydotool key  29:1 21:1 21:0 29:0
-    echo key ctrl+y | dotool
+    echo key ctrl+y | dotoolc
 fi
