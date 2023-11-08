@@ -197,12 +197,14 @@ keymap:
       C-n: down
       C-p: up
       C-v:
-        - { launch: ["ydotool","mousemove","--absolute","180","300"] }
-        - { launch: ["ydotool","click","0xC0"] }
+        - { launch: ["sh","-c","echo mouseto 0 0 |dotoolc"] }
+        - { launch: ["sh","-c","echo mousemove 180 380 |dotoolc"] }
+        - { launch: ["sh","-c","echo click left |dotoolc"] }
         - Pagedown
       M-v:
-        - { launch: ["ydotool","mousemove","--absolute","180","300"] }
-        - { launch: ["ydotool","click","0xC0"] }
+        - { launch: ["sh","-c","echo mouseto 0 0 |dotoolc"] }
+        - { launch: ["sh","-c","echo mousemove 180 380 |dotoolc"] }
+        - { launch: ["sh","-c","echo click left |dotoolc"] }
         - Pageup
 
       # C-j: C-RIGHTBRACE
