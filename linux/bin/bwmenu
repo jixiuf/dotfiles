@@ -19,7 +19,7 @@ ITEMS=
 CACHE_FILE=/tmp/bwmenu/logins.gpg
 
 # Stores which command will be used to emulate keyboard type
-AUTOTYPE_MODE=
+AUTOTYPE_MODE=dotoolc
 # Stores the argument need by xdotool to clear the modifiers (shift, control, alt, ...) first
 CLEAR_MODIFIERS=
 
@@ -299,7 +299,7 @@ auto_type() {
 type_word() {
     echo type $1|dotoolc
   # "${AUTOTYPE_MODE[@]}" type $CLEAR_MODIFIERS "$1"
-    echo "${AUTOTYPE_MODE[@]}"
+    # echo "${AUTOTYPE_MODE[@]}"
 }
 
 type_tab() {

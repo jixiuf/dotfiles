@@ -124,6 +124,7 @@ keymap:
       only: [dterm,kitty]
     remap:
       super-C-T: C-Shift-t
+      super-M-v: C-Shift-v
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
       # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
@@ -293,12 +294,13 @@ keymap:
       # super-C-4: { launch: ["screenshot","1"]} #area
       super-M-4: { launch: ["screenshot"]}     #screen
 
+      super-M-v: { launch: ["sh","-c","sleep 0.3;echo type $(wl-paste --primary)|dotoolc"] }
       super-C-7: { launch: ["sh","-c","echo \"type $(pass show bitwarden.com |head -n 1)\"|dotool"] }
       super-C-8: { launch: ["bwmenu"] }
       super-C-Grave: { launch: ["swaylock"] }
       super-C-Esc: { launch: ["swaylock"] }
-      super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
-      super-C-9: { launch: ["pick-color"] }
+      super-C-9: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
+      super-C-0: { launch: ["pick-color"] }
       super-C-y: { launch: ["rofi-cliphist"] }
       super-C-0: { launch: ["bwmenu"] }
       C-Tab: { launch: ["hyprctl","dispatch","exec","killall rofi ||rofi -normal-window -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
