@@ -71,11 +71,16 @@ handle() {
     activewindowv2\>\>*)
         address="0x${1#*>>}"
         # echo "### $address"
-        handle_active_window $address
+        if [ "$address" != "0x," ]; then
+            # echo "sssssss $address"
+            handle_active_window $address
+        fi
         ;;
     closewindow\>\>*)
         address="0x${1#*>>}"
-        handle_close_window $address
+        if [ "$address" != "0x," ]; then
+            handle_close_window $address
+        fi
         ;;
 
   esac
