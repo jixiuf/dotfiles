@@ -190,7 +190,7 @@ else
                     wl-copy  --primary "cd $cwd"
                 fi
 
-                sleep 0.5
+                # sleep 0.5
                 # fcitx5-remote -s keyboard-us
                 # /usr/include/linux/input-event-codes.h
                 # keyd do C-u C-S-v enter C-l
