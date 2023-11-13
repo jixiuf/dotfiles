@@ -26,7 +26,7 @@ maximize=""
 cd=""
 resize=""
 
-TEMP=$( getopt --options mcfh --longoptions maximize,cd,floating,float-only,resize:,help -- "$@" ) || exit 1
+TEMP=$( getopt --options h --longoptions maximize,cd,floating,float-only,resize:,help -- "$@" ) || exit 1
 eval set -- "$TEMP"
 
 for i in "$@"; do
@@ -40,12 +40,12 @@ for i in "$@"; do
             echo "-f|--float-only  只在 target_floating 窗口中寻找匹配的 target"
             exit 0
             ;;
-        -c|--cd*)
+        --cd*)
             cd="set"
             shift
             ;;
 
-        -m|--maximize*)
+        --maximize*)
             maximize="set"
             shift
             ;;
@@ -54,7 +54,7 @@ for i in "$@"; do
             floating="true"
             shift
             ;;
-        -f|--float-only*)
+        --float-only*)
             # 只匹配当前是floating 的
             float_only="set"
             shift
@@ -97,7 +97,7 @@ fi
 if [ ! "$target_appinfo" ]; then
     # if app not found ,run the cmde
     if echo "$cmd" | grep -q " "; then
-        sh -c "$cmd" &
+        $cmd &
     else
         $cmd &
     fi

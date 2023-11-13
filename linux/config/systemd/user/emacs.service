@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts emacs service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/emacs --fg-daemon
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+TimeoutSec=180
+
+[Install]
+WantedBy=default.target
