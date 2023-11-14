@@ -1,0 +1,12 @@
+[Unit]
+Description=Run autossh
+[Service]
+Environment="LANG=zh_CN.UTF-8"
+Type=simple
+Restart=always
+ExecStart=autossh -M 20003 -NR 8092:localhost:22 root@10.2.0.171 
+TimeoutSec=180
+KillMode=process
+
+[Install]
+WantedBy=default.target
