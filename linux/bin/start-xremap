@@ -1,3 +1,0 @@
-#!/bin/bash
-pkill xremap
-/usr/local/bin/xremap  /etc/xremap.yaml /etc/xremap-$HOST.yaml   --watch=device
