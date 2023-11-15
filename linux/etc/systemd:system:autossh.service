@@ -1,5 +1,7 @@
 [Unit]
+After=network.target
 Description=Run autossh
+
 [Service]
 Environment="LANG=zh_CN.UTF-8"
 Type=simple
