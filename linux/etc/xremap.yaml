@@ -31,7 +31,7 @@ modmap:
     remap:
       super_r :
         held: [alt_l,super_l]
-        alone: [super_l,ctrl_l,space]
+        alone: [f11]
         alone_timeout_millis: 1000 # Optional
 
 keymap:
