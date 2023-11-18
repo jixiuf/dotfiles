@@ -271,6 +271,9 @@ bindkey "^[r" history-incremental-search-backward  # M-r
 
 bindkey "^[n" down-line-or-history
 bindkey "^[p" up-line-or-history
+bindkey "7;13u" kill-whole-line # cmd+ctrl+u = C-u
+bindkey "9;13u" accept-line # cmd+ctrl+m = C-m
+
 #允许在交互模式中使用注释  例如：
 #cmd #这是注释
 setopt INTERACTIVE_COMMENTS
