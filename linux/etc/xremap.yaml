@@ -283,7 +283,7 @@ keymap:
       super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
-      super-C-j: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- term.sh --class=mitp  mitmproxy -p 8888"] }
+      super-C-dot: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- term.sh --class=mitp  mitmproxy -p 8888"] }
       super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating --float-only  'dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --class=dterm --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
@@ -320,10 +320,10 @@ keymap:
       super-C-p: { launch: ["hyprctl","dispatch" ,"workspace","m-1"]}
       super-C-Tab: { launch: ["hypr-focus-last-win"]}
       # 窗口大小调整 space+ 箭头
-      super-C-right: { launch: ["hyprctl" ,"dispatch","resizeactive","15","0"]}
-      super-C-left: { launch: ["hyprctl" ,"dispatch","resizeactive","-15","0"]}
-      super-C-up: { launch: ["hyprctl" ,"dispatch","resizeactive","0","-15"]}
-      super-C-down: { launch: ["hyprctl" ,"dispatch","resizeactive","0","15"]}
+      super-C-l: { launch: ["hypr-resize" ,"right"]}
+      super-C-h: { launch: ["hypr-resize" ,"left"]}
+      super-C-k: { launch: ["hypr-resize" ,"up"]}
+      super-C-j: { launch: ["hypr-resize" ,"down"]}
       
       super-C-M-n: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r+1"]}
       super-C-M-p: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+resize_window() {
+    case "$1" in
+        left*)
+            hyprctl dispatch resizeactive -15 0
+            ;;
+        right*)
+            hyprctl dispatch resizeactive 15 0
+            ;;
+        up*)
+            hyprctl dispatch resizeactive 0 -15
+            ;;
+        down*)
+            hyprctl dispatch resizeactive 0 15
+            ;;
+    esac
+}
+resize_emacs_window() {
+    case "$1" in
+        left*)
+            echo key ctrl+super+h|dotoolc
+            ;;
+        right*)
+            echo key ctrl+super+l|dotoolc
+            ;;
+        up*)
+            echo key ctrl+super+k|dotoolc
+            ;;
+        down*)
+            echo key ctrl+super+j|dotoolc
+            ;;
+    esac
+}
+
+
+ws=$(hyprctl activeworkspace -j)
+ws_id=`echo $ws|jq -r '.id'`
+# app count in current workspace
+app_cnt=$(hyprctl clients -j | jq -cr '.[] | select(.workspace.id == '$ws_id')'|wc -l)
+
+appinfo=`hyprctl activewindow -j`
+if [ -n "$appinfo" ]; then
+    class=`echo $appinfo|jq -r '.class'|head -n 1`
+    fullscreen=`echo $appinfo|jq -r '.fullscreen'|head -n 1`
+    if [[ "$class" = "emacs" && ( "$app_cnt" = "1" || "$fullscreen" = "true" ) ]]; then
+        resize_emacs_window $1
+    else
+        resize_window $1
+    fi
+else
+        resize_window $1
+fi
