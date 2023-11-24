@@ -9,8 +9,10 @@ appinfo=`hyprctl activewindow -j`
 # if front app exits
 if [ -n "$appinfo" ]; then
     class=`echo $appinfo|jq -r '.class'|head -n 1`
-    if [[ "$class" = "emacs" && "$app_cnt" = "1" ]]; then
-        echo key ctrl+x o|dotoolc
+    # fullscreen=`echo $appinfo|jq -r '.fullscreen'|head -n 1`
+     # ( "$app_cnt" = "1" || "$fullscreen" = "true" )
+    if [[ "$class" = "emacs" ]]; then
+        echo key ctrl+super+o|dotoolc
     else
         hyprctl --batch "dispatch cyclenext; dispatch bringactivetotop"
     fi
