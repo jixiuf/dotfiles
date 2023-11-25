@@ -1,4 +1,5 @@
 [Unit]
+BindsTo=sway-session.target
 Description=Starts emacs service
 
 [Service]
@@ -11,4 +12,4 @@ KillMode=process
 TimeoutSec=180
 
 [Install]
-WantedBy=default.target
+WantedBy=sway-session.target
