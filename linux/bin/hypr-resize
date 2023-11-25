@@ -16,6 +16,7 @@ resize_window() {
             ;;
     esac
 }
+# need https://github.com/ramnes/move-border for emacs
 resize_emacs_window() {
     case "$1" in
         left*)
