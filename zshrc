@@ -178,7 +178,7 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias icat="kitty +kitten icat"
     alias eme='sudo mount /var/cache/binpkgs/ ;sudo emerge -aqv --autounmask-write'
     alias emerge='sudo mount /var/cache/binpkgs/ ;sudo emerge'
-    alias emeu='sudo mount /var/cache/binpkgs/ ;sudo emerge -auvqDN --with-bdeps=y  @world'
+    alias emeu='sudo mount /var/cache/binpkgs/ ;sudo emerge -auvqDN --with-bdeps=y  @world;sudo emerge @preserved-rebuild'
     alias esync='sudo emerge --sync'
     alias emec='sudo emerge -ac'
     alias emes='sudo emerge -aSqv'
