@@ -176,7 +176,7 @@ alias httpserver="python -m SimpleHTTPServer 8888"
 alias download="pushd ~/Downloads/"
 if [ $(uname -s ) = "Linux" ] ; then
     alias icat="kitty +kitten icat"
-    [ -z "$(mount | grep '/var/cache/binpkgs')" ] && mount /var/cache/binpkgs
+    # [ -z "$(mount | grep '/var/cache/binpkgs')" ] && sudo mount /var/cache/binpkgs
     alias eme='sudo emerge -aqv --autounmask-write'
     alias emerge='sudo emerge'
     alias emeu='sudo emerge -auvqDN --with-bdeps=y  @world;sudo emerge @preserved-rebuild;sudo eclean packages'
