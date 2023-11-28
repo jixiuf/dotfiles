@@ -23,7 +23,7 @@ tmpfs                    /tmp               tmpfs      size=2G,noatime          
 # noauto will stop the no-brainer actions like forcibly mounting whatsoever at booting regardless if the network is up or not.
 # x-systemd.automount is the smart daemon that knows when to mount.
 # The _netdev tag will also identify that it uses network devices, thus it will wait until the network is up. ​​​​​​
-root@host:/data/binpkgs /var/cache/binpkgs/ fuse.sshfs noauto,x-systemd.automount,port=22,_netdev,IdentityFile=/home/jixiuf/.ssh/id_rsa,allow_other,reconnect 0 0
+root@host:/data/binpkgs /var/cache/binpkgs/ fuse.sshfs noauto,x-systemd.automount,_netdev,port=8003,uid=250,gid=250,IdentityFile=/home/jixiuf/.ssh/id_rsa,allow_other,reconnect 0 0
 
 # glibc 2.2 and above expects tmpfs to be mounted at /dev/shm for 
 # POSIX shared memory (shm_open, shm_unlink).
