@@ -15,7 +15,6 @@ dev-go/gopls ~amd64
 dev-lang/go ~amd64
 dev-libs/bemenu ~amd64
 dev-libs/date ~amd64
-dev-libs/hyprland-protocols ~amd64
 dev-libs/libliftoff ~amd64
 dev-python/notofonttools ~amd64
 dev-qt/qtbase  ~amd64
@@ -34,8 +33,9 @@ gui-apps/wlr-randr ~amd64
 gui-apps/wofi ~amd64
 gui-libs/wlroots **
 gui-libs/xdg-desktop-portal-hyprland ~amd64
-gui-wm/hyprland ~amd64
-gui-wm/sway **
+#dev-libs/hyprland-protocols ~amd64
+#gui-wm/hyprland ~amd64
+#gui-wm/sway **
 media-fonts/twemoji ~amd64
 media-libs/libdisplay-info ~amd64
 media-sound/t2-better-audio ~amd64
