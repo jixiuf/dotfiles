@@ -7,7 +7,6 @@ app-misc/keyd  ~amd64
 app-office/bytedance-feishu ~amd64
 app-shells/gitstatus ~amd64
 app-shells/zsh-theme-powerlevel10k ~amd64
-app-text/scdoc **
 dev-cpp/sdbus-c++ ~amd64
 dev-db/dbeaver-bin  ~amd64 
 dev-go/delve ~amd64
@@ -26,12 +25,11 @@ dev-util/mongodb-compass-bin  ~amd64
 gui-apps/rofi-wayland  ~amd64
 gui-apps/swaylock-effects ~amd64
 gui-apps/swaync   ~amd64
-gui-apps/waybar ~amd64  **
+gui-apps/waybar ~amd64  
 gui-apps/wf-recorder ~amd64
 gui-apps/wlogout ~amd64
 gui-apps/wlr-randr ~amd64
 gui-apps/wofi ~amd64
-gui-libs/wlroots **
 gui-libs/xdg-desktop-portal-hyprland ~amd64
 #dev-libs/hyprland-protocols ~amd64
 #gui-wm/hyprland ~amd64
