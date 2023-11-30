@@ -7,6 +7,25 @@
 # journalctl -u xremap
 keypress_delay_ms: 10           # https://github.com/k0kubun/xremap/issues/179
 modmap:
+  - name: Global for jxfhome
+    device:
+      only: []                  #evtest
+    remap:
+      super_l :
+        held: ctrl_l
+        alone: esc
+        alone_timeout_millis: 1000
+      ctrl_l : super_l
+  - name: Global for luojilab
+    device:
+      #evtest
+      only: ["Apple Inc. Apple Internal Keyboard / Trackpad","SONiX Touch68@Lofree","SONiX Touch68@Lofree Keyboard" ]
+    remap:
+      ctrl_l :
+        held: ctrl_l
+        alone: esc
+        alone_timeout_millis: 1000
+
   - name: Global
     remap:
       space:
