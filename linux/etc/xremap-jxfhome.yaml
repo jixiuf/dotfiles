@@ -1,8 +1,0 @@
-modmap:
-  - name: Global for jxfhome
-    remap:
-      super_l :
-        held: ctrl_l
-        alone: esc
-        alone_timeout_millis: 1000
-      ctrl_l : super_l

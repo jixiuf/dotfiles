@@ -9,7 +9,7 @@ keypress_delay_ms: 10           # https://github.com/k0kubun/xremap/issues/179
 modmap:
   - name: Global for jxfhome
     device:
-      only: []                  #evtest
+      only: ["Apple SPI Keyboard"]                  #evtest
     remap:
       super_l :
         held: ctrl_l
