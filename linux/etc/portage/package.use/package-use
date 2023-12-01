@@ -83,3 +83,5 @@ net-wireless/wpa_supplicant p2p
 sys-apps/xdg-desktop-portal screencast
 app-shells/gitstatus zsh-completion
 media-libs/libcanberra pulseaudio
+sci-geosciences/GeographicLib  python
+gui-apps/nwg hyprland
