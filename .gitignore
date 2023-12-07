@@ -44,3 +44,4 @@ gnupg/random_seed
 /ssh/known_hosts.old
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-*
 /linux/config/systemd/user/default.target.wants/autossh.service
+/mitmproxy/__pycache__/
