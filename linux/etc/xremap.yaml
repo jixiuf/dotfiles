@@ -299,7 +299,7 @@ keymap:
     remap:
     # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
       super-C-e: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --  emacs  emacsclient -c -r -n"] }
-      super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'firefox|firefox-esr'","firefox"] }
+      super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'google-chrome|firefox|firefox-esr'","firefox"] }
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       super-C-dot: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- term.sh --class=mitp  mitmproxy -p 8888 -s ~/.mitmproxy/rewrite.py"] }
