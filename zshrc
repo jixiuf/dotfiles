@@ -135,6 +135,11 @@ function crc32(){
 json_escape () {
      python -c "import sys, json; data = sys.stdin.read(); result = json.dumps(data); print(result)"
 }
+# echo '"{\"hello\":\"w\"}"' | json_unescape
+json_unescape() {
+     python -c "import sys, json; data = sys.stdin.read(); result = json.loads(data.strip()); print(result)"
+}
+
 alias urldecode='python -c "import sys, urllib.parse as ul ;print(\"\n\") ;print (ul.unquote(sys.argv[1]));"'
 alias urlencode='python -c "import sys, urllib.parse as ul ;print(ul.quote(sys.argv[1]));"'
 
