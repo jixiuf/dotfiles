@@ -9,6 +9,7 @@ default:
 	make deploy
 
 deploy:
+	gpg -d config/rbw/config.json.gpg > config/rbw/config.json
 	@-mkdir -p ~/bin ~/.cargo/ ~/go/ /usr/local/bin/
 	@-rm -rf ~/.cargo/bin ~/go/bin
 	ln -fs /usr/local/bin/ ~/.cargo/bin

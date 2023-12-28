@@ -109,8 +109,8 @@ keymap:
     remap:
       M-backspace: C-Backspace
       super-C-u: C-Shift-t
-      C-comma: C-Shift-tab
-      C-dot: C-tab
+      C-comma: C-Pageup
+      C-dot: C-Pagedown
       C-r: C-r
       C-h: M-left
       C-l: M-right
@@ -299,7 +299,7 @@ keymap:
     remap:
     # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
       super-C-e: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --  emacs  emacsclient -c -r -n"] }
-      super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","'google-chrome|firefox|firefox-esr'","firefox"] }
+      super-C-f: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise -- 'google-chrome|firefox|firefox-esr' google-chrome-stable ---enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4"] }
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","DBeaver","dbeaver"] }
       super-C-dot: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- term.sh --class=mitp  mitmproxy -p 8888 -s ~/.mitmproxy/rewrite.py"] }
@@ -315,7 +315,7 @@ keymap:
 
       super-M-v: { launch: ["sh","-c","sleep 0.3;echo type $(wl-paste --primary)|dotoolc"] }
       super-C-7: { launch: ["sh","-c","echo \"type $(pass show bitwarden.com |head -n 1)\"|dotool"] }
-      super-C-8: { launch: ["bwmenu"] }
+      super-C-8: { launch: ["rofi-rbw"] }
       super-C-Grave: { launch: ["swaylock"] }
       super-C-Esc: { launch: ["swaylock"] }
       super-C-9: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }

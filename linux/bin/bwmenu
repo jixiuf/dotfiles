@@ -115,7 +115,7 @@ init_input() {
     appinfo=`hyprctl activewindow -j`
     if [ -n "$appinfo" ]; then
         class=`echo $appinfo|jq -r '.class'|head -n 1`
-        if [ "$class" = "firefox" ]; then
+        if [[ "$class" = "firefox" || "$class" = "google-chrome"  ]]; then
             # show url in window title
             # need addon for firefox: https://addons.mozilla.org/en-US/firefox/addon/add-url-to-window-title/
             title=`echo $appinfo|jq -r '.title'|head -n 1`

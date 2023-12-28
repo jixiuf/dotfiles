@@ -45,3 +45,4 @@ gnupg/random_seed
 /linux/etc/portage/savedconfig/sys-kernel/linux-firmware-*
 /linux/config/systemd/user/default.target.wants/autossh.service
 /mitmproxy/__pycache__/
+/linux/config/rbw/config.json

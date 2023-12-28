@@ -55,3 +55,4 @@ sys-kernel/t2gentoo-kernel ~amd64
 sys-kernel/t2gentoo-sources ~amd64
 x11-libs/xcb-imdkit ~amd64 
 x11-misc/dex  ~amd64 
+app-admin/rbw **
