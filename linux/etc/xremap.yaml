@@ -121,6 +121,7 @@ keymap:
       C-b: left
       C-a: Home
       C-e: End
+      C-u: C-Shift-t
       M-f: C-right
       M-b: C-left
       super-M-f: super-C-right
