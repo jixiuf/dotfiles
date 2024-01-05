@@ -117,6 +117,7 @@ keymap:
       C-o: C-l
       C-n: down
       C-p: up
+      C-d: delete
       C-f: right
       C-b: left
       C-a: Home
