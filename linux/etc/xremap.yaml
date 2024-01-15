@@ -115,6 +115,7 @@ keymap:
       C-h: M-left
       C-l: M-right
       C-o: C-l
+      C-i: C-Shift-i
       C-n: down
       C-p: up
       C-d: delete
