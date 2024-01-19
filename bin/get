@@ -35,5 +35,7 @@ if [ -z "$filename" ]; then
 fi
 echo  "$cmd -o $filename $url "
 echo "write to [$filename] ..."
-$cmd -L -o $filename $url
+# curl -C - -O <URL>
+# 这里的 `-C -` 告诉 `curl` 自动确定应该从哪里继续下载，而 `-O` 参数用于保存文件，它会保持远程文件的名称相同。
+$cmd -C - -L -o $filename $url
 echo "$filename Done"
