@@ -78,6 +78,7 @@ DISABLE_AUTO_TITLE=true
 source $ZSH/oh-my-zsh.sh
 export iterm2_hostname=$(hostname) # hostname -f is slow (fix it)
 source $ZSH/plugins/iterm2/iterm2_shell_integration.zsh
+export   PROMPT="%{$fg[blue]%}%m%{$reset_color%} $PROMPT"
 
 
 # Preferred editor for local and remote sessions
