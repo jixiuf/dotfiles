@@ -15,7 +15,7 @@ gui-apps/nwg-shell-config ~amd64
 sci-geosciences/GeographicLib  ~amd64
 sci-geosciences/geopy ~amd64
 gui-apps/nwg ~amd64
-<app-editors/emacs-30.0.9999 ~amd64
+app-editors/emacs ~amd64 **
 app-editors/vscode ~amd64
 app-i18n/* ~amd64 
 gui-wm/hyprland ~amd64 
