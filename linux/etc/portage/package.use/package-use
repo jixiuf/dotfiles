@@ -59,7 +59,7 @@ media-libs/freetype X
 gui-apps/waybar wifi  network pipewire upower tray experimental
 >=media-video/pipewire-0.3.65-r1 ffmpeg  extra bluetooth dbus  sound-server 
 media-sound/pulseaudio -daemon
-media-video/ffmpeg mp3 pulseaudio
+media-video/ffmpeg mp3 pulseaudio libsoxr
 x11-misc/j4-dmenu-desktop -dmenu
 net-misc/networkmanager connection-sharing  bluetooth  iptables -iwd
 >=net-wireless/wpa_supplicant-2.10-r1 dbus

@@ -351,6 +351,7 @@ keymap:
       super-C-M-p: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
       super-C-M-e: { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
       super-C-M-d: { launch: ["hyprctl" ,"dispatch","movetoworkspacesilent","empty"]}
+      super-M-g: Shift-g
 
       C-w:
         remap:
