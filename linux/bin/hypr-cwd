@@ -16,6 +16,12 @@
 #           print -Pn "\e]2;$(pwd)\a" #s
 #       }
 #       add-zsh-hook precmd update_cwd
+# bashrc
+# tramp(){
+#    printf "\e]2;/ssh:$(whoami)@$(ip addr | grep 'inet\b' |grep -v 127.0.0.1 | awk '{print $2}' | cut -d/ -f1):$(pwd)\a"
+# }
+# PS1=$PS1'\[$(tramp)\]'
+
 appinfo=`hyprctl activewindow -j`
 if [ -n "$appinfo" ]; then
     # if front app exits
