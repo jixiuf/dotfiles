@@ -41,7 +41,7 @@ modmap:
       not: emacs
     remap:
       super_r :
-        held: [alt_l,super_l]
+        held: shift_r
         alone: [f12]
         alone_timeout_millis: 1000 # Optional
   - name: Emacs
@@ -49,7 +49,7 @@ modmap:
       only: emacs
     remap:
       super_r :
-        held: [alt_l,super_l]
+        held: shift_r
         alone: [f11]
         alone_timeout_millis: 1000 # Optional
 
@@ -351,7 +351,6 @@ keymap:
       super-C-M-p: { launch: ["hyprctl" ,"dispatch","movetoworkspace","r-1"]}
       super-C-M-e: { launch: ["hyprctl" ,"dispatch","movetoworkspace","empty"]}
       super-C-M-d: { launch: ["hyprctl" ,"dispatch","movetoworkspacesilent","empty"]}
-      super-M-g: Shift-g
 
       C-w:
         remap:
