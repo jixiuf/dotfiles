@@ -295,7 +295,9 @@ bindkey \^H backward-kill-word
 # bindkey \^M accept-line
 ctrl-k-kill-line () {
   zle kill-line   # `kill-line` is the default ctrl+k binding
-  echo -n $CUTBUFFER | clipcopy
+  local content=$(echo -n $CUTBUFFER | base64)
+  # 使用OSC 52序列发送到剪贴板
+  echo -ne "\033]52;c;${content}\a"
 }
 
 zle -N ctrl-k-kill-line  # register our new function
