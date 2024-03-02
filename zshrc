@@ -395,6 +395,11 @@ user-complete(){
             fkill ;;
         "kk" )                   #
             fkill -9 ;;
+        "ssh " )                   # TAB + 空格 替换为 "cd ~"
+            # zle end-of-line
+            zle ssh-fzf
+            # zle expand-or-complete
+            ;;
         "lsof" )                   #
             flsof ;;
         "vi " )

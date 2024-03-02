@@ -151,3 +151,13 @@ export FZF_CDR_OPTS="  "
 # export FZF_COMPLETION_TRIGGER=''
 # bindkey '^T' fzf-completion
 # bindkey '^I' $fzf_default_completion
+function ssh-fzf () {
+  local selected_host=$(grep "Host " ~/.ssh/config |grep -v "^#" | cut -b 6- | fzf --query "$2")
+  if [ -n "$selected_host" ]; then
+    BUFFER="ssh ${selected_host}"
+    zle accept-line
+  fi
+  # zle reset-prompt
+    zle fzf-redraw-prompt
+}
+zle -N ssh-fzf
