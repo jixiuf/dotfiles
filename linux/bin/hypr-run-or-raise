@@ -169,12 +169,12 @@ else
                 # 如果 hypr-cwd 获取到当前 working directory
                 # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录
                 # root@host:/path
-                regex="(\/ssh:)?([a-zA-Z0-9_]+)@([a-zA-Z0-9_\.]+):(.+)"
-                # root@host#2222:/path
-                # regex2="\/ssh:([a-zA-Z0-9_]+)@([a-zA-Z0-9_\.]+)#([0-9]+):(.+)"
+                regex="(\/ssh:)?([a-zA-Z0-9_\-]+@)?([a-zA-Z0-9_\.\-]+):(.+)"
+                # root@host#2222:/path # host#2222:/path
+                # regex2="(\/ssh:)?([a-zA-Z0-9_]+@)?([a-zA-Z0-9_\.]+)#([0-9]+):(.+)"
 
                 if [[ $cwd =~ $regex ]]; then
-                    user=${BASH_REMATCH[2]}
+                    userat=${BASH_REMATCH[2]}
                     host=${BASH_REMATCH[3]}
                     path=${BASH_REMATCH[4]}
                     termcwd=$(hypr-cwd)
@@ -183,7 +183,7 @@ else
                     if [[ $termcwd =~ $regex ]]; then
                         wl-copy  --primary " cd $path"
                     else
-                        wl-copy  --primary " ssh -t $user@$host  'cd $path && exec "'$SHELL'"'"
+                        wl-copy  --primary " ssh -t $userat$host  'cd $path && exec "'$SHELL'"'"
                     fi
                 else
                     wl-copy  --primary " cd $cwd"
