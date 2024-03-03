@@ -19,7 +19,6 @@ working_directory_arg="--working-directory"
 working_directory=""
 other_args=""
 
-echo "$@" >/tmp/a
 # 解析参数
 for arg in "$@"; do
   if [[ $arg == --working-directory=* ]]; then
