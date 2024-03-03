@@ -1,7 +1,7 @@
 #!/bin/sh
 
 icon_path="$HOME/.config/hypr/icons/video.png"
-notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:screeenrecord -u low -i ${icon_path}"
+notify_cmd_shot="notify-send -t 1000 -h string:x-canonical-private-synchronous:screeenrecord -u low -i ${icon_path}"
 
 recordings="$HOME/Videos/recordings"
 tmp_dir="${recordings}/.tmp"
@@ -34,11 +34,12 @@ then
             ;;
         $area)
             if command -v slurp >/dev/null 2>&1; then
-                sleep 1;wf-recorder -g "$(slurp)"  --audio --file="${filepath}" & disown && \
+                g="$(slurp)"
+                sleep 1;wf-recorder -g "$g"  --audio --file="${filepath}" & disown && \
                     $notify_cmd_shot "Screen Record" "录屏开始..." && \
                     pkill -RTMIN+8 waybar
             else
-                $notify_cmd_shot -t 3000 "slurp not found"
+                $notify_cmd_shot  "slurp not found"
             fi
             ;;
         $window)

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 icon_path="$HOME/.config/hypr/icons/video.png"
-notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:screeenrecord -u low -i ${icon_path}"
+notify_cmd_shot="notify-send -t 1000  -h string:x-canonical-private-synchronous:screeenrecord -u low -i ${icon_path}"
 # action=$($notify_cmd_shot "Screen Record" "Saved to ${saved_to}" --action " Dired" --action "Play" --action "To Gif" --action "To Gif W800")
 # if [[ "${action}" == "0" ]]; then
 # fi
@@ -22,6 +22,7 @@ if [ ! -z $(pgrep wf-recorder) ]; then
         filepath="${recordings}/${filename}"
         mv "${tmp_file}" "${filepath}"
         ln -sfr ${filepath} ${linkname}
+        ${notify_cmd_shot} "Screen Record" "录制结束。"
     fi
 else
     ${notify_cmd_shot} "Screen Record" "没有 录制中的视频!"
