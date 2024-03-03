@@ -1,0 +1,11 @@
+#!/bin/sh
+# - `-vf "fps=10,scale=320:-1:flags=lanczos"`：视频过滤器选项，
+# `fps=10`设置GIF的帧率为10帧/秒，
+# `scale=320:-1`设置GIF的宽度为320像素，高度自动调整保持原始宽高比，
+# `flags=lanczos`使用Lanczos算法进行缩放，以提高质量。
+# - `-c:v gif`：指定输出视频编码为GIF格式。
+output=$2
+if [ -z "$output" ]; then
+    output=$(dirname $1)/$(basename $1 ".mp4")-$(date +"%Y-%m-%d-%H-%M-%S").gif
+fi
+ffmpeg -i $1 -vf "fps=1,scale=640:-1:flags=lanczos" -c:v gif $output

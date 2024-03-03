@@ -16,16 +16,22 @@ then
 
     if [ -f "${tmp_file}" ]; then
         tmp_file="$(cat $tmp_file)"
-        filename="Record_$(date "+%s").mp4"
+        filename="Record_$(date "+%Y-%m-%d-%H-%M-%S").mp4"
         filepath="${recordings}/${filename}"
-        saved_to="~/Videos/Recordings/${filename}"
+        saved_to="$HOME/Videos/Recordings/${filename}"
 
         mv "${tmp_file}" "${filepath}"
 
-        action=$($notify_cmd_shot "Screen Record" "Saved to ${saved_to}" --action " Open containing folder")
+        action=$($notify_cmd_shot "Screen Record" "Saved to ${saved_to}" --action " Dired" --action "Play" --action "To Gif")
 
         if [[ "${action}" == "0" ]]; then
             ec -n $recordings
+        elif [[ "${action}" == "1" ]]; then
+            xdg-open $saved_to
+        elif [[ "${action}" == "2" ]]; then
+            gifoutput=$(dirname $saved_to)/$(basename $saved_to ".mp4").gif
+            mp4togif $saved_to $gifoutput
+            xdg-open $gifoutput
         fi
     fi
 else
