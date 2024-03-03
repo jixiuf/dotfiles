@@ -77,6 +77,10 @@
                     "command": "swaync-client -t & blueman-manager"
                 },
                 {
+                    "label": "投屏",
+                    "command": "swaync-client -t & gnome-network-displays &disown"
+                },
+                {
                     "label": "X",
                     "command": "swaync-client -t & systemctl --user stop xremap;pkill -9 xremap"
                 },
@@ -85,17 +89,38 @@
                     "command": "swaync-client -t & systemctl --user restart xremap"
                 },
                 {
-                    "label": "",
-                    "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh"
+                    "label": " 🖥️",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh 屏幕"
                 },
                 {
-                    "label": "!",
+                    "label": " 🪟",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh 窗口"
+                },
+                {
+                    "label": " ⿻",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-start.sh 区域"
+                },
+                {
+                    "label": " ⏸️️",
                     "command": "swaync-client -t & /usr/local/bin/wf-record-stop.sh"
                 },
                 {
-                    "label": "投屏",
-                    "command": "swaync-client -t & gnome-network-displays &disown"
+                    "label": " 📁",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-action.sh 0"
+                },
+                {
+                    "label": " ▶️",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-action.sh 1"
+                },
+                {
+                    "label": " →🖼️",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-action.sh 2"
+                },
+                {
+                    "label": " →🖼️✂️",
+                    "command": "swaync-client -t & /usr/local/bin/wf-record-action.sh 3"
                 }
+
             ]
         }
     }
