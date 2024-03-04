@@ -174,7 +174,7 @@ alias tn='TERM=screen-256color tmux new -A -s'
 alias tmux='TERM=screen-256color tmux'
 bindkey -s '^T' 'ta\n'
 
-alias httpserver="python -m SimpleHTTPServer 8888"
+alias httpserver="python -m http.server 8888"
 # tmux_porcess_cnt=`pgrep tmux |wc -l`
 
 alias download="pushd ~/Downloads/"
