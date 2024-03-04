@@ -57,3 +57,5 @@ x11-libs/xcb-imdkit ~amd64
 x11-misc/dex  ~amd64 
 app-admin/rbw **
 app-editors/helix ~amd64  
+dev-util/android-studio ~amd64  
+dev-libs/hyprlang  ~amd64  
