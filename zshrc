@@ -181,12 +181,12 @@ alias download="pushd ~/Downloads/"
 if [ $(uname -s ) = "Linux" ] ; then
     alias icat="kitty +kitten icat"
     # [ -z "$(mount | grep '/var/cache/binpkgs')" ] && sudo mount /var/cache/binpkgs
-    alias eme='sudo emerge -aqv --autounmask-write'
-    alias emerge='sudo emerge'
-    alias emeu='sudo emerge -auvqDN --with-bdeps=y  @world;sudo emerge @preserved-rebuild;sudo eclean packages'
-    alias esync='sudo emerge --sync'
-    alias emec='sudo emerge -ac'
-    alias emes='sudo emerge -aSqv'
+    alias eme='sudo -E emerge -aqv --autounmask-write'
+    alias emerge='sudo -E emerge'
+    alias emeu='sudo -E emerge -auvqDN --with-bdeps=y  @world;sudo emerge @preserved-rebuild;sudo eclean packages'
+    alias esync='sudo -E emerge --sync'
+    alias emec='sudo -E emerge -ac'
+    alias emes='sudo -E emerge -aSqv'
     alias env-update="sudo env-update"
     alias etc-update="sudo etc-update"
 
