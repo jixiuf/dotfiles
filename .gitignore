@@ -46,3 +46,5 @@ gnupg/random_seed
 /linux/config/systemd/user/default.target.wants/autossh.service
 /mitmproxy/__pycache__/
 /linux/config/rbw/config.json
+/ssh/id_rsa_old
+/ssh/id_rsa_old.pub
