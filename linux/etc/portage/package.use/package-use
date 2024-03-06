@@ -87,3 +87,4 @@ sci-geosciences/GeographicLib  python
 gui-apps/nwg hyprland
 
 gui-libs/gtk-layer-shell vala
+app-admin/keepassxc autotype browser
