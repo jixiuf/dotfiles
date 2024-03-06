@@ -26,7 +26,7 @@ dev-cpp/sdbus-c++ ~amd64
 dev-db/dbeaver-bin  ~amd64 
 dev-go/delve ~amd64
 dev-go/gopls ~amd64 
-dev-lang/go ~amd64
+# dev-lang/go amd64
 dev-libs/date ~amd64
 dev-libs/libliftoff ~amd64
 dev-python/notofonttools ~amd64
@@ -60,3 +60,7 @@ app-editors/helix ~amd64
 dev-util/android-studio ~amd64  
 dev-libs/hyprlang  ~amd64  
 app-crypt/buttercup-desktop ~amd64  
+
+# Local Variables:
+# mode: conf
+# End:
