@@ -233,7 +233,7 @@ keymap:
       # C-j: C-RIGHTBRACE
   - name: global_emacs
     application:
-      only: [Bytedance-feishu,DBeaver,apifox-pdv]
+      only: [Bytedance-feishu,DBeaver,apifox-pdv,org.keepassxc.KeePassXC]
     remap:
       M-f: C-right
       M-b: C-left
@@ -289,7 +289,14 @@ keymap:
           k: C-f4
           # C-x C-c (exit)
           C-c: super-C-q
-
+  - name: org.keepassxc.KeePassXC
+    application:
+      only: [org.keepassxc.KeePassXC]
+    remap:
+      C-s: C-f
+      C-u: C-b
+      C-l: C-u
+# 
   - name: flameshot
     application:
       only: [flameshot]
