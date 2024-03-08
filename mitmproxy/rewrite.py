@@ -15,5 +15,5 @@ def request(flow: http.HTTPFlow) -> None:
             # 替换 URL 的主机、端口和路径
             new_url = flow.request.pretty_url.replace(original_prefix, new_prefix, 1)
             flow.request.url = new_url
-            flow.request.headers["Xi-av"] = "11.6.2"
+            # flow.request.headers["Xi-av"] = "11.6.2"
             break  # 匹配到一个前缀后就不需要继续检查其他前缀
