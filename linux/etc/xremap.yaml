@@ -296,6 +296,8 @@ keymap:
       C-s: C-f
       C-u: C-b
       C-l: C-u
+      super-C-w: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
+      super-C-q: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
 # 
   - name: flameshot
     application:
