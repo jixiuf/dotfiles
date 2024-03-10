@@ -60,7 +60,7 @@ app-editors/helix ~amd64
 dev-util/android-studio ~amd64  
 dev-libs/hyprlang  ~amd64  
 app-crypt/buttercup-desktop ~amd64  
-
+media-gfx/blender  ~amd64  
 # Local Variables:
 # mode: conf
 # End:
