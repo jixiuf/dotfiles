@@ -68,3 +68,4 @@ sudo:
 	mkdir -p /usr/local/{bin,}
 	chown jixiuf:users /usr/local  -R
 	on-keyboard-update
+	find /usr/local/bin/ -xtype l -delete
