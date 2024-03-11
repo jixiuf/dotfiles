@@ -62,6 +62,7 @@ dev-libs/hyprlang  ~amd64
 app-crypt/buttercup-desktop ~amd64  
 media-gfx/blender  ~amd64
 media-libs/openpgl  ~amd64
+app-admin/keepassxc ~amd64
 # Local Variables:
 # mode: conf
 # End:
