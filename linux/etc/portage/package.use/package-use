@@ -90,3 +90,4 @@ gui-libs/gtk-layer-shell vala
 app-admin/keepassxc autotype browser
 media-libs/freetype brotli
 media-libs/opencolorio -opengl
+gui-apps/wf-recorder pulseaudio
