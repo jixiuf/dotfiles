@@ -329,12 +329,11 @@ keymap:
       # super-M-v: { launch: ["sh","-c","sleep 0.2;echo buttondown middle | dotoolc;echo buttonup middle | dotoolc","&"] }
       # super-M-BTN_MIDDLE: { launch: ["sh","-c","sleep 0.2;echo buttondown middle | dotoolc;echo buttonup middle | dotoolc","&"] }
       
-      # super-C-7: { launch: ["sh","-c","echo \"type $(pass show bitwarden.com |head -n 1)\"|dotool"] }
-      super-C-7: { launch: ["rofi-keepass"] }
+      super-C-7: { launch: ["sh","-c","gpg -d /usr/local/bin/master.gpg|sh"] }
       super-C-8: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise org.keepassxc.KeePassXC keepassxc"] }
       super-C-Grave: { launch: ["swaylock"] }
       # super-C-Esc: { launch: ["swaylock"] }
-      super-C-9: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
+      # super-C-9: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","corplink","/opt/Corplink/corplink"] }
       # super-C-0: { launch: ["pick-color"] }
       super-C-y: { launch: ["rofi-cliphist"] }
       # super-C-0: { launch: ["bwmenu"] }
