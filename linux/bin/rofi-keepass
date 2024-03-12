@@ -10,7 +10,7 @@ classMap["apifox-pdv"]="luojilab.com"
 classMap["dterm"]="bitwarden.com"
 classMap["org.keepassxc.KeePassXC"]="bitwarden.com"
 classMap["kitty"]="bitwarden.com"
-
+classMap["polkit-gnome-authentication-agent-1"]="bitwarden.com"
 # 取网站根域名
 declare -A TLD='()'
 initTld () {
