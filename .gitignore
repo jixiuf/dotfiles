@@ -48,3 +48,4 @@ gnupg/random_seed
 /linux/config/rbw/config.json
 /ssh/id_rsa_old
 /ssh/id_rsa_old.pub
+/linux/config/waybar/nohup.out
