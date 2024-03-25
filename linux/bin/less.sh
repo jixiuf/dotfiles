@@ -6,7 +6,7 @@ tty="/dev/$(ps -o tty= -p $$)"
 mkdir -p /tmp/pager
 t=$(mktemp /tmp/pager/*pager-XXXXXX*) || exit 1
 
-default_editor="ec -n"
+default_editor="emacsclient  -t"
 
 [ ! -t 0 ] && cat > $t
 

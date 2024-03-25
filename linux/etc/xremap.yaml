@@ -145,8 +145,10 @@ keymap:
     application:
       only: [dterm,kitty]
     remap:
+      C-backspace: M-backspace
       super-C-T: C-Shift-t
       super-M-v: C-Shift-v
+      super-C-w: { launch: ["sh" ,"-c","sleep 0.1;hypr-kill-window"] }
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
       # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
