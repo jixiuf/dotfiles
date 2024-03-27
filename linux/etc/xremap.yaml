@@ -144,10 +144,12 @@ keymap:
   - name: kitty emacs
     application:
       only: [dterm,kitty]
-    title:
+    window:
       only: /GNU\/Emacs/
     remap:
       super-C-w: [C-x ,Shift-k] 
+      C-c: C-c
+      C-x: C-x
       
   - name: kitty
     application:
@@ -163,10 +165,10 @@ keymap:
       # C-l: [C-l,C-Shift-l,C-Shift-l]
       # C-Enter: [C-y,Enter]
       # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
-      # C-x:
-      #   remap:
-      #     C-x: C-x              # C-xC-x send C-x
-      #     C-c: super-C-q
+      C-x:
+        remap:
+          C-x: C-x              # C-xC-x send C-x
+          C-c: super-C-q
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
@@ -178,48 +180,48 @@ keymap:
           # C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
-  - name: wezterm
-    application:
-      only: [org.wezfurlong.wezterm]
-    remap:
-      super-C-Enter:
-        - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-      # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME) "] }
-      C-Enter: [C-Super-v,Enter]
-      C-k: [C-2,C-2,C-e,y,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
-      C-x:
-        remap:
-          C-x: C-x              # C-xC-x send C-x
-          C-c: super-C-q
-          C-v: C-Shift-F        # 使用编辑器打开scrollback
-      C-c:
-        remap:
-          C-c: C-c              # C-xC-x send C-x
-          C-e: C-Shift-M        # hints
-          C-v: C-Shift-F        # 使用编辑器打开scrollback
-          C-n: C-M-n            #next prompt
-          C-p: C-M-p  #prev prompt
-          C-j: { launch: ["open-with"]}
-  - name: Terminal
-    application:
-      only: [Alacritty,alacritty]
-    remap:
-      super-C-w: super-C-q
-      super-C-Enter:
-        - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
-      super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --class=dterm --working-directory=$(hypr-cwd||echo $HOME) "] }
-      C-l: [C-l,C-Shift-l,C-Shift-l]
-      C-Enter: [C-y,Enter]
-      C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
-      C-x:
-        remap:
-          C-x: C-x              # C-xC-x send C-x
-          C-c: super-C-q
-      C-c:
-        remap:
-          C-c: C-c              # C-xC-x send C-x
-          C-e: C-Shift-M        # hints
-          C-j: { launch: ["open-with"]}
+  # - name: wezterm
+  #   application:
+  #     only: [org.wezfurlong.wezterm]
+  #   remap:
+  #     super-C-Enter:
+  #       - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
+  #     # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME) "] }
+  #     C-Enter: [C-Super-v,Enter]
+  #     C-k: [C-2,C-2,C-e,y,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+  #     C-x:
+  #       remap:
+  #         C-x: C-x              # C-xC-x send C-x
+  #         C-c: super-C-q
+  #         C-v: C-Shift-F        # 使用编辑器打开scrollback
+  #     C-c:
+  #       remap:
+  #         C-c: C-c              # C-xC-x send C-x
+  #         C-e: C-Shift-M        # hints
+  #         C-v: C-Shift-F        # 使用编辑器打开scrollback
+  #         C-n: C-M-n            #next prompt
+  #         C-p: C-M-p  #prev prompt
+  #         C-j: { launch: ["open-with"]}
+  # - name: Terminal
+  #   application:
+  #     only: [Alacritty,alacritty]
+  #   remap:
+  #     super-C-w: super-C-q
+  #     super-C-Enter:
+  #       - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
+  #     super-C-t: { launch: ["hypr-run-or-raise", "--cd","--floating","--","dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --class=dterm --working-directory=$(hypr-cwd||echo $HOME) "] }
+  #     C-l: [C-l,C-Shift-l,C-Shift-l]
+  #     C-Enter: [C-y,Enter]
+  #     C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+  #     C-x:
+  #       remap:
+  #         C-x: C-x              # C-xC-x send C-x
+  #         C-c: super-C-q
+  #     C-c:
+  #       remap:
+  #         C-c: C-c              # C-xC-x send C-x
+  #         C-e: C-Shift-M        # hints
+  #         C-j: { launch: ["open-with"]}
 
   - name: Bytedance-feishu
     application:
