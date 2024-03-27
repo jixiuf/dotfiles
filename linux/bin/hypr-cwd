@@ -42,7 +42,7 @@ if [ -n "$appinfo" ]; then
         # DISABLE_AUTO_TITLE=true
         # source $ZSH/oh-my-zsh.sh
         cwd=$(echo $appinfo|jq -r '.title')
-        eval "cwd=$cwd"         # replace ~ -> $HOME
+        # eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd
         exit 0
     fi
