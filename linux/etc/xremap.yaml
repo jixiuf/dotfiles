@@ -223,6 +223,24 @@ keymap:
   #         C-c: C-c              # C-xC-x send C-x
   #         C-e: C-Shift-M        # hints
   #         C-j: { launch: ["open-with"]}
+  - name: org.keepassxc.KeePassXC
+    application:
+      only: [org.keepassxc.KeePassXC]
+    remap:
+      C-s: C-f
+      C-u: C-b
+      C-l: C-u
+      super-C-w: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
+      super-C-q: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
+# 
+  - name: flameshot
+    application:
+      only: [flameshot]
+    remap:
+    # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
+      esc: Enter
+      C-c: Enter
+      C-s: Enter
 
   - name: Bytedance-feishu
     application:
@@ -248,6 +266,7 @@ keymap:
     application:
       only: [Bytedance-feishu,DBeaver,apifox-pdv,org.keepassxc.KeePassXC]
     remap:
+      super-C-w: C-w
       M-f: C-right
       M-b: C-left
       C-b: left
@@ -302,24 +321,6 @@ keymap:
           k: C-f4
           # C-x C-c (exit)
           C-c: super-C-q
-  - name: org.keepassxc.KeePassXC
-    application:
-      only: [org.keepassxc.KeePassXC]
-    remap:
-      C-s: C-f
-      C-u: C-b
-      C-l: C-u
-      super-C-w: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
-      super-C-q: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }
-# 
-  - name: flameshot
-    application:
-      only: [flameshot]
-    remap:
-    # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
-      esc: Enter
-      C-c: Enter
-      C-s: Enter
   - name: Global
     remap:
     # 使用 hyprctl exec 执行的命令，重启 xremap 不会导致这些程序也跟着重启
