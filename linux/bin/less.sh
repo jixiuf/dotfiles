@@ -3,8 +3,7 @@
 
 tty="/dev/$(ps -o tty= -p $$)"
 
-mkdir -p /tmp/pager
-t=$(mktemp /tmp/pager/*pager-XXXXXX*) || exit 1
+t=$(mktemp *pager-XXXXXX*) || exit 1
 
 default_editor="emacsclient  -t"
 
