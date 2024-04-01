@@ -125,6 +125,9 @@ function schedgo(){
     GODEBUG=scheddetail=1,schedtrace=1000  $@
 }
 alias curljson='curl -H "Content-Type: application/json" '
+if [ -f ~/venv/bin/activate ]; then
+    source ~/venv/bin/activate
+fi
 
 function crc32(){
     result=$(python -c "import binascii; print(binascii.crc32('$@'.encode()))")
