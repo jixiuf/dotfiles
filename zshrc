@@ -190,7 +190,7 @@ if [ $(uname -s ) = "Linux" ] ; then
     alias emerge='sudo -E emerge'
     alias emeu='sudo -E emerge -auvqDN --with-bdeps=y  @world;sudo emerge @preserved-rebuild;sudo eclean packages'
     alias esync='sudo -E emerge --sync'
-    alias emec='sudo -E emerge -ac'
+    emec() {        if [ -z "$1" ]; then sudo -E emerge -ac;else sudo -E emerge -aqvC "$1";fi    }
     alias emes='sudo -E emerge -aSqv'
     alias env-update="sudo env-update"
     alias etc-update="sudo etc-update"
@@ -245,6 +245,10 @@ alias now="date '+%s'"
 
 alias df="df -h"
 alias -s git='git clone '
+alias -s png='kitty +kitten icat'
+alias -s jpg='kitty +kitten icat'
+alias -s jpeg='kitty +kitten icat'
+alias -s gif='kitty +kitten icat'
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
