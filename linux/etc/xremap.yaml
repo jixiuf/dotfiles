@@ -42,8 +42,8 @@ modmap:
     remap:
       super_r :
         held: shift_r
-        alone: [f12]
-        alone_timeout_millis: 1000 # Optional
+        alone: [shift_r]
+        alone_timeout_millis: 500 # Optional
   - name: Emacs
     application:
       only: emacs
