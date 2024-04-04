@@ -93,3 +93,4 @@ media-libs/opencolorio -opengl
 gui-apps/wf-recorder pulseaudio
 sys-boot/grub mount
 x11-libs/wxGTK gstreamer
+dev-lang/python tk
