@@ -131,6 +131,7 @@ else
     target_addr=`echo $target_appinfo|jq -r '.address'|head -n 1`
     target_floating=`echo $target_appinfo|jq -r '.floating'|head -n 1`
     target_ws_id=`echo $target_appinfo|jq -r '.workspace.id'`
+    target_pid=`echo $target_appinfo|jq -r '.pid'`
     cwd=$(hypr-cwd)
     if [  "$front_addr" != "$target_addr" ]; then
         # 如果当前窗口是special 的window，则先隐藏之,以免其遮挡聚焦后的窗口
@@ -170,7 +171,7 @@ else
             fi
             hyprctl dispatch "focuswindow address:${target_addr}"
         fi
-        if [[  "$target" == *"org.wezfurlong.wezterm"*  || "$target" == *"Alacritty"*   || "$target" == *"dterm"*  ]]; then
+        if [[  "$target" == *"kitty"*   || "$target" == *"dterm"*  ]]; then
             if [[ -n "$cwd" && -n "$cd" ]]; then
                 # 如果 hypr-cwd 获取到当前 working directory
                 # 且目标 app 是 alacritty 则在 alacritty 中 执行 cd 目标目录
@@ -179,6 +180,9 @@ else
                 # root@host#2222:/path # host#2222:/path
                 # regex2="(\/ssh:)?([a-zA-Z0-9_]+@)?([a-zA-Z0-9_\.]+)#([0-9]+):(.+)"
 
+                # ;; listen_on unix:/tmp/mykitty
+                # ;; allow_remote_control yes
+                kitty @ --to=unix:/tmp/mykitty-${target_pid} send-key ctrl+u
                 if [[ $cwd =~ $regex ]]; then
                     userat=${BASH_REMATCH[2]}
                     host=${BASH_REMATCH[3]}
@@ -186,20 +190,23 @@ else
                     termcwd=$(hypr-cwd)
                     # alacritty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
                     if [[ $termcwd =~ $regex ]]; then
-                        wl-copy  --primary " cd $path"
+                        # wl-copy  --primary " cd $path"
+                        kitty @ --to=unix:/tmp/mykitty-${target_pid} send-text "cd $path\n"
                     else
-                        wl-copy  --primary " ssh -t $userat$host  'cd $path && exec "'$SHELL'"'"
+                        # wl-copy  --primary " ssh -t $userat$host  'cd $path && exec "'$SHELL'"'"
+                        kitty @ --to=unix:/tmp/mykitty-${target_pid} send-text " ssh -t $userat$host  'cd $path && exec "'$SHELL'"'\n"
                     fi
                 else
-                    wl-copy  --primary " cd $cwd"
+                        kitty @ --to=unix:/tmp/mykitty-${target_pid} send-text "cd $cwd\n"
+                        # wl-copy  --primary " cd $cwd"
                 fi
 
-                sleep 0.1
+                # sleep 0.1
                 # fcitx5-remote -s keyboard-us
                 # /usr/include/linux/input-event-codes.h
                 # keyd do C-u C-S-v enter C-l
                 # ydotool key  29:1 22:1 22:0 42:1 47:1 47:0 42:0 29:0  28:1 28:0 29:1 38:1  38:0  29:0
-                echo key ctrl+u ctrl+shift+v ctrl+m|dotoolc
+                # echo key ctrl+u ctrl+shift+v ctrl+m|dotoolc
             fi
         fi
     else
