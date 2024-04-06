@@ -179,6 +179,7 @@ keymap:
           C-f: [C-Shift-P,Y]         # hints: open hyperlink
           # f: [C-Shift-P,P]         # hints: open file
           C-e: [C-Shift-P,C]         # open file:linenum
+          C-y: [C-Shift-Y]         # copy last cmd ouput to clipboard
           # C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
