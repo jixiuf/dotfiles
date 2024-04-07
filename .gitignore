@@ -49,3 +49,4 @@ gnupg/random_seed
 /ssh/id_rsa_old
 /ssh/id_rsa_old.pub
 /linux/config/waybar/nohup.out
+/linux/config/fcitx5/conf/notifications.conf
