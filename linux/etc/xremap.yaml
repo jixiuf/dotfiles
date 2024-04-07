@@ -152,6 +152,17 @@ keymap:
       M-v: M-v
       C-c: C-c
       C-x: C-x
+  - name: kitty emacs
+    application:
+      only: [dterm,kitty]
+    window:
+      only: [/TMUX:/ ]
+    remap:
+      super-C-w: [C-x ,Shift-k] 
+      M-v: [C-b,C-e]
+      C-c: C-c
+      C-x: C-x
+      
       
   - name: kitty
     application:

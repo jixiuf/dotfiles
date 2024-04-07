@@ -359,12 +359,21 @@ case $TERM in
         # unfunction preexec
         PS1='$ '
         ;;
-    (*xterm*|*rxvt*|(dt|k)term*|*screen*|alacritty*|linux*))
+    (*xterm*|*rxvt*|(dt|k)term*|alacritty*|linux*))
         PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
 
         update_cwd(){
             print -Pn "\e]2;$(pwd)\a" #s
+        }
+        add-zsh-hook precmd update_cwd
+        ;;
+    (*screen*|*tmux*))
+        PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
+        autoload -U add-zsh-hook
+
+        update_cwd(){
+            print "\ePtmux;\e\e]2;TMUX:$(pwd)\007\e\\"
         }
         add-zsh-hook precmd update_cwd
         ;;

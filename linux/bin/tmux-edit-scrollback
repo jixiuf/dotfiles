@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+file=$PWD/$(mktemp *pager-XXXXXX*)
+tmux capture-pane -pS -S  > $file
+tmux new-window -n:edit-scrollback "em --frame-parameters='((tmux . t))' $file;rm $file"
