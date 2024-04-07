@@ -146,7 +146,7 @@ keymap:
     application:
       only: [dterm,kitty]
     window:
-      only: [/GNU\/Emacs/ , /History/, /Last command output/]
+      only: [/GNU\/Emacs/ , /History/, /Last command output/, /EDITING SCROLLBACK/ ]
     remap:
       super-C-w: [C-x ,Shift-k] 
       M-v: M-v
