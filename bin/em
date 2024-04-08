@@ -12,14 +12,21 @@ function call_emacsclient(){
     fi
 
 if [ -n "$INSIDE_EMACS" ]; then # 在emacs中的term里调用em ,则不加-t -nw
-        if [ 0 -ne "$#" ]; then        # 有文件名才执行emacsclient命令
+    if [ 0 -ne "$#" ]; then        # 有文件名才执行emacsclient命令
+        if [ -z "$TMUX" ]; then
             $EMACSCLIENT  -a $ALTERNATE_EDITOR  "$@"
         else
-            echo "you are in emacs ,and call em without filename,so do nothing"
+            $EMACSCLIENT --frame-parameters='((tmux . t))' -a $ALTERNATE_EDITOR  "$@"
         fi
-
+    else
+            echo "you are in emacs ,and call em without filename,so do nothing"
+    fi
 else
-    $EMACSCLIENT -t   -nw -a $ALTERNATE_EDITOR  "$@"
+    if [ -z "$TMUX" ]; then
+        $EMACSCLIENT  -t   -nw -a $ALTERNATE_EDITOR  "$@"
+    else
+        $EMACSCLIENT --frame-parameters='((tmux . t))' -t   -nw -a $ALTERNATE_EDITOR  "$@"
+    fi
 fi
 }
 # check starting emacs daemon

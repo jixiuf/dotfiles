@@ -1,6 +1,7 @@
 #!/bin/bash
 
+# https://github.com/tmux/tmux/wiki/Advanced-Use#capturing-pane-content
 
 file=$PWD/$(mktemp *pager-XXXXXX*)
-tmux capture-pane -pS -S  > $file
-tmux new-window -n:edit-scrollback "em --frame-parameters='((tmux . t))' $file;rm $file"
+tmux capture-pane -e -p -S- -E-   > $file
+tmux new-window -n:edit-scrollback "em $file;rm $file"

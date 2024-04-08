@@ -175,7 +175,10 @@ ta(){
 alias tt=ta
 alias tn='TERM=screen-256color tmux new -A -s'
 alias tmux='TERM=screen-256color tmux'
-bindkey -s '^T' 'ta\n'
+# bindkey -s '^T' 'ta\n'
+# map super+ctrl+t send_text all \x1b[1;1l
+bindkey -s '\e[1;1l' 'ta\n'
+
 
 alias httpserver="python -m http.server 8888"
 # tmux_porcess_cnt=`pgrep tmux |wc -l`
