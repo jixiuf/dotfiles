@@ -163,21 +163,19 @@ alias src='pushd $GOPATH/src/gitlab.luojilab.com/'
 alias iostat="iostat -d -k -x 1 100"
 alias vmstat="vmstat 1 100"
 
-alias tumx='TERM=screen-256color tmux'
 ta(){
     if [ -n "$TMUX" ]; then
         tmux detach
         # printf '^wd'
     else
-        TERM=screen-256color tmux attach||TERM=screen-256color tmux new -A -s $USER
+        TERM=tmux attach||tmux new -A -s $USER
     fi
  }
 alias tt=ta
-alias tn='TERM=screen-256color tmux new -A -s'
-alias tmux='TERM=screen-256color tmux'
+alias tn='tmux new -A -s'
+alias ssh='TERM=xterm-256color ssh'
 # bindkey -s '^T' 'ta\n'
-# map super+ctrl+t send_text all \x1b[1;1l
-bindkey -s '\e[1;1l' 'ta\n'
+bindkey -s '^[[116;13u' 'ta\n'
 
 
 alias httpserver="python -m http.server 8888"

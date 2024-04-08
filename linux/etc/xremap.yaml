@@ -144,7 +144,7 @@ keymap:
 
   - name: kitty emacs
     application:
-      only: [dterm,kitty]
+      only: [dterm,kitty,Alacritty,foot]
     window:
       only: [/GNU\/Emacs/ , /History/, /Last command output/, /EDITING SCROLLBACK/ ]
     remap:
@@ -154,7 +154,7 @@ keymap:
       C-x: C-x
   - name: kitty tmux
     application:
-      only: [dterm,kitty]
+      only: [dterm,kitty,Alacritty,foot]
     window:
       only: [/TMUX:/ ]
     remap:
@@ -165,7 +165,7 @@ keymap:
       M-v: [C-w,C-e]
       C-c: C-c
       C-x: C-x
-      
+
   - name: kitty
     application:
       only: [dterm,kitty]
@@ -220,7 +220,7 @@ keymap:
   #         C-j: { launch: ["open-with"]}
   # - name: Terminal
   #   application:
-  #     only: [Alacritty,alacritty]
+  #     only: [Alacritty]
   #   remap:
   #     super-C-w: super-C-q
   #     super-C-Enter:

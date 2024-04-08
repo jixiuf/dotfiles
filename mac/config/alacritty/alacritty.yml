@@ -113,9 +113,9 @@ font:
     style: Bold Italic
 
   size: 15
-env:
+# env:
 # ssh 兼容性好
-  TERM: xterm-256color
+  # TERM: xterm-256color
 colors:
   primary:
     background: '0x111111'
