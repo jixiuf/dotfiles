@@ -4,6 +4,12 @@ window:
   padding:
    x: 10
    y: 10
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 
 selection:
   save_to_clipboard: true

@@ -5,8 +5,9 @@ Description=tmux session for user %I
 Type=forking
 User=%I
 # WARNING: use %I instead of %u here; %u=root in system services.
-ExecStart=/usr/bin/tmux new-session -s %I -d
+ExecStart=/usr/bin/tmux new-session -s %I -d -c /home/%I
 ExecStop=/usr/bin/tmux kill-session -t %I
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

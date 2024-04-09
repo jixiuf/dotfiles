@@ -7,10 +7,13 @@
 # term=alacritty
 # termexec="-e"
 # working_directory_arg="--working-directory"
-
-term=kitty
+term=foot
 termexec=""
 working_directory_arg="--working-directory"
+
+# term=kitty
+# termexec=""
+# working_directory_arg="--working-directory"
 
 # term="wezterm start "
 # termexec=""

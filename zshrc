@@ -360,7 +360,7 @@ case $TERM in
         # unfunction preexec
         PS1='$ '
         ;;
-    (*xterm*|*rxvt*|(dt|k)term*|alacritty*|linux*))
+    (*foot*|*xterm*|*rxvt*|(dt|k)term*|alacritty*|linux*))
         PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
 
@@ -372,9 +372,10 @@ case $TERM in
     (*screen*|*tmux*))
         PROMPT_EOL_MARK="" # 默认是%g 来表示无换行符，改成用空，即隐藏%
         autoload -U add-zsh-hook
-
         update_cwd(){
-            print "\ePtmux;\e\e]2;TMUX:$(pwd)\007\e\\"
+            # https://h8.to/terminal-titles-for-tmux/
+            echo -ne "\033_TMUX:${PWD/#$HOME/~}"; echo -ne "\033\\"
+            # print "\ePtmux;\e\e]2;TMUX:$(pwd)\007\e\\"
         }
         add-zsh-hook precmd update_cwd
         ;;
