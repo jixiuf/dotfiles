@@ -152,6 +152,8 @@ keymap:
       M-v: M-v
       C-c: C-c
       C-x: C-x
+      C-comma: C-comma
+      C-dot: C-dot
   - name:  dterm tmux
     application:
       only: [dterm]
@@ -172,6 +174,10 @@ keymap:
       super-C-t: [C-w ,c] 
       super-M-n: [C-w ,n] 
       super-M-p: [C-w ,p] 
+      super-M-dot: [C-w ,n] 
+      super-M-comma: [C-w ,p] 
+      C-comma: [C-w ,p] 
+      C-dot: [C-w ,n] 
       M-v: [C-w,C-e]
       # C-C: C-c
       # C-x: C-x
