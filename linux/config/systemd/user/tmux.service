@@ -21,4 +21,5 @@ Environment="XDG_RUNTIME_DIR=/run/user/1000"
 Environment="LC_ALL=zh_CN.UTF-8"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sway-session.target
+

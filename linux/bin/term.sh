@@ -20,14 +20,14 @@ working_directory_arg="--working-directory"
 # working_directory_arg="--cwd"
 
 working_directory=""
-other_args=""
+other_args=()
 
 # 解析参数
 for arg in "$@"; do
   if [[ $arg == --working-directory=* ]]; then
     working_directory="${arg#*=}"
   else
-    other_args+=" $arg"
+    other_args+=("$arg")
   fi
 done
 
@@ -44,18 +44,26 @@ if [[ $working_directory =~ $regex ]]; then
   # kitty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   # alacritty    -e ssh -t root@bench1 'cd /tmp&& exec $SHELL'
   #
-  $term $other_args $termexec $SHELL -i -c "ssh -t $userat$host \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL"
+  cmd=("$term" "${other_args[@]}" $termexec  "--" $SHELL -i -c "ssh -t $userat$host \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL")
+  "${cmd[@]}"
+  # $term $other_args $termexec $SHELL -i -c "ssh -t $userat$host \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL"
 elif [[ $working_directory =~ $regex2 ]]; then
   userat=${BASH_REMATCH[2]}
   host=${BASH_REMATCH[3]}
   port=${BASH_REMATCH[4]}
   path=${BASH_REMATCH[5]}
   # 执行alacritty时移除--working-directory参数，并添加-e ssh ${USER}@${HOST} cd ${Path}&& exec $SHELL
-  $term $other_args $termexec $SHELL -i -c "ssh -t $userat$host -p $port \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL"
+  # $term $other_args $termexec $SHELL -i -c "ssh -t $userat$host -p $port \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL"
+  cmd=("$term" "${other_args[@]}" $termexec "--" $SHELL -i -c "ssh -t $userat$host -p $port \"cd $path && exec "'\$SHELL'"\" &&exec $SHELL")
+  "${cmd[@]}"
 else
     if [ -z "$working_directory" ]; then
-        $term  $other_args
+        cmd=("$term" "${other_args[@]}" )
+        "${cmd[@]}"
+        # $term  $other_args
     else
-        $term $working_directory_arg="$working_directory" $other_args
+        cmd=("$term" $working_directory_arg="$working_directory" ${other_args[@]} )
+        "${cmd[@]}"
+        # $term $working_directory_arg="$working_directory" $other_args
     fi
 fi

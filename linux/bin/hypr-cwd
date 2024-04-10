@@ -31,7 +31,7 @@ if [ -n "$appinfo" ]; then
         eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd
         exit 0
-    elif [[ "$class" = "org.wezfurlong.wezterm" ||"$class" = "kitty" || "$class" = "Alacritty" || "$class" = "dterm" ]]; then
+    elif [[ "$class" = "org.wezfurlong.wezterm" ||"$class" = "foot" ||"$class" = "kitty" || "$class" = "Alacritty" || "$class" = "dterm" ]]; then
         # for zsh
         # autoload -U add-zsh-hook
         # update_cwd(){
@@ -42,6 +42,14 @@ if [ -n "$appinfo" ]; then
         # DISABLE_AUTO_TITLE=true
         # source $ZSH/oh-my-zsh.sh
         cwd=$(echo $appinfo|jq -r '.title')
+        if [[ $cwd == TMUX:* ]]; then
+            # Remove the prefix "TMUX:" and then split the remaining string by ":"
+            # 格式： "TMUX:session:path"
+            cwd=${cwd#TMUX:}
+            tmux_session=${cwd%%:*}
+            cwd=${cwd#*:}
+        fi
+        cwd="${cwd/#\~/$HOME}"
         # eval "cwd=$cwd"         # replace ~ -> $HOME
         echo $cwd
         exit 0

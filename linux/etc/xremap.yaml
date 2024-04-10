@@ -140,7 +140,7 @@ keymap:
       C-g: [super-Space,C-g]
       super-C-Backslash: super-C-Backslash 
       # C-x: C-x
-      super-C-t: { launch: ["hyprctl","dispatch","exec  hypr-run-or-raise --cd --floating --float-only -- 'foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm' term.sh --app-id=dterm  --working-directory=$(hypr-cwd||echo $HOME) "] }
+      super-C-t: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --cd --floating --float-only  'foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --app-id=dterm --working-directory=$(hypr-cwd||echo $HOME) -- tmux.sh --session dterm --cwd $(hypr-cwd||echo $HOME)" ] }
 
   - name: kitty emacs
     application:
@@ -152,27 +152,34 @@ keymap:
       M-v: M-v
       C-c: C-c
       C-x: C-x
-  - name: kitty tmux
+  - name:  dterm tmux
+    application:
+      only: [dterm]
+    window:
+      only: [/TMUX:/ ]
+    remap:
+      # super-M-v: [C-w,C-y]
+      super-C-w: [C-w,d] 
+      
+  - name: terminal tmux
     application:
       only: [dterm,kitty,Alacritty,foot]
     window:
       only: [/TMUX:/ ]
     remap:
-      super-C-w: [C-w ,d] 
+      # super-M-v: [C-w,C-y]
+      super-C-w: [C-w,k] 
       super-C-t: [C-w ,c] 
       super-M-n: [C-w ,n] 
       super-M-p: [C-w ,p] 
       M-v: [C-w,C-e]
-      C-c: C-c
-      C-x: C-x
-
-  - name: kitty
+      # C-C: C-c
+      # C-x: C-x
+      
+  - name: foot
     application:
-      only: [dterm,kitty]
+      only: [dterm,foot]
     remap:
-      C-backspace: M-backspace
-      super-C-T: super-C-T
-      super-M-v: C-Shift-v
       super-C-w: super-C-q
       super-C-Enter:
         - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
@@ -188,13 +195,38 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          C-o: C-Shift-o              # open last command output with editor
-          C-f: [C-Shift-P,Y]         # hints: open hyperlink
-          # f: [C-Shift-P,P]         # hints: open file
-          C-e: [C-Shift-P,C]         # open file:linenum
-          C-y: [C-Shift-Y]         # copy last cmd ouput to clipboard
           # C-e: [C-Shift-P,N]         # open file:linenum
           C-j: { launch: ["open-with"]}
+
+  # - name: kitty
+  #   application:
+  #     only: [dterm,kitty]
+  #   remap:
+  #     C-backspace: M-backspace
+  #     super-C-T: super-C-T
+  #     super-M-v: C-Shift-v
+  #     super-C-w: super-C-q
+  #     super-C-Enter:
+  #       - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
+  #     # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
+  #     # C-l: [C-l,C-Shift-l,C-Shift-l]
+  #     # C-Enter: [C-y,Enter]
+  #     # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
+  #     M-v: [C-Shift-h]
+  #     C-x:
+  #       remap:
+  #         C-x: C-x              # C-xC-x send C-x
+  #         C-c: super-C-q
+  #     C-c:
+  #       remap:
+  #         C-c: C-c              # C-xC-x send C-x
+  #         C-o: C-Shift-o              # open last command output with editor
+  #         C-f: [C-Shift-P,Y]         # hints: open hyperlink
+  #         # f: [C-Shift-P,P]         # hints: open file
+  #         C-e: [C-Shift-P,C]         # open file:linenum
+  #         C-y: [C-Shift-Y]         # copy last cmd ouput to clipboard
+  #         # C-e: [C-Shift-P,N]         # open file:linenum
+  #         C-j: { launch: ["open-with"]}
 
   # - name: wezterm
   #   application:
@@ -344,7 +376,8 @@ keymap:
       super-C-5: { launch: ["hyprctl","dispatch","exec", "hypr-run-or-raise","apifox-pdv","/opt/Apifox/apifox-pdv"] }
       super-C-6: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Mysql-workbench-bin","mysql-workbench"] }
       super-C-dot: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise mitp -- term.sh --class=mitp  mitmproxy -p 8888 -s ~/.mitmproxy/rewrite.py"] }
-      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating --float-only  'foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --app-id=dterm --working-directory=$(hypr-cwd||echo $HOME)"] }
+      super-C-d: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --floating --float-only  'foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --app-id=dterm --working-directory=$(hypr-cwd||echo $HOME) -- tmux.sh --session dterm --cwd $(hypr-cwd||echo $HOME)" ] }
+      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "term.sh   --working-directory=$(hypr-cwd||echo $HOME) -- tmux.sh --session $RANDOM --cwd $(hypr-cwd||echo $HOME)"] }
       super-C-comma: { launch: ["hyprctl","dispatch","exec hypr-dterm-ws"] }
       super-C-b: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise weixin weixin-uos" ] }
       super-C-3: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise","Bytedance-feishu","bytedance-feishu-stable  2>&1 >/dev/null"] }
@@ -367,7 +400,6 @@ keymap:
       super-C-y: { launch: ["rofi-cliphist"] }
       # super-C-0: { launch: ["bwmenu"] }
       C-Tab: { launch: ["hyprctl","dispatch","exec","killall rofi ||rofi -normal-window -show combi -combi-modes 'window,drun,run,ssh' -modes combi"] }
-      super-C-Enter: { launch: ["hyprctl","dispatch","exec", "term.sh --working-directory=$(hypr-cwd||echo $HOME)"] }
       super-C-Backslash: { launch: ["hyprctl","dispatch","togglesplit"] }
       super-M-f: { launch: ["hyprctl","dispatch","togglefloating"] }
       super-M-h: { launch: ["hyprctl","dispatch","movetoworkspacesilent","special"] }

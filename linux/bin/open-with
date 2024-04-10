@@ -1,6 +1,7 @@
 #!/bin/bash
 
 arg="$1"
+
 if [ -z "$arg" ]; then
     # 如果未传参数，则使用 sway-cwd  来从 window title 中获取当前目录
     # 目录支持 emacs/alacritty 均需要按一定的格式进行定制 window title
@@ -15,7 +16,7 @@ if [ "$XDG_SESSION_DESKTOP" == "Hyprland" ]; then
     front_app=`hyprctl activewindow -j`
     front_class=`echo $front_app|jq -r '.class'`
     front_floating=`echo $front_app|jq -r '.floating'`
-    if [[ "$front_floating" == "true" && ("$front_class" == "org.wezfurlong.wezterm" || "$front_class" == "Alacritty" || "$front_class" == "kitty"|| "$front_class" == "dterm") ]]; then
+    if [[ "$front_floating" == "true" && ("$front_class" == "org.wezfurlong.wezterm" || "$front_class" == "Alacritty" || "$front_class" == "kitty"|| "$front_class" == "foot"|| "$front_class" == "dterm") ]]; then
         hyprctl dispatch "movetoworkspacesilent special"
     fi
 fi

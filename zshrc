@@ -374,7 +374,7 @@ case $TERM in
         autoload -U add-zsh-hook
         update_cwd(){
             # https://h8.to/terminal-titles-for-tmux/
-            echo -ne "\033_TMUX:${PWD/#$HOME/~}"; echo -ne "\033\\"
+            echo -ne "\033_${PWD/#$HOME/~}"; echo -ne "\033\\"
             # print "\ePtmux;\e\e]2;TMUX:$(pwd)\007\e\\"
         }
         add-zsh-hook precmd update_cwd
