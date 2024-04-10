@@ -68,7 +68,7 @@ for i in "$@"; do
     esac
 done
 
-shift
+shift # remove --
 
 # $target= app_id for wayland or target_class for x11
 target=$1
