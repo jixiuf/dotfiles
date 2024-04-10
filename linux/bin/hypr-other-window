@@ -9,10 +9,15 @@ appinfo=`hyprctl activewindow -j`
 # if front app exits
 if [ -n "$appinfo" ]; then
     class=`echo $appinfo|jq -r '.class'|head -n 1`
+    title=`echo $appinfo|jq -r '.title'|head -n 1`
     # fullscreen=`echo $appinfo|jq -r '.fullscreen'|head -n 1`
      # ( "$app_cnt" = "1" || "$fullscreen" = "true" )
     if [[ "$class" = "emacs" ]]; then
         echo key ctrl+super+o|dotoolc
+    # elif [[ ( "$class" = "foot" || "$class" = "dterm" ) && "$title" == *"GNU/Emacs"* ]]; then
+    #     echo key ctrl+super+o|dotoolc
+    # elif [[ ( "$class" = "foot" || "$class" = "dterm" ) && "$title" == "TMUX:"* ]]; then
+    #     tmux select-pane -t :.+
     else
         hyprctl --batch "dispatch cyclenext; dispatch bringactivetotop"
     fi
