@@ -68,8 +68,9 @@ media-gfx/openvdb ~amd64
 gui-libs/hyprcursor  ~amd64
 app-misc/zellij  ~amd64
 x11-terms/wezterm  ~amd64
-x11-terms/alacritty  ~amd6
-gui-apps/foot  ~amd6
+x11-terms/alacritty  ~amd64
+gui-apps/foot  ~amd64
+app-misc/tmux  ~amd64
 # Local Variables:
 # mode: conf
 # End:
