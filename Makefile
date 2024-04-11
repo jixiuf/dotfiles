@@ -33,6 +33,9 @@ deploy:
 	@if [ ! -d ~/.cache/.vimbackup ]; then\
 		mkdir -p ~/.cache/.vimbackup;\
 	fi
+	@if [ ! -d ~/.tmux/plugins/tpm ]; then\
+		 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; \
+	fi
 	@if [ `uname -s` = "Linux" ] ; then \
 		mkdir -p ~/.local/share/fcitx5; \
 		$(LINK_CMD)   $(PWD)/mac/rime_input_method ~/.local/share/fcitx5/rime ;\

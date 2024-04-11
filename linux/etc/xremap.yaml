@@ -194,7 +194,7 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          # C-e: [C-Shift-P,N]         # open file:linenum
+          C-e: [C-Shift-m]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
   # - name: kitty
