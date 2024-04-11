@@ -77,12 +77,13 @@ appinfo=`hyprctl activewindow -j`
 if [ -n "$appinfo" ]; then
     class=`echo $appinfo|jq -r '.class'|head -n 1`
     fullscreen=`echo $appinfo|jq -r '.fullscreen'|head -n 1`
+    floating=`echo $appinfo|jq -r '.floating'|head -n 1`
     title=`echo $appinfo|jq -r '.title'|head -n 1`
-    if [[ "$class" = "emacs" && ( "$app_cnt" = "1" || "$fullscreen" = "true" ) ]]; then
+    if [[ "$class" = "emacs" && ( "$app_cnt" = "1" || "$fullscreen" = "true"  ||"$floating" == "true" ) ]]; then
         resize_emacs_window $1
     elif [[ ( "$class" = "foot" || "$class" = "dterm" ) && "$title" == *"GNU/Emacs"* ]]; then
         resize_tmux_emacs_window $1
-    elif [[ ( "$class" = "foot" || "$class" = "dterm" ) && "$title" == "TMUX:"* ]]; then
+    elif [[ ( "$class" = "foot" || "$class" = "dterm" ) && "$title" == "TMUX:"* && ( "$app_cnt" = "1" || "$fullscreen" = "true" ||"$floating" == "true" ) ]]; then
         resize_tmux_window $1
     else
         resize_window $1

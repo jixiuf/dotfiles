@@ -54,19 +54,19 @@ modmap:
         alone_timeout_millis: 1000 # Optional
 
 keymap:
-  - name: swappy
-    application:
-      only: [swappy]
-    remap:
-    # http://7is7.com/software/firefox/shortcuts.html 
-      C-y: C-y
-      C-b: C-b
-      C-g: [C-c,C-s, esc]
-      esc: [C-c,C-s, esc]
-      C-slash: C-z
-      C-x:
-        remap:
-          C-c: [C-c,C-s, esc]
+  # - name: swappy
+  #   application:
+  #     only: [swappy]
+  #   remap:
+  #   # http://7is7.com/software/firefox/shortcuts.html 
+  #     C-y: C-y
+  #     C-b: C-b
+  #     C-g: [C-c,C-s, esc]
+  #     esc: [C-c,C-s, esc]
+  #     C-slash: C-z
+  #     C-x:
+  #       remap:
+  #         C-c: [C-c,C-s, esc]
   - name: DBeaver
     application:
       only: [DBeaver]
@@ -142,7 +142,7 @@ keymap:
       # C-x: C-x
       super-C-t: { launch: ["hyprctl","dispatch","exec","hypr-run-or-raise --cd --floating --float-only  'foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm' -- term.sh  --app-id=dterm --working-directory=$(hypr-cwd||echo $HOME) -- tmux.sh --session dterm --cwd $(hypr-cwd||echo $HOME)" ] }
 
-  - name: kitty emacs
+  - name: terminal emacs
     application:
       only: [dterm,kitty,Alacritty,foot]
     window:
@@ -154,14 +154,6 @@ keymap:
       C-x: C-x
       C-comma: C-comma
       C-dot: C-dot
-  - name:  dterm tmux
-    application:
-      only: [dterm]
-    window:
-      only: [/TMUX:/ ]
-    remap:
-      # super-M-v: [C-w,C-y]
-      super-C-w: [C-w,d] 
       
   - name: terminal tmux
     application:
@@ -179,6 +171,7 @@ keymap:
       C-comma: [C-w ,p] 
       C-dot: [C-w ,n] 
       M-v: [C-w,C-e]
+      C-Grave: M-Grave
       # C-C: C-c
       # C-x: C-x
       
