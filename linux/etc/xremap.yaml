@@ -150,7 +150,7 @@ keymap:
     remap:
       super-C-w: [C-x ,Shift-k] 
       M-v: M-v
-      C-c: C-c
+      C-c: [C-c,C-c]
       C-x: C-x
       C-comma: C-comma
       C-dot: C-dot
@@ -162,18 +162,23 @@ keymap:
       only: [/TMUX:/ ]
     remap:
       # super-M-v: [C-w,C-y]
-      super-C-w: [C-w,k] 
-      super-C-t: [C-w ,c] 
-      super-M-n: [C-w ,n] 
-      super-M-p: [C-w ,p] 
-      super-M-dot: [C-w ,n] 
-      super-M-comma: [C-w ,p] 
-      C-comma: [C-w ,p] 
-      C-dot: [C-w ,n] 
-      M-v: [C-w,C-e]
+      super-C-w: [C-c,k] 
+      super-C-t: [C-c ,c] 
+      super-M-n: [C-c ,n] 
+      super-M-p: [C-c ,p] 
+      super-M-dot: [C-c ,n] 
+      super-M-comma: [C-c ,p] 
+      C-comma: [C-c ,p] 
+      C-dot: [C-c ,n] 
+      # M-v: [C-w,C-e]
       C-Grave: M-Grave
-      # C-C: C-c
-      # C-x: C-x
+      C-C: C-c
+      # # C-x: C-x
+      # C-c:
+      #   remap:
+      #     C-c: C-c              # C-xC-x send C-x
+      #     C-f: [C-Shift-m]         # open file:linenum
+      #     C-j: { launch: ["open-with"]}
       
   - name: foot
     application:
@@ -186,7 +191,7 @@ keymap:
       # C-l: [C-l,C-Shift-l,C-Shift-l]
       # C-Enter: [C-y,Enter]
       # C-k: [C-2,C-2,C-e,y,q,C-k] # 选中光标至行尾的内容并复制，退出vi mode，再C-k 类似emacs kill-line
-      M-v: [C-Shift-h]
+      # M-v: [C-Shift-h]
       C-x:
         remap:
           C-x: C-x              # C-xC-x send C-x
@@ -194,7 +199,7 @@ keymap:
       C-c:
         remap:
           C-c: C-c              # C-xC-x send C-x
-          C-e: [C-Shift-m]         # open file:linenum
+          C-f: [C-Shift-m]         # open file:linenum
           C-j: { launch: ["open-with"]}
 
   # - name: kitty

@@ -183,7 +183,7 @@ alias httpserver="python -m http.server 8888"
 
 alias download="pushd ~/Downloads/"
 if [ $(uname -s ) = "Linux" ] ; then
-    alias icat="kitty +kitten icat"
+    # alias icat="kitty +kitten icat"
     # [ -z "$(mount | grep '/var/cache/binpkgs')" ] && sudo mount /var/cache/binpkgs
     alias eme='sudo -E emerge -aqv --autounmask-write'
     alias emek='sudo -E emerge -aqv --autounmask-write --getbinpkg=n'
@@ -246,10 +246,10 @@ alias now="date '+%s'"
 
 alias df="df -h"
 alias -s git='git clone '
-alias -s png='kitty +kitten icat'
-alias -s jpg='kitty +kitten icat'
-alias -s jpeg='kitty +kitten icat'
-alias -s gif='kitty +kitten icat'
+# alias -s png='kitty +kitten icat'
+# alias -s jpg='kitty +kitten icat'
+# alias -s jpeg='kitty +kitten icat'
+# alias -s gif='kitty +kitten icat'
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
@@ -336,6 +336,7 @@ fi
 # add-zsh-hook precmd vcs_info_wrapper
 # if [ -z "$INSIDE_EMACS" ]; then
 # fi
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666,bg=underline"
 if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
