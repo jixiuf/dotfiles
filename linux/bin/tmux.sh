@@ -28,4 +28,4 @@ for i in "$@"; do
 done
 
 shift # remove --
-tmux attach  $session_1 -c $cwd||tmux new-session $session_2 $@
+cd $cwd ;tmux attach  $session_1 -c $cwd||tmux new-session $session_2 $@
