@@ -438,7 +438,19 @@ bindkey "^[[1h" user-complete   # my ctrl-i
 unalias gob
 function gob(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
-    go build
+go build "$@" 2>&1 | awk -vFS=: '
+    /^[^#:][^:]*:[0-9]+:[0-9]+: *.+$/ {
+        printf ( \
+            "\033]8;;file://%s/%s:%s\033\\%s:%s\033]8;;\033\\:%s:%s\n", \
+            ENVIRON["PWD"], $1, $2, $1, $2, $3, $4 \
+        )
+        next
+    }
+
+    {
+        print
+    }
+    '
 }
 function goi(){
     if [ -n "$(go mod tidy 2>&1 )" ]; then go mod tidy -compat=$(go version |cut -d " " -f 3|cut -d "o" -f 2| awk '{split($0,a,"."); print a[1] "." a[2]}'); fi
