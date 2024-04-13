@@ -50,3 +50,4 @@ gnupg/random_seed
 /ssh/id_rsa_old.pub
 /linux/config/waybar/nohup.out
 /linux/config/fcitx5/conf/notifications.conf
+/linux/config/tmux/plugins/

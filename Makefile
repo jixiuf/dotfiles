@@ -3,7 +3,7 @@
 PWD := `pwd`
 LINK_CMD := ln -s -f
 LINK_CMD_HARD := ln -f
-NORMAL_FILES_COMMON := `echo ssh password-store pam-gnupg gnupg mitmproxy authinfo.gpg gitconfig gitattributes gitignore  vimrc  zshenv zshrc  tmux.conf  bashrc  fzf.zsh  mbsyncrc mailrc msmtprc`
+NORMAL_FILES_COMMON := `echo ssh password-store pam-gnupg gnupg mitmproxy authinfo.gpg gitconfig gitattributes gitignore  vimrc  zshenv zshrc   bashrc  fzf.zsh  mbsyncrc mailrc msmtprc`
 default:
 	sudo make sudo
 	make deploy

@@ -102,6 +102,10 @@ alias bench='ssh bench'
 alias k8s='ssh k8sdev'
 alias gc='git clone '
 alias gitclean='git clean -fdx'
+man() {
+    emacsclient -nw -e " (man \"$1\")"
+}
+
 go env -w GOPRIVATE="*.luojilab.com"
 # go env -w GOSUMDB=off
 go env -w GOSUMDB="sum.golang.google.cn"
