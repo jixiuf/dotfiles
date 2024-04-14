@@ -185,7 +185,9 @@ keymap:
       only: [dterm,foot]
     remap:
       super-C-w: super-C-q
-      # super-C-Enter: [C-w ,c] 
+      super-C-Enter: [C-c,"2"] 
+      super-C-Backslash: [C-c,M-1] 
+      super-C-Backspace: [C-c,M-2] 
         # - { launch: ["hyprctl","dispatch","exec hypr-dterm"] }
       # super-C-t: { launch: ["hypr-run-or-raise", "--cd","--float-only","--","foot|dterm|Alacritty|kitty|org.wezfurlong.wezterm","term.sh   --working-directory=$(hypr-cwd||echo $HOME)  "] }
       # C-l: [C-l,C-Shift-l,C-Shift-l]
