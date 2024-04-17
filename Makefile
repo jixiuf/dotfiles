@@ -16,25 +16,19 @@ deploy:
 	chmod 600 ~/.ssh/id_rsa
 	chmod 600 ~/.ssh/config
 	chmod 600 ~/.ssh/authorized_keys
+	@-mkdir -p ~/.config/
+	@-for file in config/*; do \
+		link_name=$$(echo "$$file" | tr ':' '/'); \
+		mkdir -p "$$HOME/.$$(dirname "$$link_name")"; \
+		if [ -h ~/.$$link_name ]; then \
+			unlink ~/.$$link_name ;\
+        fi;\
+		$(LINK_CMD) $(PWD)/$$file ~/.$$link_name ;\
+	done
 
-# @if [ ! -d ~/bin ]; then\
-#	mkdir ~/bin;\
-# fi
-# -$(LINK_CMD) $(PWD)/proxy/httpgo ~/bin/httpgo;
-# @-for file in bin/*; do \
-#	if [ -h /$$file ]; then \
-#	unlink /$$file ;\
-#     fi;\
-#	if	[ -f $$file ]; then \
-#		$(LINK_CMD) $(PWD)/$$file ~/$$file ;\
-#     fi;\
-# done
 
 	@if [ ! -d ~/.cache/.vimbackup ]; then\
 		mkdir -p ~/.cache/.vimbackup;\
-	fi
-	@if [ ! -d ~/.tmux/plugins/tpm ]; then\
-		 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; \
 	fi
 	@if [ `uname -s` = "Linux" ] ; then \
 		mkdir -p ~/.local/share/fcitx5; \
